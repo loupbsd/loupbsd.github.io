@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Career Development — Loup Broussard</title>
+  <meta name="description" content="Loup Broussard's career project: CV in English and French, LinkedIn, pitch video, role models, international mobility projects and goals.">
+
+  <!-- Open Graph: preview when the link is shared on LinkedIn (absolute URLs required) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Career Development — Loup Broussard">
+  <meta property="og:description" content="CV, pitch video, role models, mobility projects and career goals.">
+  <meta property="og:url" content="https://loupbsd.github.io/career.html">
+  <meta property="og:image" content="https://loupbsd.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Inter (text) + JetBrains Mono (accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Applies the saved theme before the page is drawn (avoids a white flash) -->
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== HEADER — identical on every page, only aria-current changes ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <span class="logo__mark" aria-hidden="true">LB</span>
+        <span class="logo__name">Loup Broussard</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Welcome</a></li>
+          <li><a href="engineering.html">Engineering</a></li>
+          <li><a href="mobility.html">Mobility</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="career.html" aria-current="page">Career</a></li>
+        </ul>
+      </nav>
+
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch dark / light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+  <!-- ===== END HEADER ===== -->
+
+  <main id="main">
+
+    <header class="page-header">
+      <div class="container">
+        <p class="eyebrow">// career development</p>
+        <h1>Career Development</h1>
+        <p class="intro">My career project: CV, pitch, role models, mobility plans and goals.</p>
+      </div>
+    </header>
+
+    <!-- TABLE OF CONTENTS — stays at the top while scrolling.
+         Each link points to a section id below. -->
+    <nav class="toc" aria-label="On this page">
+      <div class="container">
+        <ul>
+          <li><a href="#cv">CV &amp; LinkedIn</a></li>
+          <li><a href="#pitch">Pitch</a></li>
+          <li><a href="#role-models">Role models</a></li>
+          <li><a href="#mobility">Mobility</a></li>
+          <li><a href="#goals">Goals</a></li>
+          <li><a href="#next">Coming next</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 1. CV & LINKEDIN -->
+    <section class="section reveal" id="cv" aria-labelledby="cv-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// cv</p>
+          <h2 id="cv-title">CV &amp; LinkedIn</h2>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="card">
+            <h3>CV</h3>
+            <p class="muted">PDF, updated <span class="todo">[TO COMPLETE: month year]</span></p>
+            <!-- PDFs go in assets/docs/ with exactly these file names -->
+            <div class="btn-row card__cta">
+              <a class="btn btn--primary" href="assets/docs/CV_Loup_Broussard_EN.pdf" download>English CV</a>
+              <a class="btn" href="assets/docs/CV_Loup_Broussard_FR.pdf" download>French CV</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>LinkedIn</h3>
+            <p class="muted">My profile, in English and in French.</p>
+            <div class="btn-row card__cta">
+              <!-- TO COMPLETE: LinkedIn profile URLs in href (EN and FR versions) -->
+              <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn (EN)</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn (FR)</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PITCH VIDEO (YouTube, unlisted) -->
+    <section class="section reveal" id="pitch" aria-labelledby="pitch-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// pitch</p>
+          <h2 id="pitch-title">My pitch</h2>
+          <p class="intro">My Unique Value Proposition in 2–3 minutes, in English: Now → Past → Future.</p>
+        </div>
+
+        <div class="video">
+          <!-- TO COMPLETE: put the YouTube video ID in place of VIDEO_ID, uncomment the iframe,
+               then delete the placeholder <div> below.
+          <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+                  title="Pitch video — Loup Broussard"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+          -->
+          <div class="media-placeholder">
+            <p class="muted">Video coming soon <span class="todo">[TO COMPLETE: YouTube embed]</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ROLE MODELS — use initials if the person did not agree to be named -->
+    <section class="section reveal" id="role-models" aria-labelledby="role-models-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// role models</p>
+          <h2 id="role-models-title">3 role models</h2>
+          <p class="intro">Professionals whose path inspires my project, met through My Job Glasses, LinkedIn or the N7 alumni network.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card rolemodel-card" id="role-model-1">
+            <p class="card__meta">Role model 1 · <span class="todo">[TO COMPLETE: My Job Glasses / LinkedIn / alumni]</span></p>
+            <h3><span class="todo">[TO COMPLETE: name or initials]</span></h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: position @ company]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>Path</dt>
+                <dd>
+                  <ol class="steps">
+                    <li><span class="todo">[TO COMPLETE: step 1]</span></li>
+                    <li><span class="todo">[TO COMPLETE: step 2]</span></li>
+                    <li><span class="todo">[TO COMPLETE: step 3]</span></li>
+                  </ol>
+                </dd>
+              </div>
+              <div><dt>What I take away</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
+              <div><dt>Linked mobility</dt><dd><a href="mobility.html#mobility-1">Mobility project 1 →</a></dd></div>
+            </dl>
+          </article>
+
+          <article class="card rolemodel-card" id="role-model-2">
+            <p class="card__meta">Role model 2 · <span class="todo">[TO COMPLETE: My Job Glasses / LinkedIn / alumni]</span></p>
+            <h3><span class="todo">[TO COMPLETE: name or initials]</span></h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: position @ company]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>Path</dt>
+                <dd>
+                  <ol class="steps">
+                    <li><span class="todo">[TO COMPLETE: step 1]</span></li>
+                    <li><span class="todo">[TO COMPLETE: step 2]</span></li>
+                    <li><span class="todo">[TO COMPLETE: step 3]</span></li>
+                  </ol>
+                </dd>
+              </div>
+              <div><dt>What I take away</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
+              <div><dt>Linked mobility</dt><dd><a href="mobility.html#mobility-2">Mobility project 2 →</a></dd></div>
+            </dl>
+          </article>
+
+          <article class="card rolemodel-card" id="role-model-3">
+            <p class="card__meta">Role model 3 · <span class="todo">[TO COMPLETE: My Job Glasses / LinkedIn / alumni]</span></p>
+            <h3><span class="todo">[TO COMPLETE: name or initials]</span></h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: position @ company]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>Path</dt>
+                <dd>
+                  <ol class="steps">
+                    <li><span class="todo">[TO COMPLETE: step 1]</span></li>
+                    <li><span class="todo">[TO COMPLETE: step 2]</span></li>
+                    <li><span class="todo">[TO COMPLETE: step 3]</span></li>
+                  </ol>
+                </dd>
+              </div>
+              <div><dt>What I take away</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
+              <div><dt>Linked mobility</dt><dd><a href="mobility.html#mobility-3">Mobility project 3 →</a></dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MOBILITY — short version, full cards on mobility.html -->
+    <section class="section reveal" id="mobility" aria-labelledby="mobility-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// mobility</p>
+          <h2 id="mobility-title">3 mobility projects</h2>
+          <p class="intro">Each one is aligned with a role model. Full details on the International Mobility page.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <a class="card feature-card" href="mobility.html#mobility-1">
+            <span class="card__meta">Project 1 · role model 1</span>
+            <h3><span class="todo">[TO COMPLETE: destination]</span></h3>
+            <p><span class="todo">[TO COMPLETE: type]</span></p>
+            <span class="link-arrow">See details →</span>
+          </a>
+          <a class="card feature-card" href="mobility.html#mobility-2">
+            <span class="card__meta">Project 2 · role model 2</span>
+            <h3><span class="todo">[TO COMPLETE: destination]</span></h3>
+            <p><span class="todo">[TO COMPLETE: type]</span></p>
+            <span class="link-arrow">See details →</span>
+          </a>
+          <a class="card feature-card" href="mobility.html#mobility-3">
+            <span class="card__meta">Project 3 · role model 3</span>
+            <h3><span class="todo">[TO COMPLETE: destination]</span></h3>
+            <p><span class="todo">[TO COMPLETE: type]</span></p>
+            <span class="link-arrow">See details →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. GOALS — timeline + plans A / B / C -->
+    <section class="section reveal" id="goals" aria-labelledby="goals-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// goals</p>
+          <h2 id="goals-title">Goals</h2>
+        </div>
+
+        <div class="subsection">
+          <h3>Timeline</h3>
+          <div class="grid grid--3">
+            <article class="card goal-card">
+              <p class="card__meta">Short term · 2026 – 2028</p>
+              <h3>Internships (S6, S8)</h3>
+              <p><span class="todo">[TO COMPLETE]</span></p>
+            </article>
+            <article class="card goal-card">
+              <p class="card__meta">Mid term · 2028 – 2029</p>
+              <h3>Mobility (S9) &amp; graduation</h3>
+              <p><span class="todo">[TO COMPLETE]</span></p>
+            </article>
+            <article class="card goal-card">
+              <p class="card__meta">Long term · after graduation</p>
+              <h3>First job &amp; beyond</h3>
+              <p><span class="todo">[TO COMPLETE]</span></p>
+            </article>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Plans A / B / C</h3>
+          <div class="grid grid--3">
+            <article class="card goal-card">
+              <p class="card__meta">Plan A</p>
+              <p><span class="todo">[TO COMPLETE]</span></p>
+            </article>
+            <article class="card goal-card">
+              <p class="card__meta">Plan B</p>
+              <p><span class="todo">[TO COMPLETE]</span></p>
+            </article>
+            <article class="card goal-card">
+              <p class="card__meta">Plan C</p>
+              <p><span class="todo">[TO COMPLETE]</span></p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. COMING NEXT — future semesters -->
+    <section class="section reveal" id="next" aria-labelledby="next-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// coming next</p>
+          <h2 id="next-title">Coming next</h2>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="card card--soon">
+            <h3>Internships</h3>
+            <p>S6 and S8 internships: reports and feedback will be added here.</p>
+          </article>
+          <article class="card card--soon">
+            <h3>PEP</h3>
+            <p>Coming soon.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER — identical on every page ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Loup Broussard · Last updated: October 2026</p>
+      <ul>
+        <li><a href="index.html#contact">Contact</a></li>
+        <!-- TO COMPLETE: LinkedIn profile URL in href -->
+        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

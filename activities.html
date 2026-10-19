@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sport &amp; Other Activities — Loup Broussard</title>
+  <meta name="description" content="Loup Broussard's activities outside class — rugby, music and live coding, motorsport, new technologies — and the soft skills they build.">
+
+  <!-- Open Graph: preview when the link is shared on LinkedIn (absolute URLs required) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sport &amp; Other Activities — Loup Broussard">
+  <meta property="og:description" content="Rugby, music and live coding, motorsport, new technologies.">
+  <meta property="og:url" content="https://loupbsd.github.io/activities.html">
+  <meta property="og:image" content="https://loupbsd.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Inter (text) + JetBrains Mono (accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Applies the saved theme before the page is drawn (avoids a white flash) -->
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== HEADER — identical on every page, only aria-current changes ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <span class="logo__mark" aria-hidden="true">LB</span>
+        <span class="logo__name">Loup Broussard</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Welcome</a></li>
+          <li><a href="engineering.html">Engineering</a></li>
+          <li><a href="mobility.html">Mobility</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="activities.html" aria-current="page">Activities</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+      </nav>
+
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch dark / light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+  <!-- ===== END HEADER ===== -->
+
+  <main id="main">
+
+    <header class="page-header">
+      <div class="container">
+        <p class="eyebrow">// activities</p>
+        <h1>Sport &amp; Other Activities</h1>
+        <p class="intro">What I do outside class — and the soft skills I build there.</p>
+      </div>
+    </header>
+
+    <!-- ACTIVITIES — one card each. "What it taught me" = soft skills as tags. -->
+    <section class="section reveal" aria-labelledby="activities-title">
+      <div class="container">
+        <h2 class="sr-only" id="activities-title">My activities</h2>
+
+        <div class="grid grid--2">
+          <article class="card" id="rugby">
+            <p class="card__meta">sport</p>
+            <h3>Rugby</h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: club, since when, level]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>What it taught me</dt>
+                <dd><ul class="tags"><li class="tag tag--accent"><span class="todo">[TO COMPLETE: soft skills]</span></li></ul></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="card" id="music">
+            <p class="card__meta">music · live coding</p>
+            <h3>Music &amp; live coding</h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: what I play / create]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>What it taught me</dt>
+                <dd><ul class="tags"><li class="tag tag--accent"><span class="todo">[TO COMPLETE: soft skills]</span></li></ul></dd>
+              </div>
+            </dl>
+            <p class="card__cta"><a class="link-arrow" href="engineering.html#strudel">See the Strudel project →</a></p>
+          </article>
+
+          <article class="card" id="motorsport">
+            <p class="card__meta">motorsport</p>
+            <h3>Motorsport</h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: what I follow / practise]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>What it taught me</dt>
+                <dd><ul class="tags"><li class="tag tag--accent"><span class="todo">[TO COMPLETE: soft skills]</span></li></ul></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="card" id="tech">
+            <p class="card__meta">new technologies</p>
+            <h3>New technologies</h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: what I explore]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>What it taught me</dt>
+                <dd><ul class="tags"><li class="tag tag--accent"><span class="todo">[TO COMPLETE: soft skills]</span></li></ul></dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER — identical on every page ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Loup Broussard · Last updated: October 2026</p>
+      <ul>
+        <li><a href="index.html#contact">Contact</a></li>
+        <!-- TO COMPLETE: LinkedIn profile URL in href -->
+        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

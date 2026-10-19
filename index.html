@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loup Broussard — Computer Science Engineering Student</title>
+  <meta name="description" content="E-portfolio of Loup Broussard, Computer Science engineering student at ENSEEIHT (Toulouse INP): projects, career project, international mobility and activities.">
+
+  <!-- Open Graph: preview when the link is shared on LinkedIn (absolute URLs required) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Loup Broussard — Computer Science Engineering Student">
+  <meta property="og:description" content="Computer Science engineering student at ENSEEIHT. Projects, career project and pitch.">
+  <meta property="og:url" content="https://loupbsd.github.io/">
+  <meta property="og:image" content="https://loupbsd.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Inter (text) + JetBrains Mono (accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Applies the saved theme before the page is drawn (avoids a white flash) -->
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== HEADER — identical on every page, only aria-current changes ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <span class="logo__mark" aria-hidden="true">LB</span>
+        <span class="logo__name">Loup Broussard</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Welcome</a></li>
+          <li><a href="engineering.html">Engineering</a></li>
+          <li><a href="mobility.html">Mobility</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+      </nav>
+
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch dark / light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+  <!-- ===== END HEADER ===== -->
+
+  <main id="main">
+
+    <!-- 1. HERO — who I am in 5 seconds -->
+    <section class="hero">
+      <div class="container">
+        <!-- TO COMPLETE: replace the <div> placeholder below with your photo (WebP or JPG, < 300 KB):
+             <img class="hero__photo" src="assets/img/photo.webp" alt="Portrait of Loup Broussard" width="200" height="200"> -->
+        <div class="hero__photo hero__photo--placeholder" role="img" aria-label="Photo coming soon">LB</div>
+
+        <div>
+          <p class="eyebrow">// hello, I'm</p>
+          <h1>Loup Broussard</h1>
+          <p class="hero__subtitle">Computer Science Engineering Student @ ENSEEIHT</p>
+          <p class="hero__uvp"><span class="todo">[TO COMPLETE: my UVP in one sentence]</span><span class="cursor" aria-hidden="true"></span></p>
+
+          <div class="btn-row">
+            <a class="btn btn--primary" href="career.html#pitch">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
+              Watch my pitch
+            </a>
+            <a class="btn" href="assets/docs/CV_Loup_Broussard_EN.pdf" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Download CV
+            </a>
+            <!-- TO COMPLETE: LinkedIn profile URL in href -->
+            <a class="btn" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. AT A GLANCE — one line per card -->
+    <section class="section reveal" aria-labelledby="glance-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// at a glance</p>
+          <h2 id="glance-title">At a glance</h2>
+        </div>
+
+        <ul class="grid grid--3">
+          <li class="card glance-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <div>
+              <span class="glance-card__label">Education</span>
+              <span class="glance-card__value">ENSEEIHT · Sciences du Numérique, 1st year</span>
+            </div>
+          </li>
+          <li class="card glance-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+            <div>
+              <span class="glance-card__label">Focus</span>
+              <span class="glance-card__value">Software development · Embedded systems</span>
+            </div>
+          </li>
+          <li class="card glance-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <div>
+              <span class="glance-card__label">Languages</span>
+              <span class="glance-card__value">French (native) · English (B2)</span>
+            </div>
+          </li>
+          <li class="card glance-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <div>
+              <span class="glance-card__label">Looking for</span>
+              <span class="glance-card__value"><span class="todo">[TO COMPLETE: e.g. S6 internship in …]</span></span>
+            </div>
+          </li>
+          <li class="card glance-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span class="glance-card__label">Location</span>
+              <span class="glance-card__value">Toulouse, France</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. FEATURED — the 3 best things to click -->
+    <section class="section reveal" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// featured</p>
+          <h2 id="featured-title">Start here</h2>
+        </div>
+
+        <div class="grid grid--3">
+          <a class="card feature-card" href="career.html#pitch">
+            <span class="card__meta">video · 2–3 min</span>
+            <h3>My pitch</h3>
+            <p>Now → Past → Future: my career project, in English.</p>
+            <span class="link-arrow">Watch the pitch →</span>
+          </a>
+          <a class="card feature-card" href="engineering.html#strudel">
+            <span class="card__meta">personal project · live coding</span>
+            <h3>Making music with code</h3>
+            <p>Live coding music in the browser with Strudel (JavaScript).</p>
+            <span class="link-arrow">See project →</span>
+          </a>
+          <a class="card feature-card" href="engineering.html#projects">
+            <span class="card__meta">engineering project</span>
+            <h3><span class="todo">[TO COMPLETE: best SN project]</span></h3>
+            <p><span class="todo">[TO COMPLETE: one-line summary]</span></p>
+            <span class="link-arrow">See projects →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. NOW — update every semester -->
+    <section class="section reveal" aria-labelledby="now-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">&gt; now</p>
+          <h2 id="now-title">What I'm working on</h2>
+        </div>
+        <p class="now-text">
+          1st year of the Sciences du Numérique program at ENSEEIHT (2026–2027).
+          <span class="todo">[TO COMPLETE: 2–3 lines on what I'm working on this semester]</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. CONTACT -->
+    <section class="section reveal" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">$ contact</p>
+          <h2 id="contact-title">Get in touch</h2>
+        </div>
+
+        <div class="contact-list">
+          <!-- TO COMPLETE: href="mailto:your.address@example.com" -->
+          <a class="btn" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <span class="todo">[TO COMPLETE: professional email]</span>
+          </a>
+          <!-- TO COMPLETE: LinkedIn profile URL in href -->
+          <a class="btn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/loupbsd" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER — identical on every page ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Loup Broussard · Last updated: October 2026</p>
+      <ul>
+        <li><a href="index.html#contact">Contact</a></li>
+        <!-- TO COMPLETE: LinkedIn profile URL in href -->
+        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
