@@ -123,13 +123,13 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 
 - Nom : **Loup Broussard**
 - Formation : ENSEEIHT — Sciences du Numérique, 1re année (2026–2027) · avant : La Prépa des INP, Toulouse
-- Email pro : [TO COMPLETE]
-- LinkedIn : [TO COMPLETE: URL du profil]
+- Email pro : loup.broussard@outlook.com
+- LinkedIn : https://www.linkedin.com/in/loup-broussard-a6940b38b/ (EN : ?locale=en_US · FR : ?locale=fr_FR)
 - GitHub : https://github.com/loupbsd
 - Langues : Français (langue maternelle) · Anglais (B2)
 - Domaines d'intérêt : développement logiciel, systèmes embarqués, nouvelles technologies (encore en exploration)
 - Projets : création musicale en live coding avec Strudel · [TO COMPLETE: projets SN / prépa]
 - Activités : rugby · musique · sports automobiles · nouvelles technologies
-- UVP (1 phrase) : [TO COMPLETE]
+- UVP (1 phrase) : « First-year Computer Science engineering student at ENSEEIHT who turns curiosity into code, looking for a software, systems or data internship in summer 2027. »
 - 3 mots-clés de ma marque : [TO COMPLETE]
-- Ce que je cherche : [TO COMPLETE: ex. stage de 1A (S6) en …]
+- Ce que je cherche : stage technique de 6 semaines minimum, entre le 7 juin et le 23 août 2027, en développement logiciel, systèmes ou data
