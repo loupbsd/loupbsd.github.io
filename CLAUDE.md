@@ -97,8 +97,12 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 ## 8. Design — « Violet & Cream » : pro, chaleureux, sobre
 
 - **Ambiance** : professionnelle, chaleureuse et sobre. Un site fait à la main par un étudiant ingénieur, pas un template ni un pastiche de terminal.
+- **Univers « course auto/moto & musique »** (validé le 25/10/2026, inspiré de bsrd.fr en plus sobre) : quelques détails précis, jamais d'images décoratives.
+  - **Tracé de télémétrie** en bas du header (courbe de vitesse sur un tour, qui évoque aussi une forme d'onde audio) : se remplit en violet avec la progression de lecture. Dessiné par `js/main.js` (§5). C'est le **seul** élément « signature » du site : ne pas ajouter d'autres effets.
+  - **Secteurs « S1, S2… »** comme un chronométrage F1, à **droite** des titres de section (compteur CSS automatique, rien à écrire dans le HTML).
+  - **Ligne de données** sous le nom dans le hero : `43.60° N · 1.44° E — TOULOUSE`.
 - **Thème clair crème par défaut** ; thème sombre si l'OS est en mode sombre, ou via le bouton (choix mémorisé).
-- **Typographie** : **Figtree** pour tout le texte et les titres, **IBM Plex Mono** réservée aux *données* (tags, dates, métadonnées, `[TO COMPLETE]`, code). 2 polices max, via Google Fonts.
+- **Typographie** : **Archivo** pour tout le texte, en version **élargie** (`font-stretch: 125%`) pour les grands titres h1/h2 (effet « livrée de course »), **IBM Plex Mono** réservée aux *données* (tags, dates, métadonnées, `[TO COMPLETE]`, code). 2 polices max, via Google Fonts.
 - **Une seule couleur d'accent** : **violet** `#4D2DA0` sur fond crème `#F4E9D2` ; en thème sombre, accent `#A993F0` sur `#1A1714` avec texte crème `#EFE8DA` — direction choisie le 25/10/2026 (remplace « Terminal Clean » cyan).
 - **Lisibilité avant tout** : hiérarchie visuelle forte, titres explicites, beaucoup d'espace, listes courtes, tags pour les compétences, pas de pavés de texte.
 - **Donner envie d'en savoir plus** : liens et cartes cliquables, effets de survol discrets, appels à l'action clairs (« See project → », « Watch the pitch »).
@@ -107,7 +111,8 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 
 ### Éviter le « look IA » (règles inspirées du skill Impeccable)
 Le site ne doit pas donner l'impression d'avoir été généré par une IA. À ne **pas** faire :
-- de petits labels au-dessus des titres (`// about`, `> now`, `$ contact`…) : le titre se suffit ;
+- de petits labels au-dessus des titres (`// about`, `> now`, `$ contact`…) : le titre se suffit (seule exception : les secteurs S1, S2… placés à droite) ;
+- un bloc de « chiffres clés » (gros nombre + petit label) ;
 - la monospace comme déguisement « tech » sur des titres, boutons ou liens ;
 - des grilles de cartes identiques « icône + titre + texte » comme structure de page, ou des cartes dans des cartes ;
 - un curseur clignotant, des `>` décoratifs et autres clichés de terminal ;

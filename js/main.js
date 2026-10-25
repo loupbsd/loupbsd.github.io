@@ -4,6 +4,7 @@
    2. Theme toggle (light / dark, remembered in localStorage)
    3. Open a project card when the URL points to it (e.g. #strudel)
    4. Career page: highlight the current section in the table of contents
+   5. Telemetry trace in the header, filled as you scroll
    ========================================================================= */
 
 /* 1. Mobile menu ------------------------------------------------------- */
@@ -77,4 +78,73 @@ if (tocLinks.length && "IntersectionObserver" in window) {
     const section = document.querySelector(link.hash);
     if (section) sectionObserver.observe(section);
   });
+}
+
+/* 5. Telemetry trace ------------------------------------------------------ */
+// A simplified speed trace over one lap: flat on the straights, sharp drops
+// under braking, curved climbs when accelerating out of corners.
+// Each point is [distance along the lap (0–1000), speed (0–1)].
+// "a" = accelerating to this point (curve), otherwise a straight line.
+const LAP = [
+  [0, 0.45], [130, 0.95, "a"], [210, 0.97], [228, 0.32], [245, 0.32],
+  [320, 0.78, "a"], [332, 0.56], [420, 0.92, "a"], [480, 0.94], [502, 0.24],
+  [516, 0.24], [610, 0.86, "a"], [624, 0.62], [700, 0.9, "a"], [790, 0.96],
+  [810, 0.4], [826, 0.4], [930, 0.88, "a"], [948, 0.5], [1000, 0.6, "a"],
+];
+
+function lapPath(height) {
+  const y = (speed) => (height - 1 - speed * (height - 2)).toFixed(2); // fast = high
+  let d = `M0 ${y(LAP[0][1])}`;
+  for (let i = 1; i < LAP.length; i++) {
+    const [x0, v0] = LAP[i - 1];
+    const [x1, v1, kind] = LAP[i];
+    if (kind === "a") {
+      // Acceleration: quick gain at first, then slower (ease-out)
+      for (let t = 0.125; t <= 1; t += 0.125) {
+        const ease = 1 - Math.pow(1 - t, 2.2);
+        d += ` L${(x0 + (x1 - x0) * t).toFixed(1)} ${y(v0 + (v1 - v0) * ease)}`;
+      }
+    } else {
+      d += ` L${x1} ${y(v1)}`;
+    }
+  }
+  return d;
+}
+
+const header = document.querySelector(".site-header");
+
+if (header) {
+  const H = 14;
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("class", "telemetry");
+  svg.setAttribute("viewBox", `0 0 1000 ${H}`);
+  svg.setAttribute("preserveAspectRatio", "none");
+  svg.setAttribute("aria-hidden", "true");
+  svg.innerHTML = `
+    <defs><clipPath id="telemetry-clip"><rect width="0" height="${H}"/></clipPath></defs>
+    <path class="telemetry__base" d="${lapPath(H)}"/>
+    <path class="telemetry__live" d="${lapPath(H)}" clip-path="url(#telemetry-clip)"/>`;
+  header.append(svg);
+  document.documentElement.classList.add("has-telemetry");
+
+  // The violet part follows the reading progress (0 % at the top, 100 % at the bottom)
+  const clipRect = svg.querySelector("rect");
+  let ticking = false;
+
+  function updateTelemetry() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 1;
+    clipRect.setAttribute("width", (progress * 1000).toFixed(1));
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateTelemetry); // at most one update per frame
+    }
+  }, { passive: true });
+  window.addEventListener("resize", updateTelemetry);
+  updateTelemetry();
 }
