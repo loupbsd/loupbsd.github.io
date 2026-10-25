@@ -387,6 +387,32 @@ main {
 .telemetry__base { stroke: var(--color-border); }
 .telemetry__live { stroke: var(--color-accent); }
 
+/* 1980s Porsche 911 driving at the end of the violet line (positioned by main.js).
+   The SVG file is used as a mask: it gives the shape, the background gives the colour,
+   so the car follows the light / dark theme. */
+.telemetry__car {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 63px;
+  height: 20px;
+  background-color: var(--color-accent);
+  -webkit-mask: url("../assets/img/porsche-911.svg") center / contain no-repeat;
+  mask: url("../assets/img/porsche-911.svg") center / contain no-repeat;
+  pointer-events: none;
+  transition: opacity var(--transition);
+}
+
+.telemetry__car.is-hidden {
+  opacity: 0;
+}
+
+/* Logo, menu and buttons stay above the car */
+.site-header .container {
+  position: relative;
+  z-index: 1;
+}
+
 /* With the trace, the plain header border and the active-tab underline are not needed
    (the active tab stays violet) */
 .has-telemetry .site-header { border-bottom-color: transparent; }

@@ -23,7 +23,7 @@ Public : recruteurs (stages), enseignants et jury CAM, alumni N7 et professionne
 
 La section **Career Project** doit contenir :
 - [ ] CV en **anglais** et en **français** (PDF téléchargeables)
-- [ ] Lien LinkedIn (profil FR + EN)
+- [x] Lien LinkedIn (profil FR + EN)
 - [ ] **Vidéo pitch UVP** en anglais, 2–3 min (structure Now → Past → Future)
 - [ ] **3 rôles modèles** analysés (My Job Glasses, LinkedIn, alumni)
 - [ ] **3 projets de mobilité internationale** alignés avec ces rôles modèles
@@ -31,6 +31,8 @@ La section **Career Project** doit contenir :
 Critères de notation : complétude · clarté du projet professionnel · **cohérence de la marque personnelle** (UVP / CV / LinkedIn / pitch alignés) · qualité de l'anglais · présentation visuelle et navigation.
 
 ➡️ Priorité absolue : tous ces éléments **présents, visibles et accessibles en 1 ou 2 clics depuis l'accueil**.
+
+État au 25/10/2026 : CV FR/EN, pitch et rendez-vous avec les 3 rôles modèles prévus la semaine du 26/10 ; les 3 mobilités seront construites ensuite à partir des rôles modèles (encadrés « In progress » sur le site, cartes prêtes en commentaire HTML).
 
 ## 4. Structure du site (6 onglets obligatoires)
 
@@ -48,7 +50,7 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
 ## 5. Page d'accueil (`index.html`) — conçue pour être lue en 30 s
 
 Dans cet ordre :
-1. **Hero** : photo, « Loup Broussard », sous-titre « Computer Science Engineering Student @ ENSEEIHT », UVP en 1 phrase, 3 boutons : `Watch my pitch` · `Download CV` · `LinkedIn`.
+1. **Hero** : photo, « Loup Broussard », sous-titre « Computer Science Engineering Student @ ENSEEIHT », ligne de données `43.60° N · 1.44° E — TOULOUSE`, UVP en 1 phrase, 3 boutons : `Watch my pitch` · `Download CV` · `LinkedIn`. (Photo à venir : prévoir un grand portrait détouré à droite.)
 2. **At a glance** : une liste courte « label → valeur » (4 à 6 lignes, sans icônes ni grille de fiches identiques) : formation, domaines (dev · embedded systems), langues (FR natif · EN B2), ce que je cherche, localisation (Toulouse).
 3. **Featured** : une liste de 2–3 liens vers mes meilleurs contenus (ex. projet Strudel, pitch vidéo, projet SN) ; chaque ligne = métadonnée + titre + 1 ligne + « See … → ».
 4. **Now** : ce sur quoi je travaille en ce moment (2–3 lignes, mis à jour chaque semestre).
@@ -83,14 +85,15 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   ├── fr/                    (version française : mêmes noms de fichiers, chemins en ../)
   ├── css/style.css          (un seul fichier, variables CSS en haut)
   ├── js/main.js             (menu mobile, petites interactions uniquement)
-  ├── assets/img/            (photos compressées, < 300 Ko chacune, WebP ou JPG)
-  ├── assets/docs/           (CV_Loup_Broussard_EN.pdf, CV_Loup_Broussard_FR.pdf, rapports)
+  ├── assets/img/            (photos compressées < 300 Ko en WebP/JPG ; dessins en SVG : favicon.svg, porsche-911.svg)
+  ├── assets/docs/           (CV_Loup_Broussard_EN.pdf, CV_Loup_Broussard_FR.pdf, syllabus-enseeiht-sn.pdf, rapport du projet Science et musique)
   └── CLAUDE.md
   ```
 - Couleurs, polices et espacements définis en **variables CSS** dans `:root`.
 - **Responsive** obligatoire (mobile d'abord) : tester à 375 px, 768 px et 1280 px.
 - La **vidéo** est hébergée sur YouTube (non répertoriée) et intégrée en `<iframe>` — jamais de fichier vidéo dans le dépôt.
-- Accessibilité : `alt` sur toutes les images, contraste suffisant (AA), navigation au clavier, `lang="en"` sur `<html>`.
+- Accessibilité : `alt` sur toutes les images, contraste suffisant (AA), navigation au clavier, `lang="en"` sur `<html>` (`lang="fr"` dans `fr/`).
+- Noms de fichiers : minuscules et tirets, sans espaces ni accents (liens fiables sur GitHub Pages).
 - `<title>` et `<meta name="description">` propres sur chaque page, + balises Open Graph (aperçu propre quand le lien est partagé sur LinkedIn).
 - Déploiement : **GitHub Pages**, dépôt `loupbsd.github.io`, branche `main`. Tous les chemins doivent être **relatifs**.
 
@@ -98,7 +101,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 
 - **Ambiance** : professionnelle, chaleureuse et sobre. Un site fait à la main par un étudiant ingénieur, pas un template ni un pastiche de terminal.
 - **Univers « course auto/moto & musique »** (validé le 25/10/2026, inspiré de bsrd.fr en plus sobre) : quelques détails précis, jamais d'images décoratives.
-  - **Tracé de télémétrie** en bas du header (courbe de vitesse sur un tour, qui évoque aussi une forme d'onde audio) : se remplit en violet avec la progression de lecture. Dessiné par `js/main.js` (§5). C'est le **seul** élément « signature » du site : ne pas ajouter d'autres effets.
+  - **Tracé de télémétrie** en bas du header (courbe de vitesse sur un tour, qui évoque aussi une forme d'onde audio) : se remplit en violet avec la progression de lecture, avec une **silhouette de Porsche 911 Carrera des années 80** (même violet) qui roule au bout de la partie violette, roues posées sur la courbe (masquée quand elle croise le logo sur mobile). Tracé dessiné par `js/main.js` (§5) ; la voiture vient de `assets/img/porsche-911.svg`, utilisé comme **masque CSS** (la couleur vient du CSS, donc du thème). C'est le **seul** élément « signature » du site : ne pas ajouter d'autres effets.
   - **Secteurs « S1, S2… »** comme un chronométrage F1, à **droite** des titres de section (compteur CSS automatique, rien à écrire dans le HTML).
   - **Ligne de données** sous le nom dans le hero : `43.60° N · 1.44° E — TOULOUSE`.
 - **Thème clair crème par défaut** ; thème sombre si l'OS est en mode sombre, ou via le bouton (choix mémorisé).
@@ -152,5 +155,6 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
 - Projets : « Science et musique » (prépa, 2026, live coding Strudel) · [TO COMPLETE: projets SN]
 - Activités : rugby · musique · sports automobiles · nouvelles technologies
 - UVP (1 phrase) : « First-year Computer Science engineering student at ENSEEIHT who turns curiosity into code, looking for a software, systems or data internship in summer 2027. »
+- Pistes de carrière (exploration, ouvert à tout) : plan A systèmes embarqués dans le sport auto/moto · plan B logiciel pour la musique électronique (DAW, outils DJ, synthés) · plan C chef de projet / product manager tech après quelques années
 - 3 mots-clés de ma marque : [TO COMPLETE]
 - Ce que je cherche : stage technique de 6 semaines minimum, entre le 7 juin et le 23 août 2027, en développement logiciel, systèmes ou data

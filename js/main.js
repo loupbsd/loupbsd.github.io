@@ -92,9 +92,10 @@ const LAP = [
   [810, 0.4], [826, 0.4], [930, 0.88, "a"], [948, 0.5], [1000, 0.6, "a"],
 ];
 
-function lapPath(height) {
-  const y = (speed) => (height - 1 - speed * (height - 2)).toFixed(2); // fast = high
-  let d = `M0 ${y(LAP[0][1])}`;
+// Turns LAP into a list of [x, y] points in the SVG (fast = high = small y)
+function lapPoints(height) {
+  const y = (speed) => height - 1 - speed * (height - 2);
+  const points = [[0, y(LAP[0][1])]];
   for (let i = 1; i < LAP.length; i++) {
     const [x0, v0] = LAP[i - 1];
     const [x1, v1, kind] = LAP[i];
@@ -102,13 +103,23 @@ function lapPath(height) {
       // Acceleration: quick gain at first, then slower (ease-out)
       for (let t = 0.125; t <= 1; t += 0.125) {
         const ease = 1 - Math.pow(1 - t, 2.2);
-        d += ` L${(x0 + (x1 - x0) * t).toFixed(1)} ${y(v0 + (v1 - v0) * ease)}`;
+        points.push([x0 + (x1 - x0) * t, y(v0 + (v1 - v0) * ease)]);
       }
     } else {
-      d += ` L${x1} ${y(v1)}`;
+      points.push([x1, y(v1)]);
     }
   }
-  return d;
+  return points;
+}
+
+// Height of the trace at a given x (linear interpolation between two points)
+function heightAt(points, x) {
+  for (let i = 1; i < points.length; i++) {
+    const [x0, y0] = points[i - 1];
+    const [x1, y1] = points[i];
+    if (x <= x1) return y0 + (y1 - y0) * ((x - x0) / (x1 - x0 || 1));
+  }
+  return points[points.length - 1][1];
 }
 
 const header = document.querySelector(".site-header");
@@ -116,6 +127,9 @@ const header = document.querySelector(".site-header");
 if (header) {
   const H = 14;
   const NS = "http://www.w3.org/2000/svg";
+  const points = lapPoints(H);
+  const d = "M" + points.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(2)}`).join(" L");
+
   const svg = document.createElementNS(NS, "svg");
   svg.setAttribute("class", "telemetry");
   svg.setAttribute("viewBox", `0 0 1000 ${H}`);
@@ -123,19 +137,43 @@ if (header) {
   svg.setAttribute("aria-hidden", "true");
   svg.innerHTML = `
     <defs><clipPath id="telemetry-clip"><rect width="0" height="${H}"/></clipPath></defs>
-    <path class="telemetry__base" d="${lapPath(H)}"/>
-    <path class="telemetry__live" d="${lapPath(H)}" clip-path="url(#telemetry-clip)"/>`;
-  header.append(svg);
+    <path class="telemetry__base" d="${d}"/>
+    <path class="telemetry__live" d="${d}" clip-path="url(#telemetry-clip)"/>`;
+
+  // The car is a separate element so that it keeps its proportions (the trace
+  // itself is stretched to the full width of the screen). Its silhouette comes
+  // from assets/img/porsche-911.svg, used as a CSS mask (see .telemetry__car).
+  const car = document.createElement("span");
+  car.className = "telemetry__car";
+  car.setAttribute("aria-hidden", "true");
+
+  header.append(svg, car);
   document.documentElement.classList.add("has-telemetry");
 
-  // The violet part follows the reading progress (0 % at the top, 100 % at the bottom)
+  // The violet part follows the reading progress (0 % at the top, 100 % at the bottom),
+  // and the car drives at the end of it, wheels on the line.
   const clipRect = svg.querySelector("rect");
+  const logoMark = header.querySelector(".logo__mark");
+  const CAR_W = 63;                // displayed size: 63 x 20 px (see CSS)
+  const CAR_WHEEL_BOTTOM = 20;     // the wheels touch the bottom of the drawing
   let ticking = false;
 
   function updateTelemetry() {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 1;
-    clipRect.setAttribute("width", (progress * 1000).toFixed(1));
+    const x = progress * 1000;
+    clipRect.setAttribute("width", x.toFixed(1));
+
+    // Front of the car at the end of the violet line, kept inside the screen
+    const width = svg.clientWidth;
+    const left = Math.min(Math.max(0, progress * width - CAR_W * 0.85), width - CAR_W);
+    const svgTop = svg.getBoundingClientRect().top - header.getBoundingClientRect().top;
+    const lineY = svgTop + heightAt(points, x) * (svg.clientHeight / H);
+    car.style.transform = `translate(${left.toFixed(1)}px, ${(lineY - CAR_WHEEL_BOTTOM).toFixed(1)}px)`;
+
+    // On narrow screens the logo sits near the left edge: hide the car while it crosses it
+    const logo = logoMark.getBoundingClientRect();
+    car.classList.toggle("is-hidden", left < logo.right && left + CAR_W > logo.left);
     ticking = false;
   }
 
