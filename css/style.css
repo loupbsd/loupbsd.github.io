@@ -399,6 +399,37 @@ a {
   color: var(--color-accent);
 }
 
+/* EN | FR switch: two small links in one box, current language highlighted */
+.lang-switch {
+  display: flex;
+  height: 40px;
+  padding: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.lang-switch a {
+  display: grid;
+  place-items: center;
+  min-width: 32px;
+  padding-inline: var(--space-1);
+  border-radius: 4px;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.lang-switch a:hover {
+  color: var(--color-text);
+}
+
+.lang-switch a[aria-current="true"] {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
 .icon-btn {
   display: grid;
   place-items: center;

@@ -79,7 +79,8 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 - Arborescence :
   ```
   /
-  ├── index.html, engineering.html, mobility.html, sustainability.html, activities.html, career.html
+  ├── index.html, engineering.html, mobility.html, sustainability.html, activities.html, career.html   (anglais)
+  ├── fr/                    (version française : mêmes noms de fichiers, chemins en ../)
   ├── css/style.css          (un seul fichier, variables CSS en haut)
   ├── js/main.js             (menu mobile, petites interactions uniquement)
   ├── assets/img/            (photos compressées, < 300 Ko chacune, WebP ou JPG)
@@ -118,9 +119,12 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
 
 ## 9. Langue
 
-- Site **en anglais** (langue évaluée).
+- Site **en anglais** par défaut (langue évaluée).
 - Anglais professionnel, phrases courtes, verbes d'action. Signale-moi les fautes ou tournures maladroites dans les textes que je fournis, **sans les réécrire sans me le dire**.
-- Une version française pourra être ajoutée plus tard (ne pas l'anticiper dans le code pour l'instant).
+- **Version française** dans `fr/` (validée le 25/10/2026), avec un bouton **EN | FR** dans le header de toutes les pages, qui mène à la même page dans l'autre langue.
+  - État actuel : seul `fr/index.html` est traduit. Les autres onglets FR pointent vers les pages anglaises, et le bouton FR des pages anglaises non traduites mène à `fr/index.html`. Quand une page est traduite, mettre à jour ces liens (commentaires dans le header).
+  - **Toute modification de contenu se fait dans les deux langues** (pour les pages déjà traduites).
+  - En français : CV FR, LinkedIn `?locale=fr_FR`, `lang="fr"`, `og:locale` fr_FR, liens `hreflang` entre les deux versions.
 
 ## 10. Règles de travail pour Claude
 

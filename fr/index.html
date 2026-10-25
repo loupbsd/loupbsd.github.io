@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loup Broussard — Élève ingénieur en informatique</title>
+  <meta name="description" content="E-portfolio de Loup Broussard, élève ingénieur en informatique à l'ENSEEIHT (Toulouse INP) : projets, projet professionnel, mobilité internationale et activités.">
+
+  <!-- Open Graph: preview when the link is shared on LinkedIn (absolute URLs required) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Loup Broussard — Élève ingénieur en informatique">
+  <meta property="og:description" content="Élève ingénieur en informatique à l'ENSEEIHT. Projets, projet professionnel et pitch.">
+  <meta property="og:url" content="https://loupbsd.github.io/fr/">
+  <meta property="og:image" content="https://loupbsd.github.io/assets/img/og-image.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Same page in the other language -->
+  <link rel="alternate" hreflang="en" href="https://loupbsd.github.io/">
+  <link rel="alternate" hreflang="fr" href="https://loupbsd.github.io/fr/">
+
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Figtree (text) + IBM Plex Mono (data: tags, dates) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Applies the saved theme before the page is drawn (avoids a white flash) -->
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- ===== HEADER — identical on every page, only aria-current changes =====
+       The other tabs point to the English pages until they are translated (then: engineering.html, …) -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <span class="logo__mark" aria-hidden="true">LB</span>
+        <span class="logo__name">Loup Broussard</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Accueil</a></li>
+          <li><a href="../engineering.html">Formation</a></li>
+          <li><a href="../mobility.html">Mobilité</a></li>
+          <li><a href="../sustainability.html">Engagement</a></li>
+          <li><a href="../activities.html">Activités</a></li>
+          <li><a href="../career.html">Carrière</a></li>
+        </ul>
+      </nav>
+      <nav class="lang-switch" aria-label="Langue">
+        <a href="../index.html" lang="en" hreflang="en">EN</a>
+        <a href="index.html" lang="fr" hreflang="fr" aria-current="true">FR</a>
+      </nav>
+
+      <button class="icon-btn theme-toggle" type="button" aria-label="Changer de thème (clair / sombre)">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+  <!-- ===== END HEADER ===== -->
+
+  <main id="main">
+
+    <!-- 1. HERO — who I am in 5 seconds -->
+    <section class="hero">
+      <div class="container">
+        <!-- TO COMPLETE: replace the <div> placeholder below with your photo (WebP or JPG, < 300 KB):
+             <img class="hero__photo" src="../assets/img/photo.webp" alt="Portrait de Loup Broussard" width="200" height="200"> -->
+        <div class="hero__photo hero__photo--placeholder" role="img" aria-label="Photo à venir">LB</div>
+
+        <div>
+          <h1>Loup Broussard</h1>
+          <p class="hero__subtitle">Élève ingénieur en informatique @ ENSEEIHT</p>
+          <p class="hero__uvp">Élève ingénieur en 1re année d'informatique à l'ENSEEIHT, je transforme ma curiosité en code. Je cherche un stage en développement logiciel, systèmes ou data pour l'été 2027.</p>
+
+          <div class="btn-row">
+            <a class="btn btn--primary" href="../career.html#pitch">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
+              Voir mon pitch
+            </a>
+            <a class="btn" href="../assets/docs/CV_Loup_Broussard_FR.pdf" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Télécharger mon CV
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. AT A GLANCE — one short "label → value" row each -->
+    <section class="section" aria-labelledby="glance-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="glance-title">En bref</h2>
+        </div>
+
+        <dl class="facts">
+          <div>
+            <dt>Formation</dt>
+            <dd>ENSEEIHT · Sciences du Numérique, 1re année</dd>
+          </div>
+          <div>
+            <dt>Domaines</dt>
+            <dd>Développement logiciel · Systèmes embarqués</dd>
+          </div>
+          <div>
+            <dt>Langues</dt>
+            <dd>Français (langue maternelle) · Anglais (B2)</dd>
+          </div>
+          <div>
+            <dt>Je recherche</dt>
+            <dd>Stage technique de 6 semaines minimum, entre le 7 juin et le 23 août 2027 · logiciel, systèmes ou data</dd>
+          </div>
+          <div>
+            <dt>Localisation</dt>
+            <dd>Toulouse, France</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 3. FEATURED — the 3 best things to click -->
+    <section class="section" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="featured-title">Par où commencer</h2>
+        </div>
+
+        <ul class="feature-list">
+          <li>
+            <a href="../career.html#pitch">
+              <span class="feature-list__meta">vidéo · 2–3 min</span>
+              <span class="feature-list__title">Mon pitch</span>
+              <span class="feature-list__text">Présent → Passé → Futur : mon projet professionnel, en anglais.</span>
+              <span class="link-arrow">Voir le pitch →</span>
+            </a>
+          </li>
+          <li>
+            <a href="../engineering.html#strudel">
+              <span class="feature-list__meta">projet d'équipe · La Prépa des INP</span>
+              <span class="feature-list__title">Recréer un piano avec du code</span>
+              <span class="feature-list__text">Analyse de Fourier en Python, puis un morceau complet en live coding sur Strudel.</span>
+              <span class="link-arrow">Voir le projet →</span>
+            </a>
+          </li>
+          <!-- Replace with your best SN project once you have one -->
+          <li>
+            <a href="../engineering.html#program">
+              <span class="feature-list__meta">formation d'ingénieur</span>
+              <span class="feature-list__title">Ma formation d'ingénieur</span>
+              <span class="feature-list__text">Maths, programmation en Ada, modélisation avec Coq et automatique à l'ENSEEIHT.</span>
+              <span class="link-arrow">Voir la formation →</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. NOW — update every semester -->
+    <section class="section" aria-labelledby="now-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="now-title">En ce moment</h2>
+        </div>
+        <p class="now-text">
+          Je commence mon cycle ingénieur en Sciences du Numérique à l'ENSEEIHT (2026–2027) :
+          maths appliquées (probabilités, statistiques, optimisation), programmation impérative en Ada,
+          modélisation avec Coq et automatique.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. CONTACT -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="contact-title">Me contacter</h2>
+        </div>
+
+        <div class="contact-list">
+          <a class="btn" href="mailto:loup.broussard@outlook.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            loup.broussard@outlook.com
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/loupbsd" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER — identical on every page ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Loup Broussard · Dernière mise à jour : octobre 2026</p>
+      <ul>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
