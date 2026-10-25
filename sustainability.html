@@ -16,10 +16,10 @@
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-  <!-- Fonts: Inter (text) + JetBrains Mono (accents) -->
+  <!-- Fonts: Figtree (text) + IBM Plex Mono (data: tags, dates) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -67,61 +67,67 @@
 
     <header class="page-header">
       <div class="container">
-        <p class="eyebrow">// sustainability</p>
         <h1>Sustainability &amp; Civic Engagement</h1>
         <p class="intro">My training and engagement in sustainability and corporate social responsibility (CSR) at ENSEEIHT.</p>
       </div>
     </header>
 
     <!-- TRAINING: Climate Fresk + Sulitest -->
-    <section class="section reveal" id="training" aria-labelledby="training-title">
+    <section class="section" id="training" aria-labelledby="training-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// training</p>
           <h2 id="training-title">Training</h2>
         </div>
 
         <div class="grid grid--2">
           <article class="card" id="climate-fresk">
-            <p class="card__meta"><span class="todo">[TO COMPLETE: date]</span></p>
+            <p class="card__meta">Twice · 2024 – 2026 · La Prépa des INP</p>
             <h3>Climate Fresk <span class="muted">(Fresque du Climat)</span></h3>
             <p class="muted">A collaborative workshop on the causes and consequences of climate change, based on IPCC reports.</p>
             <dl class="fields">
-              <div><dt>What I learned</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
+              <div><dt>What I learned</dt><dd>A clear view of how the causes and effects of climate change are linked, and of the part that technical choices, including in digital technology, play in it.</dd></div>
             </dl>
           </article>
 
-          <article class="card" id="sulitest">
-            <p class="card__meta"><span class="todo">[TO COMPLETE: date]</span></p>
-            <h3>Sulitest</h3>
-            <p class="muted">An online test of sustainability knowledge.</p>
+          <article class="card" id="planetary-boundaries-fresk">
+            <p class="card__meta">2026 · ENSEEIHT</p>
+            <h3>Planetary Boundaries Fresk <span class="muted">(Fresque des limites planétaires)</span></h3>
+            <p class="muted">A workshop on the nine planetary boundaries that keep the Earth system stable.</p>
             <dl class="fields">
-              <div><dt>Result</dt><dd><span class="todo">[TO COMPLETE: score, if relevant]</span></dd></div>
-              <div><dt>What I learned</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
+              <div><dt>What I learned</dt><dd>Climate is only one of these boundaries, and several others are already crossed: the environmental question is wider than CO₂ alone.</dd></div>
             </dl>
+          </article>
+
+          <article class="card card--soon" id="sulitest">
+            <h3>Sulitest</h3>
+            <p>Coming soon: an online test of sustainability knowledge, taken during my engineering studies.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- TEAM CSR PROJECT + INFOGRAPHIC (January) -->
-    <section class="section reveal" id="csr-project" aria-labelledby="csr-title">
+    <section class="section" id="csr-project" aria-labelledby="csr-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// team project</p>
           <h2 id="csr-title">Team CSR project</h2>
         </div>
 
         <div class="grid grid--2">
-          <article class="card">
-            <h3><span class="todo">[TO COMPLETE: project title]</span></h3>
-            <dl class="fields">
-              <div><dt>Context</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
-              <div><dt>My role</dt><dd><span class="todo">[TO COMPLETE: team of N, what I did]</span></dd></div>
-              <div><dt>Result</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
-              <div><dt>What I learned</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
-            </dl>
+          <article class="card card--soon">
+            <h3>Coming soon</h3>
+            <p>A team project on corporate social responsibility (CSR), carried out during my first year at ENSEEIHT.</p>
           </article>
+          <!-- When the project starts: replace the card above with this one
+          <article class="card">
+            <h3>[project title]</h3>
+            <dl class="fields">
+              <div><dt>Context</dt><dd>…</dd></div>
+              <div><dt>My role</dt><dd>team of N, what I did</dd></div>
+              <div><dt>Result</dt><dd>…</dd></div>
+              <div><dt>What I learned</dt><dd>…</dd></div>
+            </dl>
+          </article> -->
 
           <!-- TO COMPLETE (January): replace the placeholder with the infographic
                <img src="assets/img/csr-infographic.webp" alt="Infographic: [describe the content]" loading="lazy"> -->
@@ -133,15 +139,20 @@
     </section>
 
     <!-- SDGs -->
-    <section class="section reveal" id="sdgs" aria-labelledby="sdgs-title">
+    <section class="section" id="sdgs" aria-labelledby="sdgs-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// sdgs</p>
           <h2 id="sdgs-title">Related UN Sustainable Development Goals</h2>
         </div>
 
         <ul class="tags">
-          <li class="tag tag--accent"><span class="todo">[TO COMPLETE: e.g. SDG 13 — Climate action]</span></li>
+          <li class="tag tag--accent">SDG 4 — Quality education</li>
+          <li class="tag tag--accent">SDG 5 — Gender equality</li>
+          <li class="tag tag--accent">SDG 8 — Decent work and economic growth</li>
+          <li class="tag tag--accent">SDG 9 — Industry, innovation and infrastructure</li>
+          <li class="tag tag--accent">SDG 12 — Responsible consumption and production</li>
+          <li class="tag tag--accent">SDG 13 — Climate action</li>
+          <li class="tag tag--accent">SDG 16 — Peace, justice and strong institutions</li>
         </ul>
       </div>
     </section>

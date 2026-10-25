@@ -1,10 +1,9 @@
 /* =========================================================================
    main.js — small interactions only. The site works without it.
    1. Mobile menu
-   2. Theme toggle (dark / light, remembered in localStorage)
-   3. Fade-in on scroll
-   4. Open a project card when the URL points to it (e.g. #strudel)
-   5. Career page: highlight the current section in the table of contents
+   2. Theme toggle (light / dark, remembered in localStorage)
+   3. Open a project card when the URL points to it (e.g. #strudel)
+   4. Career page: highlight the current section in the table of contents
    ========================================================================= */
 
 /* 1. Mobile menu ------------------------------------------------------- */
@@ -30,12 +29,15 @@ if (menuButton && nav) {
 /* 2. Theme toggle ------------------------------------------------------ */
 // The saved theme is applied earlier by the small script in each <head>,
 // so the page never flashes the wrong theme. Here we only handle the click.
+// Without a saved choice, the current theme is the one of the OS.
 const themeButton = document.querySelector(".theme-toggle");
 
 if (themeButton) {
   themeButton.addEventListener("click", () => {
     const root = document.documentElement;
-    const next = root.dataset.theme === "light" ? "dark" : "light";
+    const osDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const current = root.dataset.theme || (osDark ? "dark" : "light");
+    const next = current === "dark" ? "light" : "dark";
     root.dataset.theme = next;
     try {
       localStorage.setItem("theme", next);
@@ -45,26 +47,7 @@ if (themeButton) {
   });
 }
 
-/* 3. Fade-in on scroll --------------------------------------------------- */
-// Every element with class="reveal" fades in when it enters the screen.
-const revealItems = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target); // animate only once
-      }
-    });
-  }, { threshold: 0.1 });
-
-  revealItems.forEach((item) => observer.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add("is-visible"));
-}
-
-/* 4. Open a <details> card targeted by the URL --------------------------- */
+/* 3. Open a <details> card targeted by the URL --------------------------- */
 // A link to engineering.html#strudel opens the Strudel card automatically.
 function openTargetedCard() {
   if (!location.hash) return;
@@ -77,7 +60,7 @@ function openTargetedCard() {
 openTargetedCard();
 window.addEventListener("hashchange", openTargetedCard);
 
-/* 5. Career page: active link in the table of contents ------------------- */
+/* 4. Career page: active link in the table of contents ------------------- */
 const tocLinks = document.querySelectorAll(".toc a");
 
 if (tocLinks.length && "IntersectionObserver" in window) {

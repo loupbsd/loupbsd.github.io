@@ -16,10 +16,10 @@
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-  <!-- Fonts: Inter (text) + JetBrains Mono (accents) -->
+  <!-- Fonts: Figtree (text) + IBM Plex Mono (data: tags, dates) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -67,7 +67,6 @@
 
     <header class="page-header">
       <div class="container">
-        <p class="eyebrow">// career development</p>
         <h1>Career Development</h1>
         <p class="intro">My career project: CV, pitch, role models, mobility plans and goals.</p>
       </div>
@@ -89,10 +88,9 @@
     </nav>
 
     <!-- 1. CV & LINKEDIN -->
-    <section class="section reveal" id="cv" aria-labelledby="cv-title">
+    <section class="section" id="cv" aria-labelledby="cv-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// cv</p>
           <h2 id="cv-title">CV &amp; LinkedIn</h2>
         </div>
 
@@ -120,10 +118,9 @@
     </section>
 
     <!-- 2. PITCH VIDEO (YouTube, unlisted) -->
-    <section class="section reveal" id="pitch" aria-labelledby="pitch-title">
+    <section class="section" id="pitch" aria-labelledby="pitch-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// pitch</p>
           <h2 id="pitch-title">My pitch</h2>
           <p class="intro">My Unique Value Proposition in 2–3 minutes, in English: Now → Past → Future.</p>
         </div>
@@ -145,10 +142,9 @@
     </section>
 
     <!-- 3. ROLE MODELS — use initials if the person did not agree to be named -->
-    <section class="section reveal" id="role-models" aria-labelledby="role-models-title">
+    <section class="section" id="role-models" aria-labelledby="role-models-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// role models</p>
           <h2 id="role-models-title">3 role models</h2>
           <p class="intro">Professionals whose path inspires my project, met through My Job Glasses, LinkedIn or the N7 alumni network.</p>
         </div>
@@ -218,14 +214,20 @@
     </section>
 
     <!-- 4. MOBILITY — short version, full cards on mobility.html -->
-    <section class="section reveal" id="mobility" aria-labelledby="mobility-title">
+    <section class="section" id="mobility" aria-labelledby="mobility-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// mobility</p>
           <h2 id="mobility-title">3 mobility projects</h2>
-          <p class="intro">Each one is aligned with a role model. Full details on the International Mobility page.</p>
+          <p class="intro">Each project will be aligned with a role model. Full details on the International Mobility page.</p>
         </div>
 
+        <article class="card card--soon">
+          <h3>In progress</h3>
+          <p>My mobility projects will follow my first meetings with role models. <a href="mobility.html#mobility-projects">See the International Mobility page →</a></p>
+        </article>
+
+        <!-- When the projects are ready: delete the "In progress" card above
+             and uncomment the 3 cards below.
         <div class="grid grid--3">
           <a class="card feature-card" href="mobility.html#mobility-1">
             <span class="card__meta">Project 1 · role model 1</span>
@@ -246,14 +248,14 @@
             <span class="link-arrow">See details →</span>
           </a>
         </div>
+        -->
       </div>
     </section>
 
     <!-- 5. GOALS — timeline + plans A / B / C -->
-    <section class="section reveal" id="goals" aria-labelledby="goals-title">
+    <section class="section" id="goals" aria-labelledby="goals-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// goals</p>
           <h2 id="goals-title">Goals</h2>
         </div>
 
@@ -263,17 +265,17 @@
             <article class="card goal-card">
               <p class="card__meta">Short term · 2026 – 2028</p>
               <h3>Internships (S6, S8)</h3>
-              <p><span class="todo">[TO COMPLETE]</span></p>
+              <p>Use my internships to explore and find the fields that interest me most. One idea I have: working in the automotive or motorcycle world, especially with racing teams, to connect my computer science engineering training with motorsport. It is only an idea for now, and I remain open to every field.</p>
             </article>
             <article class="card goal-card">
               <p class="card__meta">Mid term · 2028 – 2029</p>
               <h3>Mobility (S9) &amp; graduation</h3>
-              <p><span class="todo">[TO COMPLETE]</span></p>
+              <p>Keep exploring the fields that interest me, and use my international mobility and my final years at ENSEEIHT to narrow down my specialization.</p>
             </article>
             <article class="card goal-card">
               <p class="card__meta">Long term · after graduation</p>
               <h3>First job &amp; beyond</h3>
-              <p><span class="todo">[TO COMPLETE]</span></p>
+              <p>Travel, keep growing instead of standing still, and eventually hold positions where I can bring my own ideas to life, ideally connected to my passions.</p>
             </article>
           </div>
         </div>
@@ -283,15 +285,18 @@
           <div class="grid grid--3">
             <article class="card goal-card">
               <p class="card__meta">Plan A</p>
-              <p><span class="todo">[TO COMPLETE]</span></p>
+              <h3>Embedded software in motorsport</h3>
+              <p>Embedded software engineer for a racing team or a motorsport supplier: programming the electronics of cars or motorcycles (engine control, traction control, sensors).</p>
             </article>
             <article class="card goal-card">
               <p class="card__meta">Plan B</p>
-              <p><span class="todo">[TO COMPLETE]</span></p>
+              <h3>Software for electronic music</h3>
+              <p>Software engineer in music technology: building audio software such as DAWs and DJ tools (like Ableton Live or rekordbox), or designing synthesizers.</p>
             </article>
             <article class="card goal-card">
               <p class="card__meta">Plan C</p>
-              <p><span class="todo">[TO COMPLETE]</span></p>
+              <h3>Tech project manager</h3>
+              <p>After a few years as an engineer, move into a tech project or product manager role: leading a technical team and working with clients.</p>
             </article>
           </div>
         </div>
@@ -299,10 +304,9 @@
     </section>
 
     <!-- 6. COMING NEXT — future semesters -->
-    <section class="section reveal" id="next" aria-labelledby="next-title">
+    <section class="section" id="next" aria-labelledby="next-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// coming next</p>
           <h2 id="next-title">Coming next</h2>
         </div>
 

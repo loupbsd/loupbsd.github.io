@@ -16,10 +16,10 @@
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-  <!-- Fonts: Inter (text) + JetBrains Mono (accents) -->
+  <!-- Fonts: Figtree (text) + IBM Plex Mono (data: tags, dates) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -73,10 +73,9 @@
         <div class="hero__photo hero__photo--placeholder" role="img" aria-label="Photo coming soon">LB</div>
 
         <div>
-          <p class="eyebrow">// hello, I'm</p>
           <h1>Loup Broussard</h1>
           <p class="hero__subtitle">Computer Science Engineering Student @ ENSEEIHT</p>
-          <p class="hero__uvp">First-year Computer Science engineering student at ENSEEIHT who turns curiosity into code, looking for a software, systems or data internship in summer 2027.<span class="cursor" aria-hidden="true"></span></p>
+          <p class="hero__uvp">First-year Computer Science engineering student at ENSEEIHT who turns curiosity into code, looking for a software, systems or data internship in summer 2027.</p>
 
           <div class="btn-row">
             <a class="btn btn--primary" href="career.html#pitch">
@@ -96,91 +95,79 @@
       </div>
     </section>
 
-    <!-- 2. AT A GLANCE — one line per card -->
-    <section class="section reveal" aria-labelledby="glance-title">
+    <!-- 2. AT A GLANCE — one short "label → value" row each -->
+    <section class="section" aria-labelledby="glance-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">// at a glance</p>
           <h2 id="glance-title">At a glance</h2>
         </div>
 
-        <ul class="grid grid--3">
-          <li class="card glance-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            <div>
-              <span class="glance-card__label">Education</span>
-              <span class="glance-card__value">ENSEEIHT · Sciences du Numérique, 1st year</span>
-            </div>
+        <dl class="facts">
+          <div>
+            <dt>Education</dt>
+            <dd>ENSEEIHT · Sciences du Numérique, 1st year</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>Software development · Embedded systems</dd>
+          </div>
+          <div>
+            <dt>Languages</dt>
+            <dd>French (native) · English (B2)</dd>
+          </div>
+          <div>
+            <dt>Looking for</dt>
+            <dd>Technical internship, 6+ weeks, between June 7 and August 23, 2027 · software, systems or data</dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd>Toulouse, France</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 3. FEATURED — the 3 best things to click -->
+    <section class="section" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="featured-title">Start here</h2>
+        </div>
+
+        <ul class="feature-list">
+          <li>
+            <a href="career.html#pitch">
+              <span class="feature-list__meta">video · 2–3 min</span>
+              <span class="feature-list__title">My pitch</span>
+              <span class="feature-list__text">Now → Past → Future: my career project, in English.</span>
+              <span class="link-arrow">Watch the pitch →</span>
+            </a>
           </li>
-          <li class="card glance-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
-            <div>
-              <span class="glance-card__label">Focus</span>
-              <span class="glance-card__value">Software development · Embedded systems</span>
-            </div>
+          <li>
+            <a href="engineering.html#strudel">
+              <span class="feature-list__meta">team project · La Prépa des INP</span>
+              <span class="feature-list__title">Recreating a piano with code</span>
+              <span class="feature-list__text">Fourier analysis in Python, then a full track live coded in Strudel.</span>
+              <span class="link-arrow">See project →</span>
+            </a>
           </li>
-          <li class="card glance-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            <div>
-              <span class="glance-card__label">Languages</span>
-              <span class="glance-card__value">French (native) · English (B2)</span>
-            </div>
-          </li>
-          <li class="card glance-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-            <div>
-              <span class="glance-card__label">Looking for</span>
-              <span class="glance-card__value">Technical internship, 6+ weeks, between June 7 and August 23, 2027 · software, systems or data</span>
-            </div>
-          </li>
-          <li class="card glance-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <span class="glance-card__label">Location</span>
-              <span class="glance-card__value">Toulouse, France</span>
-            </div>
+          <!-- Replace with your best SN project once you have one -->
+          <li>
+            <a href="engineering.html#program">
+              <span class="feature-list__meta">engineering course</span>
+              <span class="feature-list__title">My engineering course</span>
+              <span class="feature-list__text">Maths, programming in Ada, modeling with Coq and control systems at ENSEEIHT.</span>
+              <span class="link-arrow">See the course →</span>
+            </a>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- 3. FEATURED — the 3 best things to click -->
-    <section class="section reveal" aria-labelledby="featured-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">// featured</p>
-          <h2 id="featured-title">Start here</h2>
-        </div>
-
-        <div class="grid grid--3">
-          <a class="card feature-card" href="career.html#pitch">
-            <span class="card__meta">video · 2–3 min</span>
-            <h3>My pitch</h3>
-            <p>Now → Past → Future: my career project, in English.</p>
-            <span class="link-arrow">Watch the pitch →</span>
-          </a>
-          <a class="card feature-card" href="engineering.html#strudel">
-            <span class="card__meta">personal project · live coding</span>
-            <h3>Making music with code</h3>
-            <p>Live coding music in the browser with Strudel (JavaScript).</p>
-            <span class="link-arrow">See project →</span>
-          </a>
-          <!-- Replace with your best SN project once you have one -->
-          <a class="card feature-card" href="engineering.html#program">
-            <span class="card__meta">engineering course</span>
-            <h3>My engineering course</h3>
-            <p>Maths, programming in Ada, modeling with Coq and control systems at ENSEEIHT.</p>
-            <span class="link-arrow">See the course →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
     <!-- 4. NOW — update every semester -->
-    <section class="section reveal" aria-labelledby="now-title">
+    <section class="section" aria-labelledby="now-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">&gt; now</p>
           <h2 id="now-title">What I'm working on</h2>
         </div>
         <p class="now-text">
@@ -192,10 +179,9 @@
     </section>
 
     <!-- 5. CONTACT -->
-    <section class="section reveal" id="contact" aria-labelledby="contact-title">
+    <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">$ contact</p>
           <h2 id="contact-title">Get in touch</h2>
         </div>
 

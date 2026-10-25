@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0b0f14"/>
-  <rect x="3" y="3" width="58" height="58" rx="10" fill="none" stroke="#22d3ee" stroke-width="3"/>
-  <text x="32" y="42" text-anchor="middle" font-family="Consolas, monospace" font-size="26" font-weight="700" fill="#22d3ee">LB</text>
+  <rect width="64" height="64" rx="14" fill="#4d2da0"/>
+  <text x="32" y="42" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="27" font-weight="700" letter-spacing="0.5" fill="#faf3e3">LB</text>
 </svg>
