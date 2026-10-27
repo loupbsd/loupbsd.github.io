@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-sector="5">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,10 +16,10 @@
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-  <!-- Fonts: Archivo (text, expanded for titles) + IBM Plex Mono (data: tags, dates) -->
+  <!-- Fonts: Archivo (text; big titles in two widths, 62 % and 125 %) + IBM Plex Mono (data: tags, dates, captions) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -28,18 +28,27 @@
     document.documentElement.classList.add("js");
     try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
+  <!-- Direction of the slide between two sectors: must run before the page is shown, so no "defer" -->
+  <script src="js/lap.js"></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ===== HEADER — identical on every page, only aria-current changes ===== -->
+  <!-- ===== HEADER — identical on every page; only aria-current, the ‹ › links and "S6/6" change.
+       The lap: S1 Welcome → S2 Engineering → S3 Mobility → S4 Sustainability → S5 Activities → S6 Career → S1. ===== -->
   <header class="site-header">
     <div class="container">
       <a class="logo" href="index.html">
         <span class="logo__mark" aria-hidden="true">LB</span>
         <span class="logo__name">Loup Broussard</span>
       </a>
+
+      <!-- Previous sector: S4 Sustainability -->
+      <a class="lap-arrow" href="sustainability.html" rel="prev" aria-label="Previous sector: Sustainability">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <span class="lap-count" aria-hidden="true">S5/6</span>
 
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
@@ -50,7 +59,21 @@
           <li><a href="activities.html" aria-current="page">Activities</a></li>
           <li><a href="career.html">Career</a></li>
         </ul>
+        <!-- Only in the full-screen menu (phones and tablets): map of the lap + theme button -->
+        <div class="site-nav__extra">
+          <svg class="lap-map" viewBox="0 0 240 140" aria-hidden="true"><use href="assets/img/circuit.svg#lap"/></svg>
+          <button class="icon-btn theme-toggle" type="button" aria-label="Switch dark / light theme">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
       </nav>
+
+      <!-- Next sector: S6 Career -->
+      <a class="lap-arrow" href="career.html" rel="next" aria-label="Next sector: Career">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
       <!-- FR link points to the French home page until this page is translated (then: fr/activities.html) -->
       <nav class="lang-switch" aria-label="Language">
         <a href="activities.html" lang="en" hreflang="en" aria-current="true">EN</a>
@@ -62,7 +85,8 @@
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       </button>
       <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
   </header>
@@ -70,20 +94,31 @@
 
   <main id="main">
 
-    <header class="page-header">
-      <div class="container">
-        <h1>Sport &amp; Other Activities</h1>
+    <!-- SECTOR OPENER — giant title in two widths, data line, intro -->
+    <section class="chapter opener" data-tone="paper">
+      <div class="container opener__text">
+        <h1 class="opener__title" style="--fit: 9"><span class="opener__wide">Sport</span> <span class="opener__narrow">&amp; Other Activities</span></h1>
+        <p class="opener__data">RUGBY · MUSIC · MOTORSPORT · NEW TECH</p>
         <p class="intro">What I do outside class — and the soft skills I build there.</p>
       </div>
-    </header>
+    </section>
 
     <!-- ACTIVITIES — one card each. "What it taught me" = soft skills as tags. -->
-    <section class="section" aria-labelledby="activities-title">
-      <div class="container">
-        <h2 class="sr-only" id="activities-title">My activities</h2>
+    <section class="chapters" aria-labelledby="activities-title">
+      <h2 class="sr-only" id="activities-title">My activities</h2>
 
-        <div class="grid grid--2">
-          <article class="card" id="rugby">
+      <article class="chapter" data-tone="paper" id="rugby">
+        <div class="container activity">
+          <!-- TO COMPLETE: rugby photo (WebP, 4/5, < 120 KB) and its caption "PLACE, YEAR", then replace the frame by
+               <img src="assets/img/rugby.webp" alt="[describe the photo]" width="..." height="..." loading="lazy"> -->
+          <figure class="photo-slot" style="--ratio: 4 / 5">
+            <figcaption class="photo-slot__caption"><span class="todo">[TO COMPLETE: PLACE, YEAR]</span></figcaption>
+            <div class="photo-slot__frame">
+              <span>Photo coming soon</span>
+              <span class="todo">[TO COMPLETE: rugby photo]</span>
+            </div>
+          </figure>
+          <div>
             <p class="card__meta">sport</p>
             <h3>Rugby</h3>
             <p class="muted">I started playing at 5 and I still play today, now at my engineering school. Along the way I played at national level in youth competitions. Rugby has always been important to me.</p>
@@ -98,9 +133,23 @@
                 </dd>
               </div>
             </dl>
-          </article>
 
-          <article class="card" id="music">
+          </div>
+        </div>
+      </article>
+
+      <article class="chapter" data-tone="ink" id="music">
+        <div class="container activity activity--flip">
+          <!-- TO COMPLETE: music photo (WebP, 4/5, < 120 KB) and its caption "PLACE, YEAR", then replace the frame by
+               <img src="assets/img/music.webp" alt="[describe the photo]" width="..." height="..." loading="lazy"> -->
+          <figure class="photo-slot" style="--ratio: 4 / 5">
+            <figcaption class="photo-slot__caption"><span class="todo">[TO COMPLETE: PLACE, YEAR]</span></figcaption>
+            <div class="photo-slot__frame">
+              <span>Photo coming soon</span>
+              <span class="todo">[TO COMPLETE: music photo]</span>
+            </div>
+          </figure>
+          <div>
             <p class="card__meta">music · live coding</p>
             <h3>Music &amp; live coding</h3>
             <p class="muted">I mix a little as a DJ, and I keep following the live coding scene: I love seeing people combine art and technical tools.</p>
@@ -116,9 +165,23 @@
               </div>
             </dl>
             <p class="card__cta"><a class="link-arrow" href="engineering.html#strudel">See the Strudel project →</a></p>
-          </article>
 
-          <article class="card" id="motorsport">
+          </div>
+        </div>
+      </article>
+
+      <article class="chapter" data-tone="paper" id="motorsport">
+        <div class="container activity">
+          <!-- TO COMPLETE: motorsport photo (WebP, 3/2, < 120 KB) and its caption "PLACE, YEAR", then replace the frame by
+               <img src="assets/img/motorsport.webp" alt="[describe the photo]" width="..." height="..." loading="lazy"> -->
+          <figure class="photo-slot" style="--ratio: 3 / 2">
+            <figcaption class="photo-slot__caption"><span class="todo">[TO COMPLETE: PLACE, YEAR]</span></figcaption>
+            <div class="photo-slot__frame">
+              <span>Photo coming soon</span>
+              <span class="todo">[TO COMPLETE: motorsport photo]</span>
+            </div>
+          </figure>
+          <div>
             <p class="card__meta">motorsport</p>
             <h3>Motorsport</h3>
             <p class="muted">I follow F1, MotoGP and rally, and I do karting, sim racing and mechanics. Finding a mechanical fault feels a lot like tracking down a bug, and chasing lap time is close to optimizing code: the same mindset, applied to the real world instead of the digital one.</p>
@@ -133,9 +196,14 @@
                 </dd>
               </div>
             </dl>
-          </article>
 
-          <article class="card" id="tech">
+          </div>
+        </div>
+      </article>
+
+      <article class="chapter" data-tone="sand" id="tech">
+        <div class="container activity">
+          <div>
             <p class="card__meta">new technologies</p>
             <h3>New technologies</h3>
             <p class="muted">Mostly AI: I use AI coding assistants such as Claude Code in my projects, and I keep an eye on the hardware that powers them, from NVIDIA's GPUs to the new chips designed for AI.</p>
@@ -150,15 +218,61 @@
                 </dd>
               </div>
             </dl>
-          </article>
+
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== SECTOR EXIT — same block at the end of every page: next / previous sector + map of the lap ===== -->
+    <nav class="chapter sector-exit" data-tone="ink" aria-label="Lap">
+      <div class="container sector-exit__grid">
+        <div class="sector-exit__main">
+          <p class="sector-exit__meta">Sector 5/6 · Activities</p>
+          <a class="sector-exit__next" href="career.html" rel="next" data-to="6">
+            <span class="sector-exit__label">Next sector</span>
+            <span class="sector-exit__title">Career <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="sector-exit__prev" href="sustainability.html" rel="prev"><span aria-hidden="true">←</span> Previous: Sustainability</a>
+        </div>
+
+        <div class="lap">
+          <svg class="lap-map" viewBox="0 0 240 140" aria-hidden="true"><use href="assets/img/circuit.svg#lap"/></svg>
+          <ol class="lap__list">
+            <li><a href="index.html">Welcome</a></li>
+            <li><a href="engineering.html">Engineering</a></li>
+            <li><a href="mobility.html">Mobility</a></li>
+            <li><a href="sustainability.html">Sustainability</a></li>
+            <li><a href="activities.html" aria-current="page">Activities</a></li>
+            <li><a href="career.html">Career</a></li>
+          </ol>
         </div>
       </div>
-    </section>
+    </nav>
 
   </main>
 
+  <!-- ===== CONTACT BAR — identical on every page, always visible (bottom bar on phones, left rail on wide screens) ===== -->
+  <aside class="contact-bar" aria-label="Get in touch">
+    <span class="contact-bar__label" aria-hidden="true">Contact</span>
+    <a href="mailto:loup.broussard@outlook.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+      <span>Email</span>
+    </a>
+    <a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com/loupbsd" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <span>GitHub</span>
+    </a>
+    <!-- TO COMPLETE: add the CV link here once assets/docs/CV_Loup_Broussard_EN.pdf exists
+         (<a href="assets/docs/CV_Loup_Broussard_EN.pdf" download> + download icon + <span>CV</span></a>) -->
+  </aside>
+
   <!-- ===== FOOTER — identical on every page ===== -->
-  <footer class="site-footer">
+  <footer class="site-footer" data-tone="ink">
     <div class="container">
       <p>© 2026 Loup Broussard · Last updated: October 2026</p>
       <ul>

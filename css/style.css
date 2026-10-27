@@ -1520,12 +1520,63 @@ html:has(.chapter):has(.toc) {    /* more specific than the rule of section 13 *
 }
 
 /* The colour rise (section 13) also works across the edges of a track */
-.chapter[data-tone="paper"] + .track > .chapter:first-child,
-.track:has(> .chapter[data-tone="paper"]:last-child) + .chapter { --prev-bg: var(--tone-paper); }
-.chapter[data-tone="sand"] + .track > .chapter:first-child,
-.track:has(> .chapter[data-tone="sand"]:last-child) + .chapter { --prev-bg: var(--tone-sand); }
-.chapter[data-tone="ink"] + .track > .chapter:first-child,
-.track:has(> .chapter[data-tone="ink"]:last-child) + .chapter { --prev-bg: var(--tone-ink); }
+.chapter[data-tone="paper"] + :is(.track, .chapters) > .chapter:first-of-type,
+:is(.track, .chapters):has(> .chapter[data-tone="paper"]:last-child) + .chapter { --prev-bg: var(--tone-paper); }
+.chapter[data-tone="sand"] + :is(.track, .chapters) > .chapter:first-of-type,
+:is(.track, .chapters):has(> .chapter[data-tone="sand"]:last-child) + .chapter { --prev-bg: var(--tone-sand); }
+.chapter[data-tone="ink"] + :is(.track, .chapters) > .chapter:first-of-type,
+:is(.track, .chapters):has(> .chapter[data-tone="ink"]:last-child) + .chapter { --prev-bg: var(--tone-ink); }
+
+/* --- Activities (S5): one chapter per activity, photo and text side by side,
+   the photo alternating left / right like a collage put in order */
+.activity {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.activity .photo-slot {
+  order: 2;                         /* phones: the text first, then the photo */
+  margin-top: 0;
+}
+
+.activity .photo-slot__frame,
+.activity .photo-slot img {
+  max-width: min(100%, 24rem);      /* a 4:5 photo stays under one screen */
+}
+
+.activity h3 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 800;
+  font-stretch: var(--stretch-display);
+  line-height: 1.1;
+}
+
+.activity .card__meta {
+  margin-bottom: var(--space-2);
+}
+
+.activity .muted {
+  margin-top: var(--space-4);
+  max-width: 56ch;
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+}
+
+@media (min-width: 900px) {
+  .activity:has(.photo-slot) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-16);
+  }
+
+  .activity .photo-slot {
+    order: 0;                       /* computers: photo on the left… */
+    justify-self: center;
+  }
+
+  .activity--flip .photo-slot {
+    order: 2;                       /* …or on the right, every other activity */
+  }
+}
 
 /* --- Relay: two steps of a path, the second taking over from the first (Education) */
 .relay {
