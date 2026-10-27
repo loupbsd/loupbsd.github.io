@@ -1410,6 +1410,152 @@ html:not(.js) .site-nav__extra { display: none; }
   margin-block: var(--space-1) var(--space-3);
 }
 
+/* --- Sector opener: the first screen of every inner page ------------------
+   Giant title in two widths ("CAREER" expanded and bold, "DEVELOPMENT"
+   condensed and thin), a data line in mono, then the page intro.
+   --fit = number of letters of the longest word: the title always fits its column. */
+.chapter.opener {
+  min-height: 70svh;
+}
+
+.opener__text {
+  container-type: inline-size;
+}
+
+.opener__title {
+  display: flex;
+  flex-direction: column;
+  font-size: min(7rem, calc(100cqi / (var(--fit, 10) * 0.95)));
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.opener__wide {
+  font-stretch: var(--stretch-display);
+  font-weight: 800;
+}
+
+.opener__narrow {
+  font-stretch: var(--stretch-narrow);
+  font-weight: 300;
+}
+
+.opener__data {
+  margin-top: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.opener .intro {
+  margin-top: var(--space-4);
+  max-width: 52ch;
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+}
+
+/* --- Career: the sticky table of contents shows mini-sectors (S6.1, S6.2…) --- */
+.toc ul {
+  counter-reset: toc;
+}
+
+.toc li {
+  counter-increment: toc;
+}
+
+html[data-sector] .toc a::before {
+  content: "S" var(--sector) "." counter(toc) " ";
+  content: "S" var(--sector) "." counter(toc) " " / "";
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  opacity: 0.8;
+}
+
+/* Anchored sections must stay visible under the header AND the sticky table of contents */
+html:has(.chapter):has(.toc) {    /* more specific than the rule of section 13 */
+  scroll-padding-top: calc(var(--header-h) + 56px);
+}
+
+/* --- Two blocks side by side, without cards (CV | LinkedIn) ---------------- */
+.split {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.split__item + .split__item {
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.split__item h3 {
+  font-size: var(--text-xl);
+  font-stretch: var(--stretch-display);
+}
+
+.split__item .muted {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .split {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+
+  .split__item + .split__item {
+    padding-top: 0;
+    padding-left: var(--space-12);
+    border-top: 0;
+    border-left: 1px solid var(--color-border);
+  }
+}
+
+/* --- Repeated cards (projects, role models, mobility, goals): the top-right
+   corner is bevelled, like a race number board. Browsers without corner-shape
+   simply show a rounded corner. */
+.project-card,
+.rolemodel-card,
+.mobility-card,
+.goal-card {
+  border-radius: var(--radius-sm) 22px var(--radius-sm) var(--radius-sm);
+  corner-shape: round bevel round round;
+}
+
+/* --- Goals timeline as a season calendar: one track line through the three rounds  (computers: the three rounds side by side) */
+@media (min-width: 960px) {
+  .season {
+    position: relative;
+    padding-top: var(--space-6);
+  }
+
+  .season::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-border);
+  }
+
+  .season > * {
+    position: relative;
+  }
+
+  .season > *::before {
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--space-6) - 5px);
+    left: var(--space-6);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-bg);
+  }
+}
+
 
 /* =========================================================================
    10. MEDIA
