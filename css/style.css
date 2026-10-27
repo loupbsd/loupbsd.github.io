@@ -38,6 +38,7 @@
   --color-text: #221c2b;
   --color-text-muted: #5a5262;
   --color-accent: #4d2da0;        /* the ONE accent color (violet) */
+  --color-name: #b8460b;          /* the first name in the hero only: copper orange, opposite of the violet */
   --color-accent-soft: rgba(77, 45, 160, 0.09);
   --color-on-accent: #faf3e3;     /* text placed on top of the accent */
   --color-todo: #92400e;          /* [TO COMPLETE] placeholders only */
@@ -100,6 +101,7 @@
    once for the OS setting. Change both blocks together. */
 :root[data-theme="dark"] {
   --color-bg: #1a1714;
+  --color-name: #ff9a5c;
   --color-surface: #221e1a;
   --color-surface-2: #2a2520;
   --color-border: #3a332b;
@@ -126,6 +128,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --color-bg: #1a1714;
+    --color-name: #ff9a5c;
     --color-surface: #221e1a;
     --color-surface-2: #2a2520;
     --color-border: #3a332b;
@@ -1119,7 +1122,7 @@ html:not(.js) .site-nav__extra { display: none; }
   container-type: inline-size;      /* lets the name size itself on this column (cqi units) */
 }
 
-/* The name in two widths of Archivo: "LOUP" condensed, larger and violet, "BROUSSARD" expanded and bold.
+/* The name in Archivo, both words expanded: "LOUP" bold and copper orange, "BROUSSARD" light and smaller.
    "BROUSSARD" is 8.3 em wide, so 11.8cqi (11.8 % of the column width) keeps it on one line. */
 .hero__name {
   display: flex;
@@ -1130,18 +1133,18 @@ html:not(.js) .site-nav__extra { display: none; }
   text-transform: uppercase;
 }
 
-/* The first name is the bigger word, in the accent colour: condensed, so it stays narrow */
+/* The first name is the big word, bold and in its own colour */
 .hero__first {
-  font-size: 1.6em;
-  line-height: 0.85;
-  font-stretch: var(--stretch-narrow);
-  font-weight: 400;
-  color: var(--color-accent);
+  font-stretch: var(--stretch-display);
+  font-weight: 800;
+  color: var(--color-name);
 }
 
 .hero__last {
+  font-size: 0.6em;
+  line-height: 1.1;
   font-stretch: var(--stretch-display);
-  font-weight: 800;
+  font-weight: 300;
 }
 
 .hero__subtitle {
