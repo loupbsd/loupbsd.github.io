@@ -141,7 +141,7 @@
         <dl class="facts">
           <div>
             <dt>Education</dt>
-            <dd>ENSEEIHT · Sciences du Numérique, 1st year</dd>
+            <dd>ENSEEIHT · Computer Science, 1st year</dd>
           </div>
           <div>
             <dt>Focus</dt>
@@ -207,36 +207,10 @@
           <h2 id="now-title">What I'm working on</h2>
         </div>
         <p class="now-text">
-          Starting my engineering degree in Sciences du Numérique at ENSEEIHT (2026–2027):
+          Starting my engineering degree in Computer Science at ENSEEIHT (2026–2027):
           applied maths (probability, statistics, optimization), imperative programming in Ada,
           modeling with Coq and control systems.
         </p>
-      </div>
-    </section>
-
-    <!-- 5. CONTACT -->
-    <section class="chapter" data-tone="paper" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="contact-title">Get in touch</h2>
-        </div>
-
-        <div class="contact-list">
-          <a class="contact-list__email" href="mailto:loup.broussard@outlook.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-            loup.broussard@outlook.com
-          </a>
-          <div class="btn-row">
-            <a class="btn" href="https://www.linkedin.com/in/loup-broussard-a6940b38b/" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
-            </a>
-            <a class="btn" href="https://github.com/loupbsd" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -244,9 +218,9 @@
     <nav class="chapter sector-exit" data-tone="ink" aria-label="Lap">
       <div class="container sector-exit__grid">
         <div class="sector-exit__main">
-          <p class="sector-exit__meta">Sector 1/6 · Welcome</p>
+          <p class="sector-exit__meta">End of sector 1/6 · Welcome</p>
           <a class="sector-exit__next" href="engineering.html" rel="next" data-to="2">
-            <span class="sector-exit__label">Next sector</span>
+            <span class="sector-exit__label">Next sector · S2/6</span>
             <span class="sector-exit__title">Engineering <span aria-hidden="true">→</span></span>
           </a>
           <a class="sector-exit__prev" href="career.html" rel="prev"><span aria-hidden="true">←</span> Previous: Career</a>
@@ -270,7 +244,7 @@
 
   <!-- ===== CONTACT BAR — identical on every page, always visible (bottom bar on phones, left rail on wide screens) ===== -->
   <aside class="contact-bar" aria-label="Get in touch">
-    <span class="contact-bar__label" aria-hidden="true">Contact</span>
+    <a class="contact-bar__label" href="mailto:loup.broussard@outlook.com" data-contact>Contact</a>
     <a href="mailto:loup.broussard@outlook.com">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
       <span>Email</span>
@@ -287,12 +261,40 @@
          (<a href="assets/docs/CV_Loup_Broussard_EN.pdf" download> + download icon + <span>CV</span></a>) -->
   </aside>
 
+  <!-- ===== CONTACT POP-UP — identical on every page. Opened by every "Contact" link (bar, footer): js/main.js §9.
+       Without JavaScript those links simply open an email. ===== -->
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+    <div class="contact-dialog__box">
+      <div class="contact-dialog__head">
+        <h2 id="contact-dialog-title">Contact</h2>
+        <form method="dialog">
+          <button class="contact-dialog__close" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </form>
+      </div>
+      <p class="contact-dialog__hint">Click to copy</p>
+      <dl class="contact-dialog__list">
+        <div>
+          <dt>Email</dt>
+          <dd><button class="contact-dialog__copy" type="button" data-copy="loup.broussard@outlook.com">loup.broussard@outlook.com</button></dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd><button class="contact-dialog__copy" type="button" data-copy="+33 6 95 60 59 42">+33 6 95 60 59 42</button></dd>
+        </div>
+      </dl>
+      <!-- Message shown for 2 s after a copy (js/main.js §9) -->
+      <p class="contact-dialog__toast" role="status" data-message="Copied to clipboard"></p>
+    </div>
+  </dialog>
+
   <!-- ===== FOOTER — identical on every page ===== -->
   <footer class="site-footer" data-tone="ink">
     <div class="container">
       <p>© 2026 Loup Broussard · Last updated: October 2026</p>
       <ul>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="mailto:loup.broussard@outlook.com" data-contact>Contact</a></li>
         <li><a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
       </ul>

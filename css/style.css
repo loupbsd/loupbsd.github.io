@@ -90,7 +90,7 @@
   --radius: 12px;
   --radius-sm: 6px;
   --container: 1200px;
-  --header-h: 64px;
+  --header-h: 72px;
   --transition: 180ms ease;
 
   color-scheme: light;
@@ -472,6 +472,7 @@ main {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  padding-bottom: 22px;             /* the bottom strip is left to the telemetry trace and the car */
 }
 
 @media (min-width: 640px) {
@@ -486,7 +487,7 @@ main {
   right: 0;
   bottom: -1px;
   width: 100%;
-  height: 14px;
+  height: 8px;
   pointer-events: none;
 }
 
@@ -512,11 +513,7 @@ main {
   -webkit-mask: url("../assets/img/porsche-911.svg") center / contain no-repeat;
   mask: url("../assets/img/porsche-911.svg") center / contain no-repeat;
   pointer-events: none;
-  transition: opacity var(--transition), background-color 300ms ease;
-}
-
-.telemetry__car.is-hidden {
-  opacity: 0;
+  transition: background-color 300ms ease;
 }
 
 /* Logo, menu and buttons stay above the car */
@@ -760,11 +757,11 @@ html:not(.js) .site-nav__extra { display: none; }
    so that the bottom strip is left to the telemetry trace and the car. */
 @media (min-width: 1024px) {
   :root {
-    --header-h: 72px;
+    --header-h: 84px;
   }
 
   .site-header .container {
-    padding-bottom: 12px;
+    padding-bottom: 28px;
   }
 
   .menu-toggle,
@@ -1122,7 +1119,7 @@ html:not(.js) .site-nav__extra { display: none; }
   container-type: inline-size;      /* lets the name size itself on this column (cqi units) */
 }
 
-/* The name in two widths of Archivo: "LOUP" condensed and thin, "BROUSSARD" expanded and bold.
+/* The name in two widths of Archivo: "LOUP" condensed, larger and violet, "BROUSSARD" expanded and bold.
    "BROUSSARD" is 8.3 em wide, so 11.8cqi (11.8 % of the column width) keeps it on one line. */
 .hero__name {
   display: flex;
@@ -1133,9 +1130,13 @@ html:not(.js) .site-nav__extra { display: none; }
   text-transform: uppercase;
 }
 
+/* The first name is the bigger word, in the accent colour: condensed, so it stays narrow */
 .hero__first {
+  font-size: 1.6em;
+  line-height: 0.85;
   font-stretch: var(--stretch-narrow);
-  font-weight: 300;
+  font-weight: 400;
+  color: var(--color-accent);
 }
 
 .hero__last {
@@ -1312,37 +1313,6 @@ html:not(.js) .site-nav__extra { display: none; }
   line-height: 1.5;
 }
 
-/* Contact: the email in large type, then LinkedIn and GitHub */
-.contact-list {
-  display: grid;
-  justify-items: start;
-  gap: var(--space-6);
-}
-
-.contact-list__email {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  max-width: 100%;
-  font-size: clamp(1.125rem, 4.4vw, 2.25rem);
-  font-weight: 700;
-  font-stretch: var(--stretch-display);
-  letter-spacing: -0.01em;
-  color: var(--color-accent);
-  text-decoration: none;
-  overflow-wrap: anywhere;
-}
-
-.contact-list__email svg {
-  flex-shrink: 0;
-  width: 0.85em;
-  height: 0.85em;
-}
-
-.contact-list__email:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-}
 
 
 /* =========================================================================
@@ -2057,12 +2027,12 @@ html:has(.chapter) [id] {
 
 /* Marks of the current page in its sector colour: thin word of the opener title,
    relay arrow. Declared on the element itself, so that ink chapters get the light version. */
-[data-sector="1"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s1); }
-[data-sector="2"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s2); }
-[data-sector="3"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s3); }
-[data-sector="4"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s4); }
-[data-sector="5"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s5); }
-[data-sector="6"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s6); }
+[data-sector="1"] :is(.opener__narrow, .relay__arrow, .track__gauge) { --c-sector: var(--c-s1); }
+[data-sector="2"] :is(.opener__narrow, .relay__arrow, .track__gauge) { --c-sector: var(--c-s2); }
+[data-sector="3"] :is(.opener__narrow, .relay__arrow, .track__gauge) { --c-sector: var(--c-s3); }
+[data-sector="4"] :is(.opener__narrow, .relay__arrow, .track__gauge) { --c-sector: var(--c-s4); }
+[data-sector="5"] :is(.opener__narrow, .relay__arrow, .track__gauge) { --c-sector: var(--c-s5); }
+[data-sector="6"] :is(.opener__narrow, .relay__arrow, .track__gauge) { --c-sector: var(--c-s6); }
 
 .opener__narrow {
   color: var(--c-sector, inherit);
@@ -2076,10 +2046,12 @@ html:has(.chapter) [id] {
 .sector-exit__next[data-to="5"] { --c-sector: var(--c-s5); }
 .sector-exit__next[data-to="6"] { --c-sector: var(--c-s6); }
 
-/* The 6 sectors as links, under the map: "S1 Welcome", "S2 Engineering"… */
+/* The 6 sectors as links, under the map: "S1 Welcome", "S2 Engineering"…
+   A regular grid as wide as the map (2 columns × 3 rows), so the names line up */
 .lap__list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  max-width: 320px;
   gap: var(--space-1) var(--space-6);
   margin-top: var(--space-6);
   counter-reset: lap;
@@ -2271,6 +2243,129 @@ body:has(.contact-bar) {
   }
 }
 
+/* "Contact" opens the pop-up below */
+a.contact-bar__label {
+  width: auto;
+  min-height: 0;
+  padding: var(--space-1);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+/* Contact pop-up (<dialog>, opened by js/main.js §9): email and phone number */
+.contact-dialog {
+  width: min(32rem, calc(100vw - 2 * var(--space-4)));
+  max-width: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.contact-dialog::backdrop {
+  background: rgb(14 12 10 / 0.6);
+}
+
+.contact-dialog__box {
+  padding: var(--space-6);
+}
+
+.contact-dialog__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.contact-dialog__head h2 {
+  font-size: var(--text-xl);
+}
+
+.contact-dialog__close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.contact-dialog__close:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.contact-dialog__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-dialog__list {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.contact-dialog__list dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.contact-dialog__list dd {
+  margin: var(--space-1) 0 0;
+  font-size: clamp(1.125rem, 4vw, 1.5rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.contact-dialog__hint {
+  margin: calc(-1 * var(--space-4)) 0 var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* The email and the number: a click copies them (main.js §9) */
+.contact-dialog__copy {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--color-accent);
+  text-align: left;
+  cursor: copy;
+}
+
+.contact-dialog__copy:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* "Copied to clipboard": appears for 2 s under the list */
+.contact-dialog__toast {
+  min-height: 1.5em;                /* keeps its place: the box does not jump */
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.contact-dialog__toast.is-visible {
+  opacity: 1;
+}
+
 /* While the phone menu is open, the bar is hidden (the menu covers the page) */
 html.menu-open .contact-bar {
   display: none;
@@ -2378,26 +2473,6 @@ html.is-jumping {
   background: var(--c-sector, var(--color-accent));
 }
 
-/* "Turn" screen: the opener of a horizontal sector announces the change of axis */
-.turn-hint {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2) var(--space-4);
-  margin-top: var(--space-8);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--c-sector, var(--color-accent));
-}
-
-.turn-hint__arrow {
-  font-family: var(--font-sans);
-  font-size: 2.5rem;
-  line-height: 1;
-}
-
 /* Continued panel (phones): reminder of the panel title, for sighted readers only */
 .panel__continued {
   margin-bottom: var(--space-4);
@@ -2497,6 +2572,15 @@ html.is-jumping {
 
 .track.is-pinned .panel {
   padding-block: var(--space-6) var(--space-10);
+}
+
+/* Projects panel: an open card may be taller than the screen, so this panel
+   scrolls inside itself; at its end, the scroll goes on with the page */
+.track.is-pinned .panel--scroll {
+  justify-content: flex-start;
+  justify-content: safe center;     /* centred, but the top is never pushed out of reach */
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 @media (max-width: 767px) {

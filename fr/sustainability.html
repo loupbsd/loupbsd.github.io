@@ -203,9 +203,9 @@
     <nav class="chapter sector-exit" data-tone="ink" aria-label="Tour du site">
       <div class="container sector-exit__grid">
         <div class="sector-exit__main">
-          <p class="sector-exit__meta">Secteur 4/6 · Engagement</p>
+          <p class="sector-exit__meta">Fin du secteur 4/6 · Engagement</p>
           <a class="sector-exit__next" href="activities.html" rel="next" data-to="5">
-            <span class="sector-exit__label">Secteur suivant</span>
+            <span class="sector-exit__label">Secteur suivant · S5/6</span>
             <span class="sector-exit__title">Activités <span aria-hidden="true">→</span></span>
           </a>
           <a class="sector-exit__prev" href="mobility.html" rel="prev"><span aria-hidden="true">←</span> Précédent : Mobilité</a>
@@ -229,7 +229,7 @@
 
   <!-- ===== CONTACT BAR — identical on every page, always visible (bottom bar on phones, left rail on wide screens) ===== -->
   <aside class="contact-bar" aria-label="Me contacter">
-    <span class="contact-bar__label" aria-hidden="true">Contact</span>
+    <a class="contact-bar__label" href="mailto:loup.broussard@outlook.com" data-contact>Contact</a>
     <a href="mailto:loup.broussard@outlook.com">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
       <span>E-mail</span>
@@ -246,12 +246,40 @@
          (<a href="../assets/docs/CV_Loup_Broussard_FR.pdf" download> + download icon + <span>CV</span></a>) -->
   </aside>
 
+  <!-- ===== CONTACT POP-UP — identical on every page. Opened by every "Contact" link (bar, footer): js/main.js §9.
+       Without JavaScript those links simply open an email. ===== -->
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+    <div class="contact-dialog__box">
+      <div class="contact-dialog__head">
+        <h2 id="contact-dialog-title">Contact</h2>
+        <form method="dialog">
+          <button class="contact-dialog__close" aria-label="Fermer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </form>
+      </div>
+      <p class="contact-dialog__hint">Cliquez pour copier</p>
+      <dl class="contact-dialog__list">
+        <div>
+          <dt>E-mail</dt>
+          <dd><button class="contact-dialog__copy" type="button" data-copy="loup.broussard@outlook.com">loup.broussard@outlook.com</button></dd>
+        </div>
+        <div>
+          <dt>Téléphone</dt>
+          <dd><button class="contact-dialog__copy" type="button" data-copy="+33 6 95 60 59 42">+33 6 95 60 59 42</button></dd>
+        </div>
+      </dl>
+      <!-- Message shown for 2 s after a copy (js/main.js §9) -->
+      <p class="contact-dialog__toast" role="status" data-message="Copié dans le presse-papiers"></p>
+    </div>
+  </dialog>
+
   <!-- ===== FOOTER — identical on every page ===== -->
   <footer class="site-footer" data-tone="ink">
     <div class="container">
       <p>© 2026 Loup Broussard · Dernière mise à jour : octobre 2026</p>
       <ul>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="mailto:loup.broussard@outlook.com" data-contact>Contact</a></li>
         <li><a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
       </ul>

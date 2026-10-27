@@ -29,8 +29,8 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const TEXT = fr
-    ? { classic: "Lecture classique", continuous: "Défilement continu", turn: "Ce secteur se lit vers la droite", panels: "panneaux · continuez de défiler", prev: "Secteur précédent : ", next: "Secteur suivant : " }
-    : { classic: "Classic reading", continuous: "Continuous scroll", turn: "This sector reads to the right", panels: "panels · keep scrolling", prev: "Previous sector: ", next: "Next sector: " };
+    ? { classic: "Lecture classique", continuous: "Défilement continu", prev: "Secteur précédent : ", next: "Secteur suivant : " }
+    : { classic: "Classic reading", continuous: "Continuous scroll", prev: "Previous sector: ", next: "Next sector: " };
 
   /* 1. Should the continuous scroll run? -------------------------------- */
   let mode = "continuous";
@@ -122,7 +122,9 @@
   }
 
   // Panel too tall for the screen? (content would be cut: never allowed)
+  // A .panel--scroll panel (Projects) scrolls inside itself: nothing is ever cut.
   function overflows(panel) {
+    if (panel.classList.contains("panel--scroll")) return false;
     return panel.scrollHeight > panel.clientHeight + 2;
   }
 
@@ -219,7 +221,6 @@
       unpin(info);
     } else {
       delete track.dataset.stacked;
-      announceTurn(info);
     }
   }
 
@@ -232,19 +233,8 @@
     track.append(...info.rail.children);
     info.pin.remove();
     info.pin = null;
-    const hint = track.closest(".sector").querySelector(".turn-hint");
-    if (hint) hint.remove();
   }
 
-  // The opener of the sector becomes the "turn" screen
-  function announceTurn(info) {
-    const opener = info.track.closest(".sector").querySelector(".opener .opener__text");
-    if (!opener || opener.querySelector(".turn-hint")) return;
-    const hint = document.createElement("p");
-    hint.className = "turn-hint";
-    hint.innerHTML = `<span class="turn-hint__arrow" aria-hidden="true">→</span><span>${TEXT.turn}</span><span>${info.n} ${TEXT.panels}</span>`;
-    opener.append(hint);
-  }
 
   // Moves the pinned tracks with the scroll
   function moveTracks() {
@@ -341,7 +331,7 @@
       const x = Math.min(1000, ((s.getBoundingClientRect().top + window.scrollY - headerHeight()) / max) * 1000).toFixed(1);
       const tick = document.createElementNS("http://www.w3.org/2000/svg", "path");
       tick.setAttribute("class", "telemetry__tick");
-      tick.setAttribute("d", `M${x} 0 V14`);
+      tick.setAttribute("d", `M${x} 0 V${svg.viewBox.baseVal.height}`);
       svg.append(tick);
     });
   }
@@ -409,7 +399,7 @@
     document.addEventListener("keydown", (event) => {
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
       if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-      if (event.target.closest("input, textarea, select, [contenteditable], audio, video")) return;
+      if (event.target.closest("input, textarea, select, [contenteditable], audio, video, dialog")) return;
       event.preventDefault();
       const step = event.key === "ArrowRight" ? 1 : -1;
       for (const info of tracks) {

@@ -8,6 +8,7 @@
    6. Changing sector with the keyboard: ← →
    7. Chapters: the header and the engine drawing follow the tone below them
    8. Load the neighbouring sectors in advance (instant slide)
+   9. Contact pop-up (email and phone number)
    The direction of the slide between pages is in js/lap.js.
    ========================================================================= */
 
@@ -104,15 +105,13 @@ if (tocLinks.length && "IntersectionObserver" in window) {
 }
 
 /* 5. Telemetry trace ------------------------------------------------------ */
-// A simplified speed trace over one lap: flat on the straights, sharp drops
-// under braking, curved climbs when accelerating out of corners.
-// Each point is [distance along the lap (0–1000), speed (0–1)].
-// "a" = accelerating to this point (curve), otherwise a straight line.
+// A gentle speed trace over one lap, like the line of a circuit seen from the
+// side: long smooth rises on the straights, soft dips into the corners.
+// Each point is [distance along the lap (0–1000), speed (0–1)]; between two
+// points the trace follows an S-curve, so there is never a sharp angle.
 const LAP = [
-  [0, 0.45], [130, 0.95, "a"], [210, 0.97], [228, 0.32], [245, 0.32],
-  [320, 0.78, "a"], [332, 0.56], [420, 0.92, "a"], [480, 0.94], [502, 0.24],
-  [516, 0.24], [610, 0.86, "a"], [624, 0.62], [700, 0.9, "a"], [790, 0.96],
-  [810, 0.4], [826, 0.4], [930, 0.88, "a"], [948, 0.5], [1000, 0.6, "a"],
+  [0, 0.55], [140, 0.9], [220, 0.85], [300, 0.35], [380, 0.7], [440, 0.55],
+  [540, 0.9], [610, 0.8], [690, 0.3], [790, 0.8], [850, 0.6], [930, 0.85], [1000, 0.55],
 ];
 
 // Turns LAP into a list of [x, y] points in the SVG (fast = high = small y)
@@ -121,15 +120,10 @@ function lapPoints(height) {
   const points = [[0, y(LAP[0][1])]];
   for (let i = 1; i < LAP.length; i++) {
     const [x0, v0] = LAP[i - 1];
-    const [x1, v1, kind] = LAP[i];
-    if (kind === "a") {
-      // Acceleration: quick gain at first, then slower (ease-out)
-      for (let t = 0.125; t <= 1; t += 0.125) {
-        const ease = 1 - Math.pow(1 - t, 2.2);
-        points.push([x0 + (x1 - x0) * t, y(v0 + (v1 - v0) * ease)]);
-      }
-    } else {
-      points.push([x1, y(v1)]);
+    const [x1, v1] = LAP[i];
+    for (let t = 0.05; t <= 1.001; t += 0.05) {
+      const ease = t * t * (3 - 2 * t);   // "smoothstep": flat at both ends, no corner
+      points.push([x0 + (x1 - x0) * t, y(v0 + (v1 - v0) * ease)]);
     }
   }
   return points;
@@ -148,7 +142,7 @@ function heightAt(points, x) {
 const header = document.querySelector(".site-header");
 
 if (header) {
-  const H = 14;
+  const H = 8;                     // height of the trace (px): a low, gentle line
   const NS = "http://www.w3.org/2000/svg";
   const points = lapPoints(H);
   const d = "M" + points.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(2)}`).join(" L");
@@ -176,7 +170,6 @@ if (header) {
   // The violet part follows the reading progress (0 % at the top, 100 % at the bottom),
   // and the car drives at the end of it, wheels on the line.
   const clipRect = svg.querySelector("rect");
-  const logoMark = header.querySelector(".logo__mark");
   const CAR_W = 63;                // displayed size: 63 x 20 px (see CSS)
   const CAR_WHEEL_BOTTOM = 20;     // the wheels touch the bottom of the drawing
   let ticking = false;
@@ -194,9 +187,6 @@ if (header) {
     const lineY = svgTop + heightAt(points, x) * (svg.clientHeight / H);
     car.style.transform = `translate(${left.toFixed(1)}px, ${(lineY - CAR_WHEEL_BOTTOM).toFixed(1)}px)`;
 
-    // On narrow screens the logo sits near the left edge: hide the car while it crosses it
-    const logo = logoMark.getBoundingClientRect();
-    car.classList.toggle("is-hidden", left < logo.right && left + CAR_W > logo.left);
     ticking = false;
   }
 
@@ -218,7 +208,7 @@ const prevSector = document.querySelector('.site-header a[rel="prev"]');
 const nextSector = document.querySelector('.site-header a[rel="next"]');
 
 // Places where the arrow keys already have a meaning
-const OWN_KEYS = "input, textarea, select, [contenteditable], audio, video";
+const OWN_KEYS = "input, textarea, select, [contenteditable], audio, video, dialog";
 
 // True if the element is inside something that scrolls sideways
 // (e.g. the table of contents of the Career page on phones)
@@ -285,4 +275,69 @@ if (HTMLScriptElement.supports && HTMLScriptElement.supports("speculationrules")
     }],
   });
   document.head.append(rules);
+}
+
+/* 9. Contact pop-up ---------------------------------------------------------- */
+// Every "Contact" link (contact bar, footer) carries data-contact: it opens the
+// <dialog> with the email and phone number. Without JavaScript the same links
+// simply open an email. The × button and the Escape key close it (native).
+// A click on the email or the number copies it, and a short message confirms it.
+const contactDialog = document.getElementById("contact-dialog");
+
+if (contactDialog && contactDialog.showModal) {
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("[data-contact]");
+    if (!link) return;
+    event.preventDefault();
+    contactDialog.showModal();
+  });
+
+  // A click on the dark backdrop, outside the box, closes it too
+  contactDialog.addEventListener("click", (event) => {
+    if (event.target === contactDialog) contactDialog.close();
+  });
+
+  const toast = contactDialog.querySelector(".contact-dialog__toast");
+  let toastTimer;
+
+  function showToast() {
+    toast.textContent = toast.dataset.message;
+    toast.classList.add("is-visible");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2000);
+  }
+
+  // Copies at once with a hidden text field and the "copy" command: it works
+  // in every browser without asking for any permission. Returns true if it worked.
+  function copyNow(text) {
+    const field = document.createElement("textarea");
+    field.value = text;
+    field.setAttribute("readonly", "");
+    field.style.cssText = "position: fixed; top: 0; opacity: 0;";
+    contactDialog.append(field);            // inside the dialog, the only part that can take focus
+    field.select();
+    let ok = false;
+    try {
+      ok = document.execCommand("copy");
+    } catch (error) {
+      ok = false;
+    }
+    field.remove();
+    return ok;
+  }
+
+  contactDialog.querySelectorAll("[data-copy]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const text = button.dataset.copy;
+      if (copyNow(text)) {
+        showToast();
+      } else if (navigator.clipboard) {
+        // Newer clipboard API as a second try
+        navigator.clipboard.writeText(text).then(showToast, () => getSelection().selectAllChildren(button));
+      } else {
+        getSelection().selectAllChildren(button);   // nothing worked: the text is selected, Ctrl+C does the rest
+      }
+      button.focus();
+    });
+  });
 }

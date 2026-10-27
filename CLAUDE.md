@@ -49,14 +49,14 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
 
 **Le site est un tour de circuit** (refonte « Lap », validée le 27/10/2026, inspirée de landonorris.com sans en reprendre l'identité) :
 - Les 6 onglets sont les **6 secteurs d'un tour**, dans un ordre fixe : S1 Welcome → S2 Engineering → S3 Mobility → S4 Sustainability → S5 Activities → S6 Career → retour à S1. Le numéro est dans `<html data-sector="n">`.
-- **Tout le site se visite en défilant** (décidé le 28/10/2026, remplace l'ancienne règle « pas de scroll piégé ») : molette, trackpad, doigt, flèches ou Espace suffisent, sans cliquer. Les secteurs s'enchaînent toujours vers le bas, mais l'**axe de lecture alterne** : certains secteurs défilent verticalement, d'autres horizontalement (comme on avance sur un circuit), avec le même geste. Remonter marche dans l'autre sens. **Axes (décidé le 28/10/2026)** : S1 Welcome se lit **verticalement** (le test des 30 s) ; **S2 à S6 se lisent horizontalement** (Engineering, Mobility, Sustainability, Activities, Career). Dans Engineering, seuls les « Projects » (carte Strudel dépliable) restent verticaux, après les panneaux. **Architecture (a), validée le 28/10/2026** : voir §7.
+- **Tout le site se visite en défilant** (décidé le 28/10/2026, remplace l'ancienne règle « pas de scroll piégé ») : molette, trackpad, doigt, flèches ou Espace suffisent, sans cliquer. Les secteurs s'enchaînent toujours vers le bas, mais l'**axe de lecture alterne** : certains secteurs défilent verticalement, d'autres horizontalement (comme on avance sur un circuit), avec le même geste. Remonter marche dans l'autre sens. **Axes (décidé le 28/10/2026)** : S1 Welcome se lit **verticalement** (le test des 30 s) ; **S2 à S6 se lisent horizontalement** (Engineering, Mobility, Sustainability, Activities, Career). Dans Engineering, les « Projects » sont le 4e panneau horizontal (décidé le 27/10/2026) : ce panneau (`panel--scroll`) défile à l’intérieur quand une carte est ouverte. **Architecture (a), validée le 28/10/2026** : voir §7.
 - Exigences fixes : même geste partout ; swipe horizontal naturel sur mobile dans les secteurs horizontaux ; jonctions fluides dans les deux sens ; URL propre à chaque onglet, mise à jour pendant le défilement, bouton Retour fonctionnel ; **aucun contenu caché** dans un panneau horizontal ; clavier, focus visible, lecteurs d'écran ; sans JavaScript ou avec `prefers-reduced-motion` : navigation classique par pages ; chaque onglet s'ouvre directement et on comprend où l'on est ; changements d'axe annoncés par un repère visuel clair.
 - **Décisions du 28/10/2026 pour le défilement continu** :
   - fin du tour : on **s'arrête** sur la sortie de S6 et le footer (lien « Tour suivant → Welcome »), pas de boucle ;
   - le FR passe au défilement continu dès que ses 6 pages existent (fait le 28/10) : jamais de mélange de langues dans un même défilement ;
-  - avant chaque secteur horizontal, un **écran de virage** (grand titre, flèche → dans la couleur du secteur, nombre de panneaux et jauge) ; en sortie, un repère « ↓ secteur suivant » ;
+  - avant chaque secteur horizontal, l’ouverture du secteur (grand titre) sert d’écran de virage, **sans message** « This sector reads to the right » (retiré le 27/10/2026) : la jauge des panneaux suffit ; en sortie, un repère « ↓ secteur suivant » ;
   - lien direct vers un onglet (ex. `/career.html`) : la page s'affiche tout de suite et **tout le tour** est ajouté autour, sans faire bouger l'écran ;
-  - panneaux : Engineering = Formation | Cours | Compétences (puis Projects en vertical) ; Mobility = Projets | Langues | À venir ; Sustainability = Formations | Projet RSE | ODD ; Activities = une activité par panneau ; Career = CV & LinkedIn | Pitch | Rôles modèles | Mobilité | Calendrier | Plans A/B/C | À venir ;
+  - panneaux : Engineering = Formation | Cours | Compétences | Projets ; Mobility = Projets | Langues | À venir ; Sustainability = Formations | Projet RSE | ODD ; Activities = une activité par panneau ; Career = CV & LinkedIn | Pitch | Rôles modèles | Mobilité | Calendrier | Plans A/B/C | À venir ;
   - si un panneau ne tient pas à l'écran, le moteur le découpe en un groupe par panneau (cartes, groupes de cours…) ; s'il ne tient toujours pas (zoom, très petit écran), le secteur repasse en vertical et la raison est notée dans `data-stacked` sur le `.track` ;
   - en défilement continu, le sommaire de Career n'est plus collé en haut (il passerait sous les panneaux épinglés) ;
   - interrupteur **« Lecture classique »** dans le menu (pages séparées, choix mémorisé) ;
@@ -69,12 +69,12 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
 ## 5. Page d'accueil (`index.html`) — conçue pour être lue en 30 s
 
 Dans cet ordre (ton de chaque chapitre entre parenthèses, voir §8) :
-1. **Hero** (papier, plein écran sur ordinateur) : nom en très grand sur deux largeurs d'Archivo (« LOUP » étroit et fin, « BROUSSARD » large et gras), sous-titre « Computer Science Engineering Student @ ENSEEIHT », ligne de données `43.60° N · 1.44° E — TOULOUSE`, UVP en 1 phrase, 3 boutons : `Watch my pitch` · `Download CV` · `LinkedIn`. Portrait détouré à droite (photo à venir, provisoirement « LB »). Tout ce qui se lit en 30 s tient dans le **premier écran** (1280×720 et 375×667).
+1. **Hero** (papier, plein écran sur ordinateur) : nom en très grand sur deux largeurs d’Archivo (« LOUP » étroit, plus grand (1,6×) et en violet d’accent — 27/10/2026 —, « BROUSSARD » large et gras), sous-titre « Computer Science Engineering Student @ ENSEEIHT », ligne de données `43.60° N · 1.44° E — TOULOUSE`, UVP en 1 phrase, 3 boutons : `Watch my pitch` · `Download CV` · `LinkedIn`. Portrait détouré à droite (photo à venir, provisoirement « LB »). Tout ce qui se lit en 30 s tient dans le **premier écran** (1280×720 et 375×667).
 2. **At a glance** (encre, lu comme une fiche technique) : une liste courte « label → valeur » (4 à 6 lignes, sans icônes ni grille de fiches identiques) : formation, domaines (dev · embedded systems), langues (FR natif · EN B2), ce que je cherche, localisation (Toulouse).
 3. **Featured / Start here** (papier) : une liste de 2–3 liens vers mes meilleurs contenus (ex. projet Strudel, pitch vidéo, projet SN) ; chaque ligne = métadonnée + titre + 1 ligne + « See … → ».
 4. **Now** (sable) : ce sur quoi je travaille en ce moment (2–3 lignes, mis à jour chaque semestre).
-5. **Contact** (papier) : email en grand + LinkedIn + GitHub.
-6. **Sortie de secteur** (encre) : secteur suivant (S2 Engineering), précédent (S6 Career), carte du tour.
+(Ancien chapitre **Contact** : chapitre supprimé le 27/10/2026, remplacé par la pop-up « Contact » (voir §8, barre « Contact »).)
+5. **Sortie de secteur** (encre) : secteur suivant (S2 Engineering), précédent (S6 Career), carte du tour.
 
 Règles : pas de long paragraphe sur l'accueil (max ~3 lignes par bloc) ; tout le détail est dans les onglets.
 
@@ -143,7 +143,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   - Le header prend le ton du chapitre qui passe dessous.
   - Repli (navigateur sans support, ou `prefers-reduced-motion`) : bords nets.
 - **Univers « course auto/moto & musique »** (validé le 25/10/2026, inspiré de bsrd.fr en plus sobre) : quelques détails précis, pas d'autre image décorative que le plan moteur ci-dessous.
-  - **Tracé de télémétrie** en bas du header (courbe de vitesse sur un tour, qui évoque aussi une forme d'onde audio) : se remplit en violet avec la progression de lecture, avec une **silhouette de Porsche 911 Carrera des années 80** (même violet) qui roule au bout de la partie violette, roues posées sur la courbe (masquée quand elle croise le logo sur mobile). Tracé dessiné par `js/main.js` (§5) ; la voiture vient de `assets/img/porsche-911.svg`, utilisé comme **masque CSS** (la couleur vient du CSS, donc du thème). Avec le plan moteur et la bande chrono, ce sont les **trois seuls** éléments « signature » du site : ne pas ajouter d'autres effets.
+  - **Tracé de télémétrie** en bas du header (courbe de vitesse douce sur un tour, sans angles, 8 px de haut, dans une bande de 22–28 px réservée en bas du header pour ne jamais toucher les boutons — 27/10/2026) : se remplit en violet avec la progression de lecture, avec une **silhouette de Porsche 911 Carrera des années 80** (même violet) qui roule au bout de la partie violette, roues posées sur la courbe. Tracé dessiné par `js/main.js` (§5) ; la voiture vient de `assets/img/porsche-911.svg`, utilisé comme **masque CSS** (la couleur vient du CSS, donc du thème). Avec le plan moteur et la bande chrono, ce sont les **trois seuls** éléments « signature » du site : ne pas ajouter d'autres effets.
   - **Plan moteur en fond de toutes les pages** (validé le 27/10/2026) : dessin technique d'un flat-six Porsche (`assets/img/engine-blueprint.svg`, cadre et cartouche « REF. » retirés, aucun logo). Une seule règle : `body::before` en `position: fixed` (section 2 de `style.css`), donc il reste en place pendant que la page défile par-dessus. Même technique que la 911 : **masque CSS**, couleur = accent du thème, opacité via `--blueprint-opacity` (~0,11 clair / 0,13 sombre ; ×0,8 sur mobile), fondu vers la gauche pour qu'il se dissolve avant le texte. Placé à droite, sous le header. Les fonds de chapitre sont peints **en dessous** (section 13), donc il traverse tous les chapitres ; sur un chapitre encre, il passe en violet clair (`data-view-tone`, posé par main.js). Les blocs opaques (header, cartes, sommaire) le masquent. Statique, ne pas l'augmenter au point de gêner la lecture.
   - **Bande chrono** : la nav du header montre les 6 secteurs S1–S6, avec une barre au-dessus de chaque onglet : violet = secteur en cours (comme le « secteur violet », meilleur temps en F1), gris = secteurs déjà passés, clair = à venir. Flèches ‹ › de part et d'autre. Sur mobile : `‹ S1/6 ›` + menu plein écran (6 secteurs en grand, carte du tour, bouton thème).
   - **Carte du tour** (`assets/img/circuit.svg`, tracé original) : dans la sortie de secteur et le menu mobile ; le secteur en cours est en violet.
@@ -161,7 +161,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   | S4 Sustainability | ocre `#7A4F00` | `#E7B66A` |
   | S5 Activities | rouge `#A3302A` | `#F09A8E` |
   | S6 Career | violet (retour à l'identité pour l'arrivée) | `#A993F0` |
-- **Barre « Contact »** (toujours visible, section 16 de `style.css`) : barre de 48 px en bas sous 1280 px (icônes seules sous 400 px), rail vertical dans la marge gauche au-delà. E-mail, LinkedIn, GitHub ; lien CV à ajouter quand les PDF existeront (commentaire `TO COMPLETE` dans le HTML).
+- **Barre « Contact »** (toujours visible, section 16 de `style.css`) : barre de 48 px en bas sous 1280 px (icônes seules sous 400 px), rail vertical dans la marge gauche au-delà. E-mail, LinkedIn, GitHub ; lien CV à ajouter quand les PDF existeront (commentaire `TO COMPLETE` dans le HTML). Le mot « Contact » (barre et footer, `data-contact`) ouvre une **pop-up** (`<dialog id="contact-dialog">`, main.js §9) avec e-mail et téléphone, non cliquables : un clic les **copie** dans le presse-papiers et affiche « Copied to clipboard » ; sans JS, il ouvre un e-mail.
 - **Tons** (variables `--tone-*` en haut de `style.css`) :
   | Ton | Thème clair | Thème sombre | Texte · accent |
   |---|---|---|---|
@@ -203,14 +203,14 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
 - Avant une modification importante (structure, design global, nouvelle page), **explique ton plan et attends mon accord**.
 - Fais des modifications **petites et ciblées** ; garde la navigation identique sur toutes les pages (si tu la modifies, modifie-la partout).
 - Explique brièvement ce que tu as changé et pourquoi : je suis en SN, je veux comprendre le code.
-- Pas de données personnelles sensibles sur le site : ni téléphone, ni adresse, ni date de naissance.
+- Pas de données personnelles sensibles sur le site : pas de téléphone ailleurs que dans la pop-up Contact (décidé le 27/10/2026), ni adresse, ni date de naissance.
 - Messages de commit courts, en anglais, au présent (ex. `Add career project section`).
 - Pour une refonte : **une étape = une page**. Après chaque étape, compte rendu court : captures (375 px et 1280 px), console sans erreur, poids de la page, contenu comparé à l'ancienne version (rien de perdu), navigation au clavier, alignement EN/FR. Puis attendre mon accord avant l'étape suivante.
 
 ## 11. Mes infos
 
 - Nom : **Loup Broussard**
-- Formation : ENSEEIHT — Sciences du Numérique, 1re année (2026–2027) · avant : La Prépa des INP, Toulouse
+- Formation : ENSEEIHT — Sciences du Numérique (en anglais sur le site : « Computer Science »), 1re année (2026–2027) · avant : La Prépa des INP, Toulouse
 - Email pro : loup.broussard@outlook.com
 - LinkedIn : https://www.linkedin.com/in/loup-broussard-a6940b38b/ (EN : ?locale=en_US · FR : ?locale=fr_FR)
 - GitHub : https://github.com/loupbsd

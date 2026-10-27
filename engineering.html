@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Engineering Course — Loup Broussard</title>
-  <meta name="description" content="Loup Broussard's engineering course in Sciences du Numérique at ENSEEIHT (Toulouse INP): key courses, skills and projects.">
+  <meta name="description" content="Loup Broussard's engineering course in Computer Science at ENSEEIHT (Toulouse INP): key courses, skills and projects.">
 
   <!-- Open Graph: preview when the link is shared on LinkedIn (absolute URLs required) -->
   <meta property="og:type" content="website">
@@ -105,11 +105,11 @@
       <div class="container opener__text">
         <h1 class="opener__title" style="--fit: 11"><span class="opener__wide">Engineering</span> <span class="opener__narrow">Course</span></h1>
         <p class="opener__data">ENSEEIHT · TOULOUSE INP · 2026–2027</p>
-        <p class="intro">My path in the Sciences du Numérique (SN) program at ENSEEIHT, Toulouse INP: key courses, skills and projects.</p>
+        <p class="intro">My path in the Computer Science program at ENSEEIHT, Toulouse INP: key courses, skills and projects.</p>
       </div>
     </section>
 
-    <!-- HORIZONTAL TRACK — 3 panels: Education | Key courses | Skills.
+    <!-- HORIZONTAL TRACK — 4 panels: Education | Key courses | Skills | Projects.
          Page mode: stacked like chapters. Continuous scroll: pinned and read to the right. -->
     <div class="track" data-axis="h">
 
@@ -130,7 +130,7 @@
             <article class="card">
               <p class="card__meta">2026 – 2027 · 1st year</p>
               <h3>ENSEEIHT — Toulouse INP</h3>
-              <p class="muted">Engineering degree, Sciences du Numérique (SN)</p>
+              <p class="muted">Engineering degree, Computer Science</p>
             </article>
           </div>
         </div>
@@ -220,95 +220,95 @@
         </div>
       </section>
 
+      <!-- PANEL 4 — PROJECTS (the panel scrolls inside when a card is open)
+           To add a project: copy a whole <details class="card project-card"> … </details> block,
+           give it a new unique id, and fill in the fields. -->
+      <section class="chapter panel panel--scroll" data-tone="paper" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="projects-title">Projects</h2>
+            <p class="intro">Click a card to see the context, my role, the tools and the result.</p>
+          </div>
+
+          <div class="stack">
+
+            <!-- Project: Strudel -->
+            <details class="card project-card" id="strudel">
+              <summary>
+                <span class="card__meta">2026 · La Prépa des INP · team of 5</span>
+                <h3>Science &amp; music: recreating a piano with code</h3>
+                <span class="project-card__summary">Recording a real piano, analyzing it with the Fourier transform and rebuilding a full track by live coding in Strudel.</span>
+                <span class="tags">
+                  <span class="tag">Strudel</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">Fourier transform</span>
+                  <span class="tag">Live coding</span>
+                  <span class="tag">Teamwork</span>
+                </span>
+                <span class="project-card__toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="project-card__body">
+                <!-- TO COMPLETE: screenshot of the Strudel code (WebP 16:10, < 90 KB), then replace the frame by
+                     <img src="assets/img/strudel.webp" alt="Strudel code of the Gypsy Woman cover" width="1600" height="1000" loading="lazy"> -->
+                <figure class="photo-slot">
+                  <figcaption class="photo-slot__caption">La Prépa des INP, 2026</figcaption>
+                  <div class="photo-slot__frame">
+                    <span>Photo coming soon</span>
+                    <span class="todo">[TO COMPLETE: screenshot of the Strudel code]</span>
+                  </div>
+                </figure>
+                <dl class="fields">
+                  <div>
+                    <dt>Context</dt>
+                    <dd>Science project at La Prépa des INP. Our question: how can we recreate a piece of music as faithfully as possible with code? We worked with <a href="https://strudel.cc" target="_blank" rel="noopener">Strudel</a>, a live coding environment where you write JavaScript patterns in the browser and the music changes as you edit the code.</dd>
+                  </div>
+                  <div>
+                    <dt>My role</dt>
+                    <dd>With one teammate, I developed the music in Strudel. I also researched the history of sequencing and the Algorave movement, and wrote that part of the report.</dd>
+                  </div>
+                  <div>
+                    <dt>Methods &amp; tools</dt>
+                    <dd>Piano recorded note by note over 3 octaves (Reaper, Audacity) · spectral analysis in Python (NumPy, SciPy, Matplotlib) · Strudel &amp; JavaScript · samples hosted on GitHub Pages · interactive notebook on Observable · regular meetings with written decisions.</dd>
+                  </div>
+                  <div>
+                    <dt>Result</dt>
+                    <dd>
+                      A full cover of <em>Gypsy Woman</em> (Crystal Waters) played with our own piano samples, a Moog bass, TR-909 drums and live visuals; an interactive notebook to learn Strudel; and a 41-page report.
+                      <ul class="result-links">
+                        <li><a class="link-arrow" href="https://strudel.cc/#YXdhaXQgaW5pdEh5ZHJhKCkKb3NjKCAyMTUsIDAuMSwgMiApCi5tb2R1bGF0ZSgKICBvc2MoIDIsIC0wLjMsIDEwMCApCiAgLnJvdGF0ZSgxNSkKKQoubXVsdCgKICBvc2MoIDIxNSwgLTAuMSwgMikKICAucGl4ZWxhdGUoIDUwLCA1MCApCikKLmNvbG9yKCAwLjksIDAuMCwgMC45ICkKLm1vZHVsYXRlKAogIG9zYyggNiwgLTAuMSApCiAgLnJvdGF0ZSggOSApCikKLmFkZCgKICBvc2MoIDEwLCAtMC45LCA5MDAgKQogIC5jb2xvcigxLDAsMSkKKQoubXVsdCgKICBzaGFwZSg5MDAsIDAuMiwgMSkKICAubHVtYSgpCiAgLnJlcGVhdFgoMikKICAucmVwZWF0WSgyKQogIC5jb2xvcmFtYSgxMCkKKQoubW9kdWxhdGUoCiAgb3NjKCA5LCAtMC4zLCA5MDAgKQogIC5yb3RhdGUoIDYgKQopCi5hZGQoCiAgb3NjKDQsIDEsIDkwKQogIC5jb2xvcigwLjIsMCwxKQopCi5vdXQoKQoKCgoKCi8vR1lQU1kgV09NQU4gZGUgQ3J5c3RhbHMgV2F0ZXJzCgovL09uIGTDqWZpbml0IGxlIHRlbXBvLCBldCBsYSBzaWduYXR1cmUgcnl0aG1pcXVlIChpY2kgZHUgNC80IGMnZXN0IMOgIGRpcmUgNCBub2lyZXMgcGFyIG1lc3VyZXMpCnNldGNwbSgxMjAvNCkgCgovL0Nob3JkcwovLyBPbiBjcsOpZSBpY2kgZGVzIHZhcmlhYmxlcyAoYWNjb3JkcykgcXVlIGwnb24gdmEgcsOpdXRpbGlzZXIgcGFyIGxhIHN1aXRlLiBDZWxhIHBlcm1ldCBkZSBsaW1pdGVyIGxhIHJlZG9uZGFuY2UuCi8vIEEgbm90ZXIgcXVlIGxlIGxhbmdhZ2UgU3RydWRlbCBhY2NlcHRlIMOpZ2FsZW1lbnQgbGVzIG5vdGF0aW9ucyBhbcOpcmljYWluZXMgZGVzIGFjY29yZHMgYXZlYyBwbHVzaWV1cnMgdm9pY2luZ3MgaW50w6lncsOpcy4KbGV0IGNob3JkID0gCntBbTc6ImEzLCBnNCwgYzUsIGU1IiwgQmJtYWo3OiJiYjMsIGE0LCBkNSwgZjUiLCAKIEVtNzoiZTQsIGU1LCBnNSwgYjUsIGQ2IiwgRWJtYWo3OiJlYjQsIGViNSwgZzUsIGJiNSwgZDYiLCAKIERtOToiZDQsIGY0LCBhNCwgYzUsIGU1IiwgRG03OiJkNCwgZjQsIGE0LCBjNSwgZDUiLAogR203OiJnMywgZzQsIGJiNCwgZDUsIGY1IiwgQzdiOToiYzQsIGc0LCBiYjQsIGRiNSwgZTUifQovL0VuIHRvdXRlIHJpZ3VldXIgaWwgZmF1ZHJhaXQgdXRpbGlzZXIgZGVzIGLDqW1vbHMgZXQgbm9uIGRlcyBkacOoc2VzIG1haXMgbG9ycyBkZSBsYSBjcsOpYXRpb24gZHUgc2FtcGxlIG5vdXMgYXZvbnMgZMO7IGZhaXJlIHVuIGNob2l4LgoKLy9vcmdhbiBrb3JnIG0xCi8vTGEgZGlmZmljdWx0w6kgcHJpbmNpcGFsZSBpY2kgZXN0IGRlIHJlY3LDqWVyIGxlIHNvbiBvcmlnaW5hbCBhdmVjIHVuZSBiYW5xdWUgZGUgc29uIHLDqWR1aXRlLgovL09uIGTDqWZpbml0IGRlcyBzZWN0aW9ucyAoaTEsIGkyLC4uLikgcG91ciBhbGzDqWdlciBsJ8OpY3JpdHVyZSBldCDDqXZpdGVyIGxhIHJlZG9uZGFuY2UgZW5jb3JlIHVuZSBmb2lzLgpsZXQgb3JnYW4gPSAiPGkxQDIgaTJAMiBpMUAyIGkzQDI%2BIi5waWNrUmVzdGFydCgKe2kxOiBgPERtOUAxIERtOUAwLjc1IERtN0AwLjc1IERtN0AwLjc0IERtN0AwLjc2Pio0YCwKIGkyOiBgPEFtN0AxIEFtN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEdtN0AxIEdtN0AwLjc1IEM3YjlAMC43NSBDN2I5QDAuNzUgQzdiOUAwLjc1ID4qNGAsCiBpMzogYDxBbTdAMSBBbTdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBFbTdAMSBFbTdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSA%2BKjRgfSkKICAucGlja091dChjaG9yZCkubm90ZSgpLnMoImdtX3BlcmN1c3NpdmVfb3JnYW46MSIpCiAgLmNsaXAoLjc1KS5yZWxlYXNlKC4yNSkuZ2FpbiguNikucm9vbSguNCkubHBmKDQwMDApLl9zcGlyYWwoeyBzdGVhZHk6IC4xIH0pCiAgCi8vcGlhbm8gc3R5bGUgYW5uw6llIDgwCi8vRG91YmxlIGwnb3JndWUgZGFucyBsYSBkZXV4acOobWUgcGFydGllIGR1IG1vcmNlYXUuIApsZXQgcGlhbm8gPSAiPGkxQDIgaTJAMiBpMUAyIGkzQDI%2BIi5waWNrUmVzdGFydCgKe2kxOiBgPERtOUAxIERtOUAwLjc1IERtN0AwLjc1IERtN0AwLjc0IERtN0AwLjc2Pio0YCwKIGkyOiBgPEFtN0AxIEFtN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEdtN0AxIEdtN0AwLjc1IEM3YjlAMC43NSBDN2I5QDAuNzUgQzdiOUAwLjc1ID4qNGAsCiBpMzogYDxBbTdAMSBBbTdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBFbTdAMSBFbTdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSA%2BKjRgfSkKICAucGlja091dChjaG9yZCkubm90ZSgpLnMoIm1vbl9waWFubyIpLmhwZig1MDApLnJvb20oLjIpCiAgLmFkc3IoIjA6LjE6LjE6LjAwMDAwMiIpLmNvbXByZXNzb3IoIi0yMDoxMDoxOi4wMDE6LjYiKS52aWIoLjEpLnBvc3RnYWluKC41KSAvL09uIHV0aWxpc2UgdW4gY29tcHJlc3NldXIgcG91ciDDqXZpdGVyIGxhIHNhdHVyYXRpb24gKG91IGNsaXBwaW5nKS4KICAuY29sb3IoIm9yYW5nZSIpLl9waWFub3JvbGwoeyBsYWJlbHM6IDIgfSkvL0NlIHZpc3VlbCBlc3QgdHLDqHMgc2ltaWxhaXJlIMOgIGwnaW50ZXJmYWNlIGQndW4gREFXIGNvbW1lIEFibGV0b24gb3UgTG9naWMgUHJvCgovL0Jhc3MKLy9PbiBpbXBvcnRlIHVuIHNvbiBkZSBNb29nLCBjw6lsw6hicmUgc3ludGjDqXRpc2V1ciBvbW5pcHLDqXNlbnQgZGFucyBsYSBtdXNpcXVlIGRlcHVpcyBzYSBjcsOpYXRpb24uCnNhbXBsZXMoeydtb29nJzogeyAnZzMnOiAnbW9vZy8wMDVfTWlnaHR5JTIwTW9vZyUyMEczLndhdicgfSB9LCAnZ2l0aHViOnRpZGFsY3ljbGVzL0RpcnQtU2FtcGxlcy9tYXN0ZXIvJykKLy9Nw6ptZSBwcm9ibMOobWUgcXVlIHBvdXIgbCdvcmd1ZSwgaWwgZXN0IGFzc2V6IGRpZmZpY2lsZSBkZSByZWNyw6llciBsZSBzb24gZGUgYmFzc2Ugb3JpZ2luYWwuCi8vR3LDomNlIMOgIHVuZSB2aWTDqW8gb8O5IE1yIFNraSBPYWtlbmZ1bGwgcmVjb25zdHJ1aXQgZW50acOocmVtZW50IGNldHRlIGNoYW5zb24gc3VyIEFibGV0b24gTGl2ZSwgaidhaSBwdSByZXBpcXVlciBsYSBsaWduZSBkZSBiYXNzZSBleGFjdGUuCmxldCBiYXNzID0gIjxpMUAyIGkyQDIgaTFAMiBpM0AyPiIucGlja1Jlc3RhcnQoCntpMTogbm90ZShgPGExIGUyIGExIFtmMiBhMV0gZjEgZDIgYzIgW2ExIGMyXT4qNGApLAogaTI6IG5vdGUoYDxhMSBlMiBiYjEgW2YyIGJiMV0gZzEgZDIgYzIgW2cxIGMyXT4qNGApLAogaTM6IG5vdGUoYDxhMSBlMiBiYjEgW2YyIGJiMV0gZTIgYTEgZWIyIFtiYjEgZWIyXT4qNGApCn0pLnMoIm1vb2csIHpfc2F3dG9vdGgiKS50cmFuc3Bvc2UoMTIpLnN3aW5nQnkoLjAyLDQpCiAgLmdhaW4oLjkpLmNsaXAoLjQpLnJlbGVhc2UoLjIpLmxwZigyMDApLmxwZW52KDEuNSkKLl9zY29wZSgpCgovL0Rpc2NyZXQgbWFpcyBwcsOpc2VudCB0b3V0IGxlIGxvbmcgZHUgbW9yY2VhdToKbGV0IHNoYWtlciA9IHMoInNoKjE2IikuZ2FpbiguMikuc3dpbmdCeSguMDUsOCkucm9vbSguMikgCgovL0RhbnMgbCdvcmlnaW5hbCBpbCB5IGEgMiBiYXR0ZXJpZXMgcXVpIHNlIHN1cGVycG9zZW50LiBMYSBwcmVtacOocmUgZXN0IGV4YWN0ZW1lbnQgY2VsbGUgY2ktZGVzc291cyAobcOqbWUgc2FtcGxlLCBwYXR0ZXJuLCBzd2luZykKLy9tYWlzIGxhIGRldXhpw6htZSBlc3Qgc2V1bGVtZW50IHVuZSBlc3RpbWF0aW9uIGNhciBpbCBzJ2FnaXQgZCd1biBzYW1wbGUgY2hvcHBlZCAocmVkw6ljb3Vww6kpIHF1ZSBqZSBuZSBwZXV4IHBhcyByw6ljdXDDqXJlci4KbGV0IGRydW1zMSA9IHN0YWNrKAogIHMoImJkIGJkIGJkIGJkIGJkIGJkIGJkIFtiZCBiZF0iKS5nYWluKDEpLnNsb3coMiksCiAgcygiPFt%2BIGNwOjBdPioyIikuZ2FpbigwLjkpLnJvb20oLjEpLAogIHMoIlstIG9oIC0gb2ggLSBvaCAtIG9oXSIpLmdhaW4oLjIpLCAKICBzKCJbLSAtIC0gLSBoaCAtIC0gaGggaGggaGggLSAtIGhoIC0gLSAtXSIpLmdhaW4oLjMpLnBhbihzaW5lKS5zd2luZ0J5KC4zLCA4KSwKICApLmJhbmsoIlJvbGFuZFRSOTA5Iikuc3dpbmdCeSguMDIsIDQpLnBvc3RnYWluKC45KQovL0xhIGZvbmN0aW9uIFN3aW5nQnkgZXN0IHBhcnRpY3VsacOocmVtZW50IGltcG9ydGFudGUsIGVsbGUgcGVybWV0IGRlIGTDqWNhbGVyIHZvbG9udGFpcmVtZW50IGNlcnRhaW5lcyBub3RlcyBwb3VyIHJham91dGVyCi8vdW4gYXNwZWN0IG9yZ2FuaXF1ZSwgdml2YW50LCB1biBncm9vdmUgYXUgbW9yY2VhdS4KLmNvbG9yKCJncmVlbiIpLl9wdW5jaGNhcmQoKQpsZXQgZHJ1bXMyID0gc3RhY2soCiAgcygiYmQgWy0gWy0gYmRdXSBiZCAtICIpLnN3aW5nQnkoLjIsIDgpLAogIHMoIi0gWy0gcmltXSAtIC0gWy0gcmltXSAtIC0gLSIpLnN3aW5nQnkoLjQsIDgpLAogIHMoIi0gLSBjcCAtIC0gLSBjcCAtIiksCiAgcygiLSBvaCAtIFtoaCBoaF0gLSBvaCAtIGhoIikuZ2FpbiguNSkuc3dpbmdCeSguMyw4KS5zdXN0YWluKC45KQopLmJhbmsoIlJvbGFuZFRSOTA5IikuaHBmKDIwMDApLnBvc3RnYWluKC4zKS5zd2luZ0J5KC4wMiw0KQouY29sb3IoIm9yYW5nZSIpLl9wdW5jaGNhcmQoKQovL0RldXggcGV0aXRlcyBwZXJjdXNzaW9ucyBzdXBwbMOpbWVudGFpcmVzIHF1aSBhcHBhcmFpc3NlbnQgcGx1cyB0YXJkIGRhbnMgbGUgbW9yY2VhdXguCmxldCByaWRlID0gcygicmQqOCIpLmxwZig4MDAwKS5nYWluKCI8LjMgLjMgLjUgLjM%2BKjgiKS5yb29tKC4zKQpsZXQgYm9uZ28gPSBzKCI8Wy0gWy0gYm9uZ29dXSBbLSAtIGJvbmdvIGJvbmdvXT4qNCIpCgoKLy9Gb25jdGlvbiBnbG9iYWxlIHF1aSBwZXJtZXQgZCdhcnJhbmdlciBsZSBtb3JjZWF1IGVuIGFwcGVsYW50IGNlcnRhaW5zIGluc3RydW1lbnQgb3Ugbm9uLgovL0xhIG5vdGF0aW9uOiBsZXQgZiA9ICwgcGVybWV0IGRlIHJhcHBlbGVyIGNlcyBmb25jdGlvbnMgcG91ciBsZXMgam91ZXIgZW5zdWl0ZS4KJDogYXJyYW5nZSgKICBbNCwgc3RhY2sob3JnYW4sIHNoYWtlcildLAogIFsxNiwgc3RhY2sob3JnYW4sIHBpYW5vLCBiYXNzLCBkcnVtczEsIGRydW1zMiwgcmlkZSwgYm9uZ28sIHNoYWtlcildLAogIFs4LCBzaWxlbmNlXQogIAopCgoKLy9PbiByZXRyb3V2ZSBpY2kgbGUgcGlhbm8gcXVlIG5vdXMgYXZvbnMgY3LDqcOpLCBvbiBub21tZSBhaW5zaSB0b3V0IGxlcyBmaWNoaWVycyBwb3VyIHBvdXZvaXIgbGVzIHV0aWxpc2VyIGF1IGRlc3N1cy4Kc2FtcGxlcyh7CiAgJ21vbl9waWFubyc6IHsKICAgIC8vIE9jdGF2ZSAzCiAgICAnYzMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEud2F2JywgCiAgICAnYyMzJzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yLndhdicsIAogICAgJ2QzJzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zLndhdicsIAogICAgJ2QjMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNC53YXYnLCAKICAgICdlMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNS53YXYnLCAKICAgICdmMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNi53YXYnLAogICAgJ2YjMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNy53YXYnLCAKICAgICdnMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvOC53YXYnLCAKICAgICdnIzMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0Lzkud2F2JywgCiAgICAnYTMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEwLndhdicsIAogICAgJ2JiMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTEud2F2JywgCiAgICAnYjMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEyLndhdicsCiAgICAKICAgIC8vIE9jdGF2ZSA0CiAgICAnYzQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEzLndhdicsIAogICAgJ2MjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTQud2F2JywgCiAgICAnZDQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzE1LndhdicsIAogICAgJ2ViNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTYud2F2JywgCiAgICAnZTQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzE3LndhdicsIAogICAgJ2Y0JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8xOC53YXYnLAogICAgJ2YjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTkud2F2JywgCiAgICAnZzQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzIwLndhdicsIAogICAgJ2cjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjEud2F2JywgCiAgICAnYTQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzIyLndhdicsIAogICAgJ2JiNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjMud2F2JywgCiAgICAnYjQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzI0LndhdicsCgogICAgLy8gT2N0YXZlIDUKICAgICdjNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjUud2F2JywgCiAgICAnYyM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yNi53YXYnLCAKICAgICdkNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjcud2F2JywgCiAgICAnZWI1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yOC53YXYnLCAKICAgICdlNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjkud2F2JywgCiAgICAnZjUnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzMwLndhdicsCiAgICAnZiM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zMS53YXYnLCAKICAgICdnNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzIud2F2JywgCiAgICAnZyM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zMy53YXYnLCAKICAgICdhNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzQud2F2JywgCiAgICAnYmI1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zNS53YXYnLCAKICAgICdiNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzYud2F2JywKCiAgICAvLyBPY3RhdmUgNgogICAgJ2M2JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zNy53YXYnLAogICAgJ2MjNic6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNTAud2F2JywKICAgICdkNic6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNTEud2F2JwogIH0KfSk7Cg%3D%3D" target="_blank" rel="noopener">Play the track in Strudel →</a></li>
+                        <li><a class="link-arrow" href="https://observablehq.com/d/10a7e22d37d67443" target="_blank" rel="noopener">Interactive notebook (Observable) →</a></li>
+                        <li><a class="link-arrow" href="assets/docs/groupe_10_rapport_science_et_musique.pdf" target="_blank" rel="noopener">Project report (PDF, in French) →</a></li>
+                      </ul>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>What I learned</dt>
+                    <dd>Working in a team on a long project, combining science and creativity, and learning a new tool on my own.</dd>
+                  </div>
+                </dl>
+              </div>
+            </details>
+
+            <!-- Coming soon: replace with real project cards (copy the Strudel block above) -->
+            <article class="card card--soon">
+              <h3>Engineering projects</h3>
+              <p>Coming in S6: my first projects at ENSEEIHT will appear here.</p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
     </div>
-
-    <!-- PROJECTS
-         To add a project: copy a whole <details class="card project-card"> … </details> block,
-         give it a new unique id, and fill in the fields. -->
-    <section class="chapter" data-tone="paper" id="projects" aria-labelledby="projects-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="projects-title">Projects</h2>
-          <p class="intro">Click a card to see the context, my role, the tools and the result.</p>
-        </div>
-
-        <div class="stack">
-
-          <!-- Project: Strudel -->
-          <details class="card project-card" id="strudel">
-            <summary>
-              <span class="card__meta">2026 · La Prépa des INP · team of 5</span>
-              <h3>Science &amp; music: recreating a piano with code</h3>
-              <span class="project-card__summary">Recording a real piano, analyzing it with the Fourier transform and rebuilding a full track by live coding in Strudel.</span>
-              <span class="tags">
-                <span class="tag">Strudel</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Python</span>
-                <span class="tag">Fourier transform</span>
-                <span class="tag">Live coding</span>
-                <span class="tag">Teamwork</span>
-              </span>
-              <span class="project-card__toggle" aria-hidden="true"></span>
-            </summary>
-            <div class="project-card__body">
-              <!-- TO COMPLETE: screenshot of the Strudel code (WebP 16:10, < 90 KB), then replace the frame by
-                   <img src="assets/img/strudel.webp" alt="Strudel code of the Gypsy Woman cover" width="1600" height="1000" loading="lazy"> -->
-              <figure class="photo-slot">
-                <figcaption class="photo-slot__caption">La Prépa des INP, 2026</figcaption>
-                <div class="photo-slot__frame">
-                  <span>Photo coming soon</span>
-                  <span class="todo">[TO COMPLETE: screenshot of the Strudel code]</span>
-                </div>
-              </figure>
-              <dl class="fields">
-                <div>
-                  <dt>Context</dt>
-                  <dd>Science project at La Prépa des INP. Our question: how can we recreate a piece of music as faithfully as possible with code? We worked with <a href="https://strudel.cc" target="_blank" rel="noopener">Strudel</a>, a live coding environment where you write JavaScript patterns in the browser and the music changes as you edit the code.</dd>
-                </div>
-                <div>
-                  <dt>My role</dt>
-                  <dd>With one teammate, I developed the music in Strudel. I also researched the history of sequencing and the Algorave movement, and wrote that part of the report.</dd>
-                </div>
-                <div>
-                  <dt>Methods &amp; tools</dt>
-                  <dd>Piano recorded note by note over 3 octaves (Reaper, Audacity) · spectral analysis in Python (NumPy, SciPy, Matplotlib) · Strudel &amp; JavaScript · samples hosted on GitHub Pages · interactive notebook on Observable · regular meetings with written decisions.</dd>
-                </div>
-                <div>
-                  <dt>Result</dt>
-                  <dd>
-                    A full cover of <em>Gypsy Woman</em> (Crystal Waters) played with our own piano samples, a Moog bass, TR-909 drums and live visuals; an interactive notebook to learn Strudel; and a 41-page report.
-                    <ul class="result-links">
-                      <li><a class="link-arrow" href="https://strudel.cc/#YXdhaXQgaW5pdEh5ZHJhKCkKb3NjKCAyMTUsIDAuMSwgMiApCi5tb2R1bGF0ZSgKICBvc2MoIDIsIC0wLjMsIDEwMCApCiAgLnJvdGF0ZSgxNSkKKQoubXVsdCgKICBvc2MoIDIxNSwgLTAuMSwgMikKICAucGl4ZWxhdGUoIDUwLCA1MCApCikKLmNvbG9yKCAwLjksIDAuMCwgMC45ICkKLm1vZHVsYXRlKAogIG9zYyggNiwgLTAuMSApCiAgLnJvdGF0ZSggOSApCikKLmFkZCgKICBvc2MoIDEwLCAtMC45LCA5MDAgKQogIC5jb2xvcigxLDAsMSkKKQoubXVsdCgKICBzaGFwZSg5MDAsIDAuMiwgMSkKICAubHVtYSgpCiAgLnJlcGVhdFgoMikKICAucmVwZWF0WSgyKQogIC5jb2xvcmFtYSgxMCkKKQoubW9kdWxhdGUoCiAgb3NjKCA5LCAtMC4zLCA5MDAgKQogIC5yb3RhdGUoIDYgKQopCi5hZGQoCiAgb3NjKDQsIDEsIDkwKQogIC5jb2xvcigwLjIsMCwxKQopCi5vdXQoKQoKCgoKCi8vR1lQU1kgV09NQU4gZGUgQ3J5c3RhbHMgV2F0ZXJzCgovL09uIGTDqWZpbml0IGxlIHRlbXBvLCBldCBsYSBzaWduYXR1cmUgcnl0aG1pcXVlIChpY2kgZHUgNC80IGMnZXN0IMOgIGRpcmUgNCBub2lyZXMgcGFyIG1lc3VyZXMpCnNldGNwbSgxMjAvNCkgCgovL0Nob3JkcwovLyBPbiBjcsOpZSBpY2kgZGVzIHZhcmlhYmxlcyAoYWNjb3JkcykgcXVlIGwnb24gdmEgcsOpdXRpbGlzZXIgcGFyIGxhIHN1aXRlLiBDZWxhIHBlcm1ldCBkZSBsaW1pdGVyIGxhIHJlZG9uZGFuY2UuCi8vIEEgbm90ZXIgcXVlIGxlIGxhbmdhZ2UgU3RydWRlbCBhY2NlcHRlIMOpZ2FsZW1lbnQgbGVzIG5vdGF0aW9ucyBhbcOpcmljYWluZXMgZGVzIGFjY29yZHMgYXZlYyBwbHVzaWV1cnMgdm9pY2luZ3MgaW50w6lncsOpcy4KbGV0IGNob3JkID0gCntBbTc6ImEzLCBnNCwgYzUsIGU1IiwgQmJtYWo3OiJiYjMsIGE0LCBkNSwgZjUiLCAKIEVtNzoiZTQsIGU1LCBnNSwgYjUsIGQ2IiwgRWJtYWo3OiJlYjQsIGViNSwgZzUsIGJiNSwgZDYiLCAKIERtOToiZDQsIGY0LCBhNCwgYzUsIGU1IiwgRG03OiJkNCwgZjQsIGE0LCBjNSwgZDUiLAogR203OiJnMywgZzQsIGJiNCwgZDUsIGY1IiwgQzdiOToiYzQsIGc0LCBiYjQsIGRiNSwgZTUifQovL0VuIHRvdXRlIHJpZ3VldXIgaWwgZmF1ZHJhaXQgdXRpbGlzZXIgZGVzIGLDqW1vbHMgZXQgbm9uIGRlcyBkacOoc2VzIG1haXMgbG9ycyBkZSBsYSBjcsOpYXRpb24gZHUgc2FtcGxlIG5vdXMgYXZvbnMgZMO7IGZhaXJlIHVuIGNob2l4LgoKLy9vcmdhbiBrb3JnIG0xCi8vTGEgZGlmZmljdWx0w6kgcHJpbmNpcGFsZSBpY2kgZXN0IGRlIHJlY3LDqWVyIGxlIHNvbiBvcmlnaW5hbCBhdmVjIHVuZSBiYW5xdWUgZGUgc29uIHLDqWR1aXRlLgovL09uIGTDqWZpbml0IGRlcyBzZWN0aW9ucyAoaTEsIGkyLC4uLikgcG91ciBhbGzDqWdlciBsJ8OpY3JpdHVyZSBldCDDqXZpdGVyIGxhIHJlZG9uZGFuY2UgZW5jb3JlIHVuZSBmb2lzLgpsZXQgb3JnYW4gPSAiPGkxQDIgaTJAMiBpMUAyIGkzQDI%2BIi5waWNrUmVzdGFydCgKe2kxOiBgPERtOUAxIERtOUAwLjc1IERtN0AwLjc1IERtN0AwLjc0IERtN0AwLjc2Pio0YCwKIGkyOiBgPEFtN0AxIEFtN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEdtN0AxIEdtN0AwLjc1IEM3YjlAMC43NSBDN2I5QDAuNzUgQzdiOUAwLjc1ID4qNGAsCiBpMzogYDxBbTdAMSBBbTdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBFbTdAMSBFbTdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSA%2BKjRgfSkKICAucGlja091dChjaG9yZCkubm90ZSgpLnMoImdtX3BlcmN1c3NpdmVfb3JnYW46MSIpCiAgLmNsaXAoLjc1KS5yZWxlYXNlKC4yNSkuZ2FpbiguNikucm9vbSguNCkubHBmKDQwMDApLl9zcGlyYWwoeyBzdGVhZHk6IC4xIH0pCiAgCi8vcGlhbm8gc3R5bGUgYW5uw6llIDgwCi8vRG91YmxlIGwnb3JndWUgZGFucyBsYSBkZXV4acOobWUgcGFydGllIGR1IG1vcmNlYXUuIApsZXQgcGlhbm8gPSAiPGkxQDIgaTJAMiBpMUAyIGkzQDI%2BIi5waWNrUmVzdGFydCgKe2kxOiBgPERtOUAxIERtOUAwLjc1IERtN0AwLjc1IERtN0AwLjc0IERtN0AwLjc2Pio0YCwKIGkyOiBgPEFtN0AxIEFtN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEdtN0AxIEdtN0AwLjc1IEM3YjlAMC43NSBDN2I5QDAuNzUgQzdiOUAwLjc1ID4qNGAsCiBpMzogYDxBbTdAMSBBbTdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBFbTdAMSBFbTdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSA%2BKjRgfSkKICAucGlja091dChjaG9yZCkubm90ZSgpLnMoIm1vbl9waWFubyIpLmhwZig1MDApLnJvb20oLjIpCiAgLmFkc3IoIjA6LjE6LjE6LjAwMDAwMiIpLmNvbXByZXNzb3IoIi0yMDoxMDoxOi4wMDE6LjYiKS52aWIoLjEpLnBvc3RnYWluKC41KSAvL09uIHV0aWxpc2UgdW4gY29tcHJlc3NldXIgcG91ciDDqXZpdGVyIGxhIHNhdHVyYXRpb24gKG91IGNsaXBwaW5nKS4KICAuY29sb3IoIm9yYW5nZSIpLl9waWFub3JvbGwoeyBsYWJlbHM6IDIgfSkvL0NlIHZpc3VlbCBlc3QgdHLDqHMgc2ltaWxhaXJlIMOgIGwnaW50ZXJmYWNlIGQndW4gREFXIGNvbW1lIEFibGV0b24gb3UgTG9naWMgUHJvCgovL0Jhc3MKLy9PbiBpbXBvcnRlIHVuIHNvbiBkZSBNb29nLCBjw6lsw6hicmUgc3ludGjDqXRpc2V1ciBvbW5pcHLDqXNlbnQgZGFucyBsYSBtdXNpcXVlIGRlcHVpcyBzYSBjcsOpYXRpb24uCnNhbXBsZXMoeydtb29nJzogeyAnZzMnOiAnbW9vZy8wMDVfTWlnaHR5JTIwTW9vZyUyMEczLndhdicgfSB9LCAnZ2l0aHViOnRpZGFsY3ljbGVzL0RpcnQtU2FtcGxlcy9tYXN0ZXIvJykKLy9Nw6ptZSBwcm9ibMOobWUgcXVlIHBvdXIgbCdvcmd1ZSwgaWwgZXN0IGFzc2V6IGRpZmZpY2lsZSBkZSByZWNyw6llciBsZSBzb24gZGUgYmFzc2Ugb3JpZ2luYWwuCi8vR3LDomNlIMOgIHVuZSB2aWTDqW8gb8O5IE1yIFNraSBPYWtlbmZ1bGwgcmVjb25zdHJ1aXQgZW50acOocmVtZW50IGNldHRlIGNoYW5zb24gc3VyIEFibGV0b24gTGl2ZSwgaidhaSBwdSByZXBpcXVlciBsYSBsaWduZSBkZSBiYXNzZSBleGFjdGUuCmxldCBiYXNzID0gIjxpMUAyIGkyQDIgaTFAMiBpM0AyPiIucGlja1Jlc3RhcnQoCntpMTogbm90ZShgPGExIGUyIGExIFtmMiBhMV0gZjEgZDIgYzIgW2ExIGMyXT4qNGApLAogaTI6IG5vdGUoYDxhMSBlMiBiYjEgW2YyIGJiMV0gZzEgZDIgYzIgW2cxIGMyXT4qNGApLAogaTM6IG5vdGUoYDxhMSBlMiBiYjEgW2YyIGJiMV0gZTIgYTEgZWIyIFtiYjEgZWIyXT4qNGApCn0pLnMoIm1vb2csIHpfc2F3dG9vdGgiKS50cmFuc3Bvc2UoMTIpLnN3aW5nQnkoLjAyLDQpCiAgLmdhaW4oLjkpLmNsaXAoLjQpLnJlbGVhc2UoLjIpLmxwZigyMDApLmxwZW52KDEuNSkKLl9zY29wZSgpCgovL0Rpc2NyZXQgbWFpcyBwcsOpc2VudCB0b3V0IGxlIGxvbmcgZHUgbW9yY2VhdToKbGV0IHNoYWtlciA9IHMoInNoKjE2IikuZ2FpbiguMikuc3dpbmdCeSguMDUsOCkucm9vbSguMikgCgovL0RhbnMgbCdvcmlnaW5hbCBpbCB5IGEgMiBiYXR0ZXJpZXMgcXVpIHNlIHN1cGVycG9zZW50LiBMYSBwcmVtacOocmUgZXN0IGV4YWN0ZW1lbnQgY2VsbGUgY2ktZGVzc291cyAobcOqbWUgc2FtcGxlLCBwYXR0ZXJuLCBzd2luZykKLy9tYWlzIGxhIGRldXhpw6htZSBlc3Qgc2V1bGVtZW50IHVuZSBlc3RpbWF0aW9uIGNhciBpbCBzJ2FnaXQgZCd1biBzYW1wbGUgY2hvcHBlZCAocmVkw6ljb3Vww6kpIHF1ZSBqZSBuZSBwZXV4IHBhcyByw6ljdXDDqXJlci4KbGV0IGRydW1zMSA9IHN0YWNrKAogIHMoImJkIGJkIGJkIGJkIGJkIGJkIGJkIFtiZCBiZF0iKS5nYWluKDEpLnNsb3coMiksCiAgcygiPFt%2BIGNwOjBdPioyIikuZ2FpbigwLjkpLnJvb20oLjEpLAogIHMoIlstIG9oIC0gb2ggLSBvaCAtIG9oXSIpLmdhaW4oLjIpLCAKICBzKCJbLSAtIC0gLSBoaCAtIC0gaGggaGggaGggLSAtIGhoIC0gLSAtXSIpLmdhaW4oLjMpLnBhbihzaW5lKS5zd2luZ0J5KC4zLCA4KSwKICApLmJhbmsoIlJvbGFuZFRSOTA5Iikuc3dpbmdCeSguMDIsIDQpLnBvc3RnYWluKC45KQovL0xhIGZvbmN0aW9uIFN3aW5nQnkgZXN0IHBhcnRpY3VsacOocmVtZW50IGltcG9ydGFudGUsIGVsbGUgcGVybWV0IGRlIGTDqWNhbGVyIHZvbG9udGFpcmVtZW50IGNlcnRhaW5lcyBub3RlcyBwb3VyIHJham91dGVyCi8vdW4gYXNwZWN0IG9yZ2FuaXF1ZSwgdml2YW50LCB1biBncm9vdmUgYXUgbW9yY2VhdS4KLmNvbG9yKCJncmVlbiIpLl9wdW5jaGNhcmQoKQpsZXQgZHJ1bXMyID0gc3RhY2soCiAgcygiYmQgWy0gWy0gYmRdXSBiZCAtICIpLnN3aW5nQnkoLjIsIDgpLAogIHMoIi0gWy0gcmltXSAtIC0gWy0gcmltXSAtIC0gLSIpLnN3aW5nQnkoLjQsIDgpLAogIHMoIi0gLSBjcCAtIC0gLSBjcCAtIiksCiAgcygiLSBvaCAtIFtoaCBoaF0gLSBvaCAtIGhoIikuZ2FpbiguNSkuc3dpbmdCeSguMyw4KS5zdXN0YWluKC45KQopLmJhbmsoIlJvbGFuZFRSOTA5IikuaHBmKDIwMDApLnBvc3RnYWluKC4zKS5zd2luZ0J5KC4wMiw0KQouY29sb3IoIm9yYW5nZSIpLl9wdW5jaGNhcmQoKQovL0RldXggcGV0aXRlcyBwZXJjdXNzaW9ucyBzdXBwbMOpbWVudGFpcmVzIHF1aSBhcHBhcmFpc3NlbnQgcGx1cyB0YXJkIGRhbnMgbGUgbW9yY2VhdXguCmxldCByaWRlID0gcygicmQqOCIpLmxwZig4MDAwKS5nYWluKCI8LjMgLjMgLjUgLjM%2BKjgiKS5yb29tKC4zKQpsZXQgYm9uZ28gPSBzKCI8Wy0gWy0gYm9uZ29dXSBbLSAtIGJvbmdvIGJvbmdvXT4qNCIpCgoKLy9Gb25jdGlvbiBnbG9iYWxlIHF1aSBwZXJtZXQgZCdhcnJhbmdlciBsZSBtb3JjZWF1IGVuIGFwcGVsYW50IGNlcnRhaW5zIGluc3RydW1lbnQgb3Ugbm9uLgovL0xhIG5vdGF0aW9uOiBsZXQgZiA9ICwgcGVybWV0IGRlIHJhcHBlbGVyIGNlcyBmb25jdGlvbnMgcG91ciBsZXMgam91ZXIgZW5zdWl0ZS4KJDogYXJyYW5nZSgKICBbNCwgc3RhY2sob3JnYW4sIHNoYWtlcildLAogIFsxNiwgc3RhY2sob3JnYW4sIHBpYW5vLCBiYXNzLCBkcnVtczEsIGRydW1zMiwgcmlkZSwgYm9uZ28sIHNoYWtlcildLAogIFs4LCBzaWxlbmNlXQogIAopCgoKLy9PbiByZXRyb3V2ZSBpY2kgbGUgcGlhbm8gcXVlIG5vdXMgYXZvbnMgY3LDqcOpLCBvbiBub21tZSBhaW5zaSB0b3V0IGxlcyBmaWNoaWVycyBwb3VyIHBvdXZvaXIgbGVzIHV0aWxpc2VyIGF1IGRlc3N1cy4Kc2FtcGxlcyh7CiAgJ21vbl9waWFubyc6IHsKICAgIC8vIE9jdGF2ZSAzCiAgICAnYzMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEud2F2JywgCiAgICAnYyMzJzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yLndhdicsIAogICAgJ2QzJzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zLndhdicsIAogICAgJ2QjMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNC53YXYnLCAKICAgICdlMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNS53YXYnLCAKICAgICdmMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNi53YXYnLAogICAgJ2YjMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNy53YXYnLCAKICAgICdnMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvOC53YXYnLCAKICAgICdnIzMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0Lzkud2F2JywgCiAgICAnYTMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEwLndhdicsIAogICAgJ2JiMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTEud2F2JywgCiAgICAnYjMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEyLndhdicsCiAgICAKICAgIC8vIE9jdGF2ZSA0CiAgICAnYzQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEzLndhdicsIAogICAgJ2MjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTQud2F2JywgCiAgICAnZDQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzE1LndhdicsIAogICAgJ2ViNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTYud2F2JywgCiAgICAnZTQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzE3LndhdicsIAogICAgJ2Y0JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8xOC53YXYnLAogICAgJ2YjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTkud2F2JywgCiAgICAnZzQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzIwLndhdicsIAogICAgJ2cjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjEud2F2JywgCiAgICAnYTQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzIyLndhdicsIAogICAgJ2JiNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjMud2F2JywgCiAgICAnYjQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzI0LndhdicsCgogICAgLy8gT2N0YXZlIDUKICAgICdjNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjUud2F2JywgCiAgICAnYyM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yNi53YXYnLCAKICAgICdkNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjcud2F2JywgCiAgICAnZWI1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yOC53YXYnLCAKICAgICdlNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjkud2F2JywgCiAgICAnZjUnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzMwLndhdicsCiAgICAnZiM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zMS53YXYnLCAKICAgICdnNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzIud2F2JywgCiAgICAnZyM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zMy53YXYnLCAKICAgICdhNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzQud2F2JywgCiAgICAnYmI1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zNS53YXYnLCAKICAgICdiNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzYud2F2JywKCiAgICAvLyBPY3RhdmUgNgogICAgJ2M2JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zNy53YXYnLAogICAgJ2MjNic6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNTAud2F2JywKICAgICdkNic6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNTEud2F2JwogIH0KfSk7Cg%3D%3D" target="_blank" rel="noopener">Play the track in Strudel →</a></li>
-                      <li><a class="link-arrow" href="https://observablehq.com/d/10a7e22d37d67443" target="_blank" rel="noopener">Interactive notebook (Observable) →</a></li>
-                      <li><a class="link-arrow" href="assets/docs/groupe_10_rapport_science_et_musique.pdf" target="_blank" rel="noopener">Project report (PDF, in French) →</a></li>
-                    </ul>
-                  </dd>
-                </div>
-                <div>
-                  <dt>What I learned</dt>
-                  <dd>Working in a team on a long project, combining science and creativity, and learning a new tool on my own.</dd>
-                </div>
-              </dl>
-            </div>
-          </details>
-
-          <!-- Coming soon: replace with real project cards (copy the Strudel block above) -->
-          <article class="card card--soon">
-            <h3>Engineering projects</h3>
-            <p>Coming in S6: my first projects at ENSEEIHT will appear here.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
 
     <!-- ===== SECTOR EXIT — same block at the end of every page: next / previous sector + map of the lap ===== -->
     <nav class="chapter sector-exit" data-tone="ink" aria-label="Lap">
       <div class="container sector-exit__grid">
         <div class="sector-exit__main">
-          <p class="sector-exit__meta">Sector 2/6 · Engineering</p>
+          <p class="sector-exit__meta">End of sector 2/6 · Engineering</p>
           <a class="sector-exit__next" href="mobility.html" rel="next" data-to="3">
-            <span class="sector-exit__label">Next sector</span>
+            <span class="sector-exit__label">Next sector · S3/6</span>
             <span class="sector-exit__title">Mobility <span aria-hidden="true">→</span></span>
           </a>
           <a class="sector-exit__prev" href="index.html" rel="prev"><span aria-hidden="true">←</span> Previous: Welcome</a>
@@ -332,7 +332,7 @@
 
   <!-- ===== CONTACT BAR — identical on every page, always visible (bottom bar on phones, left rail on wide screens) ===== -->
   <aside class="contact-bar" aria-label="Get in touch">
-    <span class="contact-bar__label" aria-hidden="true">Contact</span>
+    <a class="contact-bar__label" href="mailto:loup.broussard@outlook.com" data-contact>Contact</a>
     <a href="mailto:loup.broussard@outlook.com">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
       <span>Email</span>
@@ -349,12 +349,40 @@
          (<a href="assets/docs/CV_Loup_Broussard_EN.pdf" download> + download icon + <span>CV</span></a>) -->
   </aside>
 
+  <!-- ===== CONTACT POP-UP — identical on every page. Opened by every "Contact" link (bar, footer): js/main.js §9.
+       Without JavaScript those links simply open an email. ===== -->
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+    <div class="contact-dialog__box">
+      <div class="contact-dialog__head">
+        <h2 id="contact-dialog-title">Contact</h2>
+        <form method="dialog">
+          <button class="contact-dialog__close" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </form>
+      </div>
+      <p class="contact-dialog__hint">Click to copy</p>
+      <dl class="contact-dialog__list">
+        <div>
+          <dt>Email</dt>
+          <dd><button class="contact-dialog__copy" type="button" data-copy="loup.broussard@outlook.com">loup.broussard@outlook.com</button></dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd><button class="contact-dialog__copy" type="button" data-copy="+33 6 95 60 59 42">+33 6 95 60 59 42</button></dd>
+        </div>
+      </dl>
+      <!-- Message shown for 2 s after a copy (js/main.js §9) -->
+      <p class="contact-dialog__toast" role="status" data-message="Copied to clipboard"></p>
+    </div>
+  </dialog>
+
   <!-- ===== FOOTER — identical on every page ===== -->
   <footer class="site-footer" data-tone="ink">
     <div class="container">
       <p>© 2026 Loup Broussard · Last updated: October 2026</p>
       <ul>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="mailto:loup.broussard@outlook.com" data-contact>Contact</a></li>
         <li><a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
