@@ -156,6 +156,21 @@
         after.after(extra);
         after = extra;
       });
+      // Still too tall (title + intro + first group)? The first group gets its own panel too
+      if (overflows(panel) && groups[0].parentNode === box) {
+        const first = document.createElement("section");
+        first.className = "chapter panel";
+        first.dataset.tone = panel.dataset.tone;
+        first.setAttribute("aria-label", `${title} (1/${groups.length})`);
+        const container = document.createElement("div");
+        container.className = "container";
+        const copyOfBox = document.createElement(box.tagName);
+        copyOfBox.className = box.className;
+        copyOfBox.append(groups[0]);
+        container.append(copyOfBox);
+        first.append(container);
+        panel.after(first);
+      }
       changed = true;
     }
     return changed;
@@ -197,8 +212,15 @@
     // Content cut on this screen? Split the panels into groups (phones), then
     // give up and read the sector vertically if it is still too tall.
     if ([...info.rail.children].some(overflows) && split(info)) layout(info);
-    if ([...info.rail.children].some(overflows)) unpin(info);
-    else announceTurn(info);
+    const tooTall = [...info.rail.children].filter(overflows);
+    if (tooTall.length) {
+      // Kept on the track for whoever maintains the site: which panels did not fit
+      track.dataset.stacked = tooTall.map((p) => `${(p.querySelector("h2, h3") || p).textContent.trim().slice(0, 30)} (${p.scrollHeight}/${p.clientHeight}px)`).join(" | ");
+      unpin(info);
+    } else {
+      delete track.dataset.stacked;
+      announceTurn(info);
+    }
   }
 
   function unpin(info) {

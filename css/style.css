@@ -82,6 +82,7 @@
   --space-4: 1rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
+  --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
 
@@ -2450,4 +2451,64 @@ html.is-jumping {
 .section-head h2 .card__meta {
   margin-left: var(--space-3);
   margin-right: auto;
+}
+
+/* Continuous scroll, horizontal sectors: make the panels fit one screen */
+.is-continuous .toc {
+  position: static;                 /* would slide under the pinned panels */
+}
+
+.track.is-pinned .panel .section-head {
+  margin-bottom: var(--space-6);
+}
+
+/* Activities: the photo keeps its ratio but never takes more than a third of the screen
+   on phones (text above it), a little more on computers (text beside it) */
+.track.is-pinned .activity .photo-slot__frame,
+.track.is-pinned .activity .photo-slot img {
+  width: auto;
+  height: min(32svh, 30rem);
+  max-width: 100%;
+}
+
+@media (min-width: 900px) {
+  .track.is-pinned .activity .photo-slot__frame,
+  .track.is-pinned .activity .photo-slot img {
+    height: min(58svh, 30rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .track.is-pinned .panel {
+    padding-block: var(--space-6) var(--space-12);
+  }
+
+  .track.is-pinned .activity {
+    gap: var(--space-4);
+  }
+}
+
+/* Pitch video in a panel: 16:9 kept, height limited to fit the screen */
+.track.is-pinned .video {
+  width: auto;
+  height: min(52svh, 484px);
+  max-width: 100%;
+}
+
+.track.is-pinned .panel {
+  padding-block: var(--space-6) var(--space-10);
+}
+
+@media (max-width: 767px) {
+  .track.is-pinned .activity .photo-slot__frame,
+  .track.is-pinned .activity .photo-slot img {
+    height: min(23svh, 30rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .track.is-pinned .activity .muted {
+    margin-top: var(--space-3);
+    font-size: 1rem;
+  }
 }

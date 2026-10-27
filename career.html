@@ -123,8 +123,11 @@
       </div>
     </nav>
 
+    <!-- HORIZONTAL TRACK — page mode: stacked like chapters; continuous scroll: pinned and read to the right -->
+    <div class="track" data-axis="h">
+
     <!-- 1. CV & LINKEDIN — two blocks side by side -->
-    <section class="chapter" data-tone="paper" id="cv" aria-labelledby="cv-title">
+    <section class="chapter panel" data-tone="paper" id="cv" aria-labelledby="cv-title">
       <div class="container">
         <div class="section-head">
           <h2 id="cv-title">CV &amp; LinkedIn</h2>
@@ -154,7 +157,7 @@
     </section>
 
     <!-- 2. PITCH VIDEO (YouTube, unlisted) — dark, full width -->
-    <section class="chapter" data-tone="ink" id="pitch" aria-labelledby="pitch-title">
+    <section class="chapter panel" data-tone="ink" id="pitch" aria-labelledby="pitch-title">
       <div class="container">
         <div class="section-head">
           <h2 id="pitch-title">My pitch</h2>
@@ -178,7 +181,7 @@
     </section>
 
     <!-- 3. ROLE MODELS — use initials if the person did not agree to be named -->
-    <section class="chapter" data-tone="paper" id="role-models" aria-labelledby="role-models-title">
+    <section class="chapter panel" data-tone="paper" id="role-models" aria-labelledby="role-models-title">
       <div class="container">
         <div class="section-head">
           <h2 id="role-models-title">3 role models</h2>
@@ -250,7 +253,7 @@
     </section>
 
     <!-- 4. MOBILITY — short version, full cards on mobility.html -->
-    <section class="chapter" data-tone="sand" id="mobility" aria-labelledby="mobility-title">
+    <section class="chapter panel" data-tone="sand" id="mobility" aria-labelledby="mobility-title">
       <div class="container">
         <div class="section-head">
           <h2 id="mobility-title">3 mobility projects</h2>
@@ -289,7 +292,7 @@
     </section>
 
     <!-- 5. GOALS — timeline (a season calendar on computers) + plans A / B / C -->
-    <section class="chapter" data-tone="ink" id="goals" aria-labelledby="goals-title">
+    <section class="chapter panel" data-tone="ink" id="goals" aria-labelledby="goals-title">
       <div class="container">
         <div class="section-head">
           <h2 id="goals-title">Goals</h2>
@@ -316,8 +319,14 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- 5b. GOALS — plans A / B / C, in their own panel -->
+    <section class="chapter panel" data-tone="sand" aria-labelledby="plans-title">
+      <div class="container">
         <div class="subsection">
-          <h3>Plans A / B / C</h3>
+          <h3 id="plans-title">Plans A / B / C</h3>
           <div class="grid grid--3">
             <article class="card goal-card">
               <p class="card__meta">Plan A</p>
@@ -340,7 +349,7 @@
     </section>
 
     <!-- 6. COMING NEXT — future semesters -->
-    <section class="chapter" data-tone="paper" id="next" aria-labelledby="next-title">
+    <section class="chapter panel" data-tone="paper" id="next" aria-labelledby="next-title">
       <div class="container">
         <div class="section-head">
           <h2 id="next-title">Coming next</h2>
@@ -358,6 +367,8 @@
         </div>
       </div>
     </section>
+
+    </div>
 
     <!-- ===== SECTOR EXIT — end of the lap: next lap / previous sector + map of the lap ===== -->
     <nav class="chapter sector-exit" data-tone="ink" aria-label="Lap">
