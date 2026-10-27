@@ -49,7 +49,19 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
 
 **Le site est un tour de circuit** (refonte « Lap », validée le 27/10/2026, inspirée de landonorris.com sans en reprendre l'identité) :
 - Les 6 onglets sont les **6 secteurs d'un tour**, dans un ordre fixe : S1 Welcome → S2 Engineering → S3 Mobility → S4 Sustainability → S5 Activities → S6 Career → retour à S1. Le numéro est dans `<html data-sector="n">`.
-- On **change d'onglet à l'horizontale** (flèches ‹ › du header, clavier ← →, swipe sur mobile, menu) et on **lit chaque onglet à la verticale**.
+- **Tout le site se visite en défilant** (décidé le 28/10/2026, remplace l'ancienne règle « pas de scroll piégé ») : molette, trackpad, doigt, flèches ou Espace suffisent, sans cliquer. Les secteurs s'enchaînent toujours vers le bas, mais l'**axe de lecture alterne** : certains secteurs défilent verticalement, d'autres horizontalement (comme on avance sur un circuit), avec le même geste. Remonter marche dans l'autre sens. **Alternance retenue** : S1 Welcome ↓ · S2 Engineering → · S3 Mobility ↓ · S4 Sustainability → · S5 Activities ↓ · S6 Career ↓ (la « ligne droite finale » : page la plus notée, lue comme un document). **Architecture (a), validée le 28/10/2026** : voir §7.
+- Exigences fixes : même geste partout ; swipe horizontal naturel sur mobile dans les secteurs horizontaux ; jonctions fluides dans les deux sens ; URL propre à chaque onglet, mise à jour pendant le défilement, bouton Retour fonctionnel ; **aucun contenu caché** dans un panneau horizontal ; clavier, focus visible, lecteurs d'écran ; sans JavaScript ou avec `prefers-reduced-motion` : navigation classique par pages ; chaque onglet s'ouvre directement et on comprend où l'on est ; changements d'axe annoncés par un repère visuel clair.
+- **Décisions du 28/10/2026 pour le défilement continu** :
+  - fin du tour : on **s'arrête** sur la sortie de S6 et le footer (lien « Tour suivant → Welcome »), pas de boucle ;
+  - le **FR reste en mode pages** tant que ses 5 pages ne sont pas traduites (pas de mélange de langues dans un défilement) ;
+  - avant chaque secteur horizontal, un **écran de virage** (grand titre, flèche → dans la couleur du secteur, nombre de panneaux et jauge) ; en sortie, un repère « ↓ secteur suivant » ;
+  - lien direct vers un onglet (ex. `/career.html`) : la page s'affiche tout de suite et **tout le tour** est ajouté autour, sans faire bouger l'écran ;
+  - Engineering : panneaux Formation | Cours | Compétences, puis retour au vertical pour **Projects** (la carte Strudel se déplie normalement) ;
+  - interrupteur **« Lecture classique »** dans le menu (pages séparées, choix mémorisé) ;
+  - en défilement continu, la sortie de secteur devient une **bande de jonction** compacte ; le bloc complet reste en mode pages ;
+  - la télémétrie et la 911 montrent le **tour entier** (6 repères de secteur) en défilement continu, la page en mode pages ;
+  - sur mobile, les secteurs horizontaux ont **un groupe par panneau** (un groupe de cours, une compétence…).
+- **Toujours visibles** : une barre « Me contacter » (e-mail, LinkedIn, GitHub, CV), l'indicateur du tour (6 secteurs, position actuelle, cliquable), le menu et FR/EN.
 - Chaque page = **ouverture de secteur** (grand titre + ligne de données) → **chapitres** (§8) → **sortie de secteur** (secteur suivant / précédent + carte du tour), puis le footer.
 
 ## 5. Page d'accueil (`index.html`) — conçue pour être lue en 30 s
@@ -85,7 +97,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 
 **Légendes « LIEU, ANNÉE »** : au-dessus de chaque photo et en tête des cartes projet ou formation, en IBM Plex Mono majuscules (ex. `LA PRÉPA DES INP, 2026`). Si je ne l'ai pas donnée : `[TO COMPLETE: LIEU, ANNÉE]`.
 
-**Photos** : les miennes uniquement (portrait, rugby, musique / DJ / Strudel, karting / sim / mécanique, N7), WebP < 150 Ko, `width`/`height`/`alt`, `loading="lazy"` sauf le portrait du hero. Pas de photos d'ambiance de banques d'images. Aucune image insérée sans mon accord ; en attendant, un emplacement réservé.
+**Photos** : les miennes uniquement (portrait, rugby, musique / DJ / Strudel, karting / sim / mécanique, N7), WebP < 150 Ko, `width`/`height`/`alt`, `loading="lazy"` sauf le portrait du hero. Pas de photos d'ambiance de banques d'images. Aucune image insérée sans mon accord ; en attendant, un **cadre visible « Photo à venir »** avec la légende `[TO COMPLETE: LIEU, ANNÉE]` (décidé le 28/10/2026). Image d'aperçu LinkedIn `og-image.jpg` : version typographique (nom, sous-titre, plan moteur), sans photo, à valider avant ajout.
 
 ## 7. Choix techniques
 
@@ -111,13 +123,17 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 - Déploiement : **GitHub Pages**, dépôt `loupbsd.github.io`, branche `main`. Tous les chemins doivent être **relatifs**.
 - **`main` = le site en ligne.** Une refonte ou une grosse modification se fait sur une branche (ex. `refonte`), fusionnée dans `main` seulement après ma validation.
 - **Aperçu local** : `python -m http.server 8000` à la racine, puis http://localhost:8000 (les transitions entre pages ne marchent pas en `file://`).
-- **Transitions entre onglets** : View Transitions entre pages séparées (`@view-transition` dans `style.css`) + `js/lap.js` (sens gauche / droite) + `main.js` (touches ← →, swipe sur mobile). Sans JS : liens normaux ; avec `prefers-reduced-motion` : aucune animation. **Jamais** de geste trackpad ni de molette détournée pour changer d'onglet.
+- **Transitions entre onglets** (mode « pages ») : View Transitions entre pages séparées (`@view-transition` dans `style.css`) + `js/lap.js` (sens gauche / droite). C'est aussi le mode de secours : sans JS ou avec `prefers-reduced-motion`, navigation classique par pages.
+- **Défilement continu** (mode principal, architecture (a) validée le 28/10/2026, en construction) : les 6 pages HTML restent la **source** et la version complète de chaque onglet. Le JS charge les 5 autres pages et les met bout à bout dans la page ouverte (identifiants préfixés pour éviter les doublons), puis met à jour l'URL (`history.replaceState`) pendant le défilement ; un saut par le menu crée une entrée d'historique. On garde le défilement **natif** (pas de molette réimplémentée en JS) : les secteurs horizontaux sont épinglés (`position: sticky`) et le défilement vertical les fait avancer à l'horizontale. Les panneaux horizontaux ne contiennent que des blocs courts ; si un panneau dépasse la hauteur de l'écran (zoom, petit écran), son secteur repasse en vertical. Un interrupteur « lecture classique » dans le menu revient aux pages séparées.
+- **Version de secours** (rendu du 1er novembre si le défilement continu n'est pas prêt) : les 6 pages en mode « pages », avec la DA « Lap », la barre de contact et la bande chrono.
 - Google Fonts : `Archivo:wdth,wght@62..125,300..800` + `IBM Plex Mono:wght@400;500`.
 
 ## 8. Design — « Violet & Cream » : pro, chaleureux, sobre · mise en page « Lap »
 
 - **Ambiance** : professionnelle, chaleureuse et sobre. Un site fait à la main par un étudiant ingénieur, pas un template ni un pastiche de terminal.
 - **Chapitres** (refonte « Lap », 27/10/2026) : chaque section est un chapitre (`class="chapter" data-tone="…"`) dans l'un des **trois tons** : **papier** (crème, plan moteur bien visible), **sable** (chapitres denses), **encre** (chapitres sombres). Jamais deux tons identiques à la suite (sauf l'ouverture et le 1er chapitre). Rythme varié : plein écran → dense → aéré.
+  - **Chapitres plein écran**, comme des diapositives (décidé le 28/10/2026) : chacun fait au moins la hauteur de l'écran, contenu centré ; les chapitres plus longs s'allongent.
+  - **Aimantation douce** (`scroll-snap-type: y proximity`) : quand le défilement s'arrête près du début d'un chapitre, la page l'aligne sous le header ; ailleurs le défilement reste libre. Jamais d'aimantation stricte. Coupée avec `prefers-reduced-motion`.
   - En passant d'un chapitre à l'autre, la couleur du suivant **monte en douceur** (animation CSS liée au défilement). Le texte n'arrive qu'une fois la couleur posée, grâce à la marge haute des chapitres.
   - Le header prend le ton du chapitre qui passe dessous.
   - Repli (navigateur sans support, ou `prefers-reduced-motion`) : bords nets.
@@ -130,7 +146,17 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   - **Ligne de données** sous chaque grand titre : `43.60° N · 1.44° E — TOULOUSE` sur l'accueil, un résumé factuel tiré du contenu sur les autres pages.
 - **Thème clair crème par défaut** ; thème sombre (« session de nuit ») si l'OS est en mode sombre, ou via le bouton (choix mémorisé).
 - **Typographie** : **Archivo** pour tout le texte. Grands titres (nom du hero, h1) en **majuscules et en deux largeurs** : un mot large et gras (`font-stretch: 125%`, 800), l'autre étroit et fin (`62%`, 300), effet « livrée de course ». h2 élargis (125 %). **IBM Plex Mono** réservée aux *données* (tags, dates, légendes, secteurs, `[TO COMPLETE]`, code). 2 polices max, via Google Fonts ; pas de serif.
-- **Une seule couleur d'accent** : **violet** `#4D2DA0` sur fond clair, `#A993F0` sur fond sombre — direction choisie le 25/10/2026 (remplace « Terminal Clean » cyan). Pas de 2e accent.
+- **Couleur d'identité** : **violet** `#4D2DA0` sur fond clair, `#A993F0` sur fond sombre — direction choisie le 25/10/2026 (remplace « Terminal Clean » cyan). Header, boutons, liens, barre de contact.
+- **Couleurs de secteur** (28/10/2026, variables `--c-s1` … `--c-s6`) : elles ne colorent **que les repères de leur secteur** (barre du secteur en cours dans la bande chrono, tracé de la carte du tour, nom du « secteur suivant », plus tard le repère de changement d'axe). Jamais de fond ni de bouton colorés ; le violet reste la marque.
+  | Secteur | Clair (AA sur crème et sable) | Sombre |
+  |---|---|---|
+  | S1 Welcome | violet `#4D2DA0` | `#A993F0` |
+  | S2 Engineering | bleu télémétrie `#1F5FA8` | `#8DB8F0` |
+  | S3 Mobility | vert piste `#2E6B3F` | `#8FD1A0` |
+  | S4 Sustainability | ocre `#7A4F00` | `#E7B66A` |
+  | S5 Activities | rouge `#A3302A` | `#F09A8E` |
+  | S6 Career | violet (retour à l'identité pour l'arrivée) | `#A993F0` |
+- **Barre « Contact »** (toujours visible, section 16 de `style.css`) : barre de 48 px en bas sous 1280 px (icônes seules sous 400 px), rail vertical dans la marge gauche au-delà. E-mail, LinkedIn, GitHub ; lien CV à ajouter quand les PDF existeront (commentaire `TO COMPLETE` dans le HTML).
 - **Tons** (variables `--tone-*` en haut de `style.css`) :
   | Ton | Thème clair | Thème sombre | Texte · accent |
   |---|---|---|---|
@@ -139,7 +165,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   | encre | `#1A1714` | `#0E0C0A` | `#EFE8DA` · `#A993F0` |
 - **Lisibilité avant tout** : hiérarchie visuelle forte, titres explicites, beaucoup d'espace, listes courtes, tags pour les compétences, pas de pavés de texte.
 - **Donner envie d'en savoir plus** : liens et cartes cliquables, effets de survol discrets, appels à l'action clairs (« See project → », « Watch the pitch »).
-- **Animations** : autorisées = survol discret, glissement horizontal entre onglets, montée de couleur entre chapitres, changement de ton du header. Interdites = animations d'apparition sur chaque bloc, défilement « lissé » en JS (type Lenis), sections épinglées à défilement horizontal, texte qui défile. Tout est coupé avec `prefers-reduced-motion`.
+- **Animations** : autorisées = survol discret, glissement horizontal entre onglets, montée de couleur entre chapitres, changement de ton du header, secteurs épinglés qui défilent à l'horizontale, repère de changement d'axe. Interdites = animations d'apparition sur chaque bloc, défilement « lissé » en JS (type Lenis), texte qui défile tout seul. Tout est coupé avec `prefers-reduced-motion` (retour aux pages classiques).
 - Performance : aucune page > ~1 Mo.
 
 ### Éviter le « look IA » (règles inspirées du skill Impeccable)

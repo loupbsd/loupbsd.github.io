@@ -5,7 +5,7 @@
    3. Open a project card when the URL points to it (e.g. #strudel)
    4. Career page: highlight the current section in the table of contents
    5. Telemetry trace in the header, filled as you scroll
-   6. Changing sector: keyboard ← → and swipe on touch screens
+   6. Changing sector with the keyboard: ← →
    7. Chapters: the header and the engine drawing follow the tone below them
    8. Load the neighbouring sectors in advance (instant slide)
    The direction of the slide between pages is in js/lap.js.
@@ -210,14 +210,14 @@ if (header) {
   updateTelemetry();
 }
 
-/* 6. Changing sector: keyboard ← → and swipe on touch screens ------------- */
+/* 6. Changing sector with the keyboard: ← → ---------------------------- */
 // The 6 tabs are the 6 sectors of a lap. The ‹ › arrows of the header are normal
 // links (rel="prev" / rel="next"), so they work without JavaScript; here we only
-// add two shortcuts. The mouse wheel and the trackpad are never used for this.
+// add a keyboard shortcut. (Gestures will come with the continuous scroll.)
 const prevSector = document.querySelector('.site-header a[rel="prev"]');
 const nextSector = document.querySelector('.site-header a[rel="next"]');
 
-// Places where the arrow keys or a sideways swipe already have a meaning
+// Places where the arrow keys already have a meaning
 const OWN_KEYS = "input, textarea, select, [contenteditable], audio, video";
 
 // True if the element is inside something that scrolls sideways
@@ -238,35 +238,6 @@ if (prevSector && nextSector) {
     if (event.target.closest(OWN_KEYS) || inSideScroller(event.target)) return;
     window.location.href = (event.key === "ArrowRight" ? nextSector : prevSector).href;
   });
-
-  // Swipe: a quick and clearly horizontal move of at least 80 px.
-  // Ignored near the edges of the screen (the phone's own "back" gesture)
-  // and when the page is zoomed in (the finger is then moving around the page).
-  let swipeStart = null;
-
-  document.addEventListener("touchstart", (event) => {
-    swipeStart = null;
-    const touch = event.touches[0];
-    const edge = 24;
-    const zoomed = window.visualViewport && window.visualViewport.scale > 1.01;
-    if (event.touches.length !== 1 || zoomed) return;
-    if (touch.clientX < edge || touch.clientX > window.innerWidth - edge) return;
-    if (event.target.closest(OWN_KEYS) || inSideScroller(event.target)) return;
-    swipeStart = { x: touch.clientX, y: touch.clientY, time: event.timeStamp };
-  }, { passive: true });
-
-  document.addEventListener("touchend", (event) => {
-    if (!swipeStart) return;
-    const touch = event.changedTouches[0];
-    const dx = touch.clientX - swipeStart.x;
-    const dy = touch.clientY - swipeStart.y;
-    const quick = event.timeStamp - swipeStart.time < 600;
-    swipeStart = null;
-    if (quick && Math.abs(dx) > 80 && Math.abs(dx) > 2 * Math.abs(dy)) {
-      // Finger moving to the left = the track goes on = next sector
-      window.location.href = (dx < 0 ? nextSector : prevSector).href;
-    }
-  }, { passive: true });
 }
 
 /* 7. Chapters: header and engine drawing follow the tone below them ------- */

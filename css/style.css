@@ -18,6 +18,7 @@
    13. Chapters (paper / sand / ink tones, colour rising between chapters)
    14. Sector exit & map of the lap
    15. Page transitions between sectors
+   16. Contact bar (always visible)
    ========================================================================= */
 
 
@@ -46,6 +47,18 @@
   --tone-paper: #f4e9d2;
   --tone-sand: #eadbbe;
   --tone-ink: #1a1714;
+
+  /* Sector colours: one per tab. They only colour the marks of their own sector
+     (current bar of the timing strip, map of the lap, "next sector" name).
+     The violet stays the colour of the site (header, buttons, links).
+     Light values here (AA on cream and sand); light-on-dark values in the dark theme
+     and in ink chapters (section 13). */
+  --c-s1: #4d2da0;                /* S1 Welcome: violet */
+  --c-s2: #1f5fa8;                /* S2 Engineering: telemetry blue */
+  --c-s3: #2e6b3f;                /* S3 Mobility: track green */
+  --c-s4: #7a4f00;                /* S4 Sustainability: ochre */
+  --c-s5: #a3302a;                /* S5 Activities: red */
+  --c-s6: #4d2da0;                /* S6 Career: back to violet for the finish */
 
   /* Fonts */
   --font-sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -98,6 +111,12 @@
   --tone-paper: #1a1714;          /* "night session": the three tones get darker */
   --tone-sand: #221e1a;
   --tone-ink: #0e0c0a;
+  --c-s1: #a993f0;
+  --c-s2: #8db8f0;
+  --c-s3: #8fd1a0;
+  --c-s4: #e7b66a;
+  --c-s5: #f09a8e;
+  --c-s6: #a993f0;
 
   color-scheme: dark;
 }
@@ -118,6 +137,12 @@
     --tone-paper: #1a1714;
     --tone-sand: #221e1a;
     --tone-ink: #0e0c0a;
+    --c-s1: #a993f0;
+    --c-s2: #8db8f0;
+    --c-s3: #8fd1a0;
+    --c-s4: #e7b66a;
+    --c-s5: #f09a8e;
+    --c-s6: #a993f0;
 
     color-scheme: dark;
   }
@@ -525,7 +550,7 @@ html[data-sector] .section-head h2::after {
 }
 
 /* ‹ › previous / next sector. Normal links (rel="prev" / rel="next"): they work
-   without JavaScript. main.js adds the ← → keys and the swipe on touch screens. */
+   without JavaScript. main.js adds the ← → keys. */
 .lap-arrow {
   display: grid;
   place-items: center;
@@ -627,7 +652,7 @@ html.menu-open {
 /* Active tab: set with aria-current="page" in each HTML file */
 .site-nav a[aria-current="page"],
 .site-nav a[aria-current="page"]::before {
-  color: var(--color-accent);
+  color: var(--c-sector, var(--color-accent));
 }
 
 /* Bottom of the full-screen menu: map of the lap + theme button */
@@ -790,9 +815,10 @@ html:not(.js) .site-nav__extra { display: none; }
     background: var(--color-text-muted);
   }
 
-  /* Current sector: violet, like the fastest sector on an F1 timing screen */
+  /* Current sector: in its own colour (violet for S1 and S6, like the fastest
+     sector on an F1 timing screen) */
   .site-nav a[aria-current="page"]::after {
-    background: var(--color-accent);
+    background: var(--c-sector, var(--color-accent));
   }
 }
 
@@ -1528,6 +1554,12 @@ audio {
   --color-accent-soft: rgba(169, 147, 240, 0.13);
   --color-on-accent: #1a1430;
   --color-todo: #f5b84b;
+  --c-s1: #a993f0;                  /* sector colours: light-on-dark versions */
+  --c-s2: #8db8f0;
+  --c-s3: #8fd1a0;
+  --c-s4: #e7b66a;
+  --c-s5: #f09a8e;
+  --c-s6: #a993f0;
 
   color-scheme: dark;
 }
@@ -1562,12 +1594,39 @@ audio {
   }
 }
 
-/* The top padding is large on purpose: the text of a chapter only reaches
+/* Full-screen chapters, like slides: each chapter is at least one screen tall,
+   with its content centred vertically. Longer chapters simply grow.
+   The top padding is large on purpose: the text of a chapter only reaches
    the screen once its colour has fully risen (see below). */
 .chapter {
   position: relative;               /* holds the background layer (::before) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100svh - var(--header-h));
   color: var(--color-text);
   padding-block: clamp(4rem, 16vh, 12rem) clamp(3rem, 10vh, 6rem);
+}
+
+/* Gentle snapping ("proximity"): when the scroll stops close to the start of a
+   chapter, the page aligns it under the header; anywhere else the scroll stays
+   free, so long chapters read normally. Off with reduced motion. */
+html:has(.chapter) {
+  scroll-padding-top: var(--header-h);
+}
+
+html:has(.chapter) [id] {
+  scroll-margin-top: 0;             /* the scroll-padding above already leaves room for the header */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.chapter) {
+    scroll-snap-type: y proximity;
+  }
+
+  .chapter {
+    scroll-snap-align: start;
+  }
 }
 
 /* The background is painted on a layer BEHIND the engine drawing
@@ -1649,7 +1708,7 @@ audio {
   display: block;
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--c-sector, var(--color-accent));
 }
 
 /* 8.5cqi: the longest sector name ("Sustainability") still fits on one line */
@@ -1671,7 +1730,7 @@ audio {
 }
 
 .sector-exit__next:hover .sector-exit__title {
-  color: var(--color-accent);
+  color: var(--c-sector, var(--color-accent));
 }
 
 .sector-exit__next:hover .sector-exit__title span {
@@ -1704,12 +1763,29 @@ audio {
   color: var(--color-text-muted);
 }
 
-html[data-sector="1"] .lap-map { --s1: var(--color-accent); --w1: 5px; }
-html[data-sector="2"] .lap-map { --s2: var(--color-accent); --w2: 5px; }
-html[data-sector="3"] .lap-map { --s3: var(--color-accent); --w3: 5px; }
-html[data-sector="4"] .lap-map { --s4: var(--color-accent); --w4: 5px; }
-html[data-sector="5"] .lap-map { --s5: var(--color-accent); --w5: 5px; }
-html[data-sector="6"] .lap-map { --s6: var(--color-accent); --w6: 5px; }
+html[data-sector="1"] .lap-map { --s1: var(--c-s1); --w1: 5px; }
+html[data-sector="2"] .lap-map { --s2: var(--c-s2); --w2: 5px; }
+html[data-sector="3"] .lap-map { --s3: var(--c-s3); --w3: 5px; }
+html[data-sector="4"] .lap-map { --s4: var(--c-s4); --w4: 5px; }
+html[data-sector="5"] .lap-map { --s5: var(--c-s5); --w5: 5px; }
+html[data-sector="6"] .lap-map { --s6: var(--c-s6); --w6: 5px; }
+
+/* Each sector has its colour (section 1): the current item of the lists of the
+   6 sectors (timing strip, list under the map) takes the colour of its sector */
+:is(.site-nav, .lap__list) li:nth-child(1) { --c-sector: var(--c-s1); }
+:is(.site-nav, .lap__list) li:nth-child(2) { --c-sector: var(--c-s2); }
+:is(.site-nav, .lap__list) li:nth-child(3) { --c-sector: var(--c-s3); }
+:is(.site-nav, .lap__list) li:nth-child(4) { --c-sector: var(--c-s4); }
+:is(.site-nav, .lap__list) li:nth-child(5) { --c-sector: var(--c-s5); }
+:is(.site-nav, .lap__list) li:nth-child(6) { --c-sector: var(--c-s6); }
+
+/* The name of the next sector, in its own colour (data-to="2" = sector 2) */
+.sector-exit__next[data-to="1"] { --c-sector: var(--c-s1); }
+.sector-exit__next[data-to="2"] { --c-sector: var(--c-s2); }
+.sector-exit__next[data-to="3"] { --c-sector: var(--c-s3); }
+.sector-exit__next[data-to="4"] { --c-sector: var(--c-s4); }
+.sector-exit__next[data-to="5"] { --c-sector: var(--c-s5); }
+.sector-exit__next[data-to="6"] { --c-sector: var(--c-s6); }
 
 /* The 6 sectors as links, under the map: "S1 Welcome", "S2 Engineering"… */
 .lap__list {
@@ -1742,9 +1818,12 @@ html[data-sector="6"] .lap-map { --s6: var(--color-accent); --w6: 5px; }
   font-size: var(--text-xs);
 }
 
-.lap__list a:hover,
-.lap__list a[aria-current="page"] {
+.lap__list a:hover {
   color: var(--color-accent);
+}
+
+.lap__list a[aria-current="page"] {
+  color: var(--c-sector, var(--color-accent));
 }
 
 @media (min-width: 768px) {
@@ -1794,3 +1873,123 @@ html:active-view-transition-type(backward)::view-transition-new(root) {
 @keyframes lap-in-right  { from { transform: translateX(100%); } }
 @keyframes lap-out-right { to   { transform: translateX(100%); } }
 @keyframes lap-in-left   { from { transform: translateX(-100%); } }
+
+
+/* =========================================================================
+   16. CONTACT BAR (always visible)
+   Phones and screens under 1280 px: a slim bar at the bottom of the screen.
+   Wide screens: a narrow vertical rail in the left margin, next to the text,
+   never on top of it. The page keeps room for it at the bottom (body padding).
+   ========================================================================= */
+.contact-bar {
+  position: fixed;
+  z-index: 45;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  height: 48px;
+  padding-inline: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+body:has(.contact-bar) {
+  padding-bottom: 48px;
+}
+
+.contact-bar__label {
+  margin-right: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.contact-bar a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.contact-bar a:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.contact-bar svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* Very narrow phones: icons only (the names stay for screen readers) */
+@media (max-width: 399px) {
+  .contact-bar__label { display: none; }
+  .contact-bar a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .contact-bar a { padding-inline: var(--space-4); }
+}
+
+@media (min-width: 1280px) {
+  .contact-bar {
+    left: 12px;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    flex-direction: column;
+    height: auto;
+    padding: var(--space-3) 2px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    translate: 0 -50%;
+  }
+
+  body:has(.contact-bar) {
+    padding-bottom: 0;
+  }
+
+  .contact-bar__label {
+    margin: 0 0 var(--space-2);
+    writing-mode: vertical-rl;
+    rotate: 180deg;
+  }
+
+  .contact-bar a {
+    padding: 0;
+    width: 40px;
+    justify-content: center;
+  }
+
+  .contact-bar a span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+/* While the phone menu is open, the bar is hidden (the menu covers the page) */
+html.menu-open .contact-bar {
+  display: none;
+}
+
+/* Under 1280 px the bar takes 48 px at the bottom: a full-screen chapter is that much shorter */
+@media (max-width: 1279px) {
+  body:has(.contact-bar) .chapter {
+    min-height: calc(100svh - var(--header-h) - 48px);
+  }
+}

@@ -27,8 +27,6 @@
 
   // New page, just before it is shown: choose the direction of the slide
   window.addEventListener("pagereveal", (event) => {
-    if (!event.viewTransition || !event.viewTransition.types) return;
-
     let from = 0;
     try {
       from = Number(sessionStorage.getItem("lap-from")) || 0;
@@ -36,6 +34,7 @@
     } catch (error) {
       return;
     }
+    if (!event.viewTransition || !event.viewTransition.types) return;
 
     // Unknown origin, or same sector in the other language (EN ⇄ FR): simple fade
     if (!from || !sector || from === sector) return;
