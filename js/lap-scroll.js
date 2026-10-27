@@ -7,8 +7,9 @@
    puts them end to end, in the order of the lap. Then:
    - the browser's own scroll does everything (wheel, trackpad, finger, Space,
      Page Down…): nothing is re-implemented;
-   - in the horizontal sectors (S2, S4) the track of panels is pinned under the
+   - in the horizontal sectors (S2 … S6) the track of panels is pinned under the
      header, and the vertical scroll moves it to the left (one screen per panel);
+     on phones (< 768 px) they stay vertical;
    - the address bar shows the sector being read (engineering.html…), the
      header follows it, and a click on a sector scrolls to it (Back works).
 
@@ -27,6 +28,7 @@
   const fr = root.lang === "fr";
   const start = Number(root.dataset.sector) || 0;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const phone = window.matchMedia("(max-width: 767px)");   // same limit as the CSS
 
   const TEXT = fr
     ? { classic: "Lecture classique", continuous: "Défilement continu", prev: "Secteur précédent : ", next: "Secteur suivant : " }
@@ -70,8 +72,10 @@
   }
 
   async function assemble() {
+    // "no-cache": the browser asks the server whether each page changed (a short
+    // "304" if not), so an updated page is never replaced by an old copy
     const others = FILES.map((file, i) => (i + 1 === start ? null
-      : fetch(file).then((r) => (r.ok ? r.text() : Promise.reject(new Error(file))))));
+      : fetch(file, { cache: "no-cache" }).then((r) => (r.ok ? r.text() : Promise.reject(new Error(file))))));
     let pages;
     try {
       pages = await Promise.all(others);
@@ -128,8 +132,8 @@
     return panel.scrollHeight > panel.clientHeight + 2;
   }
 
-  // Phones: a panel that holds several groups (courses, skills, trainings…) is
-  // split into one panel per group. The groups are moved, not copied.
+  // Small screens (tablets, zoom): a panel that holds several groups (courses,
+  // skills, trainings…) is split into one panel per group. The groups are moved, not copied.
   function split(info) {
     let changed = false;
     for (const panel of [...info.rail.children]) {
@@ -198,6 +202,11 @@
 
   function pin(info) {
     const { track } = info;
+    // Phones: every sector reads vertically (decided on 28/10/2026)
+    if (phone.matches) {
+      track.dataset.stacked = "phone: vertical reading";
+      return;
+    }
     info.pin = document.createElement("div");
     info.pin.className = "track__pin";
     info.rail = document.createElement("div");

@@ -1396,6 +1396,12 @@ html:not(.js) .site-nav__extra { display: none; }
   container-type: inline-size;
 }
 
+/* Map of the lap at the top of the opener: the sector that starts is in its colour */
+.opener .lap-map {
+  width: clamp(140px, 22vw, 200px);
+  margin-bottom: var(--space-6);
+}
+
 .opener__title {
   display: flex;
   flex-direction: column;

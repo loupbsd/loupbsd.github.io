@@ -1,36 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140">
-  <!-- Map of the lap: an original circuit split into 6 sectors, one per tab of the site
+  <!-- Map of the lap: a simplified Nevers Magny-Cours (France) split into 6 sectors, one per tab of the site
        (S1 Welcome, S2 Engineering, S3 Mobility, S4 Sustainability, S5 Activities, S6 Career).
-       Used in the pages with:  <svg class="lap-map" viewBox="0 0 240 140"><use href="assets/img/circuit.svg#lap"/></svg>
+       Used in the pages with:  <svg class="lap-map" viewBox="0 0 240 140"><use href="assets/img/circuit.svg?v=2#lap"/></svg>
+       When the drawing changes, raise the version number (?v=3…) in every page, so that browsers load it again.
        The colours come from the page (style.css, section 14): each sector reads the CSS
        variables s1 to s6 (colour) and w1 to w6 (width), so the current sector is drawn
        in violet and thicker. (No double hyphen allowed inside an XML comment.) -->
   <defs>
     <g id="lap" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <!-- S1: main straight, from the start / finish line -->
-      <path d="M44 118 L160 118" style="stroke: var(--s1, currentColor); stroke-width: var(--w1, 2.5px)"/>
-      <!-- S2: tight turn 1, short straight up the right side, kink -->
-      <path d="M160 118 Q186 118 186 94 L186 72 L198 52" style="stroke: var(--s2, currentColor); stroke-width: var(--w2, 2.5px)"/>
-      <!-- S3: hairpin -->
-      <path d="M198 52 C208 34 194 14 178 24" style="stroke: var(--s3, currentColor); stroke-width: var(--w3, 2.5px)"/>
-      <!-- S4: two chicanes -->
-      <path d="M178 24 L152 40 Q144 45 136 40 L124 32 Q116 27 108 32 L96 40" style="stroke: var(--s4, currentColor); stroke-width: var(--w4, 2.5px)"/>
-      <!-- S5: top left corner -->
-      <path d="M96 40 Q88 45 76 42 L52 34 Q30 28 26 52" style="stroke: var(--s5, currentColor); stroke-width: var(--w5, 2.5px)"/>
-      <!-- S6: down the left side, then the long last corner back to the line -->
-      <path d="M26 52 L26 90 C26 110 32 118 44 118" style="stroke: var(--s6, currentColor); stroke-width: var(--w6, 2.5px)"/>
+      <!-- S1: main straight from the start / finish line, then the long right-hander at the end -->
+      <path d="M137.7 99.7 C153.5 103.5 197.7 115.1 211.8 118.1 C225.9 121.0 219.8 118.9 222.0 117.4 C224.2 115.9 225.0 112.0 224.7 108.9 C224.4 105.8 222.5 101.8 220.3 98.7 C218.1 95.6 218.9 91.0 211.8 90.2" style="stroke: var(--s1, currentColor); stroke-width: var(--w1, 2.5px)"/>
+      <!-- S2: back straight, hairpin, short straight -->
+      <path d="M211.8 90.2 C204.7 89.4 186.3 93.9 177.8 93.6 C169.3 93.3 163.9 91.0 160.8 88.5 C157.7 86.0 158.0 80.9 159.1 78.3 C160.2 75.8 162.5 74.5 167.6 73.2 C172.7 71.9 185.2 71.6 189.7 70.5 C194.2 69.3 194.8 68.2 194.8 66.4" style="stroke: var(--s2, currentColor); stroke-width: var(--w2, 2.5px)"/>
+      <!-- S3: diagonal up to the chicane, then down into the U -->
+      <path d="M194.8 66.4 C194.8 64.6 193.7 62.4 189.7 59.6 C185.7 56.8 177.5 52.8 171.0 49.4 C164.5 46.0 155.1 40.3 150.6 39.2 C146.1 38.1 145.5 39.2 143.8 42.6 C142.1 46.0 141.8 53.9 140.4 59.6 C139.0 65.3 137.3 73.2 135.3 76.6 C133.3 80.0 130.8 80.8 128.5 80.0" style="stroke: var(--s3, currentColor); stroke-width: var(--w3, 2.5px)"/>
+      <!-- S4: back up, then the top straight -->
+      <path d="M128.5 80.0 C126.2 79.2 122.8 76.6 121.7 71.5 C120.6 66.4 122.3 56.5 121.7 49.4 C121.1 42.3 119.7 33.2 118.3 29.0 C116.9 24.8 123.1 25.0 113.2 23.9 C103.3 22.8 74.1 22.2 58.8 22.2" style="stroke: var(--s4, currentColor); stroke-width: var(--w4, 2.5px)"/>
+      <!-- S5: the loop on the left -->
+      <path d="M58.8 22.2 C43.5 22.2 28.8 22.2 21.4 23.9 C14.0 25.6 15.5 28.4 14.6 32.4 C13.8 36.4 14.6 44.3 16.3 47.7 C18.0 51.1 20.0 51.7 24.8 52.8 C29.6 53.9 37.8 55.1 45.2 54.5" style="stroke: var(--s5, currentColor); stroke-width: var(--w5, 2.5px)"/>
+      <!-- S6: across to the middle, down, and back to the line -->
+      <path d="M45.2 54.5 C52.6 53.9 61.1 52.0 69.0 49.4 C76.9 46.9 87.1 41.0 92.8 39.2 C98.5 37.4 101.0 37.4 103.0 38.5 C105.0 39.7 105.0 41.9 104.7 46.0 C104.4 50.1 102.4 57.9 101.3 63.0 C100.2 68.1 97.6 72.0 97.9 76.6 C98.2 81.2 99.9 87.8 103.0 90.9 C106.1 94.0 110.8 93.8 116.6 95.3 C122.4 96.8 121.8 95.9 137.7 99.7" style="stroke: var(--s6, currentColor); stroke-width: var(--w6, 2.5px)"/>
 
       <!-- Start / finish line -->
-      <path d="M44 109 V127" style="stroke: currentColor; stroke-width: 1.5px"/>
+      <path d="M135.8 107.5 L139.6 92.0" style="stroke: currentColor; stroke-width: 1.5px"/>
 
       <!-- Sector names -->
       <g style="stroke: none; font-family: var(--font-mono, monospace); font-size: 10px; letter-spacing: 0.04em">
-        <text x="96" y="134" style="fill: var(--s1, currentColor)">S1</text>
-        <text x="196" y="100" style="fill: var(--s2, currentColor)">S2</text>
-        <text x="208" y="20" style="fill: var(--s3, currentColor)">S3</text>
-        <text x="128" y="58" style="fill: var(--s4, currentColor)">S4</text>
-        <text x="58" y="24" style="fill: var(--s5, currentColor)">S5</text>
-        <text x="6" y="76" style="fill: var(--s6, currentColor)">S6</text>
+        <text x="170" y="130" style="fill: var(--s1, currentColor)">S1</text>
+        <text x="174" y="86" style="fill: var(--s2, currentColor)">S2</text>
+        <text x="168" y="36" style="fill: var(--s3, currentColor)">S3</text>
+        <text x="80" y="15" style="fill: var(--s4, currentColor)">S4</text>
+        <text x="0" y="42" style="fill: var(--s5, currentColor)">S5</text>
+        <text x="64" y="70" style="fill: var(--s6, currentColor)">S6</text>
       </g>
     </g>
   </defs>
