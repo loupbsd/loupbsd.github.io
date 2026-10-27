@@ -1511,6 +1511,83 @@ html:has(.chapter):has(.toc) {    /* more specific than the rule of section 13 *
   }
 }
 
+/* --- Horizontal sectors (S2 Engineering, S4 Sustainability): a "track" of panels.
+   <div class="track" data-axis="h"> holds <section class="chapter panel"> blocks.
+   In page mode and without JavaScript the panels are simply stacked like chapters;
+   the continuous scroll (js/lap-scroll.js, to come) pins the track and moves it sideways. */
+.track {
+  position: relative;
+}
+
+/* The colour rise (section 13) also works across the edges of a track */
+.chapter[data-tone="paper"] + .track > .chapter:first-child,
+.track:has(> .chapter[data-tone="paper"]:last-child) + .chapter { --prev-bg: var(--tone-paper); }
+.chapter[data-tone="sand"] + .track > .chapter:first-child,
+.track:has(> .chapter[data-tone="sand"]:last-child) + .chapter { --prev-bg: var(--tone-sand); }
+.chapter[data-tone="ink"] + .track > .chapter:first-child,
+.track:has(> .chapter[data-tone="ink"]:last-child) + .chapter { --prev-bg: var(--tone-ink); }
+
+/* --- Relay: two steps of a path, the second taking over from the first (Education) */
+.relay {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.relay__arrow {
+  justify-self: center;
+  font-size: var(--text-xl);
+  color: var(--c-sector, var(--color-accent));
+  rotate: 90deg;                    /* points down when the steps are stacked */
+}
+
+@media (min-width: 768px) {
+  .relay {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .relay__arrow {
+    rotate: none;
+  }
+}
+
+/* --- Photo slot: caption "PLACE, YEAR" above the photo (mono, capitals).
+   Until the photo arrives: a dashed frame "Photo coming soon" + [TO COMPLETE]. */
+.photo-slot {
+  margin-top: var(--space-6);
+}
+
+.photo-slot__caption {
+  margin-bottom: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.photo-slot img,
+.photo-slot__frame {
+  display: block;
+  width: 100%;
+  max-width: 36rem;
+  aspect-ratio: var(--ratio, 16 / 10);
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.photo-slot__frame {
+  display: grid;
+  place-content: center;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border: 1px dashed var(--color-border);
+  background: var(--color-accent-soft);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
 /* --- Repeated cards (projects, role models, mobility, goals): the top-right
    corner is bevelled, like a race number board. Browsers without corner-shape
    simply show a rounded corner. */
@@ -1924,6 +2001,19 @@ html[data-sector="6"] .lap-map { --s6: var(--c-s6); --w6: 5px; }
 :is(.site-nav, .lap__list) li:nth-child(4) { --c-sector: var(--c-s4); }
 :is(.site-nav, .lap__list) li:nth-child(5) { --c-sector: var(--c-s5); }
 :is(.site-nav, .lap__list) li:nth-child(6) { --c-sector: var(--c-s6); }
+
+/* Marks of the current page in its sector colour: thin word of the opener title,
+   relay arrow. Declared on the element itself, so that ink chapters get the light version. */
+html[data-sector="1"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s1); }
+html[data-sector="2"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s2); }
+html[data-sector="3"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s3); }
+html[data-sector="4"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s4); }
+html[data-sector="5"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s5); }
+html[data-sector="6"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s6); }
+
+.opener__narrow {
+  color: var(--c-sector, inherit);
+}
 
 /* The name of the next sector, in its own colour (data-to="2" = sector 2) */
 .sector-exit__next[data-to="1"] { --c-sector: var(--c-s1); }

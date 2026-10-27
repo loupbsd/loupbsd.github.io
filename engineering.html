@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-sector="2">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,10 +16,10 @@
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-  <!-- Fonts: Archivo (text, expanded for titles) + IBM Plex Mono (data: tags, dates) -->
+  <!-- Fonts: Archivo (text; big titles in two widths, 62 % and 125 %) + IBM Plex Mono (data: tags, dates, captions) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -28,18 +28,27 @@
     document.documentElement.classList.add("js");
     try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
+  <!-- Direction of the slide between two sectors: must run before the page is shown, so no "defer" -->
+  <script src="js/lap.js"></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ===== HEADER — identical on every page, only aria-current changes ===== -->
+  <!-- ===== HEADER — identical on every page; only aria-current, the ‹ › links and "S6/6" change.
+       The lap: S1 Welcome → S2 Engineering → S3 Mobility → S4 Sustainability → S5 Activities → S6 Career → S1. ===== -->
   <header class="site-header">
     <div class="container">
       <a class="logo" href="index.html">
         <span class="logo__mark" aria-hidden="true">LB</span>
         <span class="logo__name">Loup Broussard</span>
       </a>
+
+      <!-- Previous sector: S1 Welcome -->
+      <a class="lap-arrow" href="index.html" rel="prev" aria-label="Previous sector: Welcome">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <span class="lap-count" aria-hidden="true">S2/6</span>
 
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
@@ -50,7 +59,21 @@
           <li><a href="activities.html">Activities</a></li>
           <li><a href="career.html">Career</a></li>
         </ul>
+        <!-- Only in the full-screen menu (phones and tablets): map of the lap + theme button -->
+        <div class="site-nav__extra">
+          <svg class="lap-map" viewBox="0 0 240 140" aria-hidden="true"><use href="assets/img/circuit.svg#lap"/></svg>
+          <button class="icon-btn theme-toggle" type="button" aria-label="Switch dark / light theme">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
       </nav>
+
+      <!-- Next sector: S3 Mobility -->
+      <a class="lap-arrow" href="mobility.html" rel="next" aria-label="Next sector: Mobility">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
       <!-- FR link points to the French home page until this page is translated (then: fr/engineering.html) -->
       <nav class="lang-switch" aria-label="Language">
         <a href="engineering.html" lang="en" hreflang="en" aria-current="true">EN</a>
@@ -62,7 +85,8 @@
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       </button>
       <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
   </header>
@@ -70,36 +94,49 @@
 
   <main id="main">
 
-    <header class="page-header">
-      <div class="container">
-        <h1>Engineering Course</h1>
+    <!-- SECTOR OPENER — giant title in two widths, data line, intro.
+         With the continuous scroll this is the "turn" screen: the sector then reads to the right. -->
+    <section class="chapter opener" data-tone="paper">
+      <div class="container opener__text">
+        <h1 class="opener__title" style="--fit: 11"><span class="opener__wide">Engineering</span> <span class="opener__narrow">Course</span></h1>
+        <p class="opener__data">ENSEEIHT · TOULOUSE INP · 2026–2027</p>
         <p class="intro">My path in the Sciences du Numérique (SN) program at ENSEEIHT, Toulouse INP: key courses, skills and projects.</p>
       </div>
-    </header>
+    </section>
 
-    <!-- PROGRAM -->
-    <section class="section" id="program" aria-labelledby="program-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="program-title">Education</h2>
+    <!-- HORIZONTAL TRACK — 3 panels: Education | Key courses | Skills.
+         Page mode: stacked like chapters. Continuous scroll: pinned and read to the right. -->
+    <div class="track" data-axis="h">
+
+      <!-- PANEL 1 — EDUCATION: the two schools, in the order of the path -->
+      <section class="chapter panel" data-tone="paper" id="program" aria-labelledby="program-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="program-title">Education</h2>
+          </div>
+
+          <div class="relay">
+            <article class="card">
+              <p class="card__meta">2024 – 2026</p>
+              <h3>La Prépa des INP — Toulouse</h3>
+              <p class="muted">Integrated preparatory program of the INP group</p>
+            </article>
+            <span class="relay__arrow" aria-hidden="true">→</span>
+            <article class="card">
+              <p class="card__meta">2026 – 2027 · 1st year</p>
+              <h3>ENSEEIHT — Toulouse INP</h3>
+              <p class="muted">Engineering degree, Sciences du Numérique (SN)</p>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <div class="grid grid--2">
-          <article class="card">
-            <p class="card__meta">2026 – 2027 · 1st year</p>
-            <h3>ENSEEIHT — Toulouse INP</h3>
-            <p class="muted">Engineering degree, Sciences du Numérique (SN)</p>
-          </article>
-          <article class="card">
-            <p class="card__meta">2024 – 2026</p>
-            <h3>La Prépa des INP — Toulouse</h3>
-            <p class="muted">Integrated preparatory program of the INP group</p>
-          </article>
-        </div>
-
-        <!-- KEY COURSES — add the new semester's courses at the end of each group -->
-        <div class="subsection">
-          <h3>Key courses <span class="card__meta">semester 5 · 2026</span></h3>
+      <!-- PANEL 2 — KEY COURSES: add the new semester's courses at the end of each group -->
+      <section class="chapter panel" data-tone="sand" aria-labelledby="courses-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="courses-title">Key courses <span class="card__meta">semester 5 · 2026</span></h2>
+          </div>
           <div class="course-groups">
             <div>
               <h4>Computer science</h4>
@@ -128,9 +165,14 @@
           </div>
           <p class="card__cta"><a class="link-arrow" href="assets/docs/syllabus-enseeiht-sn.pdf" target="_blank" rel="noopener">Full official program (PDF, in French) →</a></p>
         </div>
+      </section>
 
-        <div class="subsection">
-          <h3>Skills</h3>
+      <!-- PANEL 3 — SKILLS -->
+      <section class="chapter panel" data-tone="ink" aria-labelledby="skills-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="skills-title">Skills</h2>
+          </div>
           <dl class="skill-groups">
             <div>
               <dt>Programming &amp; tools</dt>
@@ -171,13 +213,14 @@
             </div>
           </dl>
         </div>
-      </div>
-    </section>
+      </section>
+
+    </div>
 
     <!-- PROJECTS
          To add a project: copy a whole <details class="card project-card"> … </details> block,
          give it a new unique id, and fill in the fields. -->
-    <section class="section" id="projects" aria-labelledby="projects-title">
+    <section class="chapter" data-tone="paper" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-head">
           <h2 id="projects-title">Projects</h2>
@@ -203,6 +246,15 @@
               <span class="project-card__toggle" aria-hidden="true"></span>
             </summary>
             <div class="project-card__body">
+              <!-- TO COMPLETE: screenshot of the Strudel code (WebP 16:10, < 90 KB), then replace the frame by
+                   <img src="assets/img/strudel.webp" alt="Strudel code of the Gypsy Woman cover" width="1600" height="1000" loading="lazy"> -->
+              <figure class="photo-slot">
+                <figcaption class="photo-slot__caption">La Prépa des INP, 2026</figcaption>
+                <div class="photo-slot__frame">
+                  <span>Photo coming soon</span>
+                  <span class="todo">[TO COMPLETE: screenshot of the Strudel code]</span>
+                </div>
+              </figure>
               <dl class="fields">
                 <div>
                   <dt>Context</dt>
@@ -245,10 +297,55 @@
       </div>
     </section>
 
+    <!-- ===== SECTOR EXIT — same block at the end of every page: next / previous sector + map of the lap ===== -->
+    <nav class="chapter sector-exit" data-tone="ink" aria-label="Lap">
+      <div class="container sector-exit__grid">
+        <div class="sector-exit__main">
+          <p class="sector-exit__meta">Sector 2/6 · Engineering</p>
+          <a class="sector-exit__next" href="mobility.html" rel="next" data-to="3">
+            <span class="sector-exit__label">Next sector</span>
+            <span class="sector-exit__title">Mobility <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="sector-exit__prev" href="index.html" rel="prev"><span aria-hidden="true">←</span> Previous: Welcome</a>
+        </div>
+
+        <div class="lap">
+          <svg class="lap-map" viewBox="0 0 240 140" aria-hidden="true"><use href="assets/img/circuit.svg#lap"/></svg>
+          <ol class="lap__list">
+            <li><a href="index.html">Welcome</a></li>
+            <li><a href="engineering.html" aria-current="page">Engineering</a></li>
+            <li><a href="mobility.html">Mobility</a></li>
+            <li><a href="sustainability.html">Sustainability</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="career.html">Career</a></li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
   </main>
 
+  <!-- ===== CONTACT BAR — identical on every page, always visible (bottom bar on phones, left rail on wide screens) ===== -->
+  <aside class="contact-bar" aria-label="Get in touch">
+    <span class="contact-bar__label" aria-hidden="true">Contact</span>
+    <a href="mailto:loup.broussard@outlook.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+      <span>Email</span>
+    </a>
+    <a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com/loupbsd" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <span>GitHub</span>
+    </a>
+    <!-- TO COMPLETE: add the CV link here once assets/docs/CV_Loup_Broussard_EN.pdf exists
+         (<a href="assets/docs/CV_Loup_Broussard_EN.pdf" download> + download icon + <span>CV</span></a>) -->
+  </aside>
+
   <!-- ===== FOOTER — identical on every page ===== -->
-  <footer class="site-footer">
+  <footer class="site-footer" data-tone="ink">
     <div class="container">
       <p>© 2026 Loup Broussard · Last updated: October 2026</p>
       <ul>
