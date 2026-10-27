@@ -47,14 +47,20 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
 | `activities.html` | **Sport & Other Activities** | Rugby, musique (live coding), sports automobiles, nouvelles technologies — chacun avec ce que j'en retire (soft skills) |
 | `career.html` | **Career Development** | Section **Career Project** complète (§3) : CV FR/EN, LinkedIn, vidéo, 3 rôles modèles, 3 mobilités, objectifs court/moyen/long terme (plans A/B/C). Sous-sections futures : stages, PEP |
 
+**Le site est un tour de circuit** (refonte « Lap », validée le 27/10/2026, inspirée de landonorris.com sans en reprendre l'identité) :
+- Les 6 onglets sont les **6 secteurs d'un tour**, dans un ordre fixe : S1 Welcome → S2 Engineering → S3 Mobility → S4 Sustainability → S5 Activities → S6 Career → retour à S1. Le numéro est dans `<html data-sector="n">`.
+- On **change d'onglet à l'horizontale** (flèches ‹ › du header, clavier ← →, swipe sur mobile, menu) et on **lit chaque onglet à la verticale**.
+- Chaque page = **ouverture de secteur** (grand titre + ligne de données) → **chapitres** (§8) → **sortie de secteur** (secteur suivant / précédent + carte du tour), puis le footer.
+
 ## 5. Page d'accueil (`index.html`) — conçue pour être lue en 30 s
 
-Dans cet ordre :
-1. **Hero** : photo, « Loup Broussard », sous-titre « Computer Science Engineering Student @ ENSEEIHT », ligne de données `43.60° N · 1.44° E — TOULOUSE`, UVP en 1 phrase, 3 boutons : `Watch my pitch` · `Download CV` · `LinkedIn`. (Photo à venir : prévoir un grand portrait détouré à droite.)
-2. **At a glance** : une liste courte « label → valeur » (4 à 6 lignes, sans icônes ni grille de fiches identiques) : formation, domaines (dev · embedded systems), langues (FR natif · EN B2), ce que je cherche, localisation (Toulouse).
-3. **Featured** : une liste de 2–3 liens vers mes meilleurs contenus (ex. projet Strudel, pitch vidéo, projet SN) ; chaque ligne = métadonnée + titre + 1 ligne + « See … → ».
-4. **Now** : ce sur quoi je travaille en ce moment (2–3 lignes, mis à jour chaque semestre).
-5. **Contact** : email + LinkedIn + GitHub.
+Dans cet ordre (ton de chaque chapitre entre parenthèses, voir §8) :
+1. **Hero** (papier, plein écran sur ordinateur) : nom en très grand sur deux largeurs d'Archivo (« LOUP » étroit et fin, « BROUSSARD » large et gras), sous-titre « Computer Science Engineering Student @ ENSEEIHT », ligne de données `43.60° N · 1.44° E — TOULOUSE`, UVP en 1 phrase, 3 boutons : `Watch my pitch` · `Download CV` · `LinkedIn`. Portrait détouré à droite (photo à venir, provisoirement « LB »). Tout ce qui se lit en 30 s tient dans le **premier écran** (1280×720 et 375×667).
+2. **At a glance** (encre, lu comme une fiche technique) : une liste courte « label → valeur » (4 à 6 lignes, sans icônes ni grille de fiches identiques) : formation, domaines (dev · embedded systems), langues (FR natif · EN B2), ce que je cherche, localisation (Toulouse).
+3. **Featured / Start here** (papier) : une liste de 2–3 liens vers mes meilleurs contenus (ex. projet Strudel, pitch vidéo, projet SN) ; chaque ligne = métadonnée + titre + 1 ligne + « See … → ».
+4. **Now** (sable) : ce sur quoi je travaille en ce moment (2–3 lignes, mis à jour chaque semestre).
+5. **Contact** (papier) : email en grand + LinkedIn + GitHub.
+6. **Sortie de secteur** (encre) : secteur suivant (S2 Engineering), précédent (S6 Career), carte du tour.
 
 Règles : pas de long paragraphe sur l'accueil (max ~3 lignes par bloc) ; tout le détail est dans les onglets.
 
@@ -75,6 +81,12 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 
 **Carte mobilité** : destination, type (semestre, stage, double diplôme…), pourquoi, lien explicite avec un rôle modèle, prérequis (langue, niveau).
 
+**Cartes répétées** (projets, rôles modèles, mobilités) : coin supérieur droit **biseauté** (`corner-shape: bevel` ; coin simple dans les navigateurs qui ne le gèrent pas).
+
+**Légendes « LIEU, ANNÉE »** : au-dessus de chaque photo et en tête des cartes projet ou formation, en IBM Plex Mono majuscules (ex. `LA PRÉPA DES INP, 2026`). Si je ne l'ai pas donnée : `[TO COMPLETE: LIEU, ANNÉE]`.
+
+**Photos** : les miennes uniquement (portrait, rugby, musique / DJ / Strudel, karting / sim / mécanique, N7), WebP < 150 Ko, `width`/`height`/`alt`, `loading="lazy"` sauf le portrait du hero. Pas de photos d'ambiance de banques d'images. Aucune image insérée sans mon accord ; en attendant, un emplacement réservé.
+
 ## 7. Choix techniques
 
 - **HTML / CSS / JavaScript vanilla** uniquement. Pas de framework, pas de build, pas de dépendance npm.
@@ -84,8 +96,9 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   ├── index.html, engineering.html, mobility.html, sustainability.html, activities.html, career.html   (anglais)
   ├── fr/                    (version française : mêmes noms de fichiers, chemins en ../)
   ├── css/style.css          (un seul fichier, variables CSS en haut)
-  ├── js/main.js             (menu mobile, petites interactions uniquement)
-  ├── assets/img/            (photos compressées < 300 Ko en WebP/JPG ; dessins en SVG : favicon.svg, porsche-911.svg, engine-blueprint.svg)
+  ├── js/lap.js              (sens du glissement entre deux pages ; chargé dans <head> SANS defer)
+  ├── js/main.js             (menu, thème, navigation entre secteurs, petites interactions)
+  ├── assets/img/            (photos compressées < 150 Ko en WebP ; dessins en SVG : favicon.svg, porsche-911.svg, engine-blueprint.svg, circuit.svg)
   ├── assets/docs/           (CV_Loup_Broussard_EN.pdf, CV_Loup_Broussard_FR.pdf, syllabus-enseeiht-sn.pdf, rapport du projet Science et musique)
   └── CLAUDE.md
   ```
@@ -96,26 +109,43 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 - Noms de fichiers : minuscules et tirets, sans espaces ni accents (liens fiables sur GitHub Pages).
 - `<title>` et `<meta name="description">` propres sur chaque page, + balises Open Graph (aperçu propre quand le lien est partagé sur LinkedIn).
 - Déploiement : **GitHub Pages**, dépôt `loupbsd.github.io`, branche `main`. Tous les chemins doivent être **relatifs**.
+- **`main` = le site en ligne.** Une refonte ou une grosse modification se fait sur une branche (ex. `refonte`), fusionnée dans `main` seulement après ma validation.
+- **Aperçu local** : `python -m http.server 8000` à la racine, puis http://localhost:8000 (les transitions entre pages ne marchent pas en `file://`).
+- **Transitions entre onglets** : View Transitions entre pages séparées (`@view-transition` dans `style.css`) + `js/lap.js` (sens gauche / droite) + `main.js` (touches ← →, swipe sur mobile). Sans JS : liens normaux ; avec `prefers-reduced-motion` : aucune animation. **Jamais** de geste trackpad ni de molette détournée pour changer d'onglet.
+- Google Fonts : `Archivo:wdth,wght@62..125,300..800` + `IBM Plex Mono:wght@400;500`.
 
-## 8. Design — « Violet & Cream » : pro, chaleureux, sobre
+## 8. Design — « Violet & Cream » : pro, chaleureux, sobre · mise en page « Lap »
 
 - **Ambiance** : professionnelle, chaleureuse et sobre. Un site fait à la main par un étudiant ingénieur, pas un template ni un pastiche de terminal.
+- **Chapitres** (refonte « Lap », 27/10/2026) : chaque section est un chapitre (`class="chapter" data-tone="…"`) dans l'un des **trois tons** : **papier** (crème, plan moteur bien visible), **sable** (chapitres denses), **encre** (chapitres sombres). Jamais deux tons identiques à la suite (sauf l'ouverture et le 1er chapitre). Rythme varié : plein écran → dense → aéré.
+  - En passant d'un chapitre à l'autre, la couleur du suivant **monte en douceur** (animation CSS liée au défilement). Le texte n'arrive qu'une fois la couleur posée, grâce à la marge haute des chapitres.
+  - Le header prend le ton du chapitre qui passe dessous.
+  - Repli (navigateur sans support, ou `prefers-reduced-motion`) : bords nets.
 - **Univers « course auto/moto & musique »** (validé le 25/10/2026, inspiré de bsrd.fr en plus sobre) : quelques détails précis, pas d'autre image décorative que le plan moteur ci-dessous.
-  - **Tracé de télémétrie** en bas du header (courbe de vitesse sur un tour, qui évoque aussi une forme d'onde audio) : se remplit en violet avec la progression de lecture, avec une **silhouette de Porsche 911 Carrera des années 80** (même violet) qui roule au bout de la partie violette, roues posées sur la courbe (masquée quand elle croise le logo sur mobile). Tracé dessiné par `js/main.js` (§5) ; la voiture vient de `assets/img/porsche-911.svg`, utilisé comme **masque CSS** (la couleur vient du CSS, donc du thème). Avec le plan moteur, ce sont les **deux seuls** éléments « signature » du site : ne pas ajouter d'autres effets.
-  - **Plan moteur en fond de toutes les pages** (validé le 27/10/2026) : dessin technique d'un flat-six Porsche (`assets/img/engine-blueprint.svg`, cadre et cartouche « REF. » retirés, aucun logo). Une seule règle : `body::before` en `position: fixed` (section 2 de `style.css`), donc il reste en place pendant que la page défile par-dessus. Même technique que la 911 : **masque CSS**, couleur = accent du thème, opacité via `--blueprint-opacity` (~0,11 clair / 0,13 sombre ; ×0,8 sur mobile), fondu vers la gauche pour qu'il se dissolve avant le texte. Placé à droite, sous le header ; les blocs opaques (header, cartes, sommaire) le masquent. Statique, ne pas l'augmenter au point de gêner la lecture.
-  - **Secteurs « S1, S2… »** comme un chronométrage F1, à **droite** des titres de section (compteur CSS automatique, rien à écrire dans le HTML).
-  - **Ligne de données** sous le nom dans le hero : `43.60° N · 1.44° E — TOULOUSE`.
-- **Thème clair crème par défaut** ; thème sombre si l'OS est en mode sombre, ou via le bouton (choix mémorisé).
-- **Typographie** : **Archivo** pour tout le texte, en version **élargie** (`font-stretch: 125%`) pour les grands titres h1/h2 (effet « livrée de course »), **IBM Plex Mono** réservée aux *données* (tags, dates, métadonnées, `[TO COMPLETE]`, code). 2 polices max, via Google Fonts.
-- **Une seule couleur d'accent** : **violet** `#4D2DA0` sur fond crème `#F4E9D2` ; en thème sombre, accent `#A993F0` sur `#1A1714` avec texte crème `#EFE8DA` — direction choisie le 25/10/2026 (remplace « Terminal Clean » cyan).
+  - **Tracé de télémétrie** en bas du header (courbe de vitesse sur un tour, qui évoque aussi une forme d'onde audio) : se remplit en violet avec la progression de lecture, avec une **silhouette de Porsche 911 Carrera des années 80** (même violet) qui roule au bout de la partie violette, roues posées sur la courbe (masquée quand elle croise le logo sur mobile). Tracé dessiné par `js/main.js` (§5) ; la voiture vient de `assets/img/porsche-911.svg`, utilisé comme **masque CSS** (la couleur vient du CSS, donc du thème). Avec le plan moteur et la bande chrono, ce sont les **trois seuls** éléments « signature » du site : ne pas ajouter d'autres effets.
+  - **Plan moteur en fond de toutes les pages** (validé le 27/10/2026) : dessin technique d'un flat-six Porsche (`assets/img/engine-blueprint.svg`, cadre et cartouche « REF. » retirés, aucun logo). Une seule règle : `body::before` en `position: fixed` (section 2 de `style.css`), donc il reste en place pendant que la page défile par-dessus. Même technique que la 911 : **masque CSS**, couleur = accent du thème, opacité via `--blueprint-opacity` (~0,11 clair / 0,13 sombre ; ×0,8 sur mobile), fondu vers la gauche pour qu'il se dissolve avant le texte. Placé à droite, sous le header. Les fonds de chapitre sont peints **en dessous** (section 13), donc il traverse tous les chapitres ; sur un chapitre encre, il passe en violet clair (`data-view-tone`, posé par main.js). Les blocs opaques (header, cartes, sommaire) le masquent. Statique, ne pas l'augmenter au point de gêner la lecture.
+  - **Bande chrono** : la nav du header montre les 6 secteurs S1–S6, avec une barre au-dessus de chaque onglet : violet = secteur en cours (comme le « secteur violet », meilleur temps en F1), gris = secteurs déjà passés, clair = à venir. Flèches ‹ › de part et d'autre. Sur mobile : `‹ S1/6 ›` + menu plein écran (6 secteurs en grand, carte du tour, bouton thème).
+  - **Carte du tour** (`assets/img/circuit.svg`, tracé original) : dans la sortie de secteur et le menu mobile ; le secteur en cours est en violet.
+  - **Mini-secteurs** : dans une page, les titres de section portent `S3.1`, `S3.2`… à **droite** (compteur CSS automatique ; le numéro de page vient de `data-sector`).
+  - **Ligne de données** sous chaque grand titre : `43.60° N · 1.44° E — TOULOUSE` sur l'accueil, un résumé factuel tiré du contenu sur les autres pages.
+- **Thème clair crème par défaut** ; thème sombre (« session de nuit ») si l'OS est en mode sombre, ou via le bouton (choix mémorisé).
+- **Typographie** : **Archivo** pour tout le texte. Grands titres (nom du hero, h1) en **majuscules et en deux largeurs** : un mot large et gras (`font-stretch: 125%`, 800), l'autre étroit et fin (`62%`, 300), effet « livrée de course ». h2 élargis (125 %). **IBM Plex Mono** réservée aux *données* (tags, dates, légendes, secteurs, `[TO COMPLETE]`, code). 2 polices max, via Google Fonts ; pas de serif.
+- **Une seule couleur d'accent** : **violet** `#4D2DA0` sur fond clair, `#A993F0` sur fond sombre — direction choisie le 25/10/2026 (remplace « Terminal Clean » cyan). Pas de 2e accent.
+- **Tons** (variables `--tone-*` en haut de `style.css`) :
+  | Ton | Thème clair | Thème sombre | Texte · accent |
+  |---|---|---|---|
+  | papier | `#F4E9D2` | `#1A1714` | clair : `#221C2B` · `#4D2DA0` — sombre : `#EFE8DA` · `#A993F0` |
+  | sable | `#EADBBE` | `#221E1A` | idem papier |
+  | encre | `#1A1714` | `#0E0C0A` | `#EFE8DA` · `#A993F0` |
 - **Lisibilité avant tout** : hiérarchie visuelle forte, titres explicites, beaucoup d'espace, listes courtes, tags pour les compétences, pas de pavés de texte.
 - **Donner envie d'en savoir plus** : liens et cartes cliquables, effets de survol discrets, appels à l'action clairs (« See project → », « Watch the pitch »).
-- Animations : survol uniquement, pas d'animation d'apparition répétée sur chaque section ; respecter `prefers-reduced-motion`.
+- **Animations** : autorisées = survol discret, glissement horizontal entre onglets, montée de couleur entre chapitres, changement de ton du header. Interdites = animations d'apparition sur chaque bloc, défilement « lissé » en JS (type Lenis), sections épinglées à défilement horizontal, texte qui défile. Tout est coupé avec `prefers-reduced-motion`.
 - Performance : aucune page > ~1 Mo.
 
 ### Éviter le « look IA » (règles inspirées du skill Impeccable)
 Le site ne doit pas donner l'impression d'avoir été généré par une IA. À ne **pas** faire :
-- de petits labels au-dessus des titres (`// about`, `> now`, `$ contact`…) : le titre se suffit (seule exception : les secteurs S1, S2… placés à droite) ;
+- de petits labels au-dessus des titres (`// about`, `> now`, `$ contact`…) : le titre se suffit (seule exception : les mini-secteurs S1.1, S1.2… placés à droite) ;
+- reprendre l'identité de landonorris.com : jaune fluo, leurs polices (Brier, Mona Sans), leurs visuels ou leur code ;
 - un bloc de « chiffres clés » (gros nombre + petit label) ;
 - la monospace comme déguisement « tech » sur des titres, boutons ou liens ;
 - des grilles de cartes identiques « icône + titre + texte » comme structure de page, ou des cartes dans des cartes ;
@@ -132,6 +162,7 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
 - Anglais professionnel, phrases courtes, verbes d'action. Signale-moi les fautes ou tournures maladroites dans les textes que je fournis, **sans les réécrire sans me le dire**.
 - **Version française** dans `fr/` (validée le 25/10/2026), avec un bouton **EN | FR** dans le header de toutes les pages, qui mène à la même page dans l'autre langue.
   - État actuel : seul `fr/index.html` est traduit. Les autres onglets FR pointent vers les pages anglaises, et le bouton FR des pages anglaises non traduites mène à `fr/index.html`. Quand une page est traduite, mettre à jour ces liens (commentaires dans le header).
+  - Décidé le 27/10/2026 : les 5 autres pages seront traduites **fidèlement à partir de l'anglais après le 1er novembre** (rien d'ajouté, chaque page relue par moi), puis gardées strictement synchronisées (même structure, même contenu).
   - **Toute modification de contenu se fait dans les deux langues** (pour les pages déjà traduites).
   - En français : CV FR, LinkedIn `?locale=fr_FR`, `lang="fr"`, `og:locale` fr_FR, liens `hreflang` entre les deux versions.
 
@@ -143,6 +174,7 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
 - Explique brièvement ce que tu as changé et pourquoi : je suis en SN, je veux comprendre le code.
 - Pas de données personnelles sensibles sur le site : ni téléphone, ni adresse, ni date de naissance.
 - Messages de commit courts, en anglais, au présent (ex. `Add career project section`).
+- Pour une refonte : **une étape = une page**. Après chaque étape, compte rendu court : captures (375 px et 1280 px), console sans erreur, poids de la page, contenu comparé à l'ancienne version (rien de perdu), navigation au clavier, alignement EN/FR. Puis attendre mon accord avant l'étape suivante.
 
 ## 11. Mes infos
 

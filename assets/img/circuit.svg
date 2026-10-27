@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140">
+  <!-- Map of the lap: an original circuit split into 6 sectors, one per tab of the site
+       (S1 Welcome, S2 Engineering, S3 Mobility, S4 Sustainability, S5 Activities, S6 Career).
+       Used in the pages with:  <svg class="lap-map" viewBox="0 0 240 140"><use href="assets/img/circuit.svg#lap"/></svg>
+       The colours come from the page (style.css, section 14): each sector reads the CSS
+       variables s1 to s6 (colour) and w1 to w6 (width), so the current sector is drawn
+       in violet and thicker. (No double hyphen allowed inside an XML comment.) -->
+  <defs>
+    <g id="lap" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- S1: main straight, from the start / finish line -->
+      <path d="M44 118 L160 118" style="stroke: var(--s1, currentColor); stroke-width: var(--w1, 2.5px)"/>
+      <!-- S2: tight turn 1, short straight up the right side, kink -->
+      <path d="M160 118 Q186 118 186 94 L186 72 L198 52" style="stroke: var(--s2, currentColor); stroke-width: var(--w2, 2.5px)"/>
+      <!-- S3: hairpin -->
+      <path d="M198 52 C208 34 194 14 178 24" style="stroke: var(--s3, currentColor); stroke-width: var(--w3, 2.5px)"/>
+      <!-- S4: two chicanes -->
+      <path d="M178 24 L152 40 Q144 45 136 40 L124 32 Q116 27 108 32 L96 40" style="stroke: var(--s4, currentColor); stroke-width: var(--w4, 2.5px)"/>
+      <!-- S5: top left corner -->
+      <path d="M96 40 Q88 45 76 42 L52 34 Q30 28 26 52" style="stroke: var(--s5, currentColor); stroke-width: var(--w5, 2.5px)"/>
+      <!-- S6: down the left side, then the long last corner back to the line -->
+      <path d="M26 52 L26 90 C26 110 32 118 44 118" style="stroke: var(--s6, currentColor); stroke-width: var(--w6, 2.5px)"/>
+
+      <!-- Start / finish line -->
+      <path d="M44 109 V127" style="stroke: currentColor; stroke-width: 1.5px"/>
+
+      <!-- Sector names -->
+      <g style="stroke: none; font-family: var(--font-mono, monospace); font-size: 10px; letter-spacing: 0.04em">
+        <text x="96" y="134" style="fill: var(--s1, currentColor)">S1</text>
+        <text x="196" y="100" style="fill: var(--s2, currentColor)">S2</text>
+        <text x="208" y="20" style="fill: var(--s3, currentColor)">S3</text>
+        <text x="128" y="58" style="fill: var(--s4, currentColor)">S4</text>
+        <text x="58" y="24" style="fill: var(--s5, currentColor)">S5</text>
+        <text x="6" y="76" style="fill: var(--s6, currentColor)">S6</text>
+      </g>
+    </g>
+  </defs>
+</svg>
