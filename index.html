@@ -106,14 +106,14 @@
           <h1 class="hero__name"><span class="hero__first">Loup</span> <span class="hero__last">Broussard</span></h1>
           <p class="hero__subtitle">Computer Science Engineering Student @ ENSEEIHT</p>
           <p class="hero__data">43.60° N · 1.44° E — TOULOUSE</p>
-          <p class="hero__uvp">First-year Computer Science engineering student at ENSEEIHT who turns curiosity into code, looking for a software, systems or data internship in summer 2027.</p>
+          <p class="hero__uvp">First-year Computer Science engineering student who turns curiosity into code, looking for a software, systems or data internship in summer 2027.</p>
 
           <div class="btn-row">
             <a class="btn btn--primary" href="career.html#pitch">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
               Watch my pitch
             </a>
-            <a class="btn" href="assets/docs/CV_Loup_Broussard_EN.pdf" download>
+            <a class="btn" href="assets/docs/CV_Loup_Broussard_EN.pdf" download data-cv>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               Download CV
             </a>
@@ -122,6 +122,24 @@
               LinkedIn
             </a>
           </div>
+          <!-- CV pop-up: opened by the "data-cv" button above (js/main.js §10).
+               Without JavaScript the button downloads the CV of the page's language. -->
+          <dialog class="contact-dialog cv-dialog" id="cv-dialog" aria-labelledby="cv-dialog-title">
+            <div class="contact-dialog__box">
+              <div class="contact-dialog__head">
+                <h2 id="cv-dialog-title">Download my CV</h2>
+                <form method="dialog">
+                  <button class="contact-dialog__close" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                  </button>
+                </form>
+              </div>
+              <div class="btn-row">
+                <a class="btn btn--primary" href="assets/docs/CV_Loup_Broussard_EN.pdf" download>English CV</a>
+                <a class="btn" href="assets/docs/CV_Loup_Broussard_FR.pdf" download>French CV</a>
+              </div>
+            </div>
+          </dialog>
         </div>
 
         <!-- TO COMPLETE: replace the <div> placeholder below with your cut-out portrait
@@ -149,7 +167,7 @@
           </div>
           <div>
             <dt>Languages</dt>
-            <dd>French (native) · English (B2)</dd>
+            <dd>French (native) · English (B2) · German (school level, A2) · Italian (beginner, A1)</dd>
           </div>
           <div>
             <dt>Looking for</dt>
@@ -157,7 +175,7 @@
           </div>
           <div>
             <dt>Location</dt>
-            <dd>Toulouse, France</dd>
+            <dd>Toulouse · Nîmes, France</dd>
           </div>
         </dl>
       </div>
@@ -192,7 +210,7 @@
             <a href="engineering.html#program">
               <span class="feature-list__meta">engineering course</span>
               <span class="feature-list__title">My engineering course</span>
-              <span class="feature-list__text">Maths, programming in Ada, modeling with Coq and control systems at ENSEEIHT.</span>
+              <span class="feature-list__text">Maths, programming in Ada, modeling with Coq and control systems.</span>
               <span class="link-arrow">See the course →</span>
             </a>
           </li>
@@ -207,9 +225,9 @@
           <h2 id="now-title">What I'm working on</h2>
         </div>
         <p class="now-text">
-          Starting my engineering degree in Computer Science at ENSEEIHT (2026–2027):
-          applied maths (probability, statistics, optimization), imperative programming in Ada,
-          modeling with Coq and control systems.
+          Starting my engineering degree (2026–2027):
+          imperative programming, how a computer works inside, formal modeling and proof,
+          and the applied maths behind data analysis and control systems.
         </p>
       </div>
     </section>

@@ -26,13 +26,13 @@ La section **Career Project** doit contenir :
 - [x] Lien LinkedIn (profil FR + EN)
 - [ ] **Vidéo pitch UVP** en anglais, 2–3 min (structure Now → Past → Future)
 - [ ] **3 rôles modèles** analysés (My Job Glasses, LinkedIn, alumni)
-- [ ] **3 projets de mobilité internationale** alignés avec ces rôles modèles
+- [ ] **3 projets de mobilité internationale** (sur le site, sans lien affiché avec les rôles modèles : décidé le 28/10/2026, alors que la grille CAM demande qu'ils soient alignés)
 
 Critères de notation : complétude · clarté du projet professionnel · **cohérence de la marque personnelle** (UVP / CV / LinkedIn / pitch alignés) · qualité de l'anglais · présentation visuelle et navigation.
 
 ➡️ Priorité absolue : tous ces éléments **présents, visibles et accessibles en 1 ou 2 clics depuis l'accueil**.
 
-État au 25/10/2026 : CV FR/EN, pitch et rendez-vous avec les 3 rôles modèles prévus la semaine du 26/10 ; les 3 mobilités seront construites ensuite à partir des rôles modèles (encadrés « In progress » sur le site, cartes prêtes en commentaire HTML).
+État au 25/10/2026 : CV FR/EN, pitch et rendez-vous avec les 3 rôles modèles prévus la semaine du 26/10 ; les 3 mobilités seront construites ensuite (encadrés « In progress » sur le site, cartes prêtes en commentaire HTML).
 
 ## 4. Structure du site (6 onglets obligatoires)
 
@@ -56,10 +56,11 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
   - le FR passe au défilement continu dès que ses 6 pages existent (fait le 28/10) : jamais de mélange de langues dans un même défilement ;
   - avant chaque secteur horizontal, l’ouverture du secteur (grand titre) sert d’écran de virage, **sans message** « This sector reads to the right » (retiré le 27/10/2026) : la jauge des panneaux suffit ; en sortie, un repère « ↓ secteur suivant » ;
   - lien direct vers un onglet (ex. `/career.html`) : la page s'affiche tout de suite et **tout le tour** est ajouté autour, sans faire bouger l'écran ;
-  - panneaux : Engineering = Formation | Cours | Compétences | Projets ; Mobility = Projets | Langues | À venir ; Sustainability = Formations | Projet RSE | ODD ; Activities = une activité par panneau ; Career = CV & LinkedIn | Pitch | Rôles modèles | Mobilité | Calendrier | Plans A/B/C | À venir ;
+  - panneaux : Engineering = Formation | Cours | Compétences | Projets ; Mobility = Projets | Langues | À venir ; Sustainability = Formations | Projet RSE | ODD ; Activities = une activité par panneau ; Career = CV & LinkedIn (titre masqué à l’écran, 28/10/2026) | Pitch | Rôles modèles | Mobilité | Calendrier | Plans A/B/C | À venir ;
+  - si un panneau est trop vide (contenu < 55 % de la hauteur, ex. grand écran), le moteur agrandit tout son contenu avec `zoom` (jusqu'à ×1,6, sans dépasser 80 % de la hauteur ni la largeur de sa colonne) : décidé le 28/10/2026 ;
   - si un panneau ne tient pas à l'écran, le moteur le découpe en un groupe par panneau (cartes, groupes de cours…) ; s'il ne tient toujours pas (zoom, très petit écran), le secteur repasse en vertical et la raison est notée dans `data-stacked` sur le `.track` ;
   - en défilement continu, le sommaire de Career n'est plus collé en haut (il passerait sous les panneaux épinglés) ;
-  - interrupteur **« Lecture classique »** dans le menu (pages séparées, choix mémorisé) ;
+  - interrupteur **« Lecture classique »** (pages séparées, choix mémorisé) : dans le menu téléphone et **toujours visible en bas à droite** (retiré du footer le 28/10/2026) (au bout de la barre Contact sous 1280 px, icône seule sur téléphone ; petite pilule au-delà), décidé le 28/10/2026 ;
   - en défilement continu, la sortie de secteur devient une **bande de jonction** compacte ; le bloc complet reste en mode pages ;
   - la télémétrie et la 911 montrent le **tour entier** (6 repères de secteur) en défilement continu, la page en mode pages ;
   - sur téléphone, plus de défilement horizontal (28/10/2026) : chaque secteur se lit de haut en bas (`data-stacked="phone: vertical reading"` sur le `.track`).
@@ -69,8 +70,8 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
 ## 5. Page d'accueil (`index.html`) — conçue pour être lue en 30 s
 
 Dans cet ordre (ton de chaque chapitre entre parenthèses, voir §8) :
-1. **Hero** (papier, plein écran sur ordinateur) : nom en très grand sur deux largeurs d’Archivo (« LOUP » large, gras (800), couleur du texte principal ; « BROUSSARD » large, léger (300), à 0,6×, en gris atténué : LOUP est le plus clair en thème sombre, le plus foncé en thème clair — 27/10/2026), sous-titre « Computer Science Engineering Student @ ENSEEIHT », ligne de données `43.60° N · 1.44° E — TOULOUSE`, UVP en 1 phrase, 3 boutons : `Watch my pitch` · `Download CV` · `LinkedIn`. Portrait détouré à droite (photo à venir, provisoirement « LB »). Tout ce qui se lit en 30 s tient dans le **premier écran** (1280×720 et 375×667).
-2. **At a glance** (encre, lu comme une fiche technique) : une liste courte « label → valeur » (4 à 6 lignes, sans icônes ni grille de fiches identiques) : formation, domaines (dev · embedded systems), langues (FR natif · EN B2), ce que je cherche, localisation (Toulouse).
+1. **Hero** (papier, plein écran sur ordinateur) : nom en très grand sur deux largeurs d’Archivo (« LOUP » large, gras (800), couleur du texte principal ; « BROUSSARD » large, léger (300), à 0,6×, en gris atténué : LOUP est le plus clair en thème sombre, le plus foncé en thème clair — 27/10/2026), sous-titre « Computer Science Engineering Student @ ENSEEIHT », ligne de données `43.60° N · 1.44° E — TOULOUSE`, UVP en 1 phrase, 3 boutons : `Watch my pitch` · `Download CV` (ouvre une pop-up avec deux boutons, CV anglais / CV français : 28/10/2026) · `LinkedIn`. Portrait détouré à droite (photo à venir, provisoirement « LB »). Tout ce qui se lit en 30 s tient dans le **premier écran** (1280×720 et 375×667).
+2. **At a glance** (encre, lu comme une fiche technique) : une liste courte « label → valeur » (4 à 6 lignes, sans icônes ni grille de fiches identiques) : formation, domaines (dev · embedded systems), langues (FR natif · EN B2 · allemand scolaire A2 · italien débutant A1), ce que je cherche, localisation (Toulouse · Nîmes).
 3. **Featured / Start here** (papier) : une liste de 2–3 liens vers mes meilleurs contenus (ex. projet Strudel, pitch vidéo, projet SN) ; chaque ligne = métadonnée + titre + 1 ligne + « See … → ».
 4. **Now** (sable) : ce sur quoi je travaille en ce moment (2–3 lignes, mis à jour chaque semestre).
 (Ancien chapitre **Contact** : chapitre supprimé le 27/10/2026, remplacé par la pop-up « Contact » (voir §8, barre « Contact »).)
@@ -93,7 +94,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 
 **Carte rôle modèle** : nom (ou initiales si pas d'accord de la personne), poste, entreprise, parcours en 3 étapes, comment je l'ai rencontré (My Job Glasses / LinkedIn / alumni), ce que j'en retiens pour mon projet.
 
-**Carte mobilité** : destination, type (semestre, stage, double diplôme…), pourquoi, lien explicite avec un rôle modèle, prérequis (langue, niveau).
+**Carte mobilité** : destination, type (semestre, stage, double diplôme…), pourquoi, prérequis (langue, niveau). Pas de lien avec un rôle modèle (retiré le 28/10/2026).
 
 **Cartes répétées** (projets, rôles modèles, mobilités) : coin supérieur droit **biseauté** (`corner-shape: bevel` ; coin simple dans les navigateurs qui ne le gèrent pas).
 
@@ -149,25 +150,25 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   - **Carte du tour** (`assets/img/circuit.svg`, tracé simplifié de Nevers Magny-Cours, choisi le 28/10/2026) : en haut de l’ouverture de chaque secteur S2–S6 (le secteur qui commence en couleur, décidé le 28/10/2026), dans la sortie de secteur et le menu mobile ; le secteur en cours est en violet.
   - **Mini-secteurs** : dans une page, les titres de section portent `S3.1`, `S3.2`… à **droite** (compteur CSS automatique ; le numéro de page vient de `data-sector`).
   - **Ligne de données** sous chaque grand titre : `43.60° N · 1.44° E — TOULOUSE` sur l'accueil, un résumé factuel tiré du contenu sur les autres pages.
-- **Thème clair crème par défaut** ; thème sombre (« session de nuit ») si l'OS est en mode sombre, ou via le bouton (choix mémorisé).
+- **Thème clair crème doux par défaut** (blanc crème moins jaune, jamais gris : 28/10/2026 ; couleurs de secteur assombries pour rester AA) ; thème sombre (« session de nuit ») si l'OS est en mode sombre, ou via le bouton (choix mémorisé).
 - **Typographie** : **Archivo** pour tout le texte. Grands titres (nom du hero, h1) en **majuscules et en deux largeurs** : un mot large et gras (`font-stretch: 125%`, 800), l'autre étroit et fin (`62%`, 300), effet « livrée de course ». h2 élargis (125 %). **IBM Plex Mono** réservée aux *données* (tags, dates, légendes, secteurs, `[TO COMPLETE]`, code). 2 polices max, via Google Fonts ; pas de serif.
-- **Couleur d'identité** : **violet** `#4D2DA0` sur fond clair, `#A993F0` sur fond sombre — direction choisie le 25/10/2026 (remplace « Terminal Clean » cyan). Header, boutons, liens, barre de contact.
+- **Couleur d'identité** : **violet** `#4D2DA0` sur fond clair, `#9670FF` sur fond sombre (plus violet et plus proche de celui du thème clair, fonds sombres moins bruns : 28/10/2026) — direction choisie le 25/10/2026 (remplace « Terminal Clean » cyan). Header, boutons, liens, barre de contact.
 - **Couleurs de secteur** (28/10/2026, variables `--c-s1` … `--c-s6`) : elles ne colorent **que les repères de leur secteur** (barre du secteur en cours dans la bande chrono, tracé de la carte du tour, nom du « secteur suivant », plus tard le repère de changement d'axe). Jamais de fond ni de bouton colorés ; le violet reste la marque.
   | Secteur | Clair (AA sur crème et sable) | Sombre |
   |---|---|---|
-  | S1 Welcome | violet `#4D2DA0` | `#A993F0` |
-  | S2 Engineering | bleu télémétrie `#1F5FA8` | `#8DB8F0` |
-  | S3 Mobility | vert piste `#2E6B3F` | `#8FD1A0` |
-  | S4 Sustainability | ocre `#7A4F00` | `#E7B66A` |
-  | S5 Activities | rouge `#A3302A` | `#F09A8E` |
-  | S6 Career | violet (retour à l'identité pour l'arrivée) | `#A993F0` |
+  | S1 Welcome | violet `#4D2DA0` | `#9670FF` |
+  | S2 Engineering | bleu télémétrie `#1B5699` | `#8DB8F0` |
+  | S3 Mobility | vert piste `#285F38` | `#8FD1A0` |
+  | S4 Sustainability | ocre `#704800` | `#E7B66A` |
+  | S5 Activities | rouge `#972B26` | `#F09A8E` |
+  | S6 Career | magenta `#A51D78` (teinte qu’aucun autre secteur n’utilise, 28/10/2026) | `#F27FC6` |
 - **Barre « Contact »** (toujours visible, section 16 de `style.css`) : barre de 48 px en bas sous 1280 px (icônes seules sous 400 px), rail vertical dans la marge gauche au-delà. E-mail, LinkedIn, GitHub ; lien CV à ajouter quand les PDF existeront (commentaire `TO COMPLETE` dans le HTML). Le mot « Contact » (barre et footer, `data-contact`) ouvre une **pop-up** (`<dialog id="contact-dialog">`, main.js §9) avec e-mail et téléphone, non cliquables : un clic les **copie** dans le presse-papiers et affiche « Copied to clipboard » ; sans JS, il ouvre un e-mail.
 - **Tons** (variables `--tone-*` en haut de `style.css`) :
   | Ton | Thème clair | Thème sombre | Texte · accent |
   |---|---|---|---|
-  | papier | `#F4E9D2` | `#1A1714` | clair : `#221C2B` · `#4D2DA0` — sombre : `#EFE8DA` · `#A993F0` |
-  | sable | `#EADBBE` | `#221E1A` | idem papier |
-  | encre | `#1A1714` | `#0E0C0A` | `#EFE8DA` · `#A993F0` |
+  | papier | `#F1E6D2` (blanc cassé chaud) | `#151413` | clair : `#221C2B` · `#4D2DA0` — sombre : `#EFE8DA` · `#9670FF` |
+  | sable | `#E9DDC6` | `#1D1B19` | idem papier |
+  | encre | `#E2D3B5` (crème profond, texte foncé : aucun chapitre sombre en thème clair, 28/10/2026) | `#0C0B0A` | clair : `#221C2B` · `#4D2DA0` — sombre : `#EFE8DA` · `#9670FF` |
 - **Lisibilité avant tout** : hiérarchie visuelle forte, titres explicites, beaucoup d'espace, listes courtes, tags pour les compétences, pas de pavés de texte.
 - **Donner envie d'en savoir plus** : liens et cartes cliquables, effets de survol discrets, appels à l'action clairs (« See project → », « Watch the pitch »).
 - **Animations** : autorisées = survol discret, glissement horizontal entre onglets, montée de couleur entre chapitres, changement de ton du header, secteurs épinglés qui défilent à l'horizontale, repère de changement d'axe. Interdites = animations d'apparition sur chaque bloc, défilement « lissé » en JS (type Lenis), texte qui défile tout seul. Tout est coupé avec `prefers-reduced-motion` (retour aux pages classiques).
@@ -214,11 +215,12 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
 - Email pro : loup.broussard@outlook.com
 - LinkedIn : https://www.linkedin.com/in/loup-broussard-a6940b38b/ (EN : ?locale=en_US · FR : ?locale=fr_FR)
 - GitHub : https://github.com/loupbsd
-- Langues : Français (langue maternelle) · Anglais (B2)
+- Langues : Français (langue maternelle) · Anglais (B2) · Allemand (scolaire, A2) · Italien (débutant, A1)
+- Localisation : Toulouse · Nîmes
 - Domaines d'intérêt : développement logiciel, systèmes embarqués, nouvelles technologies (encore en exploration)
 - Projets : « Science et musique » (prépa, 2026, live coding Strudel) · [TO COMPLETE: projets SN]
 - Activités : rugby · musique · sports automobiles · nouvelles technologies
-- UVP (1 phrase) : « First-year Computer Science engineering student at ENSEEIHT who turns curiosity into code, looking for a software, systems or data internship in summer 2027. »
+- UVP (1 phrase) : « First-year Computer Science engineering student who turns curiosity into code, looking for a software, systems or data internship in summer 2027. »
 - Pistes de carrière (exploration, ouvert à tout) : plan A systèmes embarqués dans le sport auto/moto · plan B logiciel pour la musique électronique (DAW, outils DJ, synthés) · plan C chef de projet / product manager tech après quelques années
 - 3 mots-clés de ma marque : [TO COMPLETE]
 - Ce que je cherche : stage technique de 6 semaines minimum, entre le 7 juin et le 23 août 2027, en développement logiciel, systèmes ou data

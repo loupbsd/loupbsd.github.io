@@ -31,23 +31,23 @@
    ========================================================================= */
 :root {
   /* Colors — light theme */
-  --color-bg: #f4e9d2;            /* page background (cream) */
-  --color-surface: #faf3e3;       /* cards */
-  --color-surface-2: #ede0c4;     /* hovered cards, inputs */
-  --color-border: #dfcfae;
+  --color-bg: #f1e6d2;            /* page background (warm off-white cream: 28/10/2026) */
+  --color-surface: #f7efe1;       /* cards */
+  --color-surface-2: #e9ddc7;     /* hovered cards, inputs */
+  --color-border: #dccdb0;
   --color-text: #221c2b;
-  --color-text-muted: #5a5262;
+  --color-text-muted: #5f5446;      /* warm brown-grey, not a cold grey */
   --color-accent: #4d2da0;        /* the ONE accent color (violet) */
   --color-accent-soft: rgba(77, 45, 160, 0.09);
   --color-on-accent: #faf3e3;     /* text placed on top of the accent */
-  --color-todo: #92400e;          /* [TO COMPLETE] placeholders only */
+  --color-todo: #8a3c0d;          /* [TO COMPLETE] placeholders only */
   --blueprint-opacity: 0.11;      /* engine drawing behind every page */
 
   /* Chapter tones (section 13): background of each tone.
      paper = the page itself, sand = dense chapters, ink = dark chapters */
-  --tone-paper: #f4e9d2;
-  --tone-sand: #eadbbe;
-  --tone-ink: #1a1714;
+  --tone-paper: #f1e6d2;
+  --tone-sand: #e9ddc6;
+  --tone-ink: #e2d3b5;            /* light theme: a deeper cream, never dark (28/10/2026) */
 
   /* Sector colours: one per tab. They only colour the marks of their own sector
      (current bar of the timing strip, map of the lap, "next sector" name).
@@ -55,11 +55,11 @@
      Light values here (AA on cream and sand); light-on-dark values in the dark theme
      and in ink chapters (section 13). */
   --c-s1: #4d2da0;                /* S1 Welcome: violet */
-  --c-s2: #1f5fa8;                /* S2 Engineering: telemetry blue */
-  --c-s3: #2e6b3f;                /* S3 Mobility: track green */
-  --c-s4: #7a4f00;                /* S4 Sustainability: ochre */
-  --c-s5: #a3302a;                /* S5 Activities: red */
-  --c-s6: #4d2da0;                /* S6 Career: back to violet for the finish */
+  --c-s2: #1b5699;                /* S2 Engineering: telemetry blue */
+  --c-s3: #285f38;                /* S3 Mobility: track green */
+  --c-s4: #704800;                /* S4 Sustainability: ochre */
+  --c-s5: #972b26;                /* S5 Activities: red */
+  --c-s6: #a51d78;                /* S6 Career: magenta, a hue no other sector uses (28/10/2026) */
 
   /* Fonts */
   --font-sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -99,52 +99,52 @@
 /* Dark theme colors. Written twice on purpose: once for the button choice,
    once for the OS setting. Change both blocks together. */
 :root[data-theme="dark"] {
-  --color-bg: #1a1714;
-  --color-surface: #221e1a;
-  --color-surface-2: #2a2520;
-  --color-border: #3a332b;
+  --color-bg: #151413;
+  --color-surface: #1d1b19;
+  --color-surface-2: #252220;
+  --color-border: #353029;
   --color-text: #efe8da;          /* the cream becomes the text color */
   --color-text-muted: #b5ab9a;
-  --color-accent: #a993f0;        /* same violet, lighter: AA contrast on dark */
-  --color-accent-soft: rgba(169, 147, 240, 0.13);
+  --color-accent: #9670ff;        /* same violet, lighter: AA contrast on dark */
+  --color-accent-soft: rgba(150, 112, 255, 0.16);
   --color-on-accent: #1a1430;
   --color-todo: #f5b84b;
   --blueprint-opacity: 0.13;
-  --tone-paper: #1a1714;          /* "night session": the three tones get darker */
-  --tone-sand: #221e1a;
-  --tone-ink: #0e0c0a;
-  --c-s1: #a993f0;
+  --tone-paper: #151413;          /* "night session": the three tones get darker */
+  --tone-sand: #1d1b19;
+  --tone-ink: #0c0b0a;
+  --c-s1: #9670ff;
   --c-s2: #8db8f0;
   --c-s3: #8fd1a0;
   --c-s4: #e7b66a;
   --c-s5: #f09a8e;
-  --c-s6: #a993f0;
+  --c-s6: #f27fc6;
 
   color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-bg: #1a1714;
-      --color-surface: #221e1a;
-    --color-surface-2: #2a2520;
-    --color-border: #3a332b;
+    --color-bg: #151413;
+      --color-surface: #1d1b19;
+    --color-surface-2: #252220;
+    --color-border: #353029;
     --color-text: #efe8da;
     --color-text-muted: #b5ab9a;
-    --color-accent: #a993f0;
-    --color-accent-soft: rgba(169, 147, 240, 0.13);
+    --color-accent: #9670ff;
+    --color-accent-soft: rgba(150, 112, 255, 0.16);
     --color-on-accent: #1a1430;
     --color-todo: #f5b84b;
     --blueprint-opacity: 0.13;
-    --tone-paper: #1a1714;
-    --tone-sand: #221e1a;
-    --tone-ink: #0e0c0a;
-    --c-s1: #a993f0;
+    --tone-paper: #151413;
+    --tone-sand: #1d1b19;
+    --tone-ink: #0c0b0a;
+    --c-s1: #9670ff;
     --c-s2: #8db8f0;
     --c-s3: #8fd1a0;
     --c-s4: #e7b66a;
     --c-s5: #f09a8e;
-    --c-s6: #a993f0;
+    --c-s6: #f27fc6;
 
     color-scheme: dark;
   }
@@ -218,8 +218,21 @@ body::before {
 /* When a dark chapter fills the middle of the screen (main.js §7 sets data-view-tone),
    the drawing turns light violet so that it stays visible */
 html[data-view-tone="ink"] {
-  --blueprint-color: #a993f0;
+  --blueprint-color: #9670ff;
   --blueprint-opacity: 0.13;
+}
+
+/* Light theme: the "ink" chapters are cream too, the drawing keeps its normal colour */
+:root[data-theme="light"][data-view-tone="ink"] {
+  --blueprint-color: var(--color-accent);
+  --blueprint-opacity: 0.11;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"])[data-view-tone="ink"] {
+    --blueprint-color: var(--color-accent);
+    --blueprint-opacity: 0.11;
+  }
 }
 
 ::selection {
@@ -814,7 +827,7 @@ html:not(.js) .site-nav__extra { display: none; }
     background: var(--color-text-muted);
   }
 
-  /* Current sector: in its own colour (violet for S1 and S6, like the fastest
+  /* Current sector: in its own colour (violet for S1, like the fastest
      sector on an F1 timing screen) */
   .site-nav a[aria-current="page"]::after {
     background: var(--c-sector, var(--color-accent));
@@ -1183,7 +1196,7 @@ html:not(.js) .site-nav__extra { display: none; }
   place-items: center;
   border: 1px dashed var(--color-border);
   border-radius: var(--radius);
-  background: var(--color-accent-soft);
+  background: var(--color-surface-2);
   font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 800;
   font-stretch: var(--stretch-display);
@@ -1588,6 +1601,14 @@ html:has(.chapter):has(.toc):not(.is-continuous) {    /* page mode only; more sp
   margin-top: var(--space-6);
 }
 
+/* Photo credit, under the photo (e.g. the photographer of the rugby photo) */
+.photo-slot__credit {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
 .photo-slot__caption {
   margin-bottom: var(--space-2);
   font-family: var(--font-mono);
@@ -1791,60 +1812,111 @@ audio {
    ========================================================================= */
 [data-tone="sand"] {
   --color-bg: var(--tone-sand);
-  --color-surface: #f4e9d2;
-  --color-surface-2: #e4d3b2;
-  --color-border: #d6c39f;
+  --color-surface: #f1e6d2;
+  --color-surface-2: #e0d3b9;
+  --color-border: #d4c5a7;
 }
 
 [data-tone="ink"],
 .site-nav.is-open {                /* the full-screen menu is ink too */
   --color-bg: var(--tone-ink);
-  --color-surface: #221e1a;
-  --color-surface-2: #2a2520;
-  --color-border: #3a332b;
+  --color-surface: #1d1b19;
+  --color-surface-2: #252220;
+  --color-border: #353029;
   --color-text: #efe8da;
   --color-text-muted: #b5ab9a;
-  --color-accent: #a993f0;          /* light violet: AA contrast on dark */
-  --color-accent-soft: rgba(169, 147, 240, 0.13);
+  --color-accent: #9670ff;          /* light violet: AA contrast on dark */
+  --color-accent-soft: rgba(150, 112, 255, 0.16);
   --color-on-accent: #1a1430;
   --color-todo: #f5b84b;
-  --c-s1: #a993f0;                  /* sector colours: light-on-dark versions */
+  --c-s1: #9670ff;                  /* sector colours: light-on-dark versions */
   --c-s2: #8db8f0;
   --c-s3: #8fd1a0;
   --c-s4: #e7b66a;
   --c-s5: #f09a8e;
-  --c-s6: #a993f0;
+  --c-s6: #f27fc6;
 
   color-scheme: dark;
+}
+
+/* Light theme: no dark chapter at all (decided on 28/10/2026). The "ink" chapters
+   (At a glance, sector exits, footer, phone menu) become a deeper cream,
+   with the dark text of the page. Written twice, like section 1. */
+:root[data-theme="light"] [data-tone="ink"],
+:root[data-theme="light"] .site-nav.is-open {
+  --color-bg: #e2d3b5;
+  --color-surface: #ece1ca;
+  --color-surface-2: #d8c7a6;
+  --color-border: #cdb994;
+  --color-text: #221c2b;
+  --color-text-muted: #5f5446;
+  --color-accent: #4d2da0;
+  --color-accent-soft: rgba(77, 45, 160, 0.09);
+  --color-on-accent: #f9f4ea;
+  --color-todo: #8a3c0d;
+  --c-s1: #4d2da0;
+  --c-s2: #1b5699;
+  --c-s3: #285f38;
+  --c-s4: #704800;
+  --c-s5: #972b26;
+  --c-s6: #a51d78;
+  --blueprint-color: var(--color-accent);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) [data-tone="ink"],
+  :root:not([data-theme="dark"]) .site-nav.is-open {
+    --color-bg: #e2d3b5;
+    --color-surface: #ece1ca;
+    --color-surface-2: #d8c7a6;
+    --color-border: #cdb994;
+    --color-text: #221c2b;
+    --color-text-muted: #5f5446;
+    --color-accent: #4d2da0;
+    --color-accent-soft: rgba(77, 45, 160, 0.09);
+    --color-on-accent: #f9f4ea;
+    --color-todo: #8a3c0d;
+    --c-s1: #4d2da0;
+    --c-s2: #1b5699;
+    --c-s3: #285f38;
+    --c-s4: #704800;
+    --c-s5: #972b26;
+    --c-s6: #a51d78;
+    --blueprint-color: var(--color-accent);
+
+    color-scheme: light;
+  }
 }
 
 /* Dark theme ("night session"): the surfaces of sand and ink get darker too.
    Written twice on purpose, like section 1: change both blocks together. */
 :root[data-theme="dark"] [data-tone="sand"] {
-  --color-surface: #2a2520;
-  --color-surface-2: #312b25;
-  --color-border: #3f372e;
+  --color-surface: #252220;
+  --color-surface-2: #2c2926;
+  --color-border: #3a352f;
 }
 
 :root[data-theme="dark"] [data-tone="ink"],
 :root[data-theme="dark"] .site-nav.is-open {
-  --color-surface: #171411;
-  --color-surface-2: #1f1b17;
-  --color-border: #2e2822;
+  --color-surface: #131211;
+  --color-surface-2: #1b1917;
+  --color-border: #2b2724;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) [data-tone="sand"] {
-    --color-surface: #2a2520;
-    --color-surface-2: #312b25;
-    --color-border: #3f372e;
+    --color-surface: #252220;
+    --color-surface-2: #2c2926;
+    --color-border: #3a352f;
   }
 
   :root:not([data-theme="light"]) [data-tone="ink"],
   :root:not([data-theme="light"]) .site-nav.is-open {
-    --color-surface: #171411;
-    --color-surface-2: #1f1b17;
-    --color-border: #2e2822;
+    --color-surface: #131211;
+    --color-surface-2: #1b1917;
+    --color-border: #2b2724;
   }
 }
 
@@ -2274,7 +2346,7 @@ a.contact-bar__label {
 }
 
 .contact-dialog::backdrop {
-  background: rgb(14 12 10 / 0.6);
+  background: rgb(12 11 10 / 0.6);
 }
 
 .contact-dialog__box {
@@ -2509,7 +2581,7 @@ html.is-jumping {
   opacity: 0.7;
 }
 
-/* "Classic reading" / "Continuous scroll" switch (footer and phone menu) */
+/* "Classic reading" / "Continuous scroll" switch (phone menu, bottom right corner) */
 .reading-toggle {
   padding: var(--space-1) 0;
   border: 0;
@@ -2523,6 +2595,55 @@ html.is-jumping {
 
 .reading-toggle:hover {
   color: var(--color-accent);
+}
+
+/* The same switch, always visible in the bottom right corner (added by lap-scroll.js).
+   Under 1280 px it sits at the right end of the contact bar strip (icon only on
+   phones); above, the contact bar is a rail on the left, and the switch is a
+   small pill of the same style in the bottom right corner. */
+.reading-toggle--corner {
+  position: fixed;
+  z-index: 46;                      /* above the contact bar (45) */
+  right: var(--space-2);
+  bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.reading-toggle--corner:hover {
+  background: var(--color-accent-soft);
+}
+
+.reading-toggle--corner svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 767px) {
+  .reading-toggle--corner span { display: none; }
+}
+
+@media (min-width: 1280px) {
+  .reading-toggle--corner {
+    right: 12px;
+    bottom: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-bg);
+  }
+}
+
+html.menu-open .reading-toggle--corner {
+  display: none;
 }
 
 .site-nav__extra .reading-toggle {
@@ -2551,6 +2672,14 @@ html.is-jumping {
 .track.is-pinned .activity .photo-slot img {
   width: auto;
   height: min(32svh, 30rem);
+  max-width: 100%;
+}
+
+/* The photo never gets wider than its column: a wide (3:2) photo would otherwise
+   spread over the text. The figure itself is held to the column, so that the
+   max-width above means "the column" (a photo then loses a little of its sides) */
+.track.is-pinned .activity .photo-slot {
+  min-width: 0;
   max-width: 100%;
 }
 

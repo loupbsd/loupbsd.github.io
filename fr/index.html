@@ -106,14 +106,14 @@
           <h1 class="hero__name"><span class="hero__first">Loup</span> <span class="hero__last">Broussard</span></h1>
           <p class="hero__subtitle">Élève ingénieur en informatique @ ENSEEIHT</p>
           <p class="hero__data">43.60° N · 1.44° E — TOULOUSE</p>
-          <p class="hero__uvp">Élève ingénieur en 1re année d'informatique à l'ENSEEIHT, je transforme ma curiosité en code. Je cherche un stage en développement logiciel, systèmes ou data pour l'été 2027.</p>
+          <p class="hero__uvp">Élève ingénieur en 1re année d'informatique, je transforme ma curiosité en code. Je cherche un stage en développement logiciel, systèmes ou data pour l'été 2027.</p>
 
           <div class="btn-row">
             <a class="btn btn--primary" href="career.html#pitch">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
               Voir mon pitch
             </a>
-            <a class="btn" href="../assets/docs/CV_Loup_Broussard_FR.pdf" download>
+            <a class="btn" href="../assets/docs/CV_Loup_Broussard_FR.pdf" download data-cv>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               Télécharger mon CV
             </a>
@@ -122,6 +122,24 @@
               LinkedIn
             </a>
           </div>
+          <!-- CV pop-up: opened by the "data-cv" button above (js/main.js §10).
+               Without JavaScript the button downloads the CV of the page's language. -->
+          <dialog class="contact-dialog cv-dialog" id="cv-dialog" aria-labelledby="cv-dialog-title">
+            <div class="contact-dialog__box">
+              <div class="contact-dialog__head">
+                <h2 id="cv-dialog-title">Télécharger mon CV</h2>
+                <form method="dialog">
+                  <button class="contact-dialog__close" aria-label="Fermer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                  </button>
+                </form>
+              </div>
+              <div class="btn-row">
+                <a class="btn btn--primary" href="../assets/docs/CV_Loup_Broussard_FR.pdf" download>CV en français</a>
+                <a class="btn" href="../assets/docs/CV_Loup_Broussard_EN.pdf" download>CV en anglais</a>
+              </div>
+            </div>
+          </dialog>
         </div>
 
         <!-- TO COMPLETE: replace the <div> placeholder below with your cut-out portrait
@@ -149,7 +167,7 @@
           </div>
           <div>
             <dt>Langues</dt>
-            <dd>Français (langue maternelle) · Anglais (B2)</dd>
+            <dd>Français (langue maternelle) · Anglais (B2) · Allemand (scolaire, A2) · Italien (débutant, A1)</dd>
           </div>
           <div>
             <dt>Je recherche</dt>
@@ -157,7 +175,7 @@
           </div>
           <div>
             <dt>Localisation</dt>
-            <dd>Toulouse, France</dd>
+            <dd>Toulouse · Nîmes, France</dd>
           </div>
         </dl>
       </div>
@@ -192,7 +210,7 @@
             <a href="engineering.html#program">
               <span class="feature-list__meta">formation d'ingénieur</span>
               <span class="feature-list__title">Ma formation d'ingénieur</span>
-              <span class="feature-list__text">Maths, programmation en Ada, modélisation avec Coq et automatique à l'ENSEEIHT.</span>
+              <span class="feature-list__text">Maths, programmation en Ada, modélisation avec Coq et automatique.</span>
               <span class="link-arrow">Voir la formation →</span>
             </a>
           </li>
@@ -207,9 +225,9 @@
           <h2 id="now-title">En ce moment</h2>
         </div>
         <p class="now-text">
-          Je commence mon cycle ingénieur en Sciences du Numérique à l'ENSEEIHT (2026–2027) :
-          maths appliquées (probabilités, statistiques, optimisation), programmation impérative en Ada,
-          modélisation avec Coq et automatique.
+          Je commence mon cycle ingénieur (2026–2027) :
+          programmation impérative, fonctionnement interne d'un ordinateur, modélisation et preuve formelle,
+          et les maths appliquées à l'analyse de données et à l'automatique.
         </p>
       </div>
     </section>

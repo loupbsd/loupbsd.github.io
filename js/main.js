@@ -9,6 +9,7 @@
    7. Chapters: the header and the engine drawing follow the tone below them
    8. Load the neighbouring sectors in advance (instant slide)
    9. Contact pop-up (email and phone number)
+   10. CV pop-up (English or French CV)
    The direction of the slide between pages is in js/lap.js.
    ========================================================================= */
 
@@ -341,3 +342,24 @@ if (contactDialog && contactDialog.showModal) {
     });
   });
 }
+
+/* 10. CV pop-up ----------------------------------------------------------------- */
+// The "Download CV" button of the home page carries data-cv: it opens the
+// <dialog class="cv-dialog"> with the English and French CVs. Without JavaScript
+// the button simply downloads the CV of the page's language.
+// The dialog is looked for at click time: in the continuous scroll the home page
+// may be added to the document after this script has run.
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-cv]");
+  const dialog = button && document.querySelector(".cv-dialog");
+  if (!dialog || !dialog.showModal) return;
+  event.preventDefault();
+  dialog.showModal();
+});
+
+document.addEventListener("click", (event) => {
+  const dialog = event.target.closest && event.target.closest(".cv-dialog");
+  if (!dialog) return;
+  // A click on the dark backdrop (outside the box) or on a CV closes the pop-up
+  if (event.target === dialog || event.target.closest("a[download]")) dialog.close();
+});

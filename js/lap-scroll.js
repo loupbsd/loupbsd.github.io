@@ -15,7 +15,7 @@
 
    1. Should the continuous scroll run?
    2. Assemble the lap (fetch the other pages, avoid duplicate ids)
-   3. Horizontal tracks (pin, panels, gauge, phones, too-tall panels)
+   3. Horizontal tracks (pin, panels, gauge, phones, too-tall and too-empty panels)
    4. Which sector is being read: header, address, title
    5. Clicks on a sector, Back button, keyboard ← →, focus
    6. "Classic reading" switch
@@ -230,11 +230,45 @@
       unpin(info);
     } else {
       delete track.dataset.stacked;
+      fill(info);
     }
+  }
+
+  // Panels with little content (a few lines on a big screen) look empty: their
+  // content is enlarged as a whole (text, cards, images) with CSS zoom, up to x1.6,
+  // as long as it fills at most 80 % of the panel. Recomputed with each layout.
+  const FILL_MIN = 0.55;   // below this share of the height, a panel is "too empty"
+  const FILL_MAX = 0.8;    // the enlarged content never takes more than this
+  function fill(info) {
+    for (const panel of info.rail.children) {
+      const box = panel.querySelector(":scope > .container");
+      if (!box || panel.classList.contains("panel--scroll")) continue;   // Projects: open cards grow
+      unzoom(box);
+      const style = getComputedStyle(panel);
+      const room = panel.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+      const width = box.getBoundingClientRect().width;   // the column, before zoom
+      if (box.getBoundingClientRect().height > room * FILL_MIN) continue;
+      for (let zoom = 1.6; zoom > 1.01; zoom -= 0.05) {
+        box.style.zoom = zoom.toFixed(2);
+        // Zoom enlarges the width too: keep the box in the same column (never wider,
+        // so it never slides under the contact rail); the text gets bigger, not longer
+        box.style.maxWidth = width / zoom + "px";
+        const fits = box.getBoundingClientRect().height <= room * FILL_MAX
+          && !overflows(panel) && panel.scrollWidth <= panel.clientWidth + 2;
+        if (fits) break;
+        unzoom(box);
+      }
+    }
+  }
+
+  function unzoom(box) {
+    box.style.zoom = "";
+    box.style.maxWidth = "";
   }
 
   function unpin(info) {
     const { track } = info;
+    track.querySelectorAll(".panel > .container").forEach(unzoom);
     track.classList.remove("is-pinned");
     track.style.removeProperty("--n");
     track.style.removeProperty("--pin-h");
@@ -493,14 +527,27 @@
         } catch (error) {
           return;
         }
-        location.reload();
+        // Open again the page of the sector being read, at its start. The address
+        // already names it (in the continuous scroll it follows the reading);
+        // a new load without the #hash, rather than reload(), so that the browser
+        // does not put back the old scroll position, which means nothing in the other mode.
+        location.replace(location.pathname);
       });
       return button;
     };
-    const footer = document.querySelector(".site-footer .container");
+    // In the phone menu, and always visible in the bottom right corner
+    // (no longer in the footer: the corner button is enough, 28/10/2026)
     const menu = document.querySelector(".site-nav__extra");
-    if (footer) footer.append(make());
     if (menu) menu.append(make());
+    // Always visible: bottom right, in the contact bar strip (style.css, section 17).
+    // Placed outside the bar itself: on computers the bar is a rail on the left.
+    const corner = make();
+    corner.classList.add("reading-toggle--corner");
+    corner.insertAdjacentHTML("afterbegin", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+      + (continuousNow ? '<rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/>' : '<path d="M12 3v18M6 15l6 6 6-6"/>') + "</svg>");
+    corner.setAttribute("aria-label", corner.textContent);
+    corner.lastChild.replaceWith(Object.assign(document.createElement("span"), { textContent: corner.textContent }));
+    document.body.append(corner);
   }
 
   // While the page is still settling (fonts, sizes of the sectors above), keep
