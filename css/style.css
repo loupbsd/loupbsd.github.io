@@ -19,6 +19,7 @@
    14. Sector exit & map of the lap
    15. Page transitions between sectors
    16. Contact bar (always visible)
+   17. Continuous scroll (sectors end to end, pinned horizontal tracks)
    ========================================================================= */
 
 
@@ -324,18 +325,18 @@ a {
 
 /* Mini-sectors, like F1 timing, on the right of each section title: "S2.3" = page 2
    (its sector in the lap), section 3. Numbered automatically by a CSS counter, in the
-   order of the page; the page number comes from <html data-sector="n">.
+   order of the page; the page number comes from data-sector (on <html>, or on each sector of the continuous scroll).
    Pages without data-sector simply show "S1", "S2"… */
 main {
   counter-reset: sector;
 }
 
-html[data-sector="1"] { --sector: "1"; }
-html[data-sector="2"] { --sector: "2"; }
-html[data-sector="3"] { --sector: "3"; }
-html[data-sector="4"] { --sector: "4"; }
-html[data-sector="5"] { --sector: "5"; }
-html[data-sector="6"] { --sector: "6"; }
+[data-sector="1"] { --sector: "1"; }
+[data-sector="2"] { --sector: "2"; }
+[data-sector="3"] { --sector: "3"; }
+[data-sector="4"] { --sector: "4"; }
+[data-sector="5"] { --sector: "5"; }
+[data-sector="6"] { --sector: "6"; }
 
 .section-head h2 {
   display: flex;
@@ -357,7 +358,7 @@ html[data-sector="6"] { --sector: "6"; }
   color: var(--color-text-muted);
 }
 
-html[data-sector] .section-head h2::after {
+[data-sector] .section-head h2::after {
   content: "S" var(--sector) "." counter(sector);
   content: "S" var(--sector) "." counter(sector) / "";
 }
@@ -1464,7 +1465,7 @@ html:not(.js) .site-nav__extra { display: none; }
   counter-increment: toc;
 }
 
-html[data-sector] .toc a::before {
+[data-sector] .toc a::before {
   content: "S" var(--sector) "." counter(toc) " ";
   content: "S" var(--sector) "." counter(toc) " " / "";
   font-family: var(--font-mono);
@@ -1473,7 +1474,7 @@ html[data-sector] .toc a::before {
 }
 
 /* Anchored sections must stay visible under the header AND the sticky table of contents */
-html:has(.chapter):has(.toc) {    /* more specific than the rule of section 13 */
+html:has(.chapter):has(.toc):not(.is-continuous) {    /* page mode only; more specific than section 13 */
   scroll-padding-top: calc(var(--header-h) + 56px);
 }
 
@@ -2037,12 +2038,12 @@ html:has(.chapter) [id] {
   color: var(--color-text-muted);
 }
 
-html[data-sector="1"] .lap-map { --s1: var(--c-s1); --w1: 5px; }
-html[data-sector="2"] .lap-map { --s2: var(--c-s2); --w2: 5px; }
-html[data-sector="3"] .lap-map { --s3: var(--c-s3); --w3: 5px; }
-html[data-sector="4"] .lap-map { --s4: var(--c-s4); --w4: 5px; }
-html[data-sector="5"] .lap-map { --s5: var(--c-s5); --w5: 5px; }
-html[data-sector="6"] .lap-map { --s6: var(--c-s6); --w6: 5px; }
+[data-sector="1"] .lap-map { --s1: var(--c-s1); --w1: 5px; }
+[data-sector="2"] .lap-map { --s2: var(--c-s2); --w2: 5px; }
+[data-sector="3"] .lap-map { --s3: var(--c-s3); --w3: 5px; }
+[data-sector="4"] .lap-map { --s4: var(--c-s4); --w4: 5px; }
+[data-sector="5"] .lap-map { --s5: var(--c-s5); --w5: 5px; }
+[data-sector="6"] .lap-map { --s6: var(--c-s6); --w6: 5px; }
 
 /* Each sector has its colour (section 1): the current item of the lists of the
    6 sectors (timing strip, list under the map) takes the colour of its sector */
@@ -2055,12 +2056,12 @@ html[data-sector="6"] .lap-map { --s6: var(--c-s6); --w6: 5px; }
 
 /* Marks of the current page in its sector colour: thin word of the opener title,
    relay arrow. Declared on the element itself, so that ink chapters get the light version. */
-html[data-sector="1"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s1); }
-html[data-sector="2"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s2); }
-html[data-sector="3"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s3); }
-html[data-sector="4"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s4); }
-html[data-sector="5"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s5); }
-html[data-sector="6"] :is(.opener__narrow, .relay__arrow) { --c-sector: var(--c-s6); }
+[data-sector="1"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s1); }
+[data-sector="2"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s2); }
+[data-sector="3"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s3); }
+[data-sector="4"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s4); }
+[data-sector="5"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s5); }
+[data-sector="6"] :is(.opener__narrow, .relay__arrow, .track__gauge, .turn-hint) { --c-sector: var(--c-s6); }
 
 .opener__narrow {
   color: var(--c-sector, inherit);
@@ -2284,3 +2285,169 @@ html.menu-open .contact-bar {
 /* French pages: the label of the project cards' toggle (section 7b) */
 :lang(fr) .project-card__toggle::after { content: "Voir le détail ↓"; }
 :lang(fr) .project-card[open] .project-card__toggle::after { content: "Masquer le détail ↑"; }
+
+
+/* =========================================================================
+   17. CONTINUOUS SCROLL (js/lap-scroll.js)
+   The 6 pages are put end to end in one document (<section class="sector">).
+   Horizontal sectors (S2, S4): the track is pinned under the header and the
+   normal vertical scroll moves its panels to the left. Each panel takes one
+   screen of scrolling. Off without JavaScript, with reduced motion and in
+   "classic reading": the pages then stay separate.
+   ========================================================================= */
+.is-continuous {
+  overflow-anchor: none;            /* lap-scroll.js keeps the position itself */
+}
+
+/* While the script jumps somewhere (link, Back, ← →), the gentle snapping pauses */
+html.is-jumping {
+  scroll-snap-type: none !important;
+}
+
+.sector {
+  counter-reset: sector;            /* mini-sectors S2.1, S2.2… restart in each sector */
+}
+
+/* Colour rise across the junction of two sectors (exit in ink → next opener) */
+.sector:has(> .chapter[data-tone="ink"]:last-child) + .sector > .chapter:first-child {
+  --prev-bg: var(--tone-ink);
+}
+
+/* Pinned track: n panels, one screen of scrolling each (--pin-h set by the script) */
+.track.is-pinned {
+  height: calc(var(--n) * var(--pin-h));
+}
+
+.track__pin {
+  position: sticky;
+  top: var(--header-h);
+  height: var(--pin-h);
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;   /* the script turns a sideways swipe into scrolling */
+}
+
+.track__rail {
+  display: flex;
+  width: calc(var(--n) * 100%);
+  height: 100%;
+  will-change: transform;
+}
+
+.track.is-pinned .panel {
+  flex: 0 0 calc(100% / var(--n));
+  min-height: 0;
+  height: 100%;
+  padding-block: var(--space-8) var(--space-12);
+  overflow: hidden;
+  scroll-snap-align: none;
+}
+
+/* Invisible marks, one per panel: the gentle snapping stops on a whole panel */
+.track__stop {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  scroll-snap-align: start;
+}
+
+/* Small gauge at the bottom of the pinned track: one bar per panel */
+.track__gauge {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  translate: -50% 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.track__gauge i {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-border);
+}
+
+.track__gauge i.is-on {
+  background: var(--c-sector, var(--color-accent));
+}
+
+/* "Turn" screen: the opener of a horizontal sector announces the change of axis */
+.turn-hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-sector, var(--color-accent));
+}
+
+.turn-hint__arrow {
+  font-family: var(--font-sans);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+/* Continued panel (phones): reminder of the panel title, for sighted readers only */
+.panel__continued {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Junction band: between two sectors the exit block is shorter */
+.is-continuous .sector:not(:last-child) .sector-exit {
+  min-height: auto;
+  padding-block: var(--space-16);
+}
+
+.is-continuous .sector:not(:last-child) .sector-exit__title {
+  font-size: min(3.5rem, 7cqi);
+}
+
+/* Telemetry: one tick at the start of each sector (the 911 drives the whole lap) */
+.telemetry__tick {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.7;
+}
+
+/* "Classic reading" / "Continuous scroll" switch (footer and phone menu) */
+.reading-toggle {
+  padding: var(--space-1) 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.reading-toggle:hover {
+  color: var(--color-accent);
+}
+
+.site-nav__extra .reading-toggle {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Extra data next to a section title (e.g. "semester 5 · 2026"): right after the title */
+.section-head h2 .card__meta {
+  margin-left: var(--space-3);
+  margin-right: auto;
+}
