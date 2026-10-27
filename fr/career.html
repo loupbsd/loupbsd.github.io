@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr" data-sector="6">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Développement de carrière — Loup Broussard</title>
+  <meta name="description" content="Projet professionnel de Loup Broussard : CV en anglais et en français, LinkedIn, vidéo de pitch, rôles modèles, projets de mobilité internationale et objectifs.">
+
+  <!-- Open Graph: preview when the link is shared on LinkedIn (absolute URLs required) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Développement de carrière — Loup Broussard">
+  <meta property="og:description" content="CV, vidéo de pitch, rôles modèles, projets de mobilité et objectifs professionnels.">
+  <meta property="og:url" content="https://loupbsd.github.io/fr/career.html">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://loupbsd.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Same page in the other language -->
+  <link rel="alternate" hreflang="en" href="https://loupbsd.github.io/career.html">
+  <link rel="alternate" hreflang="fr" href="https://loupbsd.github.io/fr/career.html">
+
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Archivo (text; big titles in two widths, 62 % and 125 %) + IBM Plex Mono (data: tags, dates, captions) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Applies the saved theme before the page is drawn (avoids a white flash) -->
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <!-- Direction of the slide between two sectors: must run before the page is shown, so no "defer" -->
+  <script src="../js/lap.js"></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- ===== HEADER — identical on every page; only aria-current, the ‹ › links and "S6/6" change.
+       The lap: S1 Welcome → S2 Engineering → S3 Mobility → S4 Sustainability → S5 Activities → S6 Career → S1. ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <span class="logo__mark" aria-hidden="true">LB</span>
+        <span class="logo__name">Loup Broussard</span>
+      </a>
+
+      <!-- Previous sector: S5 Activities -->
+      <a class="lap-arrow" href="activities.html" rel="prev" aria-label="Secteur précédent : Activités">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <span class="lap-count" aria-hidden="true">S6/6</span>
+
+      <nav class="site-nav" id="site-nav" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="engineering.html">Formation</a></li>
+          <li><a href="mobility.html">Mobilité</a></li>
+          <li><a href="sustainability.html">Engagement</a></li>
+          <li><a href="activities.html">Activités</a></li>
+          <li><a href="career.html" aria-current="page">Carrière</a></li>
+        </ul>
+        <!-- Only in the full-screen menu (phones and tablets): map of the lap + theme button -->
+        <div class="site-nav__extra">
+          <svg class="lap-map" viewBox="0 0 240 140" aria-hidden="true"><use href="../assets/img/circuit.svg#lap"/></svg>
+          <button class="icon-btn theme-toggle" type="button" aria-label="Changer de thème (clair / sombre)">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Next sector: S1 Welcome (next lap) -->
+      <a class="lap-arrow" href="index.html" rel="next" aria-label="Secteur suivant : Accueil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <nav class="lang-switch" aria-label="Langue">
+        <a href="../career.html" lang="en" hreflang="en">EN</a>
+        <a href="career.html" lang="fr" hreflang="fr" aria-current="true">FR</a>
+      </nav>
+
+      <button class="icon-btn theme-toggle" type="button" aria-label="Changer de thème (clair / sombre)">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+  <!-- ===== END HEADER ===== -->
+
+  <main id="main">
+
+    <!-- SECTOR OPENER — giant title in two widths, data line, intro -->
+    <section class="chapter opener" data-tone="paper">
+      <div class="container opener__text">
+        <h1 class="opener__title" style="--fit: 13"><span class="opener__wide">Développement</span> <span class="opener__narrow">de carrière</span></h1>
+        <p class="opener__data">CV · PITCH · RÔLES MODÈLES · MOBILITÉ · OBJECTIFS</p>
+        <p class="intro">Mon projet professionnel : CV, pitch, rôles modèles, projets de mobilité et objectifs.</p>
+      </div>
+    </section>
+
+    <!-- TABLE OF CONTENTS — stays at the top while scrolling.
+         Each link points to a section id below. -->
+    <nav class="toc" aria-label="Sur cette page">
+      <div class="container">
+        <ul>
+          <li><a href="#cv">CV &amp; LinkedIn</a></li>
+          <li><a href="#pitch">Pitch</a></li>
+          <li><a href="#role-models">Rôles modèles</a></li>
+          <li><a href="#mobility">Mobilité</a></li>
+          <li><a href="#goals">Objectifs</a></li>
+          <li><a href="#next">À venir</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 1. CV & LINKEDIN — two blocks side by side -->
+    <section class="chapter" data-tone="paper" id="cv" aria-labelledby="cv-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="cv-title">CV &amp; LinkedIn</h2>
+        </div>
+
+        <div class="split">
+          <article class="split__item">
+            <h3>CV</h3>
+            <p class="muted">PDF, mis à jour <span class="todo">[TO COMPLETE: mois année]</span></p>
+            <!-- PDFs go in assets/docs/ with exactly these file names -->
+            <div class="btn-row card__cta">
+              <a class="btn btn--primary" href="../assets/docs/CV_Loup_Broussard_EN.pdf" download>CV en anglais</a>
+              <a class="btn" href="../assets/docs/CV_Loup_Broussard_FR.pdf" download>CV en français</a>
+            </div>
+          </article>
+
+          <article class="split__item">
+            <h3>LinkedIn</h3>
+            <p class="muted">Mon profil, en anglais et en français.</p>
+            <div class="btn-row card__cta">
+              <a class="btn" href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=en_US" target="_blank" rel="noopener">LinkedIn (EN)</a>
+              <a class="btn" href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">LinkedIn (FR)</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PITCH VIDEO (YouTube, unlisted) — dark, full width -->
+    <section class="chapter" data-tone="ink" id="pitch" aria-labelledby="pitch-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="pitch-title">Mon pitch</h2>
+          <p class="intro">Ma proposition de valeur unique en 2–3 minutes, en anglais : Présent → Passé → Futur.</p>
+        </div>
+
+        <div class="video">
+          <!-- TO COMPLETE: put the YouTube video ID in place of VIDEO_ID, uncomment the iframe,
+               then delete the placeholder <div> below.
+          <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+                  title="Vidéo de pitch — Loup Broussard"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+          -->
+          <div class="media-placeholder">
+            <p class="muted">Vidéo à venir <span class="todo">[TO COMPLETE: intégration YouTube]</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ROLE MODELS — use initials if the person did not agree to be named -->
+    <section class="chapter" data-tone="paper" id="role-models" aria-labelledby="role-models-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="role-models-title">3 rôles modèles</h2>
+          <p class="intro">Des professionnels dont le parcours inspire mon projet, rencontrés via My Job Glasses, LinkedIn ou le réseau des alumni N7.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card rolemodel-card" id="role-model-1">
+            <p class="card__meta">Rôle modèle 1 · <span class="todo">[TO COMPLETE: My Job Glasses / LinkedIn / alumni]</span></p>
+            <h3><span class="todo">[TO COMPLETE: nom ou initiales]</span></h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: poste @ entreprise]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>Parcours</dt>
+                <dd>
+                  <ol class="steps">
+                    <li><span class="todo">[TO COMPLETE: étape 1]</span></li>
+                    <li><span class="todo">[TO COMPLETE: étape 2]</span></li>
+                    <li><span class="todo">[TO COMPLETE: étape 3]</span></li>
+                  </ol>
+                </dd>
+              </div>
+              <div><dt>Ce que j'en retiens</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
+              <div><dt>Mobilité liée</dt><dd><a href="mobility.html#mobility-1">Projet de mobilité 1 →</a></dd></div>
+            </dl>
+          </article>
+
+          <article class="card rolemodel-card" id="role-model-2">
+            <p class="card__meta">Rôle modèle 2 · <span class="todo">[TO COMPLETE: My Job Glasses / LinkedIn / alumni]</span></p>
+            <h3><span class="todo">[TO COMPLETE: nom ou initiales]</span></h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: poste @ entreprise]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>Parcours</dt>
+                <dd>
+                  <ol class="steps">
+                    <li><span class="todo">[TO COMPLETE: étape 1]</span></li>
+                    <li><span class="todo">[TO COMPLETE: étape 2]</span></li>
+                    <li><span class="todo">[TO COMPLETE: étape 3]</span></li>
+                  </ol>
+                </dd>
+              </div>
+              <div><dt>Ce que j'en retiens</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
+              <div><dt>Mobilité liée</dt><dd><a href="mobility.html#mobility-2">Projet de mobilité 2 →</a></dd></div>
+            </dl>
+          </article>
+
+          <article class="card rolemodel-card" id="role-model-3">
+            <p class="card__meta">Rôle modèle 3 · <span class="todo">[TO COMPLETE: My Job Glasses / LinkedIn / alumni]</span></p>
+            <h3><span class="todo">[TO COMPLETE: nom ou initiales]</span></h3>
+            <p class="muted"><span class="todo">[TO COMPLETE: poste @ entreprise]</span></p>
+            <dl class="fields">
+              <div>
+                <dt>Parcours</dt>
+                <dd>
+                  <ol class="steps">
+                    <li><span class="todo">[TO COMPLETE: étape 1]</span></li>
+                    <li><span class="todo">[TO COMPLETE: étape 2]</span></li>
+                    <li><span class="todo">[TO COMPLETE: étape 3]</span></li>
+                  </ol>
+                </dd>
+              </div>
+              <div><dt>Ce que j'en retiens</dt><dd><span class="todo">[TO COMPLETE]</span></dd></div>
+              <div><dt>Mobilité liée</dt><dd><a href="mobility.html#mobility-3">Projet de mobilité 3 →</a></dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MOBILITY — short version, full cards on mobility.html -->
+    <section class="chapter" data-tone="sand" id="mobility" aria-labelledby="mobility-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="mobility-title">3 projets de mobilité</h2>
+          <p class="intro">Chaque projet sera aligné avec un rôle modèle. Tous les détails sur la page Mobilité internationale.</p>
+        </div>
+
+        <article class="card card--soon">
+          <h3>En cours</h3>
+          <p>Mes projets de mobilité suivront mes premières rencontres avec mes rôles modèles. <a href="mobility.html#mobility-projects">Voir la page Mobilité internationale →</a></p>
+        </article>
+
+        <!-- When the projects are ready: delete the "In progress" card above
+             and uncomment the 3 cards below.
+        <div class="grid grid--3">
+          <a class="card feature-card" href="mobility.html#mobility-1">
+            <span class="card__meta">Projet 1 · rôle modèle 1</span>
+            <h3><span class="todo">[TO COMPLETE: destination]</span></h3>
+            <p><span class="todo">[TO COMPLETE: type]</span></p>
+            <span class="link-arrow">Voir le détail →</span>
+          </a>
+          <a class="card feature-card" href="mobility.html#mobility-2">
+            <span class="card__meta">Projet 2 · rôle modèle 2</span>
+            <h3><span class="todo">[TO COMPLETE: destination]</span></h3>
+            <p><span class="todo">[TO COMPLETE: type]</span></p>
+            <span class="link-arrow">Voir le détail →</span>
+          </a>
+          <a class="card feature-card" href="mobility.html#mobility-3">
+            <span class="card__meta">Projet 3 · rôle modèle 3</span>
+            <h3><span class="todo">[TO COMPLETE: destination]</span></h3>
+            <p><span class="todo">[TO COMPLETE: type]</span></p>
+            <span class="link-arrow">Voir le détail →</span>
+          </a>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- 5. GOALS — timeline (a season calendar on computers) + plans A / B / C -->
+    <section class="chapter" data-tone="ink" id="goals" aria-labelledby="goals-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="goals-title">Objectifs</h2>
+        </div>
+
+        <div class="subsection">
+          <h3>Calendrier</h3>
+          <div class="grid grid--3 season">
+            <article class="card goal-card">
+              <p class="card__meta">Court terme · 2026 – 2028</p>
+              <h3>Stages (S6, S8)</h3>
+              <p>Profiter de mes stages pour explorer et trouver les domaines qui m'intéressent le plus. Une idée que j'ai : travailler dans le monde de l'automobile ou de la moto, en particulier avec des équipes de course, pour relier ma formation d'ingénieur en informatique au sport automobile. Ce n'est qu'une idée pour l'instant, et je reste ouvert à tous les domaines.</p>
+            </article>
+            <article class="card goal-card">
+              <p class="card__meta">Moyen terme · 2028 – 2029</p>
+              <h3>Mobilité (S9) &amp; diplôme</h3>
+              <p>Continuer d'explorer les domaines qui m'intéressent, et profiter de ma mobilité internationale et de mes dernières années à l'ENSEEIHT pour affiner ma spécialisation.</p>
+            </article>
+            <article class="card goal-card">
+              <p class="card__meta">Long terme · après le diplôme</p>
+              <h3>Premier emploi &amp; au-delà</h3>
+              <p>Voyager, continuer à progresser plutôt que de stagner, et à terme occuper des postes où je peux concrétiser mes propres idées, idéalement en lien avec mes passions.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Plans A / B / C</h3>
+          <div class="grid grid--3">
+            <article class="card goal-card">
+              <p class="card__meta">Plan A</p>
+              <h3>Logiciel embarqué dans le sport automobile</h3>
+              <p>Ingénieur logiciel embarqué pour une équipe de course ou un équipementier du sport automobile : programmer l'électronique des voitures ou des motos (contrôle moteur, antipatinage, capteurs).</p>
+            </article>
+            <article class="card goal-card">
+              <p class="card__meta">Plan B</p>
+              <h3>Logiciel pour la musique électronique</h3>
+              <p>Ingénieur logiciel dans les technologies musicales : concevoir des logiciels audio comme des DAW et des outils pour DJ (type Ableton Live ou rekordbox), ou des synthétiseurs.</p>
+            </article>
+            <article class="card goal-card">
+              <p class="card__meta">Plan C</p>
+              <h3>Chef de projet tech</h3>
+              <p>Après quelques années comme ingénieur, évoluer vers un poste de chef de projet ou de product manager tech : diriger une équipe technique et travailler avec des clients.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. COMING NEXT — future semesters -->
+    <section class="chapter" data-tone="paper" id="next" aria-labelledby="next-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="next-title">À venir</h2>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="card card--soon">
+            <h3>Stages</h3>
+            <p>Stages de S6 et S8 : les rapports et retours d'expérience seront ajoutés ici.</p>
+          </article>
+          <article class="card card--soon">
+            <h3>PEP</h3>
+            <p>Bientôt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTOR EXIT — end of the lap: next lap / previous sector + map of the lap ===== -->
+    <nav class="chapter sector-exit" data-tone="ink" aria-label="Tour du site">
+      <div class="container sector-exit__grid">
+        <div class="sector-exit__main">
+          <p class="sector-exit__meta">Secteur 6/6 · Carrière · Tour bouclé</p>
+          <a class="sector-exit__next" href="index.html" rel="next" data-to="1">
+            <span class="sector-exit__label">Tour suivant</span>
+            <span class="sector-exit__title">Accueil <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="sector-exit__prev" href="activities.html" rel="prev"><span aria-hidden="true">←</span> Précédent : Activités</a>
+        </div>
+
+        <div class="lap">
+          <svg class="lap-map" viewBox="0 0 240 140" aria-hidden="true"><use href="../assets/img/circuit.svg#lap"/></svg>
+          <ol class="lap__list">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="engineering.html">Formation</a></li>
+            <li><a href="mobility.html">Mobilité</a></li>
+            <li><a href="sustainability.html">Engagement</a></li>
+            <li><a href="activities.html">Activités</a></li>
+            <li><a href="career.html" aria-current="page">Carrière</a></li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+  </main>
+
+  <!-- ===== CONTACT BAR — identical on every page, always visible (bottom bar on phones, left rail on wide screens) ===== -->
+  <aside class="contact-bar" aria-label="Me contacter">
+    <span class="contact-bar__label" aria-hidden="true">Contact</span>
+    <a href="mailto:loup.broussard@outlook.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+      <span>E-mail</span>
+    </a>
+    <a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com/loupbsd" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <span>GitHub</span>
+    </a>
+    <!-- TO COMPLETE: add the CV link here once assets/docs/CV_Loup_Broussard_FR.pdf exists
+         (<a href="../assets/docs/CV_Loup_Broussard_FR.pdf" download> + download icon + <span>CV</span></a>) -->
+  </aside>
+
+  <!-- ===== FOOTER — identical on every page ===== -->
+  <footer class="site-footer" data-tone="ink">
+    <div class="container">
+      <p>© 2026 Loup Broussard · Dernière mise à jour : octobre 2026</p>
+      <ul>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

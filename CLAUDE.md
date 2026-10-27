@@ -53,7 +53,7 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
 - Exigences fixes : même geste partout ; swipe horizontal naturel sur mobile dans les secteurs horizontaux ; jonctions fluides dans les deux sens ; URL propre à chaque onglet, mise à jour pendant le défilement, bouton Retour fonctionnel ; **aucun contenu caché** dans un panneau horizontal ; clavier, focus visible, lecteurs d'écran ; sans JavaScript ou avec `prefers-reduced-motion` : navigation classique par pages ; chaque onglet s'ouvre directement et on comprend où l'on est ; changements d'axe annoncés par un repère visuel clair.
 - **Décisions du 28/10/2026 pour le défilement continu** :
   - fin du tour : on **s'arrête** sur la sortie de S6 et le footer (lien « Tour suivant → Welcome »), pas de boucle ;
-  - le **FR reste en mode pages** tant que ses 5 pages ne sont pas traduites (pas de mélange de langues dans un défilement) ;
+  - le FR passe au défilement continu dès que ses 6 pages existent (fait le 28/10) : jamais de mélange de langues dans un même défilement ;
   - avant chaque secteur horizontal, un **écran de virage** (grand titre, flèche → dans la couleur du secteur, nombre de panneaux et jauge) ; en sortie, un repère « ↓ secteur suivant » ;
   - lien direct vers un onglet (ex. `/career.html`) : la page s'affiche tout de suite et **tout le tour** est ajouté autour, sans faire bouger l'écran ;
   - Engineering : panneaux Formation | Cours | Compétences, puis retour au vertical pour **Projects** (la carte Strudel se déplie normalement) ;
@@ -187,7 +187,7 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
 - Site **en anglais** par défaut (langue évaluée).
 - Anglais professionnel, phrases courtes, verbes d'action. Signale-moi les fautes ou tournures maladroites dans les textes que je fournis, **sans les réécrire sans me le dire**.
 - **Version française** dans `fr/` (validée le 25/10/2026), avec un bouton **EN | FR** dans le header de toutes les pages, qui mène à la même page dans l'autre langue.
-  - État actuel : seul `fr/index.html` est traduit. Les autres onglets FR pointent vers les pages anglaises, et le bouton FR des pages anglaises non traduites mène à `fr/index.html`. Quand une page est traduite, mettre à jour ces liens (commentaires dans le header).
+  - État au 28/10/2026 : **les 6 pages sont traduites** (`fr/*.html`, traduction fidèle de l'anglais, à relire par moi). Chaque bouton EN | FR mène à la même page dans l'autre langue ; chaque page a ses liens `hreflang` et son `og:locale`. EN et FR ont exactement la même structure HTML (vérifié par script).
   - Décidé le 27/10/2026 : les 5 autres pages seront traduites **fidèlement à partir de l'anglais après le 1er novembre** (rien d'ajouté, chaque page relue par moi), puis gardées strictement synchronisées (même structure, même contenu).
   - **Toute modification de contenu se fait dans les deux langues** (pour les pages déjà traduites).
   - En français : CV FR, LinkedIn `?locale=fr_FR`, `lang="fr"`, `og:locale` fr_FR, liens `hreflang` entre les deux versions.

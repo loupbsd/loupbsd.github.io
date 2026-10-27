@@ -2280,3 +2280,7 @@ html.menu-open .contact-bar {
     min-height: calc(100svh - var(--header-h) - 48px);
   }
 }
+
+/* French pages: the label of the project cards' toggle (section 7b) */
+:lang(fr) .project-card__toggle::after { content: "Voir le détail ↓"; }
+:lang(fr) .project-card[open] .project-card__toggle::after { content: "Masquer le détail ↑"; }

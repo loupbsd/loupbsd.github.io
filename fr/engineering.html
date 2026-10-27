@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr" data-sector="2">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formation d'ingénieur — Loup Broussard</title>
+  <meta name="description" content="Formation d'ingénieur de Loup Broussard en Sciences du Numérique à l'ENSEEIHT (Toulouse INP) : cours clés, compétences et projets.">
+
+  <!-- Open Graph: preview when the link is shared on LinkedIn (absolute URLs required) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Formation d'ingénieur — Loup Broussard">
+  <meta property="og:description" content="Cours clés, compétences et projets à l'ENSEEIHT.">
+  <meta property="og:url" content="https://loupbsd.github.io/fr/engineering.html">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://loupbsd.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Same page in the other language -->
+  <link rel="alternate" hreflang="en" href="https://loupbsd.github.io/engineering.html">
+  <link rel="alternate" hreflang="fr" href="https://loupbsd.github.io/fr/engineering.html">
+
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Archivo (text; big titles in two widths, 62 % and 125 %) + IBM Plex Mono (data: tags, dates, captions) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Applies the saved theme before the page is drawn (avoids a white flash) -->
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <!-- Direction of the slide between two sectors: must run before the page is shown, so no "defer" -->
+  <script src="../js/lap.js"></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- ===== HEADER — identical on every page; only aria-current, the ‹ › links and "S6/6" change.
+       The lap: S1 Welcome → S2 Engineering → S3 Mobility → S4 Sustainability → S5 Activities → S6 Career → S1. ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <span class="logo__mark" aria-hidden="true">LB</span>
+        <span class="logo__name">Loup Broussard</span>
+      </a>
+
+      <!-- Previous sector: S1 Welcome -->
+      <a class="lap-arrow" href="index.html" rel="prev" aria-label="Secteur précédent : Accueil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <span class="lap-count" aria-hidden="true">S2/6</span>
+
+      <nav class="site-nav" id="site-nav" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="engineering.html" aria-current="page">Formation</a></li>
+          <li><a href="mobility.html">Mobilité</a></li>
+          <li><a href="sustainability.html">Engagement</a></li>
+          <li><a href="activities.html">Activités</a></li>
+          <li><a href="career.html">Carrière</a></li>
+        </ul>
+        <!-- Only in the full-screen menu (phones and tablets): map of the lap + theme button -->
+        <div class="site-nav__extra">
+          <svg class="lap-map" viewBox="0 0 240 140" aria-hidden="true"><use href="../assets/img/circuit.svg#lap"/></svg>
+          <button class="icon-btn theme-toggle" type="button" aria-label="Changer de thème (clair / sombre)">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Next sector: S3 Mobility -->
+      <a class="lap-arrow" href="mobility.html" rel="next" aria-label="Secteur suivant : Mobilité">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <nav class="lang-switch" aria-label="Langue">
+        <a href="../engineering.html" lang="en" hreflang="en">EN</a>
+        <a href="engineering.html" lang="fr" hreflang="fr" aria-current="true">FR</a>
+      </nav>
+
+      <button class="icon-btn theme-toggle" type="button" aria-label="Changer de thème (clair / sombre)">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+  <!-- ===== END HEADER ===== -->
+
+  <main id="main">
+
+    <!-- SECTOR OPENER — giant title in two widths, data line, intro.
+         With the continuous scroll this is the "turn" screen: the sector then reads to the right. -->
+    <section class="chapter opener" data-tone="paper">
+      <div class="container opener__text">
+        <h1 class="opener__title" style="--fit: 10"><span class="opener__wide">Formation</span> <span class="opener__narrow">d'ingénieur</span></h1>
+        <p class="opener__data">ENSEEIHT · TOULOUSE INP · 2026–2027</p>
+        <p class="intro">Mon parcours dans la filière Sciences du Numérique (SN) de l'ENSEEIHT, Toulouse INP : cours clés, compétences et projets.</p>
+      </div>
+    </section>
+
+    <!-- HORIZONTAL TRACK — 3 panels: Education | Key courses | Skills.
+         Page mode: stacked like chapters. Continuous scroll: pinned and read to the right. -->
+    <div class="track" data-axis="h">
+
+      <!-- PANEL 1 — EDUCATION: the two schools, in the order of the path -->
+      <section class="chapter panel" data-tone="paper" id="program" aria-labelledby="program-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="program-title">Formation</h2>
+          </div>
+
+          <div class="relay">
+            <article class="card">
+              <p class="card__meta">2024 – 2026</p>
+              <h3>La Prépa des INP — Toulouse</h3>
+              <p class="muted">Classe préparatoire intégrée du groupe INP</p>
+            </article>
+            <span class="relay__arrow" aria-hidden="true">→</span>
+            <article class="card">
+              <p class="card__meta">2026 – 2027 · 1re année</p>
+              <h3>ENSEEIHT — Toulouse INP</h3>
+              <p class="muted">Diplôme d'ingénieur, Sciences du Numérique (SN)</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANEL 2 — KEY COURSES: add the new semester's courses at the end of each group -->
+      <section class="chapter panel" data-tone="sand" aria-labelledby="courses-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="courses-title">Cours clés <span class="card__meta">semestre 5 · 2026</span></h2>
+          </div>
+          <div class="course-groups">
+            <div>
+              <h4>Informatique</h4>
+              <ul>
+                <li>Programmation impérative (Ada)</li>
+                <li>Programmation en C</li>
+                <li>Architecture des ordinateurs</li>
+                <li>Modélisation avec Coq</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Mathématiques</h4>
+              <ul>
+                <li>Probabilités &amp; intégration</li>
+                <li>Statistiques</li>
+                <li>Optimisation &amp; EDP</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Systèmes &amp; données</h4>
+              <ul>
+                <li>Automatique</li>
+                <li>Analyse de données</li>
+              </ul>
+            </div>
+          </div>
+          <p class="card__cta"><a class="link-arrow" href="../assets/docs/syllabus-enseeiht-sn.pdf" target="_blank" rel="noopener">Programme officiel complet (PDF, en français) →</a></p>
+        </div>
+      </section>
+
+      <!-- PANEL 3 — SKILLS -->
+      <section class="chapter panel" data-tone="ink" aria-labelledby="skills-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="skills-title">Compétences</h2>
+          </div>
+          <dl class="skill-groups">
+            <div>
+              <dt>Programmation &amp; outils</dt>
+              <dd>
+                <p>Python est mon langage le plus solide. J'utilise Ada à l'ENSEEIHT, Git, Linux et VS Code pour mes projets, LaTeX pour mes rapports, et Claude Code pour le développement assisté par IA.</p>
+                <ul class="tags">
+                  <li class="tag tag--accent">Python</li>
+                  <li class="tag tag--accent">Ada</li>
+                  <li class="tag tag--accent">Git</li>
+                  <li class="tag tag--accent">Linux</li>
+                  <li class="tag tag--accent">VS Code</li>
+                  <li class="tag tag--accent">LaTeX</li>
+                  <li class="tag tag--accent">Développement assisté par IA (Claude Code)</li>
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt>Analyse &amp; visualisation de données</dt>
+              <dd>
+                <p>Analyse et visualisation de jeux de données en Python.</p>
+                <ul class="tags">
+                  <li class="tag tag--accent">NumPy</li>
+                  <li class="tag tag--accent">Pandas</li>
+                  <li class="tag tag--accent">Matplotlib</li>
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt>Compétences scientifiques &amp; humaines</dt>
+              <dd>
+                <p>Un solide bagage scientifique acquis en deux ans de classe préparatoire, et de vraies qualités de travail en équipe et d'organisation.</p>
+                <ul class="tags">
+                  <li class="tag tag--accent">Solide bagage scientifique</li>
+                  <li class="tag tag--accent">Travail en équipe</li>
+                  <li class="tag tag--accent">Organisation</li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- PROJECTS
+         To add a project: copy a whole <details class="card project-card"> … </details> block,
+         give it a new unique id, and fill in the fields. -->
+    <section class="chapter" data-tone="paper" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="projects-title">Projets</h2>
+          <p class="intro">Cliquez sur une carte pour voir le contexte, mon rôle, les outils et le résultat.</p>
+        </div>
+
+        <div class="stack">
+
+          <!-- Project: Strudel -->
+          <details class="card project-card" id="strudel">
+            <summary>
+              <span class="card__meta">2026 · La Prépa des INP · équipe de 5</span>
+              <h3>Science &amp; musique : recréer un piano avec du code</h3>
+              <span class="project-card__summary">Enregistrer un vrai piano, l'analyser avec la transformée de Fourier et reconstruire un morceau complet en live coding sur Strudel.</span>
+              <span class="tags">
+                <span class="tag">Strudel</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Python</span>
+                <span class="tag">Transformée de Fourier</span>
+                <span class="tag">Live coding</span>
+                <span class="tag">Travail en équipe</span>
+              </span>
+              <span class="project-card__toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="project-card__body">
+              <!-- TO COMPLETE: screenshot of the Strudel code (WebP 16:10, < 90 KB), then replace the frame by
+                   <img src="../assets/img/strudel.webp" alt="Strudel code of the Gypsy Woman cover" width="1600" height="1000" loading="lazy"> -->
+              <figure class="photo-slot">
+                <figcaption class="photo-slot__caption">La Prépa des INP, 2026</figcaption>
+                <div class="photo-slot__frame">
+                  <span>Photo à venir</span>
+                  <span class="todo">[TO COMPLETE: capture d'écran du code Strudel]</span>
+                </div>
+              </figure>
+              <dl class="fields">
+                <div>
+                  <dt>Contexte</dt>
+                  <dd>Projet scientifique à La Prépa des INP. Notre question : comment recréer un morceau de musique le plus fidèlement possible avec du code ? Nous avons travaillé avec <a href="https://strudel.cc" target="_blank" rel="noopener">Strudel</a>, un environnement de live coding où l'on écrit des motifs JavaScript dans le navigateur et où la musique change à mesure qu'on modifie le code.</dd>
+                </div>
+                <div>
+                  <dt>Mon rôle</dt>
+                  <dd>Avec un coéquipier, j'ai développé la musique dans Strudel. J'ai aussi fait des recherches sur l'histoire du séquençage et le mouvement Algorave, et rédigé cette partie du rapport.</dd>
+                </div>
+                <div>
+                  <dt>Méthodes &amp; outils</dt>
+                  <dd>Piano enregistré note par note sur 3 octaves (Reaper, Audacity) · analyse spectrale en Python (NumPy, SciPy, Matplotlib) · Strudel &amp; JavaScript · samples hébergés sur GitHub Pages · notebook interactif sur Observable · réunions régulières avec décisions écrites.</dd>
+                </div>
+                <div>
+                  <dt>Résultat</dt>
+                  <dd>
+                    Une reprise complète de <em>Gypsy Woman</em> (Crystal Waters) jouée avec nos propres samples de piano, une basse Moog, une batterie TR-909 et des visuels en direct ; un notebook interactif pour apprendre Strudel ; et un rapport de 41 pages.
+                    <ul class="result-links">
+                      <li><a class="link-arrow" href="https://strudel.cc/#YXdhaXQgaW5pdEh5ZHJhKCkKb3NjKCAyMTUsIDAuMSwgMiApCi5tb2R1bGF0ZSgKICBvc2MoIDIsIC0wLjMsIDEwMCApCiAgLnJvdGF0ZSgxNSkKKQoubXVsdCgKICBvc2MoIDIxNSwgLTAuMSwgMikKICAucGl4ZWxhdGUoIDUwLCA1MCApCikKLmNvbG9yKCAwLjksIDAuMCwgMC45ICkKLm1vZHVsYXRlKAogIG9zYyggNiwgLTAuMSApCiAgLnJvdGF0ZSggOSApCikKLmFkZCgKICBvc2MoIDEwLCAtMC45LCA5MDAgKQogIC5jb2xvcigxLDAsMSkKKQoubXVsdCgKICBzaGFwZSg5MDAsIDAuMiwgMSkKICAubHVtYSgpCiAgLnJlcGVhdFgoMikKICAucmVwZWF0WSgyKQogIC5jb2xvcmFtYSgxMCkKKQoubW9kdWxhdGUoCiAgb3NjKCA5LCAtMC4zLCA5MDAgKQogIC5yb3RhdGUoIDYgKQopCi5hZGQoCiAgb3NjKDQsIDEsIDkwKQogIC5jb2xvcigwLjIsMCwxKQopCi5vdXQoKQoKCgoKCi8vR1lQU1kgV09NQU4gZGUgQ3J5c3RhbHMgV2F0ZXJzCgovL09uIGTDqWZpbml0IGxlIHRlbXBvLCBldCBsYSBzaWduYXR1cmUgcnl0aG1pcXVlIChpY2kgZHUgNC80IGMnZXN0IMOgIGRpcmUgNCBub2lyZXMgcGFyIG1lc3VyZXMpCnNldGNwbSgxMjAvNCkgCgovL0Nob3JkcwovLyBPbiBjcsOpZSBpY2kgZGVzIHZhcmlhYmxlcyAoYWNjb3JkcykgcXVlIGwnb24gdmEgcsOpdXRpbGlzZXIgcGFyIGxhIHN1aXRlLiBDZWxhIHBlcm1ldCBkZSBsaW1pdGVyIGxhIHJlZG9uZGFuY2UuCi8vIEEgbm90ZXIgcXVlIGxlIGxhbmdhZ2UgU3RydWRlbCBhY2NlcHRlIMOpZ2FsZW1lbnQgbGVzIG5vdGF0aW9ucyBhbcOpcmljYWluZXMgZGVzIGFjY29yZHMgYXZlYyBwbHVzaWV1cnMgdm9pY2luZ3MgaW50w6lncsOpcy4KbGV0IGNob3JkID0gCntBbTc6ImEzLCBnNCwgYzUsIGU1IiwgQmJtYWo3OiJiYjMsIGE0LCBkNSwgZjUiLCAKIEVtNzoiZTQsIGU1LCBnNSwgYjUsIGQ2IiwgRWJtYWo3OiJlYjQsIGViNSwgZzUsIGJiNSwgZDYiLCAKIERtOToiZDQsIGY0LCBhNCwgYzUsIGU1IiwgRG03OiJkNCwgZjQsIGE0LCBjNSwgZDUiLAogR203OiJnMywgZzQsIGJiNCwgZDUsIGY1IiwgQzdiOToiYzQsIGc0LCBiYjQsIGRiNSwgZTUifQovL0VuIHRvdXRlIHJpZ3VldXIgaWwgZmF1ZHJhaXQgdXRpbGlzZXIgZGVzIGLDqW1vbHMgZXQgbm9uIGRlcyBkacOoc2VzIG1haXMgbG9ycyBkZSBsYSBjcsOpYXRpb24gZHUgc2FtcGxlIG5vdXMgYXZvbnMgZMO7IGZhaXJlIHVuIGNob2l4LgoKLy9vcmdhbiBrb3JnIG0xCi8vTGEgZGlmZmljdWx0w6kgcHJpbmNpcGFsZSBpY2kgZXN0IGRlIHJlY3LDqWVyIGxlIHNvbiBvcmlnaW5hbCBhdmVjIHVuZSBiYW5xdWUgZGUgc29uIHLDqWR1aXRlLgovL09uIGTDqWZpbml0IGRlcyBzZWN0aW9ucyAoaTEsIGkyLC4uLikgcG91ciBhbGzDqWdlciBsJ8OpY3JpdHVyZSBldCDDqXZpdGVyIGxhIHJlZG9uZGFuY2UgZW5jb3JlIHVuZSBmb2lzLgpsZXQgb3JnYW4gPSAiPGkxQDIgaTJAMiBpMUAyIGkzQDI%2BIi5waWNrUmVzdGFydCgKe2kxOiBgPERtOUAxIERtOUAwLjc1IERtN0AwLjc1IERtN0AwLjc0IERtN0AwLjc2Pio0YCwKIGkyOiBgPEFtN0AxIEFtN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEdtN0AxIEdtN0AwLjc1IEM3YjlAMC43NSBDN2I5QDAuNzUgQzdiOUAwLjc1ID4qNGAsCiBpMzogYDxBbTdAMSBBbTdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBFbTdAMSBFbTdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSA%2BKjRgfSkKICAucGlja091dChjaG9yZCkubm90ZSgpLnMoImdtX3BlcmN1c3NpdmVfb3JnYW46MSIpCiAgLmNsaXAoLjc1KS5yZWxlYXNlKC4yNSkuZ2FpbiguNikucm9vbSguNCkubHBmKDQwMDApLl9zcGlyYWwoeyBzdGVhZHk6IC4xIH0pCiAgCi8vcGlhbm8gc3R5bGUgYW5uw6llIDgwCi8vRG91YmxlIGwnb3JndWUgZGFucyBsYSBkZXV4acOobWUgcGFydGllIGR1IG1vcmNlYXUuIApsZXQgcGlhbm8gPSAiPGkxQDIgaTJAMiBpMUAyIGkzQDI%2BIi5waWNrUmVzdGFydCgKe2kxOiBgPERtOUAxIERtOUAwLjc1IERtN0AwLjc1IERtN0AwLjc0IERtN0AwLjc2Pio0YCwKIGkyOiBgPEFtN0AxIEFtN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEJibWFqN0AwLjc1IEdtN0AxIEdtN0AwLjc1IEM3YjlAMC43NSBDN2I5QDAuNzUgQzdiOUAwLjc1ID4qNGAsCiBpMzogYDxBbTdAMSBBbTdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBCYm1hajdAMC43NSBFbTdAMSBFbTdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSBFYm1hajdAMC43NSA%2BKjRgfSkKICAucGlja091dChjaG9yZCkubm90ZSgpLnMoIm1vbl9waWFubyIpLmhwZig1MDApLnJvb20oLjIpCiAgLmFkc3IoIjA6LjE6LjE6LjAwMDAwMiIpLmNvbXByZXNzb3IoIi0yMDoxMDoxOi4wMDE6LjYiKS52aWIoLjEpLnBvc3RnYWluKC41KSAvL09uIHV0aWxpc2UgdW4gY29tcHJlc3NldXIgcG91ciDDqXZpdGVyIGxhIHNhdHVyYXRpb24gKG91IGNsaXBwaW5nKS4KICAuY29sb3IoIm9yYW5nZSIpLl9waWFub3JvbGwoeyBsYWJlbHM6IDIgfSkvL0NlIHZpc3VlbCBlc3QgdHLDqHMgc2ltaWxhaXJlIMOgIGwnaW50ZXJmYWNlIGQndW4gREFXIGNvbW1lIEFibGV0b24gb3UgTG9naWMgUHJvCgovL0Jhc3MKLy9PbiBpbXBvcnRlIHVuIHNvbiBkZSBNb29nLCBjw6lsw6hicmUgc3ludGjDqXRpc2V1ciBvbW5pcHLDqXNlbnQgZGFucyBsYSBtdXNpcXVlIGRlcHVpcyBzYSBjcsOpYXRpb24uCnNhbXBsZXMoeydtb29nJzogeyAnZzMnOiAnbW9vZy8wMDVfTWlnaHR5JTIwTW9vZyUyMEczLndhdicgfSB9LCAnZ2l0aHViOnRpZGFsY3ljbGVzL0RpcnQtU2FtcGxlcy9tYXN0ZXIvJykKLy9Nw6ptZSBwcm9ibMOobWUgcXVlIHBvdXIgbCdvcmd1ZSwgaWwgZXN0IGFzc2V6IGRpZmZpY2lsZSBkZSByZWNyw6llciBsZSBzb24gZGUgYmFzc2Ugb3JpZ2luYWwuCi8vR3LDomNlIMOgIHVuZSB2aWTDqW8gb8O5IE1yIFNraSBPYWtlbmZ1bGwgcmVjb25zdHJ1aXQgZW50acOocmVtZW50IGNldHRlIGNoYW5zb24gc3VyIEFibGV0b24gTGl2ZSwgaidhaSBwdSByZXBpcXVlciBsYSBsaWduZSBkZSBiYXNzZSBleGFjdGUuCmxldCBiYXNzID0gIjxpMUAyIGkyQDIgaTFAMiBpM0AyPiIucGlja1Jlc3RhcnQoCntpMTogbm90ZShgPGExIGUyIGExIFtmMiBhMV0gZjEgZDIgYzIgW2ExIGMyXT4qNGApLAogaTI6IG5vdGUoYDxhMSBlMiBiYjEgW2YyIGJiMV0gZzEgZDIgYzIgW2cxIGMyXT4qNGApLAogaTM6IG5vdGUoYDxhMSBlMiBiYjEgW2YyIGJiMV0gZTIgYTEgZWIyIFtiYjEgZWIyXT4qNGApCn0pLnMoIm1vb2csIHpfc2F3dG9vdGgiKS50cmFuc3Bvc2UoMTIpLnN3aW5nQnkoLjAyLDQpCiAgLmdhaW4oLjkpLmNsaXAoLjQpLnJlbGVhc2UoLjIpLmxwZigyMDApLmxwZW52KDEuNSkKLl9zY29wZSgpCgovL0Rpc2NyZXQgbWFpcyBwcsOpc2VudCB0b3V0IGxlIGxvbmcgZHUgbW9yY2VhdToKbGV0IHNoYWtlciA9IHMoInNoKjE2IikuZ2FpbiguMikuc3dpbmdCeSguMDUsOCkucm9vbSguMikgCgovL0RhbnMgbCdvcmlnaW5hbCBpbCB5IGEgMiBiYXR0ZXJpZXMgcXVpIHNlIHN1cGVycG9zZW50LiBMYSBwcmVtacOocmUgZXN0IGV4YWN0ZW1lbnQgY2VsbGUgY2ktZGVzc291cyAobcOqbWUgc2FtcGxlLCBwYXR0ZXJuLCBzd2luZykKLy9tYWlzIGxhIGRldXhpw6htZSBlc3Qgc2V1bGVtZW50IHVuZSBlc3RpbWF0aW9uIGNhciBpbCBzJ2FnaXQgZCd1biBzYW1wbGUgY2hvcHBlZCAocmVkw6ljb3Vww6kpIHF1ZSBqZSBuZSBwZXV4IHBhcyByw6ljdXDDqXJlci4KbGV0IGRydW1zMSA9IHN0YWNrKAogIHMoImJkIGJkIGJkIGJkIGJkIGJkIGJkIFtiZCBiZF0iKS5nYWluKDEpLnNsb3coMiksCiAgcygiPFt%2BIGNwOjBdPioyIikuZ2FpbigwLjkpLnJvb20oLjEpLAogIHMoIlstIG9oIC0gb2ggLSBvaCAtIG9oXSIpLmdhaW4oLjIpLCAKICBzKCJbLSAtIC0gLSBoaCAtIC0gaGggaGggaGggLSAtIGhoIC0gLSAtXSIpLmdhaW4oLjMpLnBhbihzaW5lKS5zd2luZ0J5KC4zLCA4KSwKICApLmJhbmsoIlJvbGFuZFRSOTA5Iikuc3dpbmdCeSguMDIsIDQpLnBvc3RnYWluKC45KQovL0xhIGZvbmN0aW9uIFN3aW5nQnkgZXN0IHBhcnRpY3VsacOocmVtZW50IGltcG9ydGFudGUsIGVsbGUgcGVybWV0IGRlIGTDqWNhbGVyIHZvbG9udGFpcmVtZW50IGNlcnRhaW5lcyBub3RlcyBwb3VyIHJham91dGVyCi8vdW4gYXNwZWN0IG9yZ2FuaXF1ZSwgdml2YW50LCB1biBncm9vdmUgYXUgbW9yY2VhdS4KLmNvbG9yKCJncmVlbiIpLl9wdW5jaGNhcmQoKQpsZXQgZHJ1bXMyID0gc3RhY2soCiAgcygiYmQgWy0gWy0gYmRdXSBiZCAtICIpLnN3aW5nQnkoLjIsIDgpLAogIHMoIi0gWy0gcmltXSAtIC0gWy0gcmltXSAtIC0gLSIpLnN3aW5nQnkoLjQsIDgpLAogIHMoIi0gLSBjcCAtIC0gLSBjcCAtIiksCiAgcygiLSBvaCAtIFtoaCBoaF0gLSBvaCAtIGhoIikuZ2FpbiguNSkuc3dpbmdCeSguMyw4KS5zdXN0YWluKC45KQopLmJhbmsoIlJvbGFuZFRSOTA5IikuaHBmKDIwMDApLnBvc3RnYWluKC4zKS5zd2luZ0J5KC4wMiw0KQouY29sb3IoIm9yYW5nZSIpLl9wdW5jaGNhcmQoKQovL0RldXggcGV0aXRlcyBwZXJjdXNzaW9ucyBzdXBwbMOpbWVudGFpcmVzIHF1aSBhcHBhcmFpc3NlbnQgcGx1cyB0YXJkIGRhbnMgbGUgbW9yY2VhdXguCmxldCByaWRlID0gcygicmQqOCIpLmxwZig4MDAwKS5nYWluKCI8LjMgLjMgLjUgLjM%2BKjgiKS5yb29tKC4zKQpsZXQgYm9uZ28gPSBzKCI8Wy0gWy0gYm9uZ29dXSBbLSAtIGJvbmdvIGJvbmdvXT4qNCIpCgoKLy9Gb25jdGlvbiBnbG9iYWxlIHF1aSBwZXJtZXQgZCdhcnJhbmdlciBsZSBtb3JjZWF1IGVuIGFwcGVsYW50IGNlcnRhaW5zIGluc3RydW1lbnQgb3Ugbm9uLgovL0xhIG5vdGF0aW9uOiBsZXQgZiA9ICwgcGVybWV0IGRlIHJhcHBlbGVyIGNlcyBmb25jdGlvbnMgcG91ciBsZXMgam91ZXIgZW5zdWl0ZS4KJDogYXJyYW5nZSgKICBbNCwgc3RhY2sob3JnYW4sIHNoYWtlcildLAogIFsxNiwgc3RhY2sob3JnYW4sIHBpYW5vLCBiYXNzLCBkcnVtczEsIGRydW1zMiwgcmlkZSwgYm9uZ28sIHNoYWtlcildLAogIFs4LCBzaWxlbmNlXQogIAopCgoKLy9PbiByZXRyb3V2ZSBpY2kgbGUgcGlhbm8gcXVlIG5vdXMgYXZvbnMgY3LDqcOpLCBvbiBub21tZSBhaW5zaSB0b3V0IGxlcyBmaWNoaWVycyBwb3VyIHBvdXZvaXIgbGVzIHV0aWxpc2VyIGF1IGRlc3N1cy4Kc2FtcGxlcyh7CiAgJ21vbl9waWFubyc6IHsKICAgIC8vIE9jdGF2ZSAzCiAgICAnYzMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEud2F2JywgCiAgICAnYyMzJzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yLndhdicsIAogICAgJ2QzJzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zLndhdicsIAogICAgJ2QjMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNC53YXYnLCAKICAgICdlMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNS53YXYnLCAKICAgICdmMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNi53YXYnLAogICAgJ2YjMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNy53YXYnLCAKICAgICdnMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvOC53YXYnLCAKICAgICdnIzMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0Lzkud2F2JywgCiAgICAnYTMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEwLndhdicsIAogICAgJ2JiMyc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTEud2F2JywgCiAgICAnYjMnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEyLndhdicsCiAgICAKICAgIC8vIE9jdGF2ZSA0CiAgICAnYzQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzEzLndhdicsIAogICAgJ2MjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTQud2F2JywgCiAgICAnZDQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzE1LndhdicsIAogICAgJ2ViNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTYud2F2JywgCiAgICAnZTQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzE3LndhdicsIAogICAgJ2Y0JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8xOC53YXYnLAogICAgJ2YjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMTkud2F2JywgCiAgICAnZzQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzIwLndhdicsIAogICAgJ2cjNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjEud2F2JywgCiAgICAnYTQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzIyLndhdicsIAogICAgJ2JiNCc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjMud2F2JywgCiAgICAnYjQnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzI0LndhdicsCgogICAgLy8gT2N0YXZlIDUKICAgICdjNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjUud2F2JywgCiAgICAnYyM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yNi53YXYnLCAKICAgICdkNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjcud2F2JywgCiAgICAnZWI1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8yOC53YXYnLCAKICAgICdlNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMjkud2F2JywgCiAgICAnZjUnOiAnaHR0cHM6Ly9sb3VwYnNkLmdpdGh1Yi5pby9tdXNpYy1wcm9qZWN0LzMwLndhdicsCiAgICAnZiM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zMS53YXYnLCAKICAgICdnNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzIud2F2JywgCiAgICAnZyM1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zMy53YXYnLCAKICAgICdhNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzQud2F2JywgCiAgICAnYmI1JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zNS53YXYnLCAKICAgICdiNSc6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvMzYud2F2JywKCiAgICAvLyBPY3RhdmUgNgogICAgJ2M2JzogJ2h0dHBzOi8vbG91cGJzZC5naXRodWIuaW8vbXVzaWMtcHJvamVjdC8zNy53YXYnLAogICAgJ2MjNic6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNTAud2F2JywKICAgICdkNic6ICdodHRwczovL2xvdXBic2QuZ2l0aHViLmlvL211c2ljLXByb2plY3QvNTEud2F2JwogIH0KfSk7Cg%3D%3D" target="_blank" rel="noopener">Écouter le morceau dans Strudel →</a></li>
+                      <li><a class="link-arrow" href="https://observablehq.com/d/10a7e22d37d67443" target="_blank" rel="noopener">Notebook interactif (Observable) →</a></li>
+                      <li><a class="link-arrow" href="../assets/docs/groupe_10_rapport_science_et_musique.pdf" target="_blank" rel="noopener">Rapport du projet (PDF, en français) →</a></li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Ce que j'ai appris</dt>
+                  <dd>Travailler en équipe sur un projet long, allier science et créativité, et apprendre seul un nouvel outil.</dd>
+                </div>
+              </dl>
+            </div>
+          </details>
+
+          <!-- Coming soon: replace with real project cards (copy the Strudel block above) -->
+          <article class="card card--soon">
+            <h3>Projets d'ingénieur</h3>
+            <p>À venir au S6 : mes premiers projets à l'ENSEEIHT apparaîtront ici.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTOR EXIT — same block at the end of every page: next / previous sector + map of the lap ===== -->
+    <nav class="chapter sector-exit" data-tone="ink" aria-label="Tour du site">
+      <div class="container sector-exit__grid">
+        <div class="sector-exit__main">
+          <p class="sector-exit__meta">Secteur 2/6 · Formation</p>
+          <a class="sector-exit__next" href="mobility.html" rel="next" data-to="3">
+            <span class="sector-exit__label">Secteur suivant</span>
+            <span class="sector-exit__title">Mobilité <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="sector-exit__prev" href="index.html" rel="prev"><span aria-hidden="true">←</span> Précédent : Accueil</a>
+        </div>
+
+        <div class="lap">
+          <svg class="lap-map" viewBox="0 0 240 140" aria-hidden="true"><use href="../assets/img/circuit.svg#lap"/></svg>
+          <ol class="lap__list">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="engineering.html" aria-current="page">Formation</a></li>
+            <li><a href="mobility.html">Mobilité</a></li>
+            <li><a href="sustainability.html">Engagement</a></li>
+            <li><a href="activities.html">Activités</a></li>
+            <li><a href="career.html">Carrière</a></li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+  </main>
+
+  <!-- ===== CONTACT BAR — identical on every page, always visible (bottom bar on phones, left rail on wide screens) ===== -->
+  <aside class="contact-bar" aria-label="Me contacter">
+    <span class="contact-bar__label" aria-hidden="true">Contact</span>
+    <a href="mailto:loup.broussard@outlook.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+      <span>E-mail</span>
+    </a>
+    <a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com/loupbsd" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <span>GitHub</span>
+    </a>
+    <!-- TO COMPLETE: add the CV link here once assets/docs/CV_Loup_Broussard_FR.pdf exists
+         (<a href="../assets/docs/CV_Loup_Broussard_FR.pdf" download> + download icon + <span>CV</span></a>) -->
+  </aside>
+
+  <!-- ===== FOOTER — identical on every page ===== -->
+  <footer class="site-footer" data-tone="ink">
+    <div class="container">
+      <p>© 2026 Loup Broussard · Dernière mise à jour : octobre 2026</p>
+      <ul>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/loupbsd" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
