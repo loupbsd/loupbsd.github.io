@@ -449,17 +449,27 @@
     }, { passive: true });
 
     let resizeTimer;
+    const relayout = () => {
+      tracks.forEach((info) => {
+        if (info.pin) unpin(info);
+        pin(info);
+      });
+      moveTracks();
+      telemetryTicks();
+    };
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        tracks.forEach((info) => {
-          if (info.pin) unpin(info);
-          pin(info);
-        });
-        moveTracks();
-        telemetryTicks();
-      }, 200);
+      resizeTimer = setTimeout(relayout, 200);
     });
+    // The web fonts change the size of the texts: measure the panels again once they are there
+    if (document.fonts && document.fonts.status !== "loaded") {
+      const place = sectors[current - 1];
+      document.fonts.ready.then(() => {
+        const before = place.getBoundingClientRect().top;
+        relayout();
+        jumpTo(window.scrollY + place.getBoundingClientRect().top - before, false);
+      });
+    }
 
     // A card that opens inside a panel may make it too tall: check again
     document.addEventListener("toggle", (event) => {

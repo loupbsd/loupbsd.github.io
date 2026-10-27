@@ -2512,3 +2512,9 @@ html.is-jumping {
     font-size: 1rem;
   }
 }
+
+@media (max-width: 767px) {
+  .track.is-pinned .card {
+    padding: var(--space-4);         /* cards in a phone panel: a little tighter */
+  }
+}
