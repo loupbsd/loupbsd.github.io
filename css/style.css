@@ -36,6 +36,7 @@
   --color-accent-soft: rgba(77, 45, 160, 0.09);
   --color-on-accent: #faf3e3;     /* text placed on top of the accent */
   --color-todo: #92400e;          /* [TO COMPLETE] placeholders only */
+  --blueprint-opacity: 0.11;      /* engine drawing behind the home hero */
 
   /* Fonts */
   --font-sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -83,6 +84,7 @@
   --color-accent-soft: rgba(169, 147, 240, 0.13);
   --color-on-accent: #1a1430;
   --color-todo: #f5b84b;
+  --blueprint-opacity: 0.13;
 
   color-scheme: dark;
 }
@@ -99,6 +101,7 @@
     --color-accent-soft: rgba(169, 147, 240, 0.13);
     --color-on-accent: #1a1430;
     --color-todo: #f5b84b;
+    --blueprint-opacity: 0.13;
 
     color-scheme: dark;
   }
@@ -131,6 +134,40 @@ body {
   accent-color: var(--color-accent);
   caret-color: var(--color-accent);
   scrollbar-color: var(--color-border) var(--color-bg);
+}
+
+/* Engine blueprint behind every page (Porsche flat-six, assets/img/engine-blueprint.svg).
+   position: fixed = it stays in place while the page scrolls over it.
+   Same trick as the 911: the SVG is a mask, the colour comes from the theme.
+   Second mask layer = fade towards the left, so it melts into the cream before the text.
+   Opaque blocks (header, cards, tables of contents) simply hide it. */
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: var(--header-h);
+  bottom: 0;
+  left: 30%;
+  right: -25%;
+  background-color: var(--color-accent);
+  opacity: calc(var(--blueprint-opacity) * 0.8);   /* fainter on phones: text is on top */
+  -webkit-mask:
+    url("../assets/img/engine-blueprint.svg") right center / contain no-repeat,
+    linear-gradient(to right, transparent, #000 45%);
+  -webkit-mask-composite: source-in;
+  mask:
+    url("../assets/img/engine-blueprint.svg") right center / contain no-repeat,
+    linear-gradient(to right, transparent, #000 45%);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  body::before {
+    left: 45%;
+    right: 0;
+    opacity: var(--blueprint-opacity);
+  }
 }
 
 ::selection {
@@ -1018,7 +1055,6 @@ html:not(.js) .site-nav ul { flex-direction: row; flex-wrap: wrap; }
   padding-block: var(--space-12) var(--space-8);
   border-bottom: 1px solid var(--color-border);
 }
-
 .page-header h1 {
   font-size: var(--text-2xl);
   letter-spacing: -0.02em;
@@ -1159,7 +1195,7 @@ audio {
 /* Placeholder for missing content: search "TO COMPLETE" to find them all */
 .todo {
   font-family: var(--font-mono);
-  font-size: 0.9em;
+  font-size: max(0.9em, 0.75rem);   /* never below 12px, even inside small meta text */
   color: var(--color-todo);
   border: 1px dashed var(--color-todo);
   border-radius: 4px;

@@ -85,7 +85,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   ├── fr/                    (version française : mêmes noms de fichiers, chemins en ../)
   ├── css/style.css          (un seul fichier, variables CSS en haut)
   ├── js/main.js             (menu mobile, petites interactions uniquement)
-  ├── assets/img/            (photos compressées < 300 Ko en WebP/JPG ; dessins en SVG : favicon.svg, porsche-911.svg)
+  ├── assets/img/            (photos compressées < 300 Ko en WebP/JPG ; dessins en SVG : favicon.svg, porsche-911.svg, engine-blueprint.svg)
   ├── assets/docs/           (CV_Loup_Broussard_EN.pdf, CV_Loup_Broussard_FR.pdf, syllabus-enseeiht-sn.pdf, rapport du projet Science et musique)
   └── CLAUDE.md
   ```
@@ -100,8 +100,9 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 ## 8. Design — « Violet & Cream » : pro, chaleureux, sobre
 
 - **Ambiance** : professionnelle, chaleureuse et sobre. Un site fait à la main par un étudiant ingénieur, pas un template ni un pastiche de terminal.
-- **Univers « course auto/moto & musique »** (validé le 25/10/2026, inspiré de bsrd.fr en plus sobre) : quelques détails précis, jamais d'images décoratives.
-  - **Tracé de télémétrie** en bas du header (courbe de vitesse sur un tour, qui évoque aussi une forme d'onde audio) : se remplit en violet avec la progression de lecture, avec une **silhouette de Porsche 911 Carrera des années 80** (même violet) qui roule au bout de la partie violette, roues posées sur la courbe (masquée quand elle croise le logo sur mobile). Tracé dessiné par `js/main.js` (§5) ; la voiture vient de `assets/img/porsche-911.svg`, utilisé comme **masque CSS** (la couleur vient du CSS, donc du thème). C'est le **seul** élément « signature » du site : ne pas ajouter d'autres effets.
+- **Univers « course auto/moto & musique »** (validé le 25/10/2026, inspiré de bsrd.fr en plus sobre) : quelques détails précis, pas d'autre image décorative que le plan moteur ci-dessous.
+  - **Tracé de télémétrie** en bas du header (courbe de vitesse sur un tour, qui évoque aussi une forme d'onde audio) : se remplit en violet avec la progression de lecture, avec une **silhouette de Porsche 911 Carrera des années 80** (même violet) qui roule au bout de la partie violette, roues posées sur la courbe (masquée quand elle croise le logo sur mobile). Tracé dessiné par `js/main.js` (§5) ; la voiture vient de `assets/img/porsche-911.svg`, utilisé comme **masque CSS** (la couleur vient du CSS, donc du thème). Avec le plan moteur, ce sont les **deux seuls** éléments « signature » du site : ne pas ajouter d'autres effets.
+  - **Plan moteur en fond de toutes les pages** (validé le 27/10/2026) : dessin technique d'un flat-six Porsche (`assets/img/engine-blueprint.svg`, cadre et cartouche « REF. » retirés, aucun logo). Une seule règle : `body::before` en `position: fixed` (section 2 de `style.css`), donc il reste en place pendant que la page défile par-dessus. Même technique que la 911 : **masque CSS**, couleur = accent du thème, opacité via `--blueprint-opacity` (~0,11 clair / 0,13 sombre ; ×0,8 sur mobile), fondu vers la gauche pour qu'il se dissolve avant le texte. Placé à droite, sous le header ; les blocs opaques (header, cartes, sommaire) le masquent. Statique, ne pas l'augmenter au point de gêner la lecture.
   - **Secteurs « S1, S2… »** comme un chronométrage F1, à **droite** des titres de section (compteur CSS automatique, rien à écrire dans le HTML).
   - **Ligne de données** sous le nom dans le hero : `43.60° N · 1.44° E — TOULOUSE`.
 - **Thème clair crème par défaut** ; thème sombre si l'OS est en mode sombre, ou via le bouton (choix mémorisé).
