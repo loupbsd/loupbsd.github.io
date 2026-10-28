@@ -1628,6 +1628,24 @@ html:has(.chapter):has(.toc):not(.is-continuous) {    /* page mode only; more sp
   object-fit: cover;
 }
 
+/* A real photo keeps its own proportions, whatever the screen and the reading mode:
+   its height follows its width (from its width / height attributes), never cropped.
+   Only the empty "Photo coming soon" frames use --ratio. */
+.photo-slot img {
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+/* With JavaScript a photo opens larger on click (main.js §11): the link around it */
+.photo-zoom {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+
 .photo-slot__frame {
   display: grid;
   place-content: center;
@@ -2738,4 +2756,74 @@ html.menu-open .reading-toggle--corner {
   .track.is-pinned .card {
     padding: var(--space-4);         /* cards in a phone panel: a little tighter */
   }
+}
+
+
+/* Real photos in a pinned panel: limited in height, never stretched nor cropped.
+   width and height "auto" + a maximum: the browser shrinks the photo as a whole. */
+.track.is-pinned .activity .photo-slot img {
+  width: auto;
+  height: auto;
+  max-height: min(32svh, 30rem);
+}
+
+@media (min-width: 900px) {
+  .track.is-pinned .activity .photo-slot img {
+    max-height: min(58svh, 30rem);
+  }
+}
+
+/* Photo opened larger (main.js §11): the whole photo, as big as the screen allows */
+.lightbox {
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  overflow: visible;
+}
+
+.lightbox::backdrop {
+  background: rgb(12 11 10 / 0.88);
+}
+
+.lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 94vw;
+  max-height: 88svh;
+  border-radius: var(--radius);
+  cursor: zoom-out;
+}
+
+.lightbox__close {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(239 232 218 / 0.4);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: #efe8da;
+  cursor: pointer;
+}
+
+.lightbox__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lightbox__caption {
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #efe8da;
 }

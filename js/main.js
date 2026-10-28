@@ -10,6 +10,7 @@
    8. Load the neighbouring sectors in advance (instant slide)
    9. Contact pop-up (email and phone number)
    10. CV pop-up (English or French CV)
+   11. Photos open larger on click
    The direction of the slide between pages is in js/lap.js.
    ========================================================================= */
 
@@ -106,47 +107,18 @@ if (tocLinks.length && "IntersectionObserver" in window) {
 }
 
 /* 5. Telemetry trace ------------------------------------------------------ */
-// A gentle speed trace over one lap, like the line of a circuit seen from the
-// side: long smooth rises on the straights, soft dips into the corners.
-// Each point is [distance along the lap (0–1000), speed (0–1)]; between two
-// points the trace follows an S-curve, so there is never a sharp angle.
-const LAP = [
-  [0, 0.55], [140, 0.9], [220, 0.85], [300, 0.35], [380, 0.7], [440, 0.55],
-  [540, 0.9], [610, 0.8], [690, 0.3], [790, 0.8], [850, 0.6], [930, 0.85], [1000, 0.55],
-];
-
-// Turns LAP into a list of [x, y] points in the SVG (fast = high = small y)
-function lapPoints(height) {
-  const y = (speed) => height - 1 - speed * (height - 2);
-  const points = [[0, y(LAP[0][1])]];
-  for (let i = 1; i < LAP.length; i++) {
-    const [x0, v0] = LAP[i - 1];
-    const [x1, v1] = LAP[i];
-    for (let t = 0.05; t <= 1.001; t += 0.05) {
-      const ease = t * t * (3 - 2 * t);   // "smoothstep": flat at both ends, no corner
-      points.push([x0 + (x1 - x0) * t, y(v0 + (v1 - v0) * ease)]);
-    }
-  }
-  return points;
-}
-
-// Height of the trace at a given x (linear interpolation between two points)
-function heightAt(points, x) {
-  for (let i = 1; i < points.length; i++) {
-    const [x0, y0] = points[i - 1];
-    const [x1, y1] = points[i];
-    if (x <= x1) return y0 + (y1 - y0) * ((x - x0) / (x1 - x0 || 1));
-  }
-  return points[points.length - 1][1];
-}
-
+// A straight line along the bottom of the header (decided on 28/10/2026): the
+// violet part fills it with the reading progress, and the 911 drives at its end.
+// The car does not jump with the scroll: each frame it covers part of the
+// distance left to its target, so it accelerates and brakes smoothly
+// (in one go with reduced motion).
 const header = document.querySelector(".site-header");
 
 if (header) {
-  const H = 8;                     // height of the trace (px): a low, gentle line
+  const H = 8;                     // height of the strip (px); the line is in the middle
+  const LINE_Y = H / 2;
   const NS = "http://www.w3.org/2000/svg";
-  const points = lapPoints(H);
-  const d = "M" + points.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(2)}`).join(" L");
+  const d = `M0 ${LINE_Y} H1000`;
 
   const svg = document.createElementNS(NS, "svg");
   svg.setAttribute("class", "telemetry");
@@ -158,7 +130,7 @@ if (header) {
     <path class="telemetry__base" d="${d}"/>
     <path class="telemetry__live" d="${d}" clip-path="url(#telemetry-clip)"/>`;
 
-  // The car is a separate element so that it keeps its proportions (the trace
+  // The car is a separate element so that it keeps its proportions (the line
   // itself is stretched to the full width of the screen). Its silhouette comes
   // from assets/img/porsche-911.svg, used as a CSS mask (see .telemetry__car).
   const car = document.createElement("span");
@@ -168,37 +140,50 @@ if (header) {
   header.append(svg, car);
   document.documentElement.classList.add("has-telemetry");
 
-  // The violet part follows the reading progress (0 % at the top, 100 % at the bottom),
-  // and the car drives at the end of it, wheels on the line.
   const clipRect = svg.querySelector("rect");
   const CAR_W = 63;                // displayed size: 63 x 20 px (see CSS)
   const CAR_WHEEL_BOTTOM = 20;     // the wheels touch the bottom of the drawing
-  let ticking = false;
+  const EASE = 0.12;               // share of the distance left covered each frame
+  const instant = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let shown = null;                // progress currently drawn (0–1)
+  let running = false;
 
-  function updateTelemetry() {
+  function target() {
     const max = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 1;
-    const x = progress * 1000;
-    clipRect.setAttribute("width", x.toFixed(1));
+    return max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 1;
+  }
 
+  function draw(progress) {
+    clipRect.setAttribute("width", (progress * 1000).toFixed(1));
     // Front of the car at the end of the violet line, kept inside the screen
     const width = svg.clientWidth;
     const left = Math.min(Math.max(0, progress * width - CAR_W * 0.85), width - CAR_W);
     const svgTop = svg.getBoundingClientRect().top - header.getBoundingClientRect().top;
-    const lineY = svgTop + heightAt(points, x) * (svg.clientHeight / H);
+    const lineY = svgTop + LINE_Y * (svg.clientHeight / H);
     car.style.transform = `translate(${left.toFixed(1)}px, ${(lineY - CAR_WHEEL_BOTTOM).toFixed(1)}px)`;
-
-    ticking = false;
   }
 
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(updateTelemetry); // at most one update per frame
+  function step() {
+    const goal = target();
+    if (shown === null || instant || Math.abs(goal - shown) < 0.0005) {
+      shown = goal;
+      running = false;
+    } else {
+      shown += (goal - shown) * EASE;
+      requestAnimationFrame(step);
     }
-  }, { passive: true });
-  window.addEventListener("resize", updateTelemetry);
-  updateTelemetry();
+    draw(shown);
+  }
+
+  function update() {
+    if (running) return;            // the loop is already going: it reads the new target
+    running = true;
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 }
 
 /* 6. Changing sector with the keyboard: ← → ---------------------------- */
@@ -363,3 +348,43 @@ document.addEventListener("click", (event) => {
   // A click on the dark backdrop (outside the box) or on a CV closes the pop-up
   if (event.target === dialog || event.target.closest("a[download]")) dialog.close();
 });
+
+/* 11. Photos open larger on click ------------------------------------------------ */
+// Each photo is wrapped in <a class="photo-zoom" href="the photo">: without
+// JavaScript the link simply opens the image. Here it opens in a <dialog> instead,
+// as large as the screen allows, with its caption. A click anywhere, the × button
+// or the Escape key closes it. Delegated: works for the sectors added later by the
+// continuous scroll too.
+const isFrench = document.documentElement.lang === "fr";
+let lightbox = null;
+
+function makeLightbox() {
+  const dialog = document.createElement("dialog");
+  dialog.className = "lightbox";
+  dialog.setAttribute("aria-label", isFrench ? "Photo agrandie" : "Enlarged photo");
+  dialog.innerHTML = `
+    <button class="lightbox__close" type="button" aria-label="${isFrench ? "Fermer" : "Close"}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <img alt="">
+    <p class="lightbox__caption"></p>`;
+  dialog.addEventListener("click", () => dialog.close());   // anywhere, including ×
+  document.body.append(dialog);
+  return dialog;
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a.photo-zoom");
+  if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  lightbox = lightbox || makeLightbox();
+  if (!lightbox.showModal) return;   // very old browser: follow the link
+  event.preventDefault();
+  const photo = link.querySelector("img");
+  const caption = link.closest("figure") && link.closest("figure").querySelector("figcaption");
+  const big = lightbox.querySelector("img");
+  big.src = link.href;
+  big.alt = photo ? photo.alt : "";
+  lightbox.querySelector(".lightbox__caption").textContent = caption ? caption.textContent.trim() : "";
+  lightbox.showModal();
+});
+
