@@ -2758,6 +2758,36 @@ html.menu-open .reading-toggle--corner {
   }
 }
 
+/* Career, role models: the 3 cards share one panel (1280×720 and up).
+   Tighter cards; on smaller screens split() still gives one card per panel.
+   :has() rather than #role-models: ids are prefixed when the page is added to the lap. */
+.track.is-pinned .panel:has(.rolemodel-card) .section-head {
+  margin-bottom: var(--space-4);
+}
+
+.track.is-pinned .panel:has(.rolemodel-card) .intro {
+  max-width: none;                   /* one line instead of two */
+}
+
+.track.is-pinned .rolemodel-card {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.track.is-pinned .rolemodel-card h3 {
+  font-size: 1rem;
+}
+
+.track.is-pinned .rolemodel-card .fields {
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.track.is-pinned .rolemodel-card .steps {
+  gap: var(--space-1);
+}
+
 
 /* Real photos in a pinned panel: limited in height, never stretched nor cropped.
    width and height "auto" + a maximum: the browser shrinks the photo as a whole. */

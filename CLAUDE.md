@@ -100,7 +100,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 
 **Légendes « LIEU, ANNÉE »** : au-dessus de chaque photo et en tête des cartes projet ou formation, en IBM Plex Mono majuscules (ex. `LA PRÉPA DES INP, 2026`). Si je ne l'ai pas donnée : `[TO COMPLETE: LIEU, ANNÉE]`.
 
-**Photos** : toujours dans leurs propres proportions (jamais recadrées ni étirées, quel que soit le mode ou l'écran) ; chaque photo est entourée d'un lien `<a class="photo-zoom" href="…">` qui l'ouvre en grand au clic (visionneuse, main.js §11), avec le crédit du photographe sous la photo si ce n'est pas moi (`.photo-slot__credit`). Les miennes uniquement (portrait, rugby, musique / DJ / Strudel, karting / sim / mécanique, N7), WebP < 150 Ko, `width`/`height`/`alt`, `loading="lazy"` sauf le portrait du hero. Pas de photos d'ambiance de banques d'images. Aucune image insérée sans mon accord ; en attendant, un **cadre visible « Photo à venir »** avec la légende `[TO COMPLETE: LIEU, ANNÉE]` (décidé le 28/10/2026). Seule photo en place : `assets/img/rugby.webp` (Activities, `TOULOUSE, 2026`, crédit shtbylly.com). Image d'aperçu LinkedIn `assets/img/og-image.jpg` : version typographique (nom, sous-titre, plan moteur), sans photo, ajoutée et référencée dans `og:image` (URL absolue, obligatoire pour Open Graph).
+**Photos** : toujours dans leurs propres proportions (jamais recadrées ni étirées, quel que soit le mode ou l'écran) ; chaque photo est entourée d'un lien `<a class="photo-zoom" href="…">` qui l'ouvre en grand au clic (visionneuse, main.js §11), avec le crédit du photographe sous la photo si ce n'est pas moi (`.photo-slot__credit`). Les miennes uniquement (portrait, rugby, musique / DJ / Strudel, karting / sim / mécanique, N7), WebP < 150 Ko, `width`/`height`/`alt`, `loading="lazy"` sauf le portrait du hero. Pas de photos d'ambiance de banques d'images. Aucune image insérée sans mon accord ; en attendant, un **cadre visible « Photo à venir »** avec la légende `[TO COMPLETE: LIEU, ANNÉE]` (décidé le 28/10/2026). Seule photo de moi en place : `assets/img/rugby.webp` (Activities, `TOULOUSE, 2026`, crédit shtbylly.com). Exception décidée le 28/10/2026 : en attendant mes propres photos, Activities montre deux images qui ne sont pas de moi, **sans légende** : `assets/img/daft-punk.jpg` (musique) et `assets/img/lotus-f1.jpg` (sport auto, Lotus de Senna) ; à remplacer dès que j'ai les miennes. Image d'aperçu LinkedIn `assets/img/og-image.jpg` : version typographique (nom, sous-titre, plan moteur), sans photo, ajoutée et référencée dans `og:image` (URL absolue, obligatoire pour Open Graph).
 
 ## 7. Choix techniques
 
@@ -114,7 +114,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
   ├── js/lap.js              (sens du glissement entre deux pages ; chargé dans <head> SANS defer)
   ├── js/lap-scroll.js       (défilement continu : assemble les 6 pages, tronçons horizontaux, URL, clavier)
   ├── js/main.js             (menu, thème, télémétrie, navigation entre secteurs, pop-ups Contact et CV, visionneuse photo)
-  ├── assets/img/            (photos compressées < 150 Ko en WebP : rugby.webp ; og-image.jpg ; dessins en SVG : favicon.svg, porsche-911.svg, engine-blueprint.svg, circuit.svg)
+  ├── assets/img/            (photos compressées < 150 Ko en WebP : rugby.webp ; provisoires en JPEG : daft-punk.jpg, lotus-f1.jpg ; og-image.jpg ; dessins en SVG : favicon.svg, porsche-911.svg, engine-blueprint.svg, circuit.svg)
   ├── assets/docs/           (syllabus-enseeiht-sn.pdf, groupe_10_rapport_science_et_musique.pdf ; à venir : CV_Loup_Broussard_EN.pdf, CV_Loup_Broussard_FR.pdf, déjà liés par le site)
   └── CLAUDE.md
   ```
@@ -197,6 +197,7 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
   - Décidé le 27/10/2026 : les 5 autres pages seront traduites **fidèlement à partir de l'anglais après le 1er novembre** (rien d'ajouté, chaque page relue par moi), puis gardées strictement synchronisées (même structure, même contenu).
   - **Toute modification de contenu se fait dans les deux langues** (pour les pages déjà traduites).
   - En français : CV FR, LinkedIn `?locale=fr_FR`, `lang="fr"`, `og:locale` fr_FR, liens `hreflang` entre les deux versions.
+  - Placeholders visibles en français : `[À COMPLÉTER : …]` (au lieu de `[TO COMPLETE: …]`, 28/10/2026) ; les commentaires HTML restent en anglais. Pour tout retrouver : chercher `class="todo"`.
 
 ## 10. Règles de travail pour Claude
 
