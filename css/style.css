@@ -2863,6 +2863,31 @@ html.menu-open .reading-toggle--corner {
   gap: var(--space-1);
 }
 
+/* International Mobility: long cards (courses, team, "to confirm"), same tight style.
+   When split() leaves one card alone in a panel, it gets a readable width. */
+.track.is-pinned .panel:has(.mobility-card) .section-head {
+  margin-bottom: var(--space-4);
+}
+
+.track.is-pinned .mobility-card {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.track.is-pinned .mobility-card h3 {
+  font-size: 1rem;
+}
+
+.track.is-pinned .mobility-card .fields {
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.track.is-pinned .panel:has(.mobility-card) .grid:has(> :only-child) {
+  grid-template-columns: minmax(0, 52rem);
+}
+
 
 /* Real photos in a pinned panel: limited in height, never stretched nor cropped.
    width and height "auto" + a maximum: the browser shrinks the photo as a whole. */

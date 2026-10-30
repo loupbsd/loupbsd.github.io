@@ -9,7 +9,7 @@
 
 - Je suis **Loup Broussard**, étudiant en **1re année (L3 / S5) en Sciences du Numérique (SN)** à l'**ENSEEIHT** (Toulouse INP), après **La Prépa des INP (Toulouse)**.
 - Ce site est mon **e-portfolio**, évalué dans le cours **CAM – Careers & Management** (Soft Skills Center).
-- C'est un outil **sur 3 ans** (S5 → S10) : il sera enrichi chaque semestre (stages S6 et S8, mobilité S9, engagement RSE, jury PPP). Le code doit donc rester **simple à mettre à jour**.
+- C'est un outil **sur 3 ans** (S5 → S10) : il sera enrichi chaque semestre (stages S6 et S8, mobilité, engagement RSE, jury PPP). Le code doit donc rester **simple à mettre à jour**.
 - Tu m'aides sur le **code, la structure et le design**. Le **contenu** (textes sur moi) vient de moi.
 
 ## 2. Objectif n°1 du site
@@ -32,7 +32,7 @@ Critères de notation : complétude · clarté du projet professionnel · **coh�
 
 ➡️ Priorité absolue : tous ces éléments **présents, visibles et accessibles en 1 ou 2 clics depuis l'accueil**.
 
-État au 25/10/2026 : CV FR/EN, pitch et rendez-vous avec les 3 rôles modèles prévus la semaine du 26/10 ; les 3 mobilités seront construites ensuite (encadrés « In progress » sur le site, cartes prêtes en commentaire HTML).
+État au 25/10/2026 : CV FR/EN, pitch et rendez-vous avec les 3 rôles modèles prévus la semaine du 26/10 ; les 3 mobilités sont en place depuis le 30/10/2026 (options à l'étude, échange de 6 mois en 2A, S8 : Imperial, Bologne, Milan, mention « à confirmer » à garder) ; le rôle modèle 3 aussi (My Job Glasses).
 
 ## 4. Structure du site (6 onglets obligatoires)
 
@@ -42,10 +42,10 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
 |---|---|---|
 | `index.html` | **Welcome** | Voir §5 (page la plus importante) |
 | `engineering.html` | **Engineering Course** | Formation SN (cours clés, compétences), puis une carte par projet (format §6) |
-| `mobility.html` | **International Mobility** | 3 projets de mobilité (format §6), langues, sous-sections futures (PCE, LV2…) |
+| `mobility.html` | **International Mobility** | langues, 3 projets de mobilité (format §6), critères, autres pistes, prochaines étapes |
 | `sustainability.html` | **Sustainability & Civic Engagement** | Engagement RSE : Fresque du Climat, Sulitest, projet d'équipe RSE + infographie (janvier), ODD concernés |
 | `activities.html` | **Sport & Other Activities** | Rugby, musique (live coding), sports automobiles, nouvelles technologies — chacun avec ce que j'en retire (soft skills) |
-| `career.html` | **Career Development** | Section **Career Project** complète (§3) : CV FR/EN, LinkedIn, vidéo, 3 rôles modèles, 3 mobilités, objectifs court/moyen/long terme (plans A/B/C). Sous-sections futures : stages, PEP |
+| `career.html` | **Career Development** | Section **Career Project** complète (§3) : CV FR/EN, LinkedIn, vidéo, 3 rôles modèles, 3 mobilités, objectifs court/moyen/long terme (plans A/B/C). Sous-sections futures : stages |
 
 **Le site est un tour de circuit** (refonte « Lap », validée le 27/10/2026, inspirée de landonorris.com sans en reprendre l'identité) :
 - Les 6 onglets sont les **6 secteurs d'un tour**, dans un ordre fixe : S1 Welcome → S2 Engineering → S3 Mobility → S4 Sustainability → S5 Activities → S6 Career → retour à S1. Le numéro est dans `<html data-sector="n">`.
@@ -56,7 +56,7 @@ Une page HTML par onglet. Navigation identique sur toutes les pages, onglet acti
   - le FR passe au défilement continu dès que ses 6 pages existent (fait le 28/10) : jamais de mélange de langues dans un même défilement ;
   - avant chaque secteur horizontal, l’ouverture du secteur (grand titre) sert d’écran de virage, **sans message** « This sector reads to the right » (retiré le 27/10/2026) : la jauge des panneaux suffit ; en sortie, un repère « ↓ secteur suivant » ;
   - lien direct vers un onglet (ex. `/career.html`) : la page s'affiche tout de suite et **tout le tour** est ajouté autour, sans faire bouger l'écran ;
-  - panneaux : Engineering = Formation | Cours | Compétences | Projets ; Mobility = Projets | Langues | À venir ; Sustainability = Formations | Projet RSE | ODD ; Activities = une activité par panneau ; Career = CV & LinkedIn (titre masqué à l’écran, 28/10/2026) | Pitch | Rôles modèles | Mobilité | Calendrier | Plans A/B/C | À venir ;
+  - panneaux : Engineering = Formation | Cours | Compétences | Projets ; Mobility = Langues | Projets | Critères | Autres pistes | Prochaines étapes ; Sustainability = Formations | Projet RSE | ODD ; Activities = une activité par panneau ; Career = CV & LinkedIn (titre masqué à l’écran, 28/10/2026) | Pitch | Rôles modèles | Mobilité | Calendrier | Plans A/B/C | À venir ;
   - si un panneau est trop vide (contenu < 55 % de la hauteur, ex. grand écran), le moteur agrandit tout son contenu avec `zoom` (jusqu'à ×1,6, sans dépasser 80 % de la hauteur ni la largeur de sa colonne) : décidé le 28/10/2026 ;
   - si un panneau ne tient pas à l'écran, le moteur le découpe en un groupe par panneau (cartes, groupes de cours…) ; s'il ne tient toujours pas (zoom, très petit écran), le secteur repasse en vertical et la raison est notée dans `data-stacked` sur le `.track` ;
   - en défilement continu, le sommaire de Career n'est plus collé en haut (il passerait sous les panneaux épinglés) ;
@@ -100,7 +100,7 @@ La carte affiche titre + tags + 1 ligne de résumé ; le détail se déplie au c
 
 **Légendes « LIEU, ANNÉE »** : au-dessus de chaque photo et en tête des cartes projet ou formation, en IBM Plex Mono majuscules (ex. `LA PRÉPA DES INP, 2026`). Si je ne l'ai pas donnée : `[TO COMPLETE: LIEU, ANNÉE]`.
 
-**Photos** : toujours dans leurs propres proportions (jamais recadrées ni étirées, quel que soit le mode ou l'écran) ; chaque photo est entourée d'un lien `<a class="photo-zoom" href="…">` qui l'ouvre en grand au clic (visionneuse, main.js §11), avec le crédit du photographe sous la photo si ce n'est pas moi (`.photo-slot__credit`). Les miennes uniquement (portrait, rugby, musique / DJ / Strudel, karting / sim / mécanique, N7), WebP < 150 Ko, `width`/`height`/`alt`, `loading="lazy"` sauf le portrait du hero. Pas de photos d'ambiance de banques d'images. Aucune image insérée sans mon accord ; en attendant, un **cadre visible « Photo à venir »** avec la légende `[TO COMPLETE: LIEU, ANNÉE]` (décidé le 28/10/2026). Exception au « jamais recadrées » : le portrait du hero (détouré sur ordinateur, rond sur téléphone, décidé le 30/10/2026). Photos de moi en place : `portrait.webp` (hero) et `assets/img/rugby.webp` (Activities, `TOULOUSE, 2026`, crédit shtbylly.com). Exception décidée le 28/10/2026 : en attendant mes propres photos, Activities montre deux images qui ne sont pas de moi, **sans légende** : `assets/img/daft-punk.jpg` (musique) et `assets/img/lotus-f1.jpg` (sport auto, Lotus de Senna) ; à remplacer dès que j'ai les miennes. Image d'aperçu LinkedIn `assets/img/og-image.jpg` : version typographique (nom, sous-titre, plan moteur), sans photo, ajoutée et référencée dans `og:image` (URL absolue, obligatoire pour Open Graph).
+**Photos** : toujours dans leurs propres proportions (jamais recadrées ni étirées, quel que soit le mode ou l'écran) ; chaque photo est entourée d'un lien `<a class="photo-zoom" href="…">` qui l'ouvre en grand au clic (visionneuse, main.js §11), avec le crédit du photographe sous la photo si ce n'est pas moi (`.photo-slot__credit`). Les miennes uniquement (portrait, rugby, musique / DJ / Strudel, karting / sim / mécanique, N7), WebP < 150 Ko, `width`/`height`/`alt`, `loading="lazy"` sauf le portrait du hero. Pas de photos d'ambiance de banques d'images. Aucune image insérée sans mon accord ; en attendant, un **cadre visible « Photo à venir »** avec la légende `[TO COMPLETE: LIEU, ANNÉE]` (décidé le 28/10/2026). Exception au « jamais recadrées » : le portrait du hero (détouré sur ordinateur, rond sur téléphone, décidé le 30/10/2026). Photos de moi en place : `portrait.webp` (hero) et `assets/img/rugby.webp` (Activities, `TOULOUSE, 2026`, crédit shtbylly.com). Exception décidée le 28/10/2026 : en attendant mes propres photos, Activities montre deux images qui ne sont pas de moi, **sans légende** : `assets/img/daft-punk.jpg` (musique) et `assets/img/lotus-f1.jpg` (sport auto, Lotus de Senna) ; à remplacer dès que j'ai les miennes. Image d'aperçu LinkedIn `assets/img/og-image.jpg` : version typographique aux deux largeurs du hero (nom, sous-titre, ligne de données, plan moteur, tracé de télémétrie avec la 911, refaite le 30/10/2026), sans photo, ajoutée et référencée dans `og:image` (URL absolue, obligatoire pour Open Graph).
 
 ## 7. Choix techniques
 
@@ -224,5 +224,5 @@ Le site ne doit pas donner l'impression d'avoir été généré par une IA. À n
 - Activités : rugby · musique · sports automobiles · nouvelles technologies
 - UVP (1 phrase) : « First-year Computer Science engineering student who turns curiosity into code, looking for a software, systems or data internship in summer 2027. »
 - Pistes de carrière (exploration, ouvert à tout) : plan A systèmes embarqués dans le sport auto/moto · plan B logiciel pour la musique électronique (DAW, outils DJ, synthés) · plan C chef de projet / product manager tech après quelques années
-- 3 mots-clés de ma marque : [TO COMPLETE]
+- 3 mots-clés de ma marque (choisis le 30/10/2026) : **Curious · Team player · Creative** (à reprendre à l'identique dans l'UVP, le CV, LinkedIn et le pitch ; en français : curieux · esprit d'équipe · créatif)
 - Ce que je cherche : stage technique de 6 semaines minimum, entre le 7 juin et le 23 août 2027, en développement logiciel, systèmes ou data
