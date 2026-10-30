@@ -786,10 +786,16 @@ html.menu-open {
 .menu-toggle[aria-expanded="true"] .icon-menu { display: none; }
 .menu-toggle[aria-expanded="true"] .icon-close { display: block; }
 
-/* Phones and tablets: the theme button lives in the full-screen menu
-   (only on pages whose menu has one), to leave room for "‹ S1/6 ›" */
+/* Phones and tablets: the theme button sits in the header, next to EN | FR,
+   so it is one tap away without opening the full-screen menu */
 @media (max-width: 1023px) {
-  .site-header:has(.site-nav .theme-toggle) .container > .theme-toggle { display: none; }
+  .site-nav__extra .theme-toggle { display: none; }
+  .site-header .icon-btn { flex-shrink: 0; }   /* the buttons keep their size, whatever the screen */
+}
+
+/* Very narrow phones (320 px): the "S1/6" text makes room; the sector bar and the menu still say where you are */
+@media (max-width: 339px) {
+  .lap-count { display: none; }
 }
 
 /* Without JavaScript the menu button is useless: show the nav instead */
