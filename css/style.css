@@ -107,6 +107,7 @@
   --color-text-muted: #b5ab9a;
   --color-accent: #9670ff;        /* same violet, lighter: AA contrast on dark */
   --color-accent-soft: rgba(150, 112, 255, 0.16);
+  --color-accent-on-soft: #bca6ff;   /* AA on accent-soft over every dark surface */
   --color-on-accent: #1a1430;
   --color-todo: #f5b84b;
   --blueprint-opacity: 0.11;
@@ -133,6 +134,7 @@
     --color-text-muted: #b5ab9a;
     --color-accent: #9670ff;
     --color-accent-soft: rgba(150, 112, 255, 0.16);
+    --color-accent-on-soft: #bca6ff;   /* AA on accent-soft over every dark surface */
     --color-on-accent: #1a1430;
     --color-todo: #f5b84b;
     --blueprint-opacity: 0.11;
@@ -315,6 +317,11 @@ a {
   border-radius: 4px;
 }
 
+/* Sections and panels that receive focus by script (after a jump) are not controls: no ring around a whole screen */
+[tabindex="-1"]:focus-visible {
+  outline: none;
+}
+
 /* Anchored sections must not hide under the sticky header */
 [id] {
   scroll-margin-top: calc(var(--header-h) + var(--space-4));
@@ -437,7 +444,7 @@ main {
   gap: var(--space-8);
 }
 
-.course-groups h4 {
+.course-groups h3 {
   font-size: var(--text-md);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--color-border);
@@ -604,7 +611,7 @@ main {
 }
 
 .lap-arrow:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-on-soft, var(--color-accent));
   background: var(--color-accent-soft);
 }
 
@@ -738,7 +745,7 @@ html.menu-open {
 
 .lang-switch a[aria-current="true"] {
   background: var(--color-accent-soft);
-  color: var(--color-accent);
+  color: var(--color-accent-on-soft, var(--color-accent));
 }
 
 .icon-btn {
@@ -961,7 +968,7 @@ html:not(.js) .site-nav__extra { display: none; }
 }
 
 .tag--accent {
-  color: var(--color-accent);
+  color: var(--color-accent-on-soft, var(--color-accent));
   border-color: var(--color-accent);
   background: var(--color-accent-soft);
 }
@@ -1081,7 +1088,9 @@ html:not(.js) .site-nav__extra { display: none; }
 }
 
 .project-card__toggle::after { content: "Show details ↓"; }
-.project-card[open] .project-card__toggle::after { content: "Hide details ↑"; }
+.project-card[open] .project-card__toggle::after,
+.mobility-more[open] .project-card__toggle::after,
+.rolemodel-more[open] .project-card__toggle::after { content: "Hide details ↑"; }
 
 .project-card__body {
   padding: 0 var(--space-6) var(--space-6);
@@ -1101,6 +1110,33 @@ html:not(.js) .site-nav__extra { display: none; }
 }
 
 /* --- 7c. Mobility & role model cards ----------------------------------- */
+
+/* Mobility card: Type and Why show, the rest unfolds */
+.grid:has(> .mobility-card),
+.grid:has(> .rolemodel-card) {
+  align-items: start;   /* an open card does not stretch its neighbours */
+}
+
+.mobility-more,
+.rolemodel-more {
+  margin-top: var(--space-3);
+}
+
+.mobility-more summary,
+.rolemodel-more summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobility-more summary::-webkit-details-marker,
+.rolemodel-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobility-more .project-card__toggle,
+.rolemodel-more .project-card__toggle {
+  margin-top: 0;
+}
 .mobility-card .card__meta,
 .rolemodel-card .card__meta {
   margin-top: var(--space-1);
@@ -1906,6 +1942,7 @@ audio {
   --color-text-muted: #b5ab9a;
   --color-accent: #9670ff;          /* light violet: AA contrast on dark */
   --color-accent-soft: rgba(150, 112, 255, 0.16);
+  --color-accent-on-soft: #bca6ff;   /* AA on accent-soft over every dark surface */
   --color-on-accent: #1a1430;
   --color-todo: #f5b84b;
   --c-s1: #9670ff;                  /* sector colours: light-on-dark versions */
@@ -2352,7 +2389,7 @@ body:has(.contact-bar) {
 }
 
 .contact-bar a:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-on-soft, var(--color-accent));
   background: var(--color-accent-soft);
 }
 
@@ -2465,7 +2502,7 @@ a.contact-bar__label {
 }
 
 .contact-dialog__close:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-on-soft, var(--color-accent));
   background: var(--color-accent-soft);
 }
 
@@ -2547,7 +2584,9 @@ html.menu-open .contact-bar {
 
 /* French pages: the label of the project cards' toggle (section 7b) */
 :lang(fr) .project-card__toggle::after { content: "Voir le détail ↓"; }
-:lang(fr) .project-card[open] .project-card__toggle::after { content: "Masquer le détail ↑"; }
+:lang(fr) .project-card[open] .project-card__toggle::after,
+:lang(fr) .mobility-more[open] .project-card__toggle::after,
+:lang(fr) .rolemodel-more[open] .project-card__toggle::after { content: "Masquer le détail ↑"; }
 
 
 /* =========================================================================
@@ -2832,62 +2871,6 @@ html.menu-open .reading-toggle--corner {
     padding: var(--space-4);         /* cards in a phone panel: a little tighter */
   }
 }
-
-/* Career, role models: the 3 cards share one panel (1280×720 and up).
-   Tighter cards; on smaller screens split() still gives one card per panel.
-   :has() rather than #role-models: ids are prefixed when the page is added to the lap. */
-.track.is-pinned .panel:has(.rolemodel-card) .section-head {
-  margin-bottom: var(--space-4);
-}
-
-.track.is-pinned .panel:has(.rolemodel-card) .intro {
-  max-width: none;                   /* one line instead of two */
-}
-
-.track.is-pinned .rolemodel-card {
-  padding: var(--space-3) var(--space-4);
-  font-size: var(--text-sm);
-  line-height: 1.45;
-}
-
-.track.is-pinned .rolemodel-card h3 {
-  font-size: 1rem;
-}
-
-.track.is-pinned .rolemodel-card .fields {
-  gap: var(--space-2);
-  margin-top: var(--space-2);
-}
-
-.track.is-pinned .rolemodel-card .steps {
-  gap: var(--space-1);
-}
-
-/* International Mobility: long cards (courses, team, "to confirm"), same tight style.
-   When split() leaves one card alone in a panel, it gets a readable width. */
-.track.is-pinned .panel:has(.mobility-card) .section-head {
-  margin-bottom: var(--space-4);
-}
-
-.track.is-pinned .mobility-card {
-  padding: var(--space-3) var(--space-4);
-  font-size: var(--text-sm);
-  line-height: 1.45;
-}
-
-.track.is-pinned .mobility-card h3 {
-  font-size: 1rem;
-}
-
-.track.is-pinned .mobility-card .fields {
-  gap: var(--space-2);
-  margin-top: var(--space-2);
-}
-
-.track.is-pinned .panel:has(.mobility-card) .grid:has(> :only-child) {
-  grid-template-columns: minmax(0, 52rem);
-}
-
 
 /* Real photos in a pinned panel: limited in height, never stretched nor cropped.
    width and height "auto" + a maximum: the browser shrinks the photo as a whole. */

@@ -340,6 +340,12 @@
   const lapCount = header.querySelector(".lap-count");
   const otherLanguage = header.querySelector('.lang-switch a:not([aria-current])');
 
+  // Screen readers hear the sector change (the gauge and the sector bar are visual)
+  const announcer = document.createElement("p");
+  announcer.className = "sr-only";
+  announcer.setAttribute("role", "status");
+  document.body.append(announcer);
+
   function setCurrent(n) {
     if (n === current) return;
     current = n;
@@ -355,6 +361,7 @@
     nextArrow.setAttribute("aria-label", TEXT.next + navLinks[q].textContent.trim());
     if (otherLanguage) otherLanguage.href = (fr ? "../" : "fr/") + FILES[i];
     document.title = titles[i];
+    announcer.textContent = `S${n}/6 · ${navLinks[i].textContent.trim()}`;
     history.replaceState(history.state, "", FILES[i]);
   }
 
@@ -407,6 +414,28 @@
     jumpTimer = setTimeout(() => root.classList.remove("is-jumping"), smooth ? 1200 : 150);
   }
 
+  // True if the element sits inside something that scrolls sideways on its own
+  // (a wide table, a code block): the arrow keys keep scrolling it. The pinned
+  // tracks are ours and do not count.
+  function inSideScroller(element) {
+    for (let el = element; el && el !== document.body && !el.matches(".track"); el = el.parentElement) {
+      const overflow = getComputedStyle(el).overflowX;
+      if ((overflow === "auto" || overflow === "scroll") && el.scrollWidth > el.clientWidth) return true;
+    }
+    return false;
+  }
+
+  // After a jump by link, keyboard and screen-reader users start from the
+  // destination: focus it without scrolling (the jump already does that)
+  let focusedByJump = false;
+  function focusTarget(el) {
+    if (!el || !el.focus) return;
+    if (!el.matches("a[href], button, input, summary, [tabindex]")) el.setAttribute("tabindex", "-1");
+    focusedByJump = true;
+    el.focus({ preventScroll: true });
+    setTimeout(() => { focusedByJump = false; }, 0);
+  }
+
   function scrollToTarget(t, smooth) {
     if (t.el.tagName === "DETAILS") t.el.open = true;
     let y = t.el.getBoundingClientRect().top + window.scrollY - headerHeight();
@@ -433,6 +462,7 @@
       event.preventDefault();
       history.pushState({ lap: true }, "", FILES[t.n - 1] + url.hash);
       scrollToTarget(t, true);
+      focusTarget(t.el);
     });
 
     window.addEventListener("popstate", () => {
@@ -445,7 +475,8 @@
     document.addEventListener("keydown", (event) => {
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
       if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-      if (event.target.closest("input, textarea, select, [contenteditable], audio, video, dialog")) return;
+      const from = event.target;
+      if (from.closest && (from.closest("input, textarea, select, [contenteditable], audio, video, dialog") || inSideScroller(from))) return;
       event.preventDefault();
       const step = event.key === "ArrowRight" ? 1 : -1;
       for (const info of tracks) {
@@ -463,6 +494,7 @@
 
     // Keyboard focus in a hidden panel: bring the panel to the screen
     document.addEventListener("focusin", (event) => {
+      if (focusedByJump) return;   // the jump already placed the panel
       const panel = event.target.closest && event.target.closest(".track.is-pinned .panel");
       if (!panel) return;
       const info = tracks.find((i) => i.pin && i.pin.contains(panel));
