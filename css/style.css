@@ -41,7 +41,7 @@
   --color-accent-soft: rgba(77, 45, 160, 0.09);
   --color-on-accent: #faf3e3;     /* text placed on top of the accent */
   --color-todo: #8a3c0d;          /* [TO COMPLETE] placeholders only */
-  --blueprint-opacity: 0.11;      /* engine drawing behind every page */
+  --blueprint-opacity: 0.095;      /* engine drawing behind every page */
 
   /* Chapter tones (section 13): background of each tone.
      paper = the page itself, sand = dense chapters, ink = dark chapters */
@@ -71,8 +71,8 @@
   --text-xs: 0.75rem;   /* 12px */
   --text-sm: 0.875rem;  /* 14px */
   --text-md: 1rem;      /* 16px */
-  --text-lg: 1.25rem;   /* 20px */
-  --text-xl: 1.75rem;   /* 28px */
+  --text-lg: clamp(1.125rem, 1.6vw, 1.25rem);  /* 18 → 20px: lead texts (UVP, intros, "Now", facts) */
+  --text-xl: clamp(1.5rem, 2.6vw, 1.75rem);    /* 24 → 28px: section and item titles */
   --text-2xl: clamp(2rem, 6vw, 3.25rem); /* grows with the screen */
 
   /* Spacing (multiples of 4px) */
@@ -109,7 +109,7 @@
   --color-accent-soft: rgba(150, 112, 255, 0.16);
   --color-on-accent: #1a1430;
   --color-todo: #f5b84b;
-  --blueprint-opacity: 0.13;
+  --blueprint-opacity: 0.11;
   --tone-paper: #151413;          /* "night session": the three tones get darker */
   --tone-sand: #1d1b19;
   --tone-ink: #0c0b0a;
@@ -135,7 +135,7 @@
     --color-accent-soft: rgba(150, 112, 255, 0.16);
     --color-on-accent: #1a1430;
     --color-todo: #f5b84b;
-    --blueprint-opacity: 0.13;
+    --blueprint-opacity: 0.11;
     --tone-paper: #151413;
     --tone-sand: #1d1b19;
     --tone-ink: #0c0b0a;
@@ -184,8 +184,10 @@ body {
    Same trick as the 911: the SVG is a mask, the colour comes from the theme.
    Second mask layer = fade towards the left, so it melts into the cream before the text.
    Chapter backgrounds are painted below it (z-index -2, section 13), so it stays visible
-   through every chapter. Opaque blocks (header, cards, tables of contents) hide it. */
-body::before {
+   through every chapter. Opaque blocks (header, cards, tables of contents) hide it.
+   Pinned horizontal sectors draw their own copy, at the same place (section 17). */
+body::before,
+.track__pin::before {
   content: "";
   position: fixed;
   z-index: -1;
@@ -208,10 +210,39 @@ body::before {
 }
 
 @media (min-width: 768px) {
-  body::before {
+  body::before,
+  .track__pin::before {
     left: 45%;
     right: 0;
     opacity: var(--blueprint-opacity);
+  }
+}
+
+/* Very wide screens only: the left margin is empty, so a second drawing fills it,
+   a motorcycle helmet (assets/img/helmet-blueprint.svg). Mirror image of the engine:
+   on the left (after the contact rail), fading towards the right before the text. */
+@media (min-width: 1440px) {
+  body::after,
+  .track__pin::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    top: var(--header-h);
+    bottom: 0;
+    left: 72px;                     /* clear of the contact rail */
+    right: 55%;
+    background-color: var(--blueprint-color, var(--color-accent));
+    opacity: var(--blueprint-opacity);
+    transition: background-color 600ms ease, opacity 600ms ease;
+    -webkit-mask:
+      url("../assets/img/helmet-blueprint.svg") left center / contain no-repeat,
+      linear-gradient(to left, transparent, #000 45%);
+    -webkit-mask-composite: source-in;
+    mask:
+      url("../assets/img/helmet-blueprint.svg") left center / contain no-repeat,
+      linear-gradient(to left, transparent, #000 45%);
+    mask-composite: intersect;
+    pointer-events: none;
   }
 }
 
@@ -219,19 +250,19 @@ body::before {
    the drawing turns light violet so that it stays visible */
 html[data-view-tone="ink"] {
   --blueprint-color: #9670ff;
-  --blueprint-opacity: 0.13;
+  --blueprint-opacity: 0.11;
 }
 
 /* Light theme: the "ink" chapters are cream too, the drawing keeps its normal colour */
 :root[data-theme="light"][data-view-tone="ink"] {
   --blueprint-color: var(--color-accent);
-  --blueprint-opacity: 0.11;
+  --blueprint-opacity: 0.095;
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"])[data-view-tone="ink"] {
     --blueprint-color: var(--color-accent);
-    --blueprint-opacity: 0.11;
+    --blueprint-opacity: 0.095;
   }
 }
 
@@ -637,7 +668,7 @@ html.menu-open {
   padding-block: var(--space-1);
   color: var(--color-text);
   text-decoration: none;
-  font-size: clamp(1.75rem, 8vw, 2.75rem);
+  font-size: var(--text-xl);
   font-weight: 800;
   font-stretch: var(--stretch-display);
   text-transform: uppercase;
@@ -1177,30 +1208,53 @@ html:not(.js) .site-nav__extra { display: none; }
 
 .hero__uvp {
   margin-block: var(--space-4) var(--space-8);
-  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  font-size: var(--text-lg);
   max-width: 52ch;
 }
 
-/* Portrait (cut-out photo, 4:5) */
-.hero__photo {
-  justify-self: center;
-  width: min(100%, 14rem);
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+/* Portrait, right after the first name and as tall as it ("LOUP" is shorter
+   than "BROUSSARD", so the photo never touches the second line).
+   Discreet: see-through and softer colours, tied to the page.
+   Phones: the classic round photo. Computers: the cut-out (below). */
+.hero__first-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.18em;
 }
 
-/* Placeholder shown until the real photo is added */
-.hero__photo--placeholder {
-  display: grid;
-  place-items: center;
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius);
-  background: var(--color-surface-2);
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 800;
-  font-stretch: var(--stretch-display);
-  color: var(--color-accent);
+.hero__photo {
+  display: block;
+  flex-shrink: 0;
+  height: 0.92em;                   /* one line of "LOUP" */
+}
+
+.hero__photo img {
+  display: block;
+  width: auto;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  opacity: 0.7;
+  filter: saturate(0.7);
+}
+
+@media (min-width: 768px) {
+  /* Computers: the cut-out photo, no frame; its bottom (cut by the
+     original round photo) fades out */
+  .hero__photo {
+    height: 1.15em;
+  }
+
+  .hero__photo img {
+    aspect-ratio: auto;
+    object-fit: contain;
+    border: 0;
+    border-radius: 0;
+    -webkit-mask: linear-gradient(to bottom, #000 72%, transparent);
+    mask: linear-gradient(to bottom, #000 72%, transparent);
+  }
 }
 
 @media (min-width: 768px) {
@@ -1209,14 +1263,10 @@ html:not(.js) .site-nav__extra { display: none; }
   }
 
   .hero .container {
-    grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+    grid-template-columns: minmax(0, 48rem);   /* one column: the photo is next to the name */
     gap: var(--space-12);
     min-height: calc(100svh - var(--header-h));
     padding-block: var(--space-12);
-  }
-
-  .hero__photo {
-    width: 100%;
   }
 }
 
@@ -1241,7 +1291,7 @@ html:not(.js) .site-nav__extra { display: none; }
 
 .facts dd {
   margin-top: var(--space-1);
-  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  font-size: var(--text-lg);
   font-weight: 500;
   line-height: 1.45;
 }
@@ -1285,7 +1335,7 @@ html:not(.js) .site-nav__extra { display: none; }
 }
 
 .feature-list__title {
-  font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+  font-size: var(--text-xl);
   font-weight: 700;
   font-stretch: var(--stretch-display);
   line-height: 1.15;
@@ -1324,8 +1374,14 @@ html:not(.js) .site-nav__extra { display: none; }
 /* "What I'm working on": one short paragraph, set large */
 .now-text {
   max-width: 52ch;
-  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-size: var(--text-lg);
   line-height: 1.5;
+}
+
+/* Short "label → value" lines under it (same look as "At a glance") */
+.now-facts {
+  max-width: 60rem;
+  margin-top: var(--space-8);
 }
 
 
@@ -1445,7 +1501,7 @@ html:not(.js) .site-nav__extra { display: none; }
 .opener .intro {
   margin-top: var(--space-4);
   max-width: 52ch;
-  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  font-size: var(--text-lg);
 }
 
 /* --- Career: the sticky table of contents shows mini-sectors (S6.1, S6.2…) --- */
@@ -1539,7 +1595,7 @@ html:has(.chapter):has(.toc):not(.is-continuous) {    /* page mode only; more sp
 }
 
 .activity h3 {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-size: var(--text-xl);
   font-weight: 800;
   font-stretch: var(--stretch-display);
   line-height: 1.1;
@@ -1552,7 +1608,7 @@ html:has(.chapter):has(.toc):not(.is-continuous) {    /* page mode only; more sp
 .activity .muted {
   margin-top: var(--space-4);
   max-width: 56ch;
-  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  font-size: var(--text-lg);
 }
 
 @media (min-width: 900px) {
@@ -1635,6 +1691,11 @@ html:has(.chapter):has(.toc):not(.is-continuous) {    /* page mode only; more sp
   height: auto;
   aspect-ratio: auto;
   object-fit: contain;
+}
+
+/* Wide screenshots (e.g. Strudel code): the full width of the card, so the code stays readable */
+.photo-slot--wide img {
+  max-width: none;
 }
 
 /* With JavaScript a photo opens larger on click (main.js §11): the link around it */
@@ -1952,6 +2013,13 @@ audio {
   padding-block: clamp(4rem, 16vh, 12rem) clamp(3rem, 10vh, 6rem);
 }
 
+/* Exception: a short chapter (e.g. "What I'm working on") is a band, not a full screen,
+   so a few lines never sit alone in an empty screen (decided on 30/10/2026) */
+.chapter--compact {
+  min-height: 0;
+  padding-block: clamp(3rem, 12vh, 7rem);
+}
+
 /* Gentle snapping ("proximity"): when the scroll stops close to the start of a
    chapter, the page aligns it under the header; anywhere else the scroll stays
    free, so long chapters read normally. Off with reduced motion. */
@@ -2248,7 +2316,7 @@ html:active-view-transition-type(backward)::view-transition-new(root) {
   bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;         /* links on the left, "Classic reading" on the right */
   gap: var(--space-1);
   height: 48px;
   padding-inline: var(--space-2);
@@ -2308,6 +2376,7 @@ body:has(.contact-bar) {
     top: 50%;
     bottom: auto;
     flex-direction: column;
+    justify-content: center;
     height: auto;
     padding: var(--space-3) 2px;
     border: 1px solid var(--color-border);
@@ -2420,7 +2489,7 @@ a.contact-bar__label {
 
 .contact-dialog__list dd {
   margin: var(--space-1) 0 0;
-  font-size: clamp(1.125rem, 4vw, 1.5rem);
+  font-size: var(--text-lg);
   font-weight: 700;
   overflow-wrap: anywhere;
 }
@@ -2516,15 +2585,21 @@ html.is-jumping {
   position: sticky;
   top: var(--header-h);
   height: var(--pin-h);
-  overflow: hidden;
+  clip-path: inset(0);              /* its copy of the drawing (fixed, like body::before) only shows here */
   touch-action: pan-y pinch-zoom;   /* the script turns a sideways swipe into scrolling */
+}
+
+/* The rail slides by scrolling this window sideways (lap-scroll.js), not with a
+   transform: a transform would paint the panels' backgrounds over the drawing */
+.track__window {
+  height: 100%;
+  overflow: hidden;
 }
 
 .track__rail {
   display: flex;
   width: calc(var(--n) * 100%);
   height: 100%;
-  will-change: transform;
 }
 
 .track.is-pinned .panel {

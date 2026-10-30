@@ -120,7 +120,7 @@
   }
 
   function setupTrack(track) {
-    const info = { track, pin: null, rail: null, gauge: null, n: 0 };
+    const info = { track, pin: null, window: null, rail: null, gauge: null, n: 0 };
     tracks.push(info);
     pin(info);
   }
@@ -209,13 +209,16 @@
     }
     info.pin = document.createElement("div");
     info.pin.className = "track__pin";
+    info.window = document.createElement("div");
+    info.window.className = "track__window";
     info.rail = document.createElement("div");
     info.rail.className = "track__rail";
     info.gauge = document.createElement("div");
     info.gauge.className = "track__gauge";
     info.gauge.setAttribute("aria-hidden", "true");
     info.rail.append(...track.querySelectorAll(":scope > .panel"));   // also the panels made by split()
-    info.pin.append(info.rail, info.gauge);
+    info.window.append(info.rail);
+    info.pin.append(info.window, info.gauge);
     track.append(info.pin);
     track.classList.add("is-pinned");
     layout(info);
@@ -286,7 +289,7 @@
       const top = info.track.getBoundingClientRect().top - headerHeight();
       const range = (info.n - 1) * info.pinH;
       const progress = Math.min(Math.max(-top / range, 0), 1);
-      info.rail.style.transform = `translateX(${-progress * (info.n - 1) * info.pin.clientWidth}px)`;
+      info.window.scrollLeft = progress * (info.n - 1) * info.pin.clientWidth;
       const index = Math.round(progress * (info.n - 1));
       info.gauge.querySelectorAll("i").forEach((bar, k) => bar.classList.toggle("is-on", k === index));
       info.gauge.querySelector("span").textContent = `${index + 1}/${info.n}`;

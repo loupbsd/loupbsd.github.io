@@ -103,7 +103,9 @@
     <section class="chapter hero" data-tone="paper">
       <div class="container">
         <div class="hero__text">
-          <h1 class="hero__name"><span class="hero__first">Loup</span> <span class="hero__last">Broussard</span></h1>
+          <!-- Portrait next to the first name (source: assets/img/loup_img_site.jpeg). Computers: the cut-out;
+               phones (< 768 px): the classic round photo. alt="": the name is right next to it. -->
+          <h1 class="hero__name"><span class="hero__first-row"><span class="hero__first">Loup</span><picture class="hero__photo"><source media="(max-width: 767px)" srcset="../assets/img/portrait-round.webp" width="320" height="320"><img src="../assets/img/portrait.webp" alt="" width="704" height="1094" fetchpriority="high"></picture></span> <span class="hero__last">Broussard</span></h1>
           <p class="hero__subtitle">Élève ingénieur en informatique @ ENSEEIHT</p>
           <p class="hero__data">43.60° N · 1.44° E — TOULOUSE</p>
           <p class="hero__uvp">Élève ingénieur en 1re année d'informatique, je transforme ma curiosité en code. Je cherche un stage en développement logiciel, systèmes ou data pour l'été 2027.</p>
@@ -113,7 +115,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
               Voir mon pitch
             </a>
-            <a class="btn" href="../assets/docs/CV_Loup_Broussard_FR.pdf" download data-cv>
+            <a class="btn" href="../assets/docs/cv_fr_loup_broussard.pdf" download data-cv>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               Télécharger mon CV
             </a>
@@ -135,17 +137,13 @@
                 </form>
               </div>
               <div class="btn-row">
-                <a class="btn btn--primary" href="../assets/docs/CV_Loup_Broussard_FR.pdf" download>CV en français</a>
-                <a class="btn" href="../assets/docs/CV_Loup_Broussard_EN.pdf" download>CV en anglais</a>
+                <a class="btn btn--primary" href="../assets/docs/cv_fr_loup_broussard.pdf" download>CV en français</a>
+                <a class="btn" href="../assets/docs/cv_en_loup_broussard.pdf" download>CV en anglais</a>
               </div>
             </div>
           </dialog>
         </div>
 
-        <!-- TO COMPLETE: replace the <div> placeholder below with your cut-out portrait
-             (WebP, vertical 4:5, about 900 × 1125 px, < 150 KB):
-             <img class="hero__photo" src="../assets/img/portrait.webp" alt="Portrait de Loup Broussard" width="900" height="1125"> -->
-        <div class="hero__photo hero__photo--placeholder" role="img" aria-label="Photo à venir">LB</div>
       </div>
     </section>
 
@@ -219,7 +217,7 @@
     </section>
 
     <!-- 4. NOW — update every semester -->
-    <section class="chapter" data-tone="sand" aria-labelledby="now-title">
+    <section class="chapter chapter--compact" data-tone="sand" aria-labelledby="now-title">
       <div class="container">
         <div class="section-head">
           <h2 id="now-title">En ce moment</h2>
@@ -229,6 +227,16 @@
           programmation impérative, fonctionnement interne d'un ordinateur, modélisation et preuve formelle,
           et les maths appliquées à l'analyse de données et à l'automatique.
         </p>
+        <dl class="facts now-facts">
+          <div>
+            <dt><a href="activities.html#rugby">Rugby</a></dt>
+            <dd>Je joue toujours, aujourd’hui dans mon école d’ingénieur</dd>
+          </div>
+          <div>
+            <dt>Anglais</dt>
+            <dd>J’améliore mon anglais, niveau B2 aujourd’hui</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
@@ -275,8 +283,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
       <span>GitHub</span>
     </a>
-    <!-- TO COMPLETE: add the CV link here once assets/docs/CV_Loup_Broussard_FR.pdf exists
-         (<a href="../assets/docs/CV_Loup_Broussard_FR.pdf" download> + download icon + <span>CV</span></a>) -->
+    <a href="../assets/docs/cv_fr_loup_broussard.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+      <span>CV</span>
+    </a>
   </aside>
 
   <!-- ===== CONTACT POP-UP — identical on every page. Opened by every "Contact" link (bar, footer): js/main.js §9.
@@ -310,7 +320,7 @@
   <!-- ===== FOOTER — identical on every page ===== -->
   <footer class="site-footer" data-tone="ink">
     <div class="container">
-      <p>© 2026 Loup Broussard · Dernière mise à jour : octobre 2026</p>
+      <p>© 2026 Loup Broussard · Dernière mise à jour : novembre 2026</p>
       <ul>
         <li><a href="mailto:loup.broussard@outlook.com" data-contact>Contact</a></li>
         <li><a href="https://www.linkedin.com/in/loup-broussard-a6940b38b/?locale=fr_FR" target="_blank" rel="noopener">LinkedIn</a></li>
