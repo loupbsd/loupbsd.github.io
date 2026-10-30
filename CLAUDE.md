@@ -24,7 +24,7 @@ Public : recruteurs (stages), enseignants et jury CAM, alumni N7 et professionne
 La section **Career Project** doit contenir :
 - [x] CV en **anglais** et en **français** (PDF téléchargeables)
 - [x] Lien LinkedIn (profil FR + EN)
-- [ ] **Vidéo pitch UVP** en anglais, 2–3 min (structure Now → Past → Future)
+- [x] **Vidéo pitch UVP** en anglais, 2–3 min (structure Now → Past → Future) : intégrée le 30/10/2026 (YouTube non répertoriée, EN `dAyk7xHxfz0`, FR `HO8VIEfHUTc`)
 - [ ] **3 rôles modèles** analysés (My Job Glasses, LinkedIn, alumni)
 - [ ] **3 projets de mobilité internationale** (sur le site, sans lien affiché avec les rôles modèles : décidé le 28/10/2026, alors que la grille CAM demande qu'ils soient alignés)
 

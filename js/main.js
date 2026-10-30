@@ -14,6 +14,8 @@
    The direction of the slide between pages is in js/lap.js.
    ========================================================================= */
 
+// Everything below runs inside one function, so that none of the helpers below leaks into the page's global scope
+(() => {
 /* 1. Menu (full screen on phones and tablets) ---------------------------- */
 // While the menu is open, the rest of the page is "inert": it cannot be
 // clicked and the Tab key skips it, so keyboard users stay in the menu.
@@ -68,7 +70,7 @@ document.querySelectorAll(".theme-toggle").forEach((themeButton) => {
     root.dataset.theme = next;
     try {
       localStorage.setItem("theme", next);
-    } catch (error) {
+    } catch {
       // Storage can be blocked (private mode): the toggle still works for this page
     }
   });
@@ -302,10 +304,10 @@ if (contactDialog && contactDialog.showModal) {
     field.style.cssText = "position: fixed; top: 0; opacity: 0;";
     contactDialog.append(field);            // inside the dialog, the only part that can take focus
     field.select();
-    let ok = false;
+    let ok;
     try {
       ok = document.execCommand("copy");
-    } catch (error) {
+    } catch {
       ok = false;
     }
     field.remove();
@@ -388,3 +390,4 @@ document.addEventListener("click", (event) => {
   lightbox.showModal();
 });
 
+})();

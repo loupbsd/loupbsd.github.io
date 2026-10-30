@@ -31,7 +31,7 @@
   <!-- Applies the saved theme before the page is drawn (avoids a white flash) -->
   <script>
     document.documentElement.classList.add("js");
-    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
   <!-- Direction of the slide between two sectors: must run before the page is shown, so no "defer" -->
   <script src="../js/lap.js"></script>
@@ -131,7 +131,7 @@
               <div class="contact-dialog__head">
                 <h2 id="cv-dialog-title">Télécharger mon CV</h2>
                 <form method="dialog">
-                  <button class="contact-dialog__close" aria-label="Fermer">
+                  <button class="contact-dialog__close" type="submit" aria-label="Fermer">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
                   </button>
                 </form>
@@ -296,7 +296,7 @@
       <div class="contact-dialog__head">
         <h2 id="contact-dialog-title">Contact</h2>
         <form method="dialog">
-          <button class="contact-dialog__close" aria-label="Fermer">
+          <button class="contact-dialog__close" type="submit" aria-label="Fermer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
           </button>
         </form>

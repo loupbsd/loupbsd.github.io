@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) only: keep the project notes and tooling files out of the published site
+exclude:
+  - CLAUDE.md
+  - .claude
+  - .vscode

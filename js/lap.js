@@ -20,18 +20,18 @@
     if (!event.viewTransition) return;
     try {
       sessionStorage.setItem("lap-from", String(sector));
-    } catch (error) {
+    } catch {
       // Storage blocked (private mode): the page will simply fade instead of sliding
     }
   });
 
   // New page, just before it is shown: choose the direction of the slide
   window.addEventListener("pagereveal", (event) => {
-    let from = 0;
+    let from;
     try {
       from = Number(sessionStorage.getItem("lap-from")) || 0;
       sessionStorage.removeItem("lap-from");
-    } catch (error) {
+    } catch {
       return;
     }
     if (!event.viewTransition || !event.viewTransition.types) return;

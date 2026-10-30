@@ -38,7 +38,7 @@
   let mode = "continuous";
   try {
     mode = localStorage.getItem("lap-mode") || "continuous";
-  } catch (error) {
+  } catch {
     // Storage blocked: default mode
   }
   addReadingToggle(mode === "continuous" && !reduceMotion);
@@ -79,7 +79,7 @@
     let pages;
     try {
       pages = await Promise.all(others);
-    } catch (error) {
+    } catch {
       return false;        // a page is missing (offline…): stay in page mode
     }
 
@@ -288,7 +288,7 @@
       if (!info.pin) continue;
       const top = info.track.getBoundingClientRect().top - headerHeight();
       const range = (info.n - 1) * info.pinH;
-      const progress = Math.min(Math.max(-top / range, 0), 1);
+      const progress = range > 0 ? Math.min(Math.max(-top / range, 0), 1) : 0;   // a single panel: nothing to move
       info.window.scrollLeft = progress * (info.n - 1) * info.pin.clientWidth;
       const index = Math.round(progress * (info.n - 1));
       info.gauge.querySelectorAll("i").forEach((bar, k) => bar.classList.toggle("is-on", k === index));
@@ -559,7 +559,7 @@
       button.addEventListener("click", () => {
         try {
           localStorage.setItem("lap-mode", continuousNow ? "classic" : "continuous");
-        } catch (error) {
+        } catch {
           return;
         }
         // Open again the page of the sector being read, at its start. The address

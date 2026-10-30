@@ -1431,21 +1431,6 @@ html:not(.js) .site-nav__extra { display: none; }
 /* =========================================================================
    9. INNER PAGES
    ========================================================================= */
-.page-header {
-  padding-block: var(--space-12) var(--space-8);
-  border-bottom: 1px solid var(--color-border);
-}
-.page-header h1 {
-  font-size: var(--text-2xl);
-  letter-spacing: -0.02em;
-}
-
-.page-header .intro {
-  margin-top: var(--space-4);
-  color: var(--color-text-muted);
-  max-width: 60ch;
-}
-
 /* --- Career page: sticky table of contents ------------------------------ */
 .toc {
   position: sticky;
@@ -1974,6 +1959,7 @@ audio {
   --color-text-muted: #5f5446;
   --color-accent: #4d2da0;
   --color-accent-soft: rgba(77, 45, 160, 0.09);
+  --color-accent-on-soft: #4d2da0;   /* light themes: the plain accent already has enough contrast */
   --color-on-accent: #f9f4ea;
   --color-todo: #8a3c0d;
   --c-s1: #4d2da0;
@@ -1998,6 +1984,7 @@ audio {
     --color-text-muted: #5f5446;
     --color-accent: #4d2da0;
     --color-accent-soft: rgba(77, 45, 160, 0.09);
+    --color-accent-on-soft: #4d2da0;
     --color-on-accent: #f9f4ea;
     --color-todo: #8a3c0d;
     --c-s1: #4d2da0;
